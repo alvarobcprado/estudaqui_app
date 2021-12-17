@@ -1,10 +1,15 @@
+import 'package:faeng_courses/common/general_providers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 abstract class MyTheme {
   // TODO(Alvaro): implements when define dependency injection
-  // static MyColors of(
-  //   BuildContext context,
-  // ) {
-  //   return MyTheme();
-  // }
+  static MyTheme of(
+    WidgetRef ref, {
+    bool listen = false,
+  }) {
+    return ref.read(themeProvider);
+  }
 
   MyColors get colors;
   MyTextStyles get textStyles;
@@ -12,8 +17,33 @@ abstract class MyTheme {
   String get fontFamily;
 }
 
-abstract class MyColors {}
+abstract class MyColors {
+  static MyColors of(
+    WidgetRef ref, {
+    bool listen = false,
+  }) {
+    return ref.read(themeProvider).colors;
+  }
 
-abstract class MyTextStyles {}
+  Color get homeSidebarBackground;
 
-abstract class MyAssetPaths {}
+  Color get homeContentBackground;
+}
+
+abstract class MyTextStyles {
+  static MyTextStyles of(
+    WidgetRef ref, {
+    bool listen = false,
+  }) {
+    return ref.read(themeProvider).textStyles;
+  }
+}
+
+abstract class MyAssetPaths {
+  static MyAssetPaths of(
+    WidgetRef ref, {
+    bool listen = false,
+  }) {
+    return ref.read(themeProvider).assets;
+  }
+}

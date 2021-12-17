@@ -2,10 +2,15 @@ import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +26,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      title: 'My Flutter Boilerplate',
+      title: 'Faeng Courses',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
