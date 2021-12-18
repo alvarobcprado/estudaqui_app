@@ -1,11 +1,17 @@
 import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/firebase_options.dart';
 import 'package:faeng_courses/generated/l10n.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     const ProviderScope(
       child: MyApp(),
