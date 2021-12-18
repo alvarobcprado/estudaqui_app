@@ -4,20 +4,6 @@ import 'package:faeng_courses/presentation/common/light_theme.dart';
 import 'package:faeng_courses/presentation/common/my_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final analyticsProvider = Provider<Analytics>(
-  (ref) {
-    return Analytics(analytics: FirebaseAnalytics.instance);
-  },
-);
-
-final analyticsObserverProvider = Provider<AnalyticsObserver>(
-  (ref) {
-    return AnalyticsObserver(
-      analytics: ref.read(analyticsProvider),
-    );
-  },
-);
-
 final themeProvider = Provider<MyTheme>(
   (ref) {
     // TODO(Alvaro): Use this when dark theme is implemented
@@ -30,5 +16,19 @@ final themeProvider = Provider<MyTheme>(
     //   return FpLightTheme();
     // }
     return LightTheme();
+  },
+);
+
+final analyticsProvider = Provider<Analytics>(
+  (ref) {
+    return Analytics(analytics: FirebaseAnalytics.instance);
+  },
+);
+
+final analyticsObserverProvider = Provider<AnalyticsObserver>(
+  (ref) {
+    return AnalyticsObserver(
+      analytics: ref.read(analyticsProvider),
+    );
   },
 );
