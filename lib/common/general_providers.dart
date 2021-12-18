@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:faeng_courses/presentation/common/analytics.dart';
 import 'package:faeng_courses/presentation/common/light_theme.dart';
 import 'package:faeng_courses/presentation/common/my_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final themeProvider = Provider<MyTheme>(
@@ -28,7 +31,21 @@ final analyticsProvider = Provider<Analytics>(
 final analyticsObserverProvider = Provider<AnalyticsObserver>(
   (ref) {
     return AnalyticsObserver(
-      analytics: ref.read(analyticsProvider),
+      analytics: ref.watch(analyticsProvider),
     );
   },
 );
+
+final dioProvider = Provider<Dio>(
+  (ref) {
+    return Dio();
+  },
+);
+
+final authProvider = Provider<FirebaseAuth>((ref) {
+  return FirebaseAuth.instance;
+});
+
+final databaseProvider = Provider<FirebaseFirestore>((ref) {
+  return FirebaseFirestore.instance;
+});
