@@ -1,5 +1,5 @@
+import 'package:faeng_courses/app/presentation/common/my_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:faeng_courses/presentation/common/my_theme.dart';
 
 class DarkColors implements MyColors {
   @override
