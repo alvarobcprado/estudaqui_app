@@ -1,9 +1,0 @@
-name: domain
-version: 1.0.0+1
-publish_to: none
-
-environment:
-  sdk: ">=2.13.0 <3.0.0"
-
-dev_dependencies:
-  flutter_lints: ^1.0.0
