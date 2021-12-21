@@ -7,6 +7,14 @@ class LightColors implements MyColors {
 
   @override
   Color get homeContentBackground => Colors.black26;
+
+  @override
+  // TODO: implement loginPageBackground
+  Color get loginPageBackground => Colors.blue.withOpacity(0.5);
+
+  @override
+  // TODO: implement loginContainerBackground
+  Color get loginContainerBackground => Colors.white;
 }
 
 class LightTextStyles implements MyTextStyles {}

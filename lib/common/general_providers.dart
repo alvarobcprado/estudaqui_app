@@ -42,10 +42,14 @@ final dioProvider = Provider<Dio>(
   },
 );
 
-final authProvider = Provider<FirebaseAuth>((ref) {
-  return FirebaseAuth.instance;
-});
+final authProvider = Provider<FirebaseAuth>(
+  (ref) {
+    return FirebaseAuth.instance;
+  },
+);
 
-final databaseProvider = Provider<FirebaseFirestore>((ref) {
-  return FirebaseFirestore.instance;
-});
+final databaseProvider = Provider<FirebaseFirestore>(
+  (ref) {
+    return FirebaseFirestore.instance;
+  },
+);
