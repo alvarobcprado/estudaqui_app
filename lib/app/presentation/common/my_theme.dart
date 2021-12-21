@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class MyTheme {
-  // TODO(Alvaro): implements when define dependency injection
   static MyTheme of(
     WidgetRef ref, {
     bool listen = false,
@@ -28,6 +27,10 @@ abstract class MyColors {
   Color get homeSidebarBackground;
 
   Color get homeContentBackground;
+
+  Color get loginPageBackground;
+
+  Color get loginContainerBackground;
 }
 
 abstract class MyTextStyles {

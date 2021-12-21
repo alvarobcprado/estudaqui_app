@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 
 class DarkColors implements MyColors {
   @override
-  Color get homeSidebarBackground => Colors.black26;
+  Color get homeSidebarBackground => throw UnimplementedError();
 
   @override
-  Color get homeContentBackground => Colors.black38;
+  Color get homeContentBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement loginPageBackground
+  Color get loginPageBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement loginContainerBackground
+  Color get loginContainerBackground => throw UnimplementedError();
 }
 
 class DarkMyTextStyles implements MyTextStyles {}
