@@ -1,4 +1,11 @@
 {
-    "project_title": "Flutter Boilerplate"
+    "project_title": "Flutter Boilerplate",
+    "login_container_title":"FaEng Cursos",
+    "login_container_email_field_label":"E-mail",
+    "login_container_email_field_hint":"Insira seu e-mail",
+    "login_container_password_field_label":"Senha",
+    "login_container_password_field_hint":"Digite sua senha",
+    "login_container_signin_button":"Entrar"
+
 
 }

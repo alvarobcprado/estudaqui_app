@@ -59,6 +59,66 @@ class S {
       args: [],
     );
   }
+
+  /// `FaEng Cursos`
+  String get login_container_title {
+    return Intl.message(
+      'FaEng Cursos',
+      name: 'login_container_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get login_container_email_field_label {
+    return Intl.message(
+      'E-mail',
+      name: 'login_container_email_field_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insira seu e-mail`
+  String get login_container_email_field_hint {
+    return Intl.message(
+      'Insira seu e-mail',
+      name: 'login_container_email_field_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Senha`
+  String get login_container_password_field_label {
+    return Intl.message(
+      'Senha',
+      name: 'login_container_password_field_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Digite sua senha`
+  String get login_container_password_field_hint {
+    return Intl.message(
+      'Digite sua senha',
+      name: 'login_container_password_field_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrar`
+  String get login_container_signin_button {
+    return Intl.message(
+      'Entrar',
+      name: 'login_container_signin_button',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

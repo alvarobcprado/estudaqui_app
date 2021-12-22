@@ -22,6 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "login_container_email_field_hint":
+            MessageLookupByLibrary.simpleMessage("Insira seu e-mail"),
+        "login_container_email_field_label":
+            MessageLookupByLibrary.simpleMessage("E-mail"),
+        "login_container_password_field_hint":
+            MessageLookupByLibrary.simpleMessage("Digite sua senha"),
+        "login_container_password_field_label":
+            MessageLookupByLibrary.simpleMessage("Senha"),
+        "login_container_signin_button":
+            MessageLookupByLibrary.simpleMessage("Entrar"),
+        "login_container_title":
+            MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate")
       };
