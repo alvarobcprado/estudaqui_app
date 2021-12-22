@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:faeng_courses/app/data/repository/auth_imp_repository.dart';
 import 'package:faeng_courses/app/presentation/common/analytics.dart';
 import 'package:faeng_courses/app/presentation/common/light_theme.dart';
 import 'package:faeng_courses/app/presentation/common/my_theme.dart';
@@ -42,14 +43,26 @@ final dioProvider = Provider<Dio>(
   },
 );
 
-final authProvider = Provider<FirebaseAuth>(
+final firebaseAuthProvider = Provider<FirebaseAuth>(
   (ref) {
     return FirebaseAuth.instance;
   },
 );
 
-final databaseProvider = Provider<FirebaseFirestore>(
+final firebaseFirestoreProvider = Provider<FirebaseFirestore>(
   (ref) {
     return FirebaseFirestore.instance;
+  },
+);
+
+final authRepositoryProvider = Provider<AuthImpRepository>(
+  (ref) {
+    final authProvider = ref.watch<FirebaseAuth>(
+      firebaseAuthProvider,
+    );
+
+    return AuthImpRepository(
+      authProvider: authProvider,
+    );
   },
 );
