@@ -5,13 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class AuthDataRepository {
   Stream<User?> get authStateChanges;
 
-  Either<Failure, User?> getCurrentUser();
+  Either<Failure, User> getCurrentUser();
 
-  Future<void> signInAnonmously();
+  Future<Either<Failure, void>> signInAnonmously();
 
-  Future<void> signOut();
+  Future<Either<Failure, void>> signOut();
 
-  Future<Either<Failure, User?>> signInWithEmailAndPassword(
+  Future<Either<Failure, User>> signInWithEmailAndPassword(
     String email,
     String password,
   );
