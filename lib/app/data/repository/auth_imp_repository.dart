@@ -15,7 +15,7 @@ class AuthImpRepository implements AuthDataRepository {
   Stream<User?> get authStateChanges => _authProvider.authStateChanges();
 
   @override
-  Either<Failure, User?> getCurrentUser() {
+  Either<Failure, User> getCurrentUser() {
     final user = _authProvider.currentUser;
     if (user != null) {
       return Right(user);
@@ -24,18 +24,35 @@ class AuthImpRepository implements AuthDataRepository {
   }
 
   @override
-  Future<void> signInAnonmously() async {
-    await _authProvider.signInAnonymously();
+  Future<Either<Failure, void>> signInAnonmously() async {
+    try {
+      await _authProvider.signInAnonymously();
+      return const Right(null);
+    } catch (e) {
+      return Left(
+        SignInUserFailure(
+          signinMethod: SignInMethod.anonymous,
+        ),
+      );
+    }
   }
 
   @override
-  Future<void> signOut() async {
-    await _authProvider.signOut();
-    await _authProvider.signInAnonymously();
+  Future<Either<Failure, void>> signOut() async {
+    try {
+      await _authProvider.signInAnonymously();
+      await _authProvider.signInAnonymously();
+
+      return const Right(null);
+    } catch (e) {
+      return Left(
+        SignOutUserFailure(),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, User?>> signInWithEmailAndPassword(
+  Future<Either<Failure, User>> signInWithEmailAndPassword(
     String email,
     String password,
   ) async {
@@ -44,10 +61,17 @@ class AuthImpRepository implements AuthDataRepository {
         email: email,
         password: password,
       );
-
-      return Right(userCredential.user);
+      if (userCredential.user != null) {
+        return Right(userCredential.user!);
+      } else {
+        throw Exception();
+      }
     } catch (e) {
-      return Left(SignInUserFailure());
+      return Left(
+        SignInUserFailure(
+          signinMethod: SignInMethod.emailAndPassword,
+        ),
+      );
     }
   }
 }
