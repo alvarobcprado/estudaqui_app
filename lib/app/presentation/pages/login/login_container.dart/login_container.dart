@@ -1,5 +1,6 @@
 import 'package:faeng_courses/app/presentation/common/constants.dart';
 import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,10 +31,10 @@ class _LoginContainerState extends ConsumerState<LoginContainer> {
               padding: const EdgeInsets.symmetric(horizontal: kMediumPadding),
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(kXXLargePadding),
+                  Padding(
+                    padding: const EdgeInsets.all(kXXLargePadding),
                     child: Text(
-                      'FaEng Cursos',
+                      S.of(context).login_container_title,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -41,17 +42,23 @@ class _LoginContainerState extends ConsumerState<LoginContainer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('E-mail'),
+                      Text(
+                        S.of(context).login_container_email_field_label,
+                      ),
                       TextFormField(),
                       const SizedBox(height: kMediumSpacer),
-                      const Text('Senha'),
+                      Text(
+                        S.of(context).login_container_password_field_label,
+                      ),
                       TextFormField(),
                     ],
                   ),
                   const SizedBox(height: kMediumSpacer),
                   TextButton(
                     onPressed: () {},
-                    child: const Text('Login'),
+                    child: Text(
+                      S.of(context).login_container_signin_button,
+                    ),
                   ),
                 ],
               ),
