@@ -45,6 +45,8 @@ dependencies:
   hive: ^2.0.5
   dio: ^4.0.4
   firebase_analytics: ^9.0.4
+  dartz: ^0.10.1
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
