@@ -15,7 +15,7 @@ class AuthImpRepository implements AuthDataRepository {
   Stream<User?> get authStateChanges => _authProvider.authStateChanges();
 
   @override
-  Either<Failure, User> getCurrentUser() {
+  Future<Either<Failure, User>> getCurrentUser() async {
     final user = _authProvider.currentUser;
     if (user != null) {
       return Right(user);
