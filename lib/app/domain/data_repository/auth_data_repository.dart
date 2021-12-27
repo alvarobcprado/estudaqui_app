@@ -7,7 +7,7 @@ abstract class AuthDataRepository {
 
   Future<Either<Failure, User>> getCurrentUser();
 
-  Future<Either<Failure, void>> signInAnonmously();
+  Future<Either<Failure, User>> signInAnonmously();
 
   Future<Either<Failure, void>> signOut();
 

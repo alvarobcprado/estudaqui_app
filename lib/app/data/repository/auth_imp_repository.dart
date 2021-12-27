@@ -24,10 +24,15 @@ class AuthImpRepository implements AuthDataRepository {
   }
 
   @override
-  Future<Either<Failure, void>> signInAnonmously() async {
+  Future<Either<Failure, User>> signInAnonmously() async {
     try {
-      await _authProvider.signInAnonymously();
-      return const Right(null);
+      final userCredential = await _authProvider.signInAnonymously();
+
+      if (userCredential.user != null && userCredential.user!.isAnonymous) {
+        return Right(userCredential.user!);
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       return Left(
         SignInUserFailure(
@@ -41,8 +46,13 @@ class AuthImpRepository implements AuthDataRepository {
   Future<Either<Failure, void>> signOut() async {
     try {
       await _authProvider.signOut();
+      final userCredential = await _authProvider.signInAnonymously();
 
-      return const Right(null);
+      if (userCredential.user != null && userCredential.user!.isAnonymous) {
+        return const Right(null);
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       return Left(
         SignOutUserFailure(),
@@ -60,7 +70,7 @@ class AuthImpRepository implements AuthDataRepository {
         email: email,
         password: password,
       );
-      if (userCredential.user != null) {
+      if (userCredential.user != null && !userCredential.user!.isAnonymous) {
         return Right(userCredential.user!);
       } else {
         throw Exception();

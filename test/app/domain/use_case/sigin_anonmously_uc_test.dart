@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'get_current_user_uc_test.mocks.dart';
+import 'signin_with_email_and_password_uc_test.mocks.dart';
 
 @GenerateMocks([AuthDataRepository, User])
 void main() {
@@ -27,7 +27,7 @@ void main() {
       when(mockRepository.signInAnonmously()).thenAnswer(
         (_) async {
           currentUser = MockUser();
-          return const Right(null);
+          return Right(currentUser!);
         },
       );
 
@@ -35,7 +35,7 @@ void main() {
 
       final result = await useCase.call(params: NoParams());
 
-      expect(result, const Right(null));
+      expect(result, Right(currentUser));
       expect(currentUser, isA<User>());
       verify(mockRepository.signInAnonmously());
       verifyNoMoreInteractions(mockRepository);
