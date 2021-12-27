@@ -17,7 +17,7 @@ void main() {
   setUp(() {
     mockRepository = MockAuthDataRepository();
     currentUser = MockUser();
-    useCase = GetCurrentUserUC(repository: mockRepository);
+    useCase = GetCurrentUserUC(authRepository: mockRepository);
   });
 
   test(
@@ -30,6 +30,8 @@ void main() {
       final result = await useCase.call(params: NoParams());
 
       expect(result, Right(currentUser));
+      verify(mockRepository.getCurrentUser());
+      verifyNoMoreInteractions(mockRepository);
     },
   );
 }
