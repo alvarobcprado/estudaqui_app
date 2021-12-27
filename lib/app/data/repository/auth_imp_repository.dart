@@ -40,8 +40,7 @@ class AuthImpRepository implements AuthDataRepository {
   @override
   Future<Either<Failure, void>> signOut() async {
     try {
-      await _authProvider.signInAnonymously();
-      await _authProvider.signInAnonymously();
+      await _authProvider.signOut();
 
       return const Right(null);
     } catch (e) {
