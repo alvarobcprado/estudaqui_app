@@ -33,8 +33,12 @@ void main() {
     () async {
       when(currentUser.email).thenReturn(email);
       when(currentUser.isAnonymous).thenReturn(currentUser.email == null);
-      when(mockRepository.signInWithEmailAndPassword(email, password))
-          .thenAnswer(
+      when(
+        mockRepository.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        ),
+      ).thenAnswer(
         (_) async {
           return Right(currentUser);
         },
@@ -53,7 +57,12 @@ void main() {
         expect(user.value.isAnonymous, false);
         expect(user.value.email, email);
       }
-      verify(mockRepository.signInWithEmailAndPassword(email, password));
+      verify(
+        mockRepository.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        ),
+      );
       verifyNoMoreInteractions(mockRepository);
     },
   );

@@ -5,6 +5,11 @@ enum SignInMethod {
   emailAndPassword,
 }
 
+enum SignUpCode {
+  emailAlreadyUsed,
+  other,
+}
+
 abstract class Failure extends Equatable {}
 
 class CurrentUserFailure extends Failure {
@@ -24,4 +29,15 @@ class SignInUserFailure extends Failure {
 class SignOutUserFailure extends Failure {
   @override
   List<Object?> get props => [];
+}
+
+class SignUpFailure extends Failure {
+  SignUpFailure({
+    required this.signUpCode,
+  });
+
+  final SignUpCode signUpCode;
+
+  @override
+  List<Object?> get props => [signUpCode];
 }

@@ -61,10 +61,10 @@ class AuthImpRepository implements AuthDataRepository {
   }
 
   @override
-  Future<Either<Failure, User>> signInWithEmailAndPassword(
-    String email,
-    String password,
-  ) async {
+  Future<Either<Failure, User>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       final userCredential = await _authProvider.signInWithEmailAndPassword(
         email: email,
@@ -79,6 +79,43 @@ class AuthImpRepository implements AuthDataRepository {
       return Left(
         SignInUserFailure(
           signinMethod: SignInMethod.emailAndPassword,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      if (_authProvider.currentUser != null &&
+          !_authProvider.currentUser!.isAnonymous) {
+        final userCredential =
+            await _authProvider.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+
+        return Right(userCredential.user!);
+      } else {
+        throw Exception();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        return Left(
+          SignUpFailure(
+            signUpCode: SignUpCode.emailAlreadyUsed,
+          ),
+        );
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      return Left(
+        SignUpFailure(
+          signUpCode: SignUpCode.other,
         ),
       );
     }

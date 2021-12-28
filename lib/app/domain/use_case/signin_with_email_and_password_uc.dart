@@ -17,8 +17,8 @@ class SigninWithEmailAndPasswordUC
     required SigninWithEmailAndPasswordParams params,
   }) async {
     return _authDataRepository.signInWithEmailAndPassword(
-      params.email,
-      params.password,
+      email: params.email,
+      password: params.password,
     );
   }
 }
