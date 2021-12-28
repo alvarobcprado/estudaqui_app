@@ -11,8 +11,13 @@ abstract class AuthDataRepository {
 
   Future<Either<Failure, void>> signOut();
 
-  Future<Either<Failure, User>> signInWithEmailAndPassword(
-    String email,
-    String password,
-  );
+  Future<Either<Failure, User>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
+
+  Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
 }
