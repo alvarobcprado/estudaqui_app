@@ -6,9 +6,8 @@ import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.da
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/core/error/failures.dart';
 
-class SignupWithEmailAndPasswordUC
-    extends UseCase<SignupWithEmailAndPasswordParams, User> {
-  SignupWithEmailAndPasswordUC({
+class SignupEmailPasswordUC extends UseCase<SignupEmailPasswordParams, User> {
+  SignupEmailPasswordUC({
     required AuthDataRepository authDataRepository,
   }) : _authDataRepository = authDataRepository;
 
@@ -23,8 +22,8 @@ class SignupWithEmailAndPasswordUC
   }
 }
 
-class SignupWithEmailAndPasswordParams extends Equatable {
-  const SignupWithEmailAndPasswordParams({
+class SignupEmailPasswordParams extends Equatable {
+  const SignupEmailPasswordParams({
     required this.email,
     required this.password,
   });

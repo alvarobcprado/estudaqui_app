@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
-import 'package:faeng_courses/app/domain/use_case/signup_with_email_and_password_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/signup_email_password_uc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -12,14 +12,14 @@ import 'signup_with_email_and_password_uc_test.mocks.dart';
 void main() {
   late final MockAuthDataRepository mockRepository;
   MockUser? mockUser;
-  late final SignupWithEmailAndPasswordUC useCase;
+  late final SignupEmailPasswordUC useCase;
   const _email = 'email@email.com';
   const _password = 'password';
 
   setUp(
     () {
       mockRepository = MockAuthDataRepository();
-      useCase = SignupWithEmailAndPasswordUC(
+      useCase = SignupEmailPasswordUC(
         authDataRepository: mockRepository,
       );
     },
@@ -42,7 +42,7 @@ void main() {
 
       expect(mockUser, isNull);
       final result = await useCase.call(
-        params: const SignupWithEmailAndPasswordParams(
+        params: const SignupEmailPasswordParams(
           email: _email,
           password: _password,
         ),

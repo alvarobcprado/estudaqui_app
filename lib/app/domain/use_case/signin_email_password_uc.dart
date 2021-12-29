@@ -6,15 +6,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/core/error/failures.dart';
 
-class SigninWithEmailAndPasswordUC
-    extends UseCase<SigninWithEmailAndPasswordParams, User> {
-  SigninWithEmailAndPasswordUC({required AuthDataRepository authDataRepository})
+class SigninEmailPasswordUC extends UseCase<SigninEmailPasswordParams, User> {
+  SigninEmailPasswordUC({required AuthDataRepository authDataRepository})
       : _authDataRepository = authDataRepository;
 
   final AuthDataRepository _authDataRepository;
   @override
   Future<Either<Failure, User>> call({
-    required SigninWithEmailAndPasswordParams params,
+    required SigninEmailPasswordParams params,
   }) async {
     return _authDataRepository.signInWithEmailAndPassword(
       email: params.email,
@@ -23,8 +22,8 @@ class SigninWithEmailAndPasswordUC
   }
 }
 
-class SigninWithEmailAndPasswordParams extends Equatable {
-  const SigninWithEmailAndPasswordParams({
+class SigninEmailPasswordParams extends Equatable {
+  const SigninEmailPasswordParams({
     required this.email,
     required this.password,
   });
