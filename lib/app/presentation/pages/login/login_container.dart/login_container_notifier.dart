@@ -3,6 +3,8 @@ import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:faeng_courses/app/domain/use_case/signin_anonmously_uc.dart';
@@ -30,15 +32,16 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
   Future<void> verifyLoginState() async {
     state = Loading();
     final currentUserEither = await _getCurrentUserUC.call(params: NoParams());
-    state = currentUserEither.fold(
-      (failure) {
+    state = await currentUserEither.fold(
+      (failure) async {
         return Error(error: failure);
       },
-      (user) {
+      (user) async {
         if (user.isAnonymous) {
           return Success(isUserAuthenticated: false);
         } else {
-          return Success(isUserAuthenticated: true);
+          await loginAnonmously();
+          return Success(isUserAuthenticated: false);
         }
       },
     );
@@ -71,6 +74,21 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
       (l) => Error(error: l),
       (r) => Success(isUserAuthenticated: false),
     );
+  }
+
+  void validateCurrentFormAndLoginEmailPassword(
+    GlobalKey<FormBuilderState> formKey,
+  ) {
+    final formSaveResult = formKey.currentState?.saveAndValidate();
+
+    if (formSaveResult != null && formSaveResult) {
+      final email = formKey.currentState!.value['emailField'];
+      final password = formKey.currentState!.value['passwordField'];
+      loginEmailPassword(
+        email: email,
+        password: password,
+      );
+    }
   }
 }
 
