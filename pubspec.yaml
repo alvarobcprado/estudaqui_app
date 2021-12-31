@@ -45,10 +45,17 @@ dependencies:
   hive: ^2.0.5
   dio: ^4.0.4
   firebase_analytics: ^9.0.4
+  dartz: ^0.10.1
+  equatable: ^2.0.3
+  mockito: ^5.0.17
+  firebase_auth_mocks: ^0.8.1
+  flutter_form_builder: ^7.0.0
+  form_builder_validators: ^7.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
