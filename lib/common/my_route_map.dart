@@ -1,11 +1,10 @@
-import 'package:faeng_courses/app/presentation/pages/home/home_page.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_page.dart';
 import 'package:faeng_courses/app/presentation/pages/not_found/not_found_page.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
 
 const _homePath = '/';
-const _loginPath = '$_homePath/login';
+const _loginPath = '${_homePath}login';
 const _notFoundPath = '${_homePath}not-found';
 
 class MyRouteMap extends RouteMap {
@@ -28,4 +27,8 @@ class MyRouteMap extends RouteMap {
                 ),
           },
         );
+}
+
+extension MyPageRoutes on Routemaster {
+  void replaceWithNotFound() => push(_notFoundPath);
 }
