@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             ref: ref,
             onReceived: (_, newState) {
               if (newState is Success && newState.isUserAuthenticated) {
-                Routemaster.of(context).replaceWithNotFound();
+                Routemaster.of(context).replaceWithHome();
               }
             },
             child: LoginContainer(
