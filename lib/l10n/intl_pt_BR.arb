@@ -7,7 +7,7 @@
     "login_container_password_field_hint":"Digite sua senha",
     "login_container_signin_button":"Entrar",
     "drawer_header_unauthenticated_title": "FaEng Cursos",
-    "drawer_header_authenticated_title": "Olá, ${name}",
+    "drawer_header_authenticated_title": "Olá, {name}",
     "drawer_options_signout": "Sair",
     "drawer_options_signin": "Entrar"
 }

@@ -13,6 +13,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tileIndex = IndexedPage.of(context).index;
     return SafeArea(
       child: Drawer(
         child: Consumer(
@@ -33,6 +34,22 @@ class MyDrawer extends StatelessWidget {
                             )
                         : S.of(context).drawer_header_unauthenticated_title,
                   ),
+                ),
+                ListTile(
+                  selected: tileIndex == 0,
+                  onTap: () => Routemaster.of(context)
+                    ..pop()
+                    ..pushHome(),
+                  leading: const Icon(Icons.home),
+                  title: const Text('Home'),
+                ),
+                ListTile(
+                  selected: tileIndex == 1,
+                  onTap: () => Routemaster.of(context)
+                    ..pop()
+                    ..pushTest(),
+                  leading: const Icon(Icons.error),
+                  title: const Text('Not Found'),
                 ),
                 myDrawerState is LoggedUser
                     ? ListTile(

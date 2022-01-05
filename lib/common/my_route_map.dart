@@ -39,7 +39,10 @@ class MyRouteMap extends RouteMap {
 }
 
 extension MyPageRoutes on Routemaster {
-  void pushLogin() => replace(_loginPath);
-  void replaceWithHome() => push(_homePath);
+  void pushLogin() => push(_loginPath);
+  void pushHome() => push(_homePath);
+  void pushTest() => push(_notFoundPath);
+
+  void replaceWithHome() => replace(_homePath);
   void replaceWithNotFound() => replace(_notFoundPath);
 }

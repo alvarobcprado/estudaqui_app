@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Olá, ${name}`
+  /// `Olá, {name}`
   String drawer_header_authenticated_title(Object name) {
     return Intl.message(
-      'Olá, \$$name',
+      'Olá, $name',
       name: 'drawer_header_authenticated_title',
       desc: '',
       args: [name],
