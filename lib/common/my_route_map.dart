@@ -2,13 +2,12 @@ import 'package:faeng_courses/app/presentation/pages/home/home_page.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_page.dart';
 import 'package:faeng_courses/app/presentation/pages/not_found/not_found_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
 const _basePath = '/';
 const _homePath = '${_basePath}home';
-const _loginPath = '${_basePath}login';
-const _notFoundPath = '${_basePath}not-found';
+const _loginPath = '$_homePath/login';
+const _notFoundPath = '$_homePath/not-found';
 
 class MyRouteMap extends RouteMap {
   MyRouteMap()
@@ -16,13 +15,9 @@ class MyRouteMap extends RouteMap {
           onUnknownRoute: (_) => const Redirect(_notFoundPath),
           routes: {
             _basePath: (_) => const Redirect(_homePath),
-            _homePath: (_) => MaterialPage(
+            _homePath: (_) => const MaterialPage(
                   name: 'Home',
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      return const HomePage();
-                    },
-                  ),
+                  child: HomePage(),
                 ),
             _loginPath: (_) => const MaterialPage(
                   name: 'Login',
@@ -38,6 +33,6 @@ class MyRouteMap extends RouteMap {
 
 extension MyPageRoutes on Routemaster {
   void pushLogin() => push(_loginPath);
-  void replaceWithHome() => replace(_homePath);
+  void replaceWithHome() => push(_homePath);
   void replaceWithNotFound() => replace(_notFoundPath);
 }
