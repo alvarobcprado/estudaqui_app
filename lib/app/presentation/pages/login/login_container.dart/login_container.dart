@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/presentation/common/action_handler.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/loading_widget.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/loading_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_container.dart/login_container_models.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_container.dart/login_container_notifier.dart';
 import 'package:faeng_courses/common/general_providers.dart';
