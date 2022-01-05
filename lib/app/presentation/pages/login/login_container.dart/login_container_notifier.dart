@@ -22,7 +22,6 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
         _getCurrentUserUC = getCurrentUserUC,
         super(Loading()) {
     verifyLoginState();
-    FirebaseAuth.instance.authStateChanges();
   }
 
   final SigninEmailPasswordUC _signinEmailPasswordUC;
