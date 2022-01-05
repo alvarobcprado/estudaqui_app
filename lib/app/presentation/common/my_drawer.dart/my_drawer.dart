@@ -1,12 +1,13 @@
-import 'package:faeng_courses/app/presentation/pages/home/home_drawer.dart/home_drawer_models.dart';
-import 'package:faeng_courses/app/presentation/pages/home/home_drawer.dart/home_drawer_notifier.dart';
+import 'package:faeng_courses/app/presentation/common/my_drawer.dart/my_drawer_models.dart';
+import 'package:faeng_courses/app/presentation/common/my_drawer.dart/my_drawer_notifier.dart';
+import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
-class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({Key? key}) : super(key: key);
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +15,24 @@ class HomeDrawer extends StatelessWidget {
       child: Drawer(
         child: Consumer(
           builder: (context, ref, _) {
-            final homeDrawerState = ref.watch(homeDrawerNotifierProvider);
+            final myDrawerState = ref.watch(myDrawerNotifierProvider);
             return ListView(
               children: [
                 Container(
                   height: 100,
-                  padding: const EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(kLargePadding),
                   alignment: Alignment.center,
                   color: Colors.blue,
                   child: Text(
-                    homeDrawerState is LoggedUser
-                        ? 'Bem vindo - ${homeDrawerState.email}'
+                    myDrawerState is LoggedUser
+                        ? 'Bem vindo - ${myDrawerState.email}'
                         : 'FaEng Courses App',
                   ),
                 ),
-                homeDrawerState is LoggedUser
+                myDrawerState is LoggedUser
                     ? ListTile(
                         onTap: () => ref
-                            .read(homeDrawerNotifierProvider.notifier)
+                            .read(myDrawerNotifierProvider.notifier)
                             .signoutCurrentUser(),
                         leading: const Icon(Icons.logout),
                         title: const Text('Sign out'),
