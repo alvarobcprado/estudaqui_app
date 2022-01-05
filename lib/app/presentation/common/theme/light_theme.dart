@@ -1,20 +1,15 @@
-import 'package:faeng_courses/app/presentation/common/my_theme.dart';
+import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
 class LightColors implements MyColors {
   @override
-  Color get homeSidebarBackground => Colors.black38;
-
-  @override
-  Color get homeContentBackground => Colors.black26;
-
-  @override
-  // TODO: implement loginPageBackground
   Color get loginPageBackground => Colors.blue.withOpacity(0.5);
 
   @override
-  // TODO: implement loginContainerBackground
   Color get loginContainerBackground => Colors.white;
+
+  @override
+  Color get myDrawerHeaderBackground => Colors.blue;
 }
 
 class LightTextStyles implements MyTextStyles {}

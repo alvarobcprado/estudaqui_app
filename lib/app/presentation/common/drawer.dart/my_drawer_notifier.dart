@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/presentation/common/my_drawer.dart/my_drawer_models.dart';
+import 'package:faeng_courses/app/presentation/common/drawer.dart/my_drawer_models.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
