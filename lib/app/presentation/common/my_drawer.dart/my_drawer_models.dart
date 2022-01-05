@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-abstract class HomeDrawerState extends Equatable {}
+abstract class MyDrawerState extends Equatable {}
 
-class LoggedUser extends HomeDrawerState {
+class LoggedUser extends MyDrawerState {
   LoggedUser({
     required this.email,
     this.username,
@@ -14,12 +14,12 @@ class LoggedUser extends HomeDrawerState {
   List<Object?> get props => [email, username];
 }
 
-class AnonmouslyUser extends HomeDrawerState {
+class AnonmouslyUser extends MyDrawerState {
   @override
   List<Object?> get props => [];
 }
 
-class UnauthenticatedUser extends HomeDrawerState {
+class UnauthenticatedUser extends MyDrawerState {
   @override
   List<Object?> get props => [];
 }

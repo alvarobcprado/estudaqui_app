@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
+import 'package:faeng_courses/app/presentation/common/my_drawer.dart/my_drawer_models.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:faeng_courses/app/domain/use_case/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/signout_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/app/presentation/pages/home/home_drawer.dart/home_drawer_models.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failures.dart';
 
-class HomeDrawerNotifier extends StateNotifier<HomeDrawerState> {
-  HomeDrawerNotifier({
+class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
+  MyDrawerNotifier({
     required SignOutUC signoutUC,
     required GetCurrentUserUC getCurrentUserUC,
     required Ref ref,
@@ -38,7 +38,7 @@ class HomeDrawerNotifier extends StateNotifier<HomeDrawerState> {
     state = _eitherLoadedOrError(eitherUser);
   }
 
-  HomeDrawerState _eitherLoadedOrError(Either<Failure, User> failureOrUser) {
+  MyDrawerState _eitherLoadedOrError(Either<Failure, User> failureOrUser) {
     return failureOrUser.fold(
       (l) => UnauthenticatedUser(),
       (user) {
@@ -53,12 +53,12 @@ class HomeDrawerNotifier extends StateNotifier<HomeDrawerState> {
   }
 }
 
-final homeDrawerNotifierProvider =
-    StateNotifierProvider<HomeDrawerNotifier, HomeDrawerState>(
+final myDrawerNotifierProvider =
+    StateNotifierProvider<MyDrawerNotifier, MyDrawerState>(
   (ref) {
     final signoutUC = ref.watch(signoutUCProvider);
     final getCurrentUserUC = ref.watch(getCurrentUserUCProvider);
-    return HomeDrawerNotifier(
+    return MyDrawerNotifier(
       getCurrentUserUC: getCurrentUserUC,
       signoutUC: signoutUC,
       ref: ref,
