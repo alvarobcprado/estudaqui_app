@@ -1,5 +1,5 @@
-import 'package:faeng_courses/app/presentation/common/drawer.dart/my_drawer_models.dart';
-import 'package:faeng_courses/app/presentation/common/drawer.dart/my_drawer_notifier.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_models.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_notifier.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/common/my_route_map.dart';

@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/drawer.dart/my_drawer.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/my_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
