@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/action_handler.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_container.dart/login_container.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_container.dart/login_container_models.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_container.dart/login_container_notifier.dart';
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             ref: ref,
             onReceived: (_, newState) {
               if (newState is Success && newState.isUserAuthenticated) {
-                Routemaster.of(context).replaceWithNotFound();
+                Routemaster.of(context).replaceWithHome();
               }
             },
             child: LoginContainer(

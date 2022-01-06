@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/my_theme.dart';
+import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
 class DarkColors implements MyColors {
@@ -15,6 +15,10 @@ class DarkColors implements MyColors {
   @override
   // TODO: implement loginContainerBackground
   Color get loginContainerBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement myDrawerHeaderBackground
+  Color get myDrawerHeaderBackground => throw UnimplementedError();
 }
 
 class DarkMyTextStyles implements MyTextStyles {}

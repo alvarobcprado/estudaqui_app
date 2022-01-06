@@ -16,5 +16,5 @@ class GetCurrentUserUC extends UseCase<NoParams, User> {
   Future<Either<Failure, User>> call({
     required NoParams params,
   }) async =>
-      _authRepository.getCurrentUser();
+      await _authRepository.getCurrentUser();
 }
