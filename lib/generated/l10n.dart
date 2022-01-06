@@ -119,6 +119,46 @@ class S {
       args: [],
     );
   }
+
+  /// `FaEng Cursos`
+  String get drawer_header_unauthenticated_title {
+    return Intl.message(
+      'FaEng Cursos',
+      name: 'drawer_header_unauthenticated_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Olá, {name}`
+  String drawer_header_authenticated_title(Object name) {
+    return Intl.message(
+      'Olá, $name',
+      name: 'drawer_header_authenticated_title',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Sair`
+  String get drawer_options_signout {
+    return Intl.message(
+      'Sair',
+      name: 'drawer_options_signout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrar`
+  String get drawer_options_signin {
+    return Intl.message(
+      'Entrar',
+      name: 'drawer_options_signin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
