@@ -34,6 +34,7 @@ class CoursesImpRepository implements CoursesDataRepository {
         return const Right([]);
       }
     } catch (e) {
+      // TODO: implement error handler
       return Left(CourseModuleListFailure());
     }
   }
@@ -46,6 +47,7 @@ class CoursesImpRepository implements CoursesDataRepository {
       final coursesList = coursesQuery.docs.map((e) => e.data()).toList();
       return Right(coursesList);
     } catch (e) {
+      // TODO: implement error handler
       return Left(CourseListFailure());
     }
   }
@@ -61,6 +63,7 @@ class CoursesImpRepository implements CoursesDataRepository {
         throw Exception();
       }
     } catch (e) {
+      // TODO: implement error handler
       return Left(CourseByIdFailure());
     }
   }
@@ -81,6 +84,7 @@ class CoursesImpRepository implements CoursesDataRepository {
       await courseDocument.set(courseToAdd);
       return Right(courseToAdd);
     } catch (e) {
+      // TODO: implement error handler
       return Left(CourseByIdFailure());
     }
   }
@@ -89,5 +93,30 @@ class CoursesImpRepository implements CoursesDataRepository {
   Future<Either<Failure, CourseModule>> getCourseModuleById(String moduleId) {
     // TODO: implement getCourseModuleById
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, CourseModule>> addCourseModule(
+    String courseId,
+    CourseModule courseModule,
+  ) async {
+    try {
+      final moduleReference = _coursesRDS.getCourseModulesReference(courseId);
+      final hasCourseModuleId = courseModule.moduleId.isNotEmpty;
+
+      final moduleDoc = moduleReference.doc(
+        hasCourseModuleId ? courseModule.moduleId : null,
+      );
+
+      final moduleToAdd = hasCourseModuleId
+          ? courseModule
+          : courseModule.copyWith(moduleId: moduleDoc.id);
+
+      await moduleDoc.set(moduleToAdd);
+      return Right(moduleToAdd);
+    } catch (e) {
+      // TODO: implement error handler
+      return Left(CourseByIdFailure());
+    }
   }
 }

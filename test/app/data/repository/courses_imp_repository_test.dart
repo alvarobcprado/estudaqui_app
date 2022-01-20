@@ -212,6 +212,36 @@ void main() {
           );
         },
       );
+
+      test(
+        'should add a module to course',
+        () async {
+          when(mockRDS.getCourseModulesReference(any)).thenAnswer(
+            (_) => courseModulesReference,
+          );
+
+          const fakeId = 'testAddCourseModule';
+          const fakeCourseModule = CourseModule(
+            index: 5,
+            moduleId: fakeId,
+            name: 'TestAddCourseModule Name',
+            text: 'TestAddCourseModule Text',
+          );
+
+          final eitherResult = await repository.addCourseModule(
+            courseIdTest,
+            fakeCourseModule,
+          );
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test fail, returned ${failure.toString()}'),
+            (success) {
+              expect(success, fakeCourseModule);
+            },
+          );
+        },
+      );
     },
   );
 }
