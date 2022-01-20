@@ -16,6 +16,28 @@ extension CourseDMToRM on Course {
       updatedAt: updatedAt,
     );
   }
+
+  Course copyWith({
+    String? courseId,
+    String? creatorId,
+    String? subject,
+    String? title,
+    DateTime? createdAt,
+    String? projectId,
+    String? bannerUrl,
+    DateTime? updatedAt,
+  }) {
+    return Course(
+      courseId: courseId ?? this.courseId,
+      creatorId: creatorId ?? this.creatorId,
+      subject: subject ?? this.subject,
+      title: title ?? this.title,
+      createdAt: createdAt ?? this.createdAt,
+      projectId: projectId ?? this.projectId,
+      bannerUrl: bannerUrl ?? this.bannerUrl,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 }
 
 extension CourseModuleDMToRM on CourseModule {
@@ -25,6 +47,20 @@ extension CourseModuleDMToRM on CourseModule {
       moduleId: moduleId,
       name: name,
       text: text,
+    );
+  }
+
+  CourseModule copyWith({
+    int? index,
+    String? moduleId,
+    String? name,
+    String? text,
+  }) {
+    return CourseModule(
+      index: index ?? this.index,
+      moduleId: moduleId ?? this.moduleId,
+      name: name ?? this.name,
+      text: text ?? this.text,
     );
   }
 }

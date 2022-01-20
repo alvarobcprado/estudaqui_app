@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
 import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
 import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
 import 'package:faeng_courses/core/error/course_failure.dart';
@@ -62,5 +63,31 @@ class CoursesImpRepository implements CoursesDataRepository {
     } catch (e) {
       return Left(CourseByIdFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, Course>> addCourse(Course course) async {
+    try {
+      final coursesCollection = _coursesRDS.getCoursesReference();
+      final hasCourseId = course.courseId.isNotEmpty;
+      final courseDocument = coursesCollection.doc(
+        hasCourseId ? course.courseId : null,
+      );
+      final courseToAdd = course.courseId.isNotEmpty
+          ? course
+          : course.copyWith(
+              courseId: courseDocument.id,
+            );
+      await courseDocument.set(courseToAdd);
+      return Right(courseToAdd);
+    } catch (e) {
+      return Left(CourseByIdFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CourseModule>> getCourseModuleById(String moduleId) {
+    // TODO: implement getCourseModuleById
+    throw UnimplementedError();
   }
 }

@@ -39,7 +39,7 @@ void main() {
         toFirestore: (value, options) => value.toRM().toJson(),
       );
 
-  Future<void> _addFakeCourse() async {
+  Future<void> _mockFakeCourse() async {
     await coursesReference.doc(courseIdTest).set(
           Course(
             courseId: courseIdTest,
@@ -66,7 +66,7 @@ void main() {
         );
   }
 
-  Future<void> _addFakeCourseModules() async {
+  Future<void> _mockFakeCourseModules() async {
     await courseModulesReference.doc(courseModuleIdTest).set(
           const CourseModule(
             index: 0,
@@ -77,87 +77,140 @@ void main() {
         );
   }
 
-  setUpAll(
-    () async {
-      mockRDS = MockCoursesRDS();
-      repository = CoursesImpRepository(coursesRDS: mockRDS);
-      await _addFakeCourse();
-      await _addFakeCourseModules();
-    },
-  );
+  Future<Course?> _getFakeCourse(String id) async {
+    final courseRef = await coursesReference.doc(id).get();
+    return courseRef.data();
+  }
 
-  test(
-    'should get a course by courseId',
-    () async {
-      when(mockRDS.getCoursesReference()).thenAnswer(
-        (_) {
-          return coursesReference;
+  group(
+    'Course repository fetcher',
+    () {
+      setUpAll(
+        () async {
+          mockRDS = MockCoursesRDS();
+          repository = CoursesImpRepository(coursesRDS: mockRDS);
+          await _mockFakeCourse();
+          await _mockFakeCourseModules();
+        },
+      );
+      test(
+        'should get a course by courseId',
+        () async {
+          when(mockRDS.getCoursesReference()).thenAnswer(
+            (_) {
+              return coursesReference;
+            },
+          );
+
+          final courseSnapshot = await coursesReference.doc(courseIdTest).get();
+          final eitherResult = await repository.getCourseById(courseIdTest);
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+              'Repository test error, returned ${failure.toString()}',
+            ),
+            (success) {
+              expect(
+                success,
+                courseSnapshot.data()!,
+              );
+            },
+          );
         },
       );
 
-      final courseSnapshot = await coursesReference.doc(courseIdTest).get();
-      final eitherResult = await repository.getCourseById(courseIdTest);
+      test(
+        'should get courseModules list by courseId',
+        () async {
+          when(mockRDS.getCourseModulesReference(any)).thenAnswer(
+            (_) {
+              return courseModulesReference;
+            },
+          );
+          final courseModuleSnapshot =
+              await courseModulesReference.doc(courseModuleIdTest).get();
+          final eitherResult =
+              await repository.fetchCourseModules(courseIdTest);
 
-      eitherResult.fold(
-        (failure) => throw Exception(
-          'Repository test error, returned ${failure.toString()}',
-        ),
-        (success) {
-          expect(
-            success,
-            courseSnapshot.data()!,
+          eitherResult.fold(
+            (failure) => throw Exception(
+              'Repository test error, returned ${failure.toString()}',
+            ),
+            (success) {
+              expect(
+                success,
+                [courseModuleSnapshot.data()!],
+              );
+            },
+          );
+        },
+      );
+
+      test(
+        'should get courses list',
+        () async {
+          when(mockRDS.getCoursesReference()).thenAnswer(
+            (_) {
+              return coursesReference;
+            },
+          );
+
+          final courseListSnapshot = await coursesReference.get();
+          final eitherResult = await repository.fetchCourses();
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+              'Repository test error, returned ${failure.toString()}',
+            ),
+            (success) => expect(
+              success,
+              courseListSnapshot.docs.map((e) => e.data()).toList(),
+            ),
           );
         },
       );
     },
   );
 
-  test(
-    'should get courseModules list by courseId',
-    () async {
-      when(mockRDS.getCourseModulesReference(any)).thenAnswer(
-        (_) {
-          return courseModulesReference;
+  group(
+    'Course repository setter',
+    () {
+      setUpAll(
+        () {
+          mockRDS = MockCoursesRDS();
+          repository = CoursesImpRepository(coursesRDS: mockRDS);
         },
       );
-      final courseModuleSnapshot =
-          await courseModulesReference.doc(courseModuleIdTest).get();
-      final eitherResult = await repository.fetchCourseModules(courseIdTest);
+      test(
+        'should add a course',
+        () async {
+          when(mockRDS.getCoursesReference()).thenAnswer(
+            (realInvocation) => coursesReference,
+          );
 
-      eitherResult.fold(
-        (failure) => throw Exception(
-          'Repository test error, returned ${failure.toString()}',
-        ),
-        (success) {
-          expect(
-            success,
-            [courseModuleSnapshot.data()!],
+          const fakeId = 'testAddCourse';
+
+          final fakeCourse = Course(
+            courseId: fakeId,
+            creatorId: '',
+            subject: 'portuguese',
+            title: 'Fake course',
+            createdAt: DateTime.now(),
+            projectId: '',
+            bannerUrl: '',
+            updatedAt: DateTime.now(),
+          );
+
+          final eitherResult = await repository.addCourse(fakeCourse);
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test error, returned ${failure.toString()}'),
+            (success) async {
+              expect(success, fakeCourse);
+            },
           );
         },
-      );
-    },
-  );
-
-  test(
-    'should get courses list',
-    () async {
-      when(mockRDS.getCoursesReference()).thenAnswer(
-        (_) {
-          return coursesReference;
-        },
-      );
-
-      final courseListSnapshot = await coursesReference.get();
-      final eitherResult = await repository.fetchCourses();
-
-      eitherResult.fold(
-        (failure) => throw Exception(
-          'Repository test error, returned ${failure.toString()}',
-        ),
-        (success) => expect(
-          success,
-          courseListSnapshot.docs.map((e) => e.data()).toList(),
-        ),
       );
     },
   );
