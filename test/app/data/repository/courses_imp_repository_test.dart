@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
 import 'package:faeng_courses/app/data/remote/model/course_module_rm.dart';
 import 'package:faeng_courses/app/data/remote/model/course_rm.dart';
 import 'package:faeng_courses/app/data/repository/courses_imp_repository.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
-import 'package:faeng_courses/core/error/failures.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -46,6 +44,7 @@ void main() {
             creatorId: '',
             subject: 'portuguese',
             title: 'Lorem Ipsum',
+            subtitle: 'Lorem Ipsum subtitle',
             createdAt: DateTime.now(),
             projectId: '',
             bannerUrl: '',
@@ -58,6 +57,7 @@ void main() {
             creatorId: '',
             subject: 'math',
             title: 'Math Ipsum',
+            subtitle: 'Math Ipsum subtitle',
             createdAt: DateTime.now(),
             projectId: '',
             bannerUrl: '',
@@ -71,15 +71,11 @@ void main() {
           const CourseModule(
             index: 0,
             moduleId: courseModuleIdTest,
+            courseId: courseIdTest,
             name: 'Introduction',
             text: 'Test Text',
           ),
         );
-  }
-
-  Future<Course?> _getFakeCourse(String id) async {
-    final courseRef = await coursesReference.doc(id).get();
-    return courseRef.data();
   }
 
   group(
@@ -195,6 +191,7 @@ void main() {
             creatorId: '',
             subject: 'portuguese',
             title: 'Fake course',
+            subtitle: 'Fake course subtitle',
             createdAt: DateTime.now(),
             projectId: '',
             bannerUrl: '',
@@ -224,6 +221,7 @@ void main() {
           const fakeCourseModule = CourseModule(
             index: 5,
             moduleId: fakeId,
+            courseId: courseIdTest,
             name: 'TestAddCourseModule Name',
             text: 'TestAddCourseModule Text',
           );

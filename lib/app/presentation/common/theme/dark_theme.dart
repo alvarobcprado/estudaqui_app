@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 
 class DarkColors implements MyColors {
   @override
-  Color get homeSidebarBackground => throw UnimplementedError();
-
-  @override
-  Color get homeContentBackground => throw UnimplementedError();
-
-  @override
   // TODO: implement loginPageBackground
   Color get loginPageBackground => throw UnimplementedError();
 

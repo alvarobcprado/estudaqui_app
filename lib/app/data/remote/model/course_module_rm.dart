@@ -7,12 +7,14 @@ class CourseModuleRM {
   CourseModuleRM({
     required this.index,
     required this.moduleId,
+    required this.courseId,
     required this.name,
     required this.text,
   });
 
   final int index;
   final String moduleId;
+  final String courseId;
   final String name;
   final String text;
 

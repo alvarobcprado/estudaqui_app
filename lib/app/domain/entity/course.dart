@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:faeng_courses/app/domain/entity/course_module.dart';
 
 class Course extends Equatable {
   const Course({
@@ -7,6 +6,7 @@ class Course extends Equatable {
     required this.creatorId,
     required this.subject,
     required this.title,
+    required this.subtitle,
     required this.createdAt,
     required this.projectId,
     required this.bannerUrl,
@@ -17,6 +17,7 @@ class Course extends Equatable {
   final String creatorId;
   final String subject;
   final String title;
+  final String subtitle;
   final DateTime createdAt;
   final String projectId;
   final String bannerUrl;
@@ -28,6 +29,7 @@ class Course extends Equatable {
         creatorId,
         subject,
         title,
+        subtitle,
         createdAt,
         projectId,
         bannerUrl,
