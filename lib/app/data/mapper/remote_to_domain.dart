@@ -10,6 +10,7 @@ extension CourseRMToDM on CourseRM {
       creatorId: creatorId,
       subject: subject,
       title: title,
+      subtitle: subtitle,
       createdAt: createdAt,
       projectId: projectId,
       bannerUrl: bannerUrl,
@@ -23,6 +24,7 @@ extension CourseModuleRMToDM on CourseModuleRM {
     return CourseModule(
       index: index,
       moduleId: moduleId,
+      courseId: courseId,
       name: name,
       text: text,
     );
