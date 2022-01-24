@@ -14,7 +14,10 @@ abstract class CoursesDataRepository {
     String courseId,
   );
 
-  Future<Either<Failure, CourseModule>> getCourseModuleById(String moduleId);
+  Future<Either<Failure, CourseModule>> getCourseModuleById(
+    String courseId,
+    String moduleId,
+  );
 
   Future<Either<Failure, Course>> addCourse(Course course);
 

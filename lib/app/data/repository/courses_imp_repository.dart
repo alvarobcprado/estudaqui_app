@@ -90,9 +90,17 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
-  Future<Either<Failure, CourseModule>> getCourseModuleById(String moduleId) {
-    // TODO: implement getCourseModuleById
-    throw UnimplementedError();
+  Future<Either<Failure, CourseModule>> getCourseModuleById(
+      String courseId, String moduleId) async {
+    try {
+      final moduleReference =
+          _coursesRDS.getCourseModulesReference(courseId).doc(moduleId);
+      final courseModuleDoc = await moduleReference.get();
+      return Right(courseModuleDoc.data()!);
+    } catch (e) {
+      // TODO: implement error handler
+      return Left(CourseByIdFailure());
+    }
   }
 
   @override
