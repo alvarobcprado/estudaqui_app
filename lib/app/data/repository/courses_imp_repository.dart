@@ -99,7 +99,7 @@ class CoursesImpRepository implements CoursesDataRepository {
       return Right(courseModuleDoc.data()!);
     } catch (e) {
       // TODO: implement error handler
-      return Left(CourseByIdFailure());
+      return Left(AddCourseFailure());
     }
   }
 
@@ -124,7 +124,37 @@ class CoursesImpRepository implements CoursesDataRepository {
       return Right(moduleToAdd);
     } catch (e) {
       // TODO: implement error handler
-      return Left(CourseByIdFailure());
+      return Left(AddCourseModuleFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, Course>> removeCourseById(String courseId) {
+    // TODO: implement removeCourseById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, CourseModule>> removeCourseModuleById(
+    String courseId,
+    String moduleId,
+  ) {
+    // TODO: implement removeCourseModuleById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, Course>> updateCourse(Course newCourseData) {
+    // TODO: implement updateCourse
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, CourseModule>> updateCourseModule(
+    String courseId,
+    CourseModule newCourseModule,
+  ) {
+    // TODO: implement updateCourseModule
+    throw UnimplementedError();
   }
 }
