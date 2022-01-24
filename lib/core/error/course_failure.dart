@@ -19,3 +19,15 @@ class CourseListFailure extends CourseFailure {
   // TODO: implement props
   List<Object?> get props => [];
 }
+
+class AddCourseFailure extends CourseFailure {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+
+class AddCourseModuleFailure extends CourseFailure {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
