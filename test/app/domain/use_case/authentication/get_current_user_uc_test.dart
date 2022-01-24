@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
-import 'package:faeng_courses/app/domain/use_case/get_current_user_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
