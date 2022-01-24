@@ -165,6 +165,34 @@ void main() {
           );
         },
       );
+
+      test(
+        'should get a courseModule by moduleId',
+        () async {
+          when(mockRDS.getCourseModulesReference(any)).thenAnswer(
+            (_) => courseModulesReference,
+          );
+
+          final eitherResult = await repository.getCourseModuleById(
+            courseIdTest,
+            courseModuleIdTest,
+          );
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test failed, return ${failure.toString()}'),
+            (success) async {
+              final module = (await courseModulesReference
+                      .doc(
+                        courseModuleIdTest,
+                      )
+                      .get())
+                  .data();
+              expect(success, module);
+            },
+          );
+        },
+      );
     },
   );
 
