@@ -8,6 +8,12 @@ class CourseByIdFailure extends CourseFailure {
   List<Object?> get props => [];
 }
 
+class CourseModuleByIdFailure extends CourseFailure {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
+
 class CourseModuleListFailure extends CourseFailure {
   @override
   // TODO: implement props

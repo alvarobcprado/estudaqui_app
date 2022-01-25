@@ -16,30 +16,6 @@ class CoursesImpRepository implements CoursesDataRepository {
   final CoursesRDS _coursesRDS;
 
   @override
-  Future<Either<Failure, List<CourseModule>>> fetchCourseModules(
-    String courseId,
-  ) async {
-    try {
-      final courseModuleCollection =
-          _coursesRDS.getCourseModulesReference(courseId);
-      final modulesSnapshot = await courseModuleCollection.get();
-      if (modulesSnapshot.docs.isNotEmpty) {
-        final courseModulesList = modulesSnapshot.docs
-            .map(
-              (snapshot) => snapshot.data(),
-            )
-            .toList();
-        return Right(courseModulesList);
-      } else {
-        return const Right([]);
-      }
-    } catch (e) {
-      // TODO: implement error handler
-      return Left(CourseModuleListFailure());
-    }
-  }
-
-  @override
   Future<Either<Failure, List<Course>>> fetchCourses() async {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
@@ -85,7 +61,31 @@ class CoursesImpRepository implements CoursesDataRepository {
       return Right(courseToAdd);
     } catch (e) {
       // TODO: implement error handler
-      return Left(CourseByIdFailure());
+      return Left(AddCourseFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CourseModule>>> fetchCourseModules(
+    String courseId,
+  ) async {
+    try {
+      final courseModuleCollection =
+          _coursesRDS.getCourseModulesReference(courseId);
+      final modulesSnapshot = await courseModuleCollection.get();
+      if (modulesSnapshot.docs.isNotEmpty) {
+        final courseModulesList = modulesSnapshot.docs
+            .map(
+              (snapshot) => snapshot.data(),
+            )
+            .toList();
+        return Right(courseModulesList);
+      } else {
+        return const Right([]);
+      }
+    } catch (e) {
+      // TODO: implement error handler
+      return Left(CourseModuleListFailure());
     }
   }
 
@@ -99,7 +99,7 @@ class CoursesImpRepository implements CoursesDataRepository {
       return Right(courseModuleDoc.data()!);
     } catch (e) {
       // TODO: implement error handler
-      return Left(AddCourseFailure());
+      return Left(CourseModuleByIdFailure());
     }
   }
 
