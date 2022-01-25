@@ -1,40 +1,40 @@
 import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/add_course_uc.dart';
+import 'package:faeng_courses/app/domain/entity/course_module.dart';
+
+import 'package:faeng_courses/app/domain/use_case/courses/get_course_modules_uc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'add_course_uc_test.mocks.dart';
+import 'get_course_modules_uc_test.mocks.dart';
 
-@GenerateMocks([Course, CoursesDataRepository])
+@GenerateMocks([CourseModule, CoursesDataRepository])
 void main() {
   late MockCoursesDataRepository mockRepository;
-  late MockCourse mockCourse;
-  late AddCourseUC useCase;
-  final List<Course> courses = [];
+  late MockCourseModule mockCourseModule;
+  late GetCourseModulesUC useCase;
 
   setUp(() {
     mockRepository = MockCoursesDataRepository();
-    mockCourse = MockCourse();
-    useCase = AddCourseUC(coursesRepository: mockRepository);
+    mockCourseModule = MockCourseModule();
+    useCase = GetCourseModulesUC(coursesRepository: mockRepository);
   });
 
   test(
-    "should add a course to the list of courses",
+    "should get the list of modules from course",
     () async {
       when(
-        mockRepository.addCourse(any),
+        mockRepository.fetchCourseModules(any),
       ).thenAnswer(
         (invocation) async {
-          courses.add(invocation.positionalArguments.first as Course);
-          return Right(mockCourse);
+          return Right([mockCourseModule]);
         },
       );
 
       final eitherResult = await useCase.call(
-        params: AddCourseParam(
-          course: mockCourse,
+        params: GetCourseModulesParam(
+          courseId: '',
         ),
       );
 
@@ -42,12 +42,12 @@ void main() {
         (failure) => throw Exception(
             'UseCase test error, returned ${failure.toString()}'),
         (success) {
-          expect(success, isA<Course>());
-          expect(courses.length, 1);
-          expect(courses, contains(success));
+          expect(success, isA<List<CourseModule>>());
+          expect(success.length, 1);
+          expect(success, contains(mockCourseModule));
         },
       );
-      verify(mockRepository.addCourse(any));
+      verify(mockRepository.fetchCourseModules(any));
 
       verifyNoMoreInteractions(mockRepository);
     },
