@@ -4,6 +4,25 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "name": "fc_small_screen",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "fc_medium_screen",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5556"
+        },
+        {  
+            "name": "fc_large_screen",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5558"
+        },
         {
             "name": "faeng_courses",
             "request": "launch",
@@ -14,6 +33,17 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
-        }
-    ]
+        },
+    ],
+        "compounds":[
+            {
+                "name": "Small-Medium",
+                "configurations": ["fc_small_screen","fc_medium_screen"],
+            },
+            {
+                "name": "Small-Medium-Large",
+                "configurations": ["fc_small_screen","fc_medium_screen","fc_large_screen"],
+            }
+        ]
+    
 }
