@@ -1,12 +1,12 @@
-import 'package:faeng_courses/app/domain/use_case/get_current_user_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:faeng_courses/app/domain/use_case/signin_anonmously_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/signin_email_password_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/signin_anonmously_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/signin_email_password_uc.dart';
 
 import 'login_container_models.dart';
 
