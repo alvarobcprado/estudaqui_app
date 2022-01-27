@@ -1,5 +1,5 @@
-import 'package:faeng_courses/app/data/remote/model/course_module_rm.dart';
-import 'package:faeng_courses/app/data/remote/model/course_rm.dart';
+import 'package:faeng_courses/app/data/remote/model/course/course_module_rm.dart';
+import 'package:faeng_courses/app/data/remote/model/course/course_rm.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 
