@@ -45,6 +45,7 @@ extension SubjectRMToDM on SubjectRM {
       bannerUrl: bannerUrl,
       description: description,
       name: name,
+      isActive: isActive,
     );
   }
 }

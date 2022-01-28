@@ -79,6 +79,7 @@ extension SubjectDMToRM on Subject {
       bannerUrl: bannerUrl,
       description: description,
       name: name,
+      isActive: isActive,
     );
   }
 
@@ -86,11 +87,13 @@ extension SubjectDMToRM on Subject {
     String? bannerUrl,
     String? description,
     String? name,
+    bool? isActive,
   }) {
     return SubjectRM(
       bannerUrl: bannerUrl ?? this.bannerUrl,
       description: description ?? this.description,
       name: name ?? this.name,
+      isActive: isActive ?? this.isActive,
     );
   }
 }
