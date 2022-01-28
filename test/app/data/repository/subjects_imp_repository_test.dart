@@ -32,6 +32,7 @@ void main() {
             bannerUrl: '',
             description: 'Portuguese courses',
             name: 'Português',
+            isActive: true,
           ),
         );
     await subjectsReference.doc(subjectIdTest2).set(
@@ -39,6 +40,7 @@ void main() {
             bannerUrl: '',
             description: 'Math courses',
             name: 'Matemática',
+            isActive: true,
           ),
         );
   }
