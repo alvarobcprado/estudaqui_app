@@ -1,7 +1,9 @@
-import 'package:faeng_courses/app/data/remote/model/course_module_rm.dart';
-import 'package:faeng_courses/app/data/remote/model/course_rm.dart';
+import 'package:faeng_courses/app/data/remote/model/course/course_module_rm.dart';
+import 'package:faeng_courses/app/data/remote/model/course/course_rm.dart';
+import 'package:faeng_courses/app/data/remote/model/subject/subject_rm.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
+import 'package:faeng_courses/app/domain/entity/subject.dart';
 
 extension CourseDMToRM on Course {
   CourseRM toRM() {
@@ -67,6 +69,31 @@ extension CourseModuleDMToRM on CourseModule {
       courseId: courseId ?? this.courseId,
       name: name ?? this.name,
       text: text ?? this.text,
+    );
+  }
+}
+
+extension SubjectDMToRM on Subject {
+  SubjectRM toRM() {
+    return SubjectRM(
+      bannerUrl: bannerUrl,
+      description: description,
+      name: name,
+      isActive: isActive,
+    );
+  }
+
+  SubjectRM copyWith({
+    String? bannerUrl,
+    String? description,
+    String? name,
+    bool? isActive,
+  }) {
+    return SubjectRM(
+      bannerUrl: bannerUrl ?? this.bannerUrl,
+      description: description ?? this.description,
+      name: name ?? this.name,
+      isActive: isActive ?? this.isActive,
     );
   }
 }
