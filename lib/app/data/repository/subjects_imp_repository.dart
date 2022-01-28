@@ -6,7 +6,7 @@ import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/core/error/failures.dart';
 import 'package:faeng_courses/core/error/subject_failure.dart';
 
-class SubjectImpRepository extends SubjectsDataRepository {
+class SubjectImpRepository extends SubjectDataRepository {
   SubjectImpRepository({
     required SubjectsRDS subjectsRDS,
   }) : _subjectsRDS = subjectsRDS;
