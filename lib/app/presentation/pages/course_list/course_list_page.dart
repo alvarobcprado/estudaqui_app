@@ -13,34 +13,39 @@ class CourseListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        final state = ref.watch(courseListNotifierProvider(subject));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(subject),
+      ),
+      body: Consumer(
+        builder: (context, ref, child) {
+          final state = ref.watch(courseListNotifierProvider(subject));
 
-        switch (state.status) {
-          case CourseListStatus.initial:
-            return Container();
-          case CourseListStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          case CourseListStatus.error:
-            return const Center(
-              child: Text('Error'),
-            );
-          case CourseListStatus.success:
-            return ListView.builder(
-              itemCount: state.courses.length,
-              itemBuilder: (context, index) {
-                final course = state.courses[index];
-                return ListTile(
-                  title: Text(course.title),
-                  subtitle: Text(course.subtitle),
-                );
-              },
-            );
-        }
-      },
+          switch (state.status) {
+            case CourseListStatus.initial:
+              return Container();
+            case CourseListStatus.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case CourseListStatus.error:
+              return const Center(
+                child: Text('Error'),
+              );
+            case CourseListStatus.success:
+              return ListView.builder(
+                itemCount: state.courses.length,
+                itemBuilder: (context, index) {
+                  final course = state.courses[index];
+                  return ListTile(
+                    title: Text(course.title),
+                    subtitle: Text(course.subtitle),
+                  );
+                },
+              );
+          }
+        },
+      ),
     );
   }
 }

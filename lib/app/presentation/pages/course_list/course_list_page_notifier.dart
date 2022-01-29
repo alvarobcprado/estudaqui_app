@@ -28,17 +28,29 @@ class CourseListPageNotifier extends StateNotifier<CourseListState> {
         );
       },
       (success) async {
-        final courses = success
-            .where(
-              (element) => query.isNotEmpty ? element.subject == query : true,
-            )
-            .toList();
+        final courses = _shouldFilterQuery(query)
+            ? success
+                .where(
+                  (element) => element.subject == query,
+                )
+                .toList()
+            : success;
         return state.copyWith(
           courses: courses,
           status: CourseListStatus.success,
         );
       },
     );
+  }
+
+  bool _shouldFilterQuery(String query) {
+    if (query.isEmpty) {
+      return false;
+    } else if (query.toLowerCase().contains('all')) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
 
