@@ -1,3 +1,4 @@
+import 'package:faeng_courses/app/presentation/common/utils/mappers.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_models.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page_notifier.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class CourseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(subject),
+        title: Text(subject.trySubjectName()),
       ),
       body: Consumer(
         builder: (context, ref, child) {
