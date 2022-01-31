@@ -1,4 +1,5 @@
 import 'package:faeng_courses/app/presentation/common/drawer/my_drawer.dart';
+import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
@@ -28,9 +29,15 @@ class BasePage extends StatelessWidget {
                   offstage: !active,
                   child: TickerMode(
                     enabled: active,
-                    child: PageStackNavigator(
-                      key: ValueKey(index),
-                      stack: pageState.stacks[index],
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kMediumPadding,
+                        vertical: kSmallPadding,
+                      ),
+                      child: PageStackNavigator(
+                        key: ValueKey(index),
+                        stack: pageState.stacks[index],
+                      ),
                     ),
                   ),
                 );

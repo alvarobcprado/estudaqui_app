@@ -1,4 +1,5 @@
 import 'package:faeng_courses/app/presentation/pages/base/base_page.dart';
+import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
 import 'package:faeng_courses/app/presentation/pages/home/home_page.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_page.dart';
 import 'package:faeng_courses/app/presentation/pages/not_found/not_found_page.dart';
@@ -7,6 +8,7 @@ import 'package:routemaster/routemaster.dart';
 
 const _basePath = '/';
 const _homePath = '${_basePath}home';
+const _courseListPath = '${_basePath}courses';
 const _loginPath = '${_basePath}login';
 const _notFoundPath = '${_basePath}not-found';
 
@@ -26,6 +28,12 @@ class MyRouteMap extends RouteMap {
                   name: 'Home',
                   child: HomePage(),
                 ),
+            '$_courseListPath/:subject': (routeData) => MaterialPage(
+                  name: 'Course List',
+                  child: CourseListPage(
+                    subject: routeData.pathParameters['subject'] ?? '',
+                  ),
+                ),
             _loginPath: (_) => const MaterialPage(
                   name: 'Login',
                   child: LoginPage(),
@@ -42,6 +50,10 @@ extension MyPageRoutes on Routemaster {
   void pushLogin() => push(_loginPath);
   void pushHome() => push(_homePath);
   void pushTest() => push(_notFoundPath);
+  void pushCoursesOf(String subject) => push(
+        '$_courseListPath/$subject',
+      );
+  void pushAllCourses() => push('$_courseListPath/all');
 
   void replaceWithHome() => replace(_homePath);
   void replaceWithNotFound() => replace(_notFoundPath);
