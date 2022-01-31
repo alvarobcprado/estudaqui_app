@@ -16,6 +16,7 @@ class CourseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // TODO: Find a best way to implement the subjectName
         title: Text(subject.trySubjectName()),
       ),
       body: Consumer(
@@ -39,6 +40,8 @@ class CourseListPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final course = state.courses[index];
                   return ListTile(
+                    // TODO: Implement the course navigation
+                    onTap: () {},
                     title: Text(course.title),
                     subtitle: Text(course.subtitle),
                   );

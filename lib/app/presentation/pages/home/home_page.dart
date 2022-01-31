@@ -18,9 +18,13 @@ class HomePage extends StatelessWidget {
               child: Text('home page'),
             ),
             TextButton(
+              onPressed: () => Routemaster.of(context).pushCoursesOf('math'),
+              child: const Text('Go to Math courses'),
+            ),
+            TextButton(
               onPressed: () =>
                   Routemaster.of(context).pushCoursesOf('portuguese'),
-              child: const Text('Go to Math courses'),
+              child: const Text('Go to Portuguese courses'),
             ),
             TextButton(
               onPressed: () => Routemaster.of(context).pushAllCourses(),
