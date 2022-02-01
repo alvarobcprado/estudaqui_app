@@ -38,11 +38,13 @@ class MyRouteMap extends RouteMap {
                   ),
                 ),
             _courseDetailPath: (routeData) {
-              final queryParam = routeData.queryParameters['id'];
+              final queryIdParam = routeData.queryParameters['id'];
+              final queryNameParam = routeData.queryParameters['course'];
               return MaterialPage(
                 name: 'Course Detail',
                 child: CourseDetailPage(
-                  courseId: queryParam!,
+                  courseId: queryIdParam!,
+                  courseName: queryNameParam!,
                 ),
               );
             },
@@ -69,6 +71,7 @@ extension MyPageRoutes on Routemaster {
   void pushCourseDetail(String courseName, String courseId) => push(
         'detail',
         queryParameters: {
+          'course': courseName.replaceAll(' ', '+'),
           'id': courseId,
         },
       );
