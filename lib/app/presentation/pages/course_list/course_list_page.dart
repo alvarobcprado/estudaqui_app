@@ -1,8 +1,10 @@
 import 'package:faeng_courses/app/presentation/common/utils/mappers.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_models.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page_notifier.dart';
+import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
 
 class CourseListPage extends StatelessWidget {
   const CourseListPage({
@@ -41,7 +43,10 @@ class CourseListPage extends StatelessWidget {
                   final course = state.courses[index];
                   return ListTile(
                     // TODO: Implement the course navigation
-                    onTap: () {},
+                    onTap: () => Routemaster.of(context).pushCourseDetail(
+                      course.title,
+                      course.courseId,
+                    ),
                     title: Text(course.title),
                     subtitle: Text(course.subtitle),
                   );
