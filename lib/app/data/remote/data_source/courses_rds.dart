@@ -22,10 +22,13 @@ class CoursesRDS {
   }
 
   CollectionReference<CourseModule> getCourseModulesReference(String courseId) {
-    return _coursesReference.withConverter<CourseModule>(
-      fromFirestore: (snapshot, options) =>
-          CourseModuleRM.fromJson(snapshot.data()!).toDM(),
-      toFirestore: (value, options) => value.toRM().toJson(),
-    );
+    return _coursesReference
+        .doc(courseId)
+        .collection('module')
+        .withConverter<CourseModule>(
+          fromFirestore: (snapshot, options) =>
+              CourseModuleRM.fromJson(snapshot.data()!).toDM(),
+          toFirestore: (value, options) => value.toRM().toJson(),
+        );
   }
 }
