@@ -19,6 +19,7 @@ void main() {
       mockRepository = MockSubjectDataRepository();
       usecase = GetSubjectByIdUC(subjectDataRepository: mockRepository);
       mockSubject = const Subject(
+        subjectId: 'math',
         bannerUrl: 'bannerUrl',
         description: 'description',
         name: 'Math',
