@@ -1,7 +1,7 @@
 const _subjectMap = {
   'math': 'Matemática',
   'portuguese': 'Português',
-  'geo': 'Geografia',
+  'geography': 'Geografia',
   'all': 'Todas matérias',
 };
 
