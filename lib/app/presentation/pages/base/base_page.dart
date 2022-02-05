@@ -31,7 +31,7 @@ class BasePage extends StatelessWidget {
                     enabled: active,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: kSmallPadding,
+                        horizontal: kMediumPadding,
                         vertical: kSmallPadding,
                       ),
                       child: PageStackNavigator(
