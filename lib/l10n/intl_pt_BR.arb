@@ -9,5 +9,8 @@
     "drawer_header_unauthenticated_title": "FaEng Cursos",
     "drawer_header_authenticated_title": "Olá, {name}",
     "drawer_options_signout": "Sair",
-    "drawer_options_signin": "Entrar"
+    "drawer_options_signin": "Entrar",
+    "subject_list_title": "Matérias",
+    "home_page_welcome_title": "Bem vindo tal tal tal",
+    "home_page_welcome_message": "Uma grande mensagem"
 }

@@ -33,3 +33,21 @@ const kXXLargeSpacer = 48.0;
 
 /// Spacer 56.0
 const kXXXLargeSpacer = 56.0;
+
+/// Border 8.0
+const kSmallBorder = 8.0;
+
+/// Border 16.0
+const kMediumBorder = 16.0;
+
+/// Border 24.0
+const kLargeBorder = 24.0;
+
+/// Border 32.0
+const kXLargeBorder = 32.0;
+
+/// Border 48.0
+const kXXLargeBorder = 48.0;
+
+/// Border 56.0
+const kXXXLargeBorder = 56.0;
