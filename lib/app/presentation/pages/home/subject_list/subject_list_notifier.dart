@@ -1,5 +1,6 @@
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/app/presentation/pages/home/subject_list/subject_list_models.dart';
+import 'package:faeng_courses/core/error/failures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:faeng_courses/app/domain/use_case/subject/get_subjects_uc.dart';
@@ -25,6 +26,9 @@ class SubjectListNotifier extends StateNotifier<SubjectListState> {
             status: SubjectListStatus.error, failure: failure);
       },
       (success) {
+        if (success.isEmpty) {
+          return state.copyWith(status: SubjectListStatus.error);
+        }
         return state.copyWith(
             status: SubjectListStatus.success, subjectList: success);
       },

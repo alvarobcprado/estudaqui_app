@@ -1,4 +1,5 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/home/subject_list/subject_list_models.dart';
 import 'package:faeng_courses/app/presentation/pages/home/subject_list/subject_list_notifier.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
@@ -18,9 +19,10 @@ class SubjectList extends StatelessWidget {
           case SubjectListStatus.loading:
             return const CircularProgressIndicator();
           case SubjectListStatus.error:
-            return Center(
+            return ErrorHandlerWidget(
+              onTryAgain: () => ref.refresh(subjectListNotifierProvider),
               child: Text(
-                state.failure.toString(),
+                state.failure?.toString() ?? "Algo deu errado",
               ),
             );
           case SubjectListStatus.success:
