@@ -1,5 +1,7 @@
+import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/couse_detail_models.dart';
+import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_models.dart';
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,8 +32,12 @@ class CourseDetailPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             case CourseDetailStatus.error:
-              return const Center(
-                child: Text('Error'),
+              return ErrorHandlerWidget(
+                onTryAgain: () => ref.refresh(
+                  courseDetailNotifierProvider(courseId),
+                ),
+                child: Text(state.failure?.toString() ??
+                    S.of(context).error_default_message),
               );
             case CourseDetailStatus.success:
               return Center(

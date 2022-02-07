@@ -1,7 +1,9 @@
 import 'package:faeng_courses/app/presentation/common/utils/mappers.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_models.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page_notifier.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
@@ -33,8 +35,12 @@ class CourseListPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             case CourseListStatus.error:
-              return const Center(
-                child: Text('Error'),
+              return ErrorHandlerWidget(
+                onTryAgain: () => ref.refresh(
+                  courseListNotifierProvider(subject),
+                ),
+                child: Text(state.failure?.toString() ??
+                    S.of(context).error_default_message),
               );
             case CourseListStatus.success:
               return ListView.builder(

@@ -1,3 +1,4 @@
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ErrorHandlerWidget extends StatelessWidget {
@@ -20,7 +21,7 @@ class ErrorHandlerWidget extends StatelessWidget {
           child: TextButton.icon(
             onPressed: onTryAgain!,
             icon: const Icon(Icons.refresh),
-            label: const Text('Tentar novamente'),
+            label: Text(S.of(context).error_default_try_again_message),
           ),
         )
       ],

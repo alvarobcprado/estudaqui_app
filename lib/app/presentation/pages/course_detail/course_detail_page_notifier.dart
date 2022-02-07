@@ -2,7 +2,7 @@ import 'package:faeng_courses/app/domain/use_case/courses/get_course_modules_uc.
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:faeng_courses/app/presentation/pages/course_detail/couse_detail_models.dart';
+import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_models.dart';
 
 class CourseDetailPageNotifier extends StateNotifier<CourseDetailState> {
   CourseDetailPageNotifier({
