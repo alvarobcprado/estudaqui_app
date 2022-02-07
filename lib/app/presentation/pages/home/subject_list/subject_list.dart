@@ -27,7 +27,7 @@ class SubjectList extends StatelessWidget {
             return SizedBox(
               width: double.infinity,
               child: Wrap(
-                alignment: WrapAlignment.spaceBetween,
+                alignment: WrapAlignment.spaceAround,
                 children: state.subjectList
                     .where((subject) => subject.isActive)
                     .map(
