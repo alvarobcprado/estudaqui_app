@@ -189,6 +189,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Ops, algo deu errado`
+  String get error_default_message {
+    return Intl.message(
+      'Ops, algo deu errado',
+      name: 'error_default_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tentar novamente`
+  String get error_default_try_again_message {
+    return Intl.message(
+      'Tentar novamente',
+      name: 'error_default_try_again_message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

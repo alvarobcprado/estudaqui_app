@@ -12,5 +12,7 @@
     "drawer_options_signin": "Entrar",
     "subject_list_title": "Matérias",
     "home_page_welcome_title": "Bem vindo tal tal tal",
-    "home_page_welcome_message": "Uma grande mensagem"
+    "home_page_welcome_message": "Uma grande mensagem",
+    "error_default_message": "Ops, algo deu errado",
+    "error_default_try_again_message": "Tentar novamente"
 }

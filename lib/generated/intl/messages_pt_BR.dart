@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_signin": MessageLookupByLibrary.simpleMessage("Entrar"),
         "drawer_options_signout": MessageLookupByLibrary.simpleMessage("Sair"),
+        "error_default_message":
+            MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
+        "error_default_try_again_message":
+            MessageLookupByLibrary.simpleMessage("Tentar novamente"),
         "home_page_welcome_message":
             MessageLookupByLibrary.simpleMessage("Uma grande mensagem"),
         "home_page_welcome_title":

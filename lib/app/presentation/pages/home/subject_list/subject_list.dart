@@ -3,6 +3,7 @@ import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widg
 import 'package:faeng_courses/app/presentation/pages/home/subject_list/subject_list_models.dart';
 import 'package:faeng_courses/app/presentation/pages/home/subject_list/subject_list_notifier.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
@@ -22,7 +23,8 @@ class SubjectList extends StatelessWidget {
             return ErrorHandlerWidget(
               onTryAgain: () => ref.refresh(subjectListNotifierProvider),
               child: Text(
-                state.failure?.toString() ?? "Algo deu errado",
+                state.failure?.toString() ??
+                    S.of(context).error_default_message,
               ),
             );
           case SubjectListStatus.success:
