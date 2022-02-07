@@ -29,6 +29,7 @@ void main() {
   Future<void> _mockFakeSubject() async {
     await subjectsReference.doc(subjectIdTest).set(
           const Subject(
+            subjectId: 'portuguese',
             bannerUrl: '',
             description: 'Portuguese courses',
             name: 'Português',
@@ -37,6 +38,7 @@ void main() {
         );
     await subjectsReference.doc(subjectIdTest2).set(
           const Subject(
+            subjectId: 'math',
             bannerUrl: '',
             description: 'Math courses',
             name: 'Matemática',

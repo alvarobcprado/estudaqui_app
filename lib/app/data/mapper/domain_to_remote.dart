@@ -76,6 +76,7 @@ extension CourseModuleDMToRM on CourseModule {
 extension SubjectDMToRM on Subject {
   SubjectRM toRM() {
     return SubjectRM(
+      subjectId: subjectId,
       bannerUrl: bannerUrl,
       description: description,
       name: name,
@@ -88,8 +89,10 @@ extension SubjectDMToRM on Subject {
     String? description,
     String? name,
     bool? isActive,
+    String? subjectId,
   }) {
     return SubjectRM(
+      subjectId: subjectId ?? this.subjectId,
       bannerUrl: bannerUrl ?? this.bannerUrl,
       description: description ?? this.description,
       name: name ?? this.name,

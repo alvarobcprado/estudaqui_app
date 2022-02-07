@@ -29,6 +29,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_signin": MessageLookupByLibrary.simpleMessage("Entrar"),
         "drawer_options_signout": MessageLookupByLibrary.simpleMessage("Sair"),
+        "error_default_message":
+            MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
+        "error_default_try_again_message":
+            MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "home_page_welcome_message":
+            MessageLookupByLibrary.simpleMessage("Uma grande mensagem"),
+        "home_page_welcome_title":
+            MessageLookupByLibrary.simpleMessage("Bem vindo tal tal tal"),
         "login_container_email_field_hint":
             MessageLookupByLibrary.simpleMessage("Insira seu e-mail"),
         "login_container_email_field_label":
@@ -42,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_container_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "project_title":
-            MessageLookupByLibrary.simpleMessage("Flutter Boilerplate")
+            MessageLookupByLibrary.simpleMessage("Flutter Boilerplate"),
+        "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias")
       };
 }

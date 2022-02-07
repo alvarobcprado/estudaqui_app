@@ -159,6 +159,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Matérias`
+  String get subject_list_title {
+    return Intl.message(
+      'Matérias',
+      name: 'subject_list_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bem vindo tal tal tal`
+  String get home_page_welcome_title {
+    return Intl.message(
+      'Bem vindo tal tal tal',
+      name: 'home_page_welcome_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uma grande mensagem`
+  String get home_page_welcome_message {
+    return Intl.message(
+      'Uma grande mensagem',
+      name: 'home_page_welcome_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ops, algo deu errado`
+  String get error_default_message {
+    return Intl.message(
+      'Ops, algo deu errado',
+      name: 'error_default_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tentar novamente`
+  String get error_default_try_again_message {
+    return Intl.message(
+      'Tentar novamente',
+      name: 'error_default_try_again_message',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
