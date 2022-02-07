@@ -6,11 +6,13 @@ class Subject extends Equatable {
     required this.description,
     required this.name,
     required this.isActive,
+    required this.subjectId,
   });
 
   final String bannerUrl;
   final String description;
   final String name;
+  final String subjectId;
   final bool isActive;
 
   @override
@@ -18,5 +20,6 @@ class Subject extends Equatable {
         name,
         description,
         bannerUrl,
+        subjectId,
       ];
 }

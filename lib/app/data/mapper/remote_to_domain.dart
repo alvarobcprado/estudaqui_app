@@ -42,6 +42,7 @@ extension CourseModuleRMListToDMList on List<CourseModuleRM> {
 extension SubjectRMToDM on SubjectRM {
   Subject toDM() {
     return Subject(
+      subjectId: subjectId,
       bannerUrl: bannerUrl,
       description: description,
       name: name,

@@ -8,9 +8,11 @@ class SubjectRM {
     required this.description,
     required this.name,
     required this.isActive,
+    required this.subjectId,
   });
 
   final String bannerUrl;
+  final String subjectId;
   final String description;
   final String name;
   final bool isActive;
