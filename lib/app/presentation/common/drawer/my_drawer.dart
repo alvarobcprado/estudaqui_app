@@ -37,20 +37,35 @@ class MyDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   selected: tileIndex == 0,
-                  onTap: () => Routemaster.of(context)
-                    ..pop()
-                    ..pushHome(),
+                  onTap: () {
+                    Routemaster.of(context)
+                      ..pop()
+                      ..pushHome();
+                  },
                   leading: const Icon(Icons.home),
-                  title: const Text('Home'),
+                  title: Text(S.of(context).drawer_options_home),
                 ),
                 ListTile(
                   selected: tileIndex == 1,
-                  onTap: () => Routemaster.of(context)
-                    ..pop()
-                    ..pushTest(),
+                  onTap: () {
+                    Routemaster.of(context)
+                      ..pop()
+                      ..pushTest();
+                  },
                   leading: const Icon(Icons.error),
-                  title: const Text('Not Found'),
+                  title: Text(S.of(context).drawer_options_test),
                 ),
+                if (myDrawerState is LoggedUser)
+                  ListTile(
+                    selected: tileIndex == 2,
+                    onTap: () {
+                      Routemaster.of(context)
+                        ..pop()
+                        ..pushAddCourse();
+                    },
+                    leading: const Icon(Icons.add_to_photos),
+                    title: Text(S.of(context).drawer_options_add_course),
+                  ),
                 myDrawerState is LoggedUser
                     ? ListTile(
                         onTap: () => ref

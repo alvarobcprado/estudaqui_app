@@ -8,11 +8,15 @@
     "login_container_signin_button":"Entrar",
     "drawer_header_unauthenticated_title": "FaEng Cursos",
     "drawer_header_authenticated_title": "Olá, {name}",
-    "drawer_options_signout": "Sair",
+    "drawer_options_home": "Tela inicial",
+    "drawer_options_test": "Página teste",
+    "drawer_options_add_course": "Adicionar curso",
     "drawer_options_signin": "Entrar",
+    "drawer_options_signout": "Sair",
     "subject_list_title": "Matérias",
     "home_page_welcome_title": "Bem vindo tal tal tal",
     "home_page_welcome_message": "Uma grande mensagem",
     "error_default_message": "Ops, algo deu errado",
-    "error_default_try_again_message": "Tentar novamente"
+    "error_default_try_again_message": "Tentar novamente",
+    "add_course_page_title": "Adicionar Curso"
 }

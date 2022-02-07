@@ -24,11 +24,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_course_page_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
         "drawer_header_authenticated_title": m0,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "drawer_options_add_course":
+            MessageLookupByLibrary.simpleMessage("Adicionar curso"),
+        "drawer_options_home":
+            MessageLookupByLibrary.simpleMessage("Tela inicial"),
         "drawer_options_signin": MessageLookupByLibrary.simpleMessage("Entrar"),
         "drawer_options_signout": MessageLookupByLibrary.simpleMessage("Sair"),
+        "drawer_options_test":
+            MessageLookupByLibrary.simpleMessage("Página teste"),
         "error_default_message":
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":

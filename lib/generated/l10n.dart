@@ -140,11 +140,31 @@ class S {
     );
   }
 
-  /// `Sair`
-  String get drawer_options_signout {
+  /// `Tela inicial`
+  String get drawer_options_home {
     return Intl.message(
-      'Sair',
-      name: 'drawer_options_signout',
+      'Tela inicial',
+      name: 'drawer_options_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Página teste`
+  String get drawer_options_test {
+    return Intl.message(
+      'Página teste',
+      name: 'drawer_options_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar curso`
+  String get drawer_options_add_course {
+    return Intl.message(
+      'Adicionar curso',
+      name: 'drawer_options_add_course',
       desc: '',
       args: [],
     );
@@ -155,6 +175,16 @@ class S {
     return Intl.message(
       'Entrar',
       name: 'drawer_options_signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sair`
+  String get drawer_options_signout {
+    return Intl.message(
+      'Sair',
+      name: 'drawer_options_signout',
       desc: '',
       args: [],
     );
@@ -205,6 +235,16 @@ class S {
     return Intl.message(
       'Tentar novamente',
       name: 'error_default_try_again_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar Curso`
+  String get add_course_page_title {
+    return Intl.message(
+      'Adicionar Curso',
+      name: 'add_course_page_title',
       desc: '',
       args: [],
     );
