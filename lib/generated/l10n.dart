@@ -249,6 +249,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Nome do curso`
+  String get add_course_form_name_field {
+    return Intl.message(
+      'Nome do curso',
+      name: 'add_course_form_name_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descrição`
+  String get add_course_form_description_field {
+    return Intl.message(
+      'Descrição',
+      name: 'add_course_form_description_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imagem/Banner URL`
+  String get add_course_form_banner_field {
+    return Intl.message(
+      'Imagem/Banner URL',
+      name: 'add_course_form_banner_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matérias`
+  String get add_course_form_subject_field {
+    return Intl.message(
+      'Matérias',
+      name: 'add_course_form_subject_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Módulos: {quantity}`
+  String add_course_modules_title(Object quantity) {
+    return Intl.message(
+      'Módulos: $quantity',
+      name: 'add_course_modules_title',
+      desc: '',
+      args: [quantity],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

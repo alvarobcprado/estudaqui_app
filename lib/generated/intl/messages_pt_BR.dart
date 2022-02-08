@@ -20,13 +20,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt_BR';
 
-  static String m0(name) => "Olá, ${name}";
+  static String m0(quantity) => "Módulos: ${quantity}";
+
+  static String m1(name) => "Olá, ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_course_form_banner_field":
+            MessageLookupByLibrary.simpleMessage("Imagem/Banner URL"),
+        "add_course_form_description_field":
+            MessageLookupByLibrary.simpleMessage("Descrição"),
+        "add_course_form_name_field":
+            MessageLookupByLibrary.simpleMessage("Nome do curso"),
+        "add_course_form_subject_field":
+            MessageLookupByLibrary.simpleMessage("Matérias"),
+        "add_course_modules_title": m0,
         "add_course_page_title":
             MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
-        "drawer_header_authenticated_title": m0,
+        "drawer_header_authenticated_title": m1,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_add_course":
