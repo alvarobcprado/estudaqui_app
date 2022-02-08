@@ -18,5 +18,11 @@
     "home_page_welcome_message": "Uma grande mensagem",
     "error_default_message": "Ops, algo deu errado",
     "error_default_try_again_message": "Tentar novamente",
-    "add_course_page_title": "Adicionar Curso"
+    "add_course_page_title": "Adicionar Curso",
+    "add_course_form_name_field": "Nome do curso",
+    "add_course_form_description_field": "Descrição",
+    "add_course_form_banner_field": "Imagem/Banner URL",
+    "add_course_form_subject_field": "Matérias",
+    "add_course_modules_title": "Módulos: {quantity}"
+
 }
