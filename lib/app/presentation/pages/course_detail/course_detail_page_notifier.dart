@@ -31,6 +31,9 @@ class CourseDetailPageNotifier extends StateNotifier<CourseDetailState> {
         );
       },
       (moduleList) {
+        if (moduleList.isEmpty) {
+          return state.copyWith(status: CourseDetailStatus.error);
+        }
         return state.copyWith(
           status: CourseDetailStatus.success,
           currentModule: 0,

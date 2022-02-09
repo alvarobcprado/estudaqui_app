@@ -12,10 +12,10 @@ CourseRM _$CourseRMFromJson(Map<String, dynamic> json) => CourseRM(
       subject: json['subject'] as String,
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
-      createdAt: dateTimeFromTimeStamp(json['createdAt'] as Timestamp),
+      createdAt: dateTimeFromTimestamp(json['createdAt'] as Timestamp),
       projectId: json['projectId'] as String,
       bannerUrl: json['bannerUrl'] as String,
-      updatedAt: dateTimeFromTimeStamp(json['updatedAt'] as Timestamp),
+      updatedAt: dateTimeFromTimestamp(json['updatedAt'] as Timestamp),
     );
 
 Map<String, dynamic> _$CourseRMToJson(CourseRM instance) => <String, dynamic>{
@@ -24,8 +24,8 @@ Map<String, dynamic> _$CourseRMToJson(CourseRM instance) => <String, dynamic>{
       'subject': instance.subject,
       'title': instance.title,
       'subtitle': instance.subtitle,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'createdAt': dateTimeToTimestamp(instance.createdAt),
       'projectId': instance.projectId,
       'bannerUrl': instance.bannerUrl,
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'updatedAt': dateTimeToTimestamp(instance.updatedAt),
     };
