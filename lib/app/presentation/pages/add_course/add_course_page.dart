@@ -1,18 +1,14 @@
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/add_course_uc.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
 import 'package:faeng_courses/app/presentation/common/widgets/loading_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/subject_dropdown/subjects_dropdown_widget.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/course_form/course_form.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:routemaster/routemaster.dart';
 
 class AddCoursePage extends StatefulWidget {
@@ -44,6 +40,7 @@ class _AddCoursePageState extends State<AddCoursePage> {
                   break;
                 case AddCourseStatus.error:
                   // TODO: Add error handler
+                  setState(() => isLoading = false);
                   break;
                 case AddCourseStatus.success:
                   setState(() => isLoading = false);
@@ -53,67 +50,42 @@ class _AddCoursePageState extends State<AddCoursePage> {
             },
             child: LoadingWidget(
               isLoading: isLoading,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: kSmallPadding,
-                  horizontal: kMediumPadding,
-                ),
-                child: FormBuilder(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      FormBuilderTextField(
-                        validator: FormBuilderValidators.required(context),
-                        name: 'courseNameField',
-                        decoration: InputDecoration(
-                          label: Text(S.of(context).add_course_form_name_field),
-                        ),
-                        textInputAction: TextInputAction.next,
-                      ),
-                      FormBuilderTextField(
-                        name: 'courseDescriptionField',
-                        validator: FormBuilderValidators.required(context),
-                        decoration: InputDecoration(
-                          label: Text(
-                              S.of(context).add_course_form_description_field),
-                        ),
-                        textInputAction: TextInputAction.next,
-                      ),
-                      FormBuilderTextField(
-                        validator: FormBuilderValidators.required(context),
-                        name: 'courseImageField',
-                        decoration: InputDecoration(
-                          label:
-                              Text(S.of(context).add_course_form_banner_field),
-                        ),
-                        textInputAction: TextInputAction.next,
-                      ),
-                      const SubjectsDropdownWidget(),
-                      const SizedBox(height: kXLargeSpacer),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(S.of(context).add_course_modules_title('')),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width / 3,
-                              child: const Divider(
-                                thickness: 5,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: kSmallPadding,
+                    horizontal: kMediumPadding,
+                  ),
+                  child: FormBuilder(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        const CourseForm(),
+                        SizedBox(
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(S.of(context).add_course_modules_title('')),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 3,
+                                child: const Divider(
+                                  thickness: 5,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          ref
-                              .read(addCourseNotifierProvider.notifier)
-                              .validateCurrentFormAndAddCourse(_formKey);
-                        },
-                        child: const Text('Criar curso'),
-                      ),
-                    ],
+                        TextButton(
+                          onPressed: () {
+                            ref
+                                .read(addCourseNotifierProvider.notifier)
+                                .validateCurrentFormAndAddCourse(_formKey);
+                          },
+                          child: const Text('Criar curso'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
