@@ -1,8 +1,19 @@
+import 'package:faeng_courses/app/domain/entity/course.dart';
+import 'package:faeng_courses/app/domain/use_case/courses/add_course_uc.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/loading_widget.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/subject_dropdown/subjects_dropdown_widget.dart';
+import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:routemaster/routemaster.dart';
 
 class AddCoursePage extends StatefulWidget {
   const AddCoursePage({Key? key}) : super(key: key);
@@ -13,6 +24,7 @@ class AddCoursePage extends StatefulWidget {
 
 class _AddCoursePageState extends State<AddCoursePage> {
   final _formKey = GlobalKey<FormBuilderState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,75 +32,94 @@ class _AddCoursePageState extends State<AddCoursePage> {
       appBar: AppBar(
         title: Text(S.of(context).add_course_page_title),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: kSmallPadding,
-          horizontal: kMediumPadding,
-        ),
-        child: FormBuilder(
-          child: Column(
-            children: [
-              FormBuilderTextField(
-                name: 'courseNameField',
-                decoration: InputDecoration(
-                  label: Text(S.of(context).add_course_form_name_field),
+      body: Consumer(
+        builder: (context, ref, child) {
+          return ActionHandler<AddCourseState>(
+            ref: ref,
+            actionProvider: addCourseNotifierProvider,
+            onReceived: (_, newState) {
+              switch (newState.status) {
+                case AddCourseStatus.loading:
+                  setState(() => isLoading = true);
+                  break;
+                case AddCourseStatus.error:
+                  // TODO: Add error handler
+                  break;
+                case AddCourseStatus.success:
+                  setState(() => isLoading = false);
+                  Routemaster.of(context).replaceWithHome();
+                  break;
+              }
+            },
+            child: LoadingWidget(
+              isLoading: isLoading,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: kSmallPadding,
+                  horizontal: kMediumPadding,
                 ),
-                textInputAction: TextInputAction.next,
-              ),
-              FormBuilderTextField(
-                name: 'courseDescriptionField',
-                decoration: InputDecoration(
-                  label: Text(S.of(context).add_course_form_description_field),
-                ),
-                textInputAction: TextInputAction.next,
-              ),
-              FormBuilderTextField(
-                name: 'courseImageField',
-                decoration: InputDecoration(
-                  label: Text(S.of(context).add_course_form_banner_field),
-                ),
-                textInputAction: TextInputAction.next,
-              ),
-              FormBuilderDropdown(
-                name: 'courseSubjectField',
-                decoration: InputDecoration(
-                  labelText: S.of(context).add_course_form_subject_field,
-                ),
-                allowClear: true,
-                items: const [
-                  DropdownMenuItem(
-                    child: Text('Subject1'),
-                    value: 0,
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Subject2'),
-                    value: 1,
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Subject3'),
-                    value: 2,
-                  ),
-                ],
-              ),
-              const SizedBox(height: kXLargeSpacer),
-              SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(S.of(context).add_course_modules_title(5)),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 3,
-                      child: const Divider(
-                        thickness: 5,
+                child: FormBuilder(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      FormBuilderTextField(
+                        validator: FormBuilderValidators.required(context),
+                        name: 'courseNameField',
+                        decoration: InputDecoration(
+                          label: Text(S.of(context).add_course_form_name_field),
+                        ),
+                        textInputAction: TextInputAction.next,
                       ),
-                    ),
-                  ],
+                      FormBuilderTextField(
+                        name: 'courseDescriptionField',
+                        validator: FormBuilderValidators.required(context),
+                        decoration: InputDecoration(
+                          label: Text(
+                              S.of(context).add_course_form_description_field),
+                        ),
+                        textInputAction: TextInputAction.next,
+                      ),
+                      FormBuilderTextField(
+                        validator: FormBuilderValidators.required(context),
+                        name: 'courseImageField',
+                        decoration: InputDecoration(
+                          label:
+                              Text(S.of(context).add_course_form_banner_field),
+                        ),
+                        textInputAction: TextInputAction.next,
+                      ),
+                      const SubjectsDropdownWidget(),
+                      const SizedBox(height: kXLargeSpacer),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(S.of(context).add_course_modules_title('')),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 3,
+                              child: const Divider(
+                                thickness: 5,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          ref
+                              .read(addCourseNotifierProvider.notifier)
+                              .validateCurrentFormAndAddCourse(_formKey);
+                        },
+                        child: const Text('Criar curso'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
