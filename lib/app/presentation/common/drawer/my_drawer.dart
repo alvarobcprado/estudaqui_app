@@ -30,7 +30,9 @@ class MyDrawer extends StatelessWidget {
                   child: Text(
                     myDrawerState is LoggedUser
                         ? S.of(context).drawer_header_authenticated_title(
-                              myDrawerState.username ?? myDrawerState.email,
+                              myDrawerState.username?.isEmpty ?? true
+                                  ? myDrawerState.email
+                                  : myDrawerState.username!,
                             )
                         : S.of(context).drawer_header_unauthenticated_title,
                   ),

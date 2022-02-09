@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/app/domain/use_case/subject/get_subjects_uc.dart';
 
-class SubjectDropdownNotifier extends StateNotifier<List<Subject>> {
-  SubjectDropdownNotifier({
+class CourseFormNotifier extends StateNotifier<List<Subject>> {
+  CourseFormNotifier({
     required GetSubjectsUC getSubjectsUC,
   })  : _getSubjectsUC = getSubjectsUC,
         super([]) {
@@ -22,11 +22,11 @@ class SubjectDropdownNotifier extends StateNotifier<List<Subject>> {
   }
 }
 
-final subjectDropdownNotifierProvider =
-    StateNotifierProvider.autoDispose<SubjectDropdownNotifier, List<Subject>>(
+final courseFormNotifierProvider =
+    StateNotifierProvider.autoDispose<CourseFormNotifier, List<Subject>>(
   (ref) {
     final GetSubjectsUC getSubjectsUC = ref.watch(getSubjectsUCProvider);
 
-    return SubjectDropdownNotifier(getSubjectsUC: getSubjectsUC);
+    return CourseFormNotifier(getSubjectsUC: getSubjectsUC);
   },
 );
