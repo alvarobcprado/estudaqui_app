@@ -34,6 +34,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nome do curso"),
         "add_course_form_subject_field":
             MessageLookupByLibrary.simpleMessage("Matérias"),
+        "add_course_module_name_field":
+            MessageLookupByLibrary.simpleMessage("Nome do módulo"),
+        "add_course_module_text_field":
+            MessageLookupByLibrary.simpleMessage("Texto"),
         "add_course_modules_title": m0,
         "add_course_page_title":
             MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
