@@ -4,6 +4,7 @@ import 'package:faeng_courses/app/presentation/common/widgets/loading_widget.dar
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/course_form/course_form.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_form.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -61,21 +62,7 @@ class _AddCoursePageState extends State<AddCoursePage> {
                     child: Column(
                       children: [
                         const CourseForm(),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(S.of(context).add_course_modules_title('')),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width / 3,
-                                child: const Divider(
-                                  thickness: 5,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        const ModuleForm(),
                         TextButton(
                           onPressed: () {
                             ref

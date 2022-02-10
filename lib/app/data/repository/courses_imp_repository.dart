@@ -52,7 +52,7 @@ class CoursesImpRepository implements CoursesDataRepository {
       final courseDocument = coursesCollection.doc(
         hasCourseId ? course.courseId : null,
       );
-      final courseToAdd = course.courseId.isNotEmpty
+      final courseToAdd = hasCourseId
           ? course
           : course.copyWith(
               courseId: courseDocument.id,
@@ -118,7 +118,10 @@ class CoursesImpRepository implements CoursesDataRepository {
 
       final moduleToAdd = hasCourseModuleId
           ? courseModule
-          : courseModule.copyWith(moduleId: moduleDoc.id);
+          : courseModule.copyWith(
+              moduleId: moduleDoc.id,
+              courseId: courseId,
+            );
 
       await moduleDoc.set(moduleToAdd);
       return Right(moduleToAdd);

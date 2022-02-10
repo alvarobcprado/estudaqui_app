@@ -299,6 +299,26 @@ class S {
       args: [quantity],
     );
   }
+
+  /// `Nome do módulo`
+  String get add_course_module_name_field {
+    return Intl.message(
+      'Nome do módulo',
+      name: 'add_course_module_name_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Texto`
+  String get add_course_module_text_field {
+    return Intl.message(
+      'Texto',
+      name: 'add_course_module_text_field',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

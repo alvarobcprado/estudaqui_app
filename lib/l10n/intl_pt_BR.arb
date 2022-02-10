@@ -23,6 +23,8 @@
     "add_course_form_description_field": "Descrição",
     "add_course_form_banner_field": "Imagem/Banner URL",
     "add_course_form_subject_field": "Matérias",
-    "add_course_modules_title": "Módulos: {quantity}"
+    "add_course_modules_title": "Módulos: {quantity}",
+    "add_course_module_name_field": "Nome do módulo",
+    "add_course_module_text_field": "Texto"
 
 }
