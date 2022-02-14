@@ -20,7 +20,6 @@ class AddCoursePage extends StatefulWidget {
 }
 
 class _AddCoursePageState extends State<AddCoursePage> {
-  final _formKey = GlobalKey<FormBuilderState>();
   bool isLoading = false;
 
   @override
@@ -31,6 +30,7 @@ class _AddCoursePageState extends State<AddCoursePage> {
       ),
       body: Consumer(
         builder: (context, ref, child) {
+          final _formKey = ref.watch(formBuilderKeyProvider);
           return ActionHandler<AddCourseState>(
             ref: ref,
             actionProvider: addCourseNotifierProvider,
