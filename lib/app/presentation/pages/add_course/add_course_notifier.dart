@@ -11,6 +11,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_uc.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
 
+final addCourseNotifierProvider =
+    StateNotifierProvider<AddCourseNotifier, AddCourseState>(
+  (ref) {
+    final addCourseUC = ref.watch(addCourseUCProvider);
+    final addCourseModuleUC = ref.watch(addCourseModuleUCProvider);
+    return AddCourseNotifier(
+      addCourseUC: addCourseUC,
+      addCourseModuleUC: addCourseModuleUC,
+    );
+  },
+);
+
+final formBuilderKeyProvider = Provider<GlobalKey<FormBuilderState>>((ref) {
+  return GlobalKey<FormBuilderState>();
+});
+
 class AddCourseNotifier extends StateNotifier<AddCourseState> {
   AddCourseNotifier({
     required AddCourseUC addCourseUC,
@@ -102,15 +118,3 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
     );
   }
 }
-
-final addCourseNotifierProvider =
-    StateNotifierProvider<AddCourseNotifier, AddCourseState>(
-  (ref) {
-    final addCourseUC = ref.watch(addCourseUCProvider);
-    final addCourseModuleUC = ref.watch(addCourseModuleUCProvider);
-    return AddCourseNotifier(
-      addCourseUC: addCourseUC,
-      addCourseModuleUC: addCourseModuleUC,
-    );
-  },
-);
