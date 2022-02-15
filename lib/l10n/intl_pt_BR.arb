@@ -25,6 +25,9 @@
     "add_course_form_subject_field": "Matérias",
     "add_course_modules_title": "Módulos: {quantity}",
     "add_course_module_name_field": "Nome do módulo",
-    "add_course_module_text_field": "Texto"
+    "add_course_module_text_field": "Texto",
+    "add_module_text_dialog_title": "Conteúdo do módulo",
+    "add_module_text_confirm_button": "Adicionar módulo",
+    "add_module_text_clear_button": "Limpar"
 
 }

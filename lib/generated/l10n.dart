@@ -319,6 +319,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Conteúdo do módulo`
+  String get add_module_text_dialog_title {
+    return Intl.message(
+      'Conteúdo do módulo',
+      name: 'add_module_text_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar módulo`
+  String get add_module_text_confirm_button {
+    return Intl.message(
+      'Adicionar módulo',
+      name: 'add_module_text_confirm_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limpar`
+  String get add_module_text_clear_button {
+    return Intl.message(
+      'Limpar',
+      name: 'add_module_text_clear_button',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,4 +1,5 @@
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_page.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_text_dialog.dart';
 import 'package:faeng_courses/app/presentation/pages/base/base_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
@@ -13,6 +14,7 @@ const _notFoundPath = '${_basePath}not-found';
 const _homePath = '${_basePath}home';
 const _loginPath = '${_basePath}login';
 const _addCoursePath = '${_basePath}add-course';
+const _addModuleTextPath = '$_addCoursePath/module';
 const _courseListPathWithoutParam = '${_basePath}courses';
 const _courseListPathWithParam = '${_basePath}courses/:subject';
 const _courseDetailPath = '$_courseListPathWithParam/detail';
@@ -45,6 +47,11 @@ class MyRouteMap extends RouteMap {
                   name: 'Add course',
                   child: AddCoursePage(),
                 ),
+            _addModuleTextPath: (_) => const MaterialPage(
+                  name: 'Add module text',
+                  fullscreenDialog: true,
+                  child: ModuleTextDialog(),
+                ),
             _courseListPathWithParam: (routeData) => MaterialPage(
                   name: 'Course List',
                   child: CourseListPage(
@@ -71,6 +78,7 @@ extension MyPageRoutes on Routemaster {
   void pushHome() => push(_homePath);
   void pushTest() => push(_notFoundPath);
   void pushAddCourse() => push(_addCoursePath);
+  void pushAddModuleText() => push(_addModuleTextPath);
   void pushCoursesOf(String subject) => push(
         '$_courseListPathWithoutParam/$subject',
       );
