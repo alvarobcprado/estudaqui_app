@@ -41,6 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_course_modules_title": m0,
         "add_course_page_title":
             MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
+        "add_module_text_clear_button":
+            MessageLookupByLibrary.simpleMessage("Limpar"),
+        "add_module_text_confirm_button":
+            MessageLookupByLibrary.simpleMessage("Adicionar módulo"),
+        "add_module_text_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Conteúdo do módulo"),
         "drawer_header_authenticated_title": m1,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
