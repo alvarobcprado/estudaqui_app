@@ -331,10 +331,30 @@ class S {
   }
 
   /// `Adicionar módulo`
-  String get add_module_text_confirm_button {
+  String get add_module_text_add_button {
     return Intl.message(
       'Adicionar módulo',
-      name: 'add_module_text_confirm_button',
+      name: 'add_module_text_add_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Editar módulo`
+  String get add_module_text_edit_button {
+    return Intl.message(
+      'Editar módulo',
+      name: 'add_module_text_edit_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salvar módulo`
+  String get add_module_text_save_button {
+    return Intl.message(
+      'Salvar módulo',
+      name: 'add_module_text_save_button',
       desc: '',
       args: [],
     );

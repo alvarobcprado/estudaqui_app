@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_module_uc.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failures.dart';
@@ -23,7 +24,8 @@ final addCourseNotifierProvider =
   },
 );
 
-final formBuilderKeyProvider = Provider<GlobalKey<FormBuilderState>>((ref) {
+final formBuilderKeyProvider =
+    Provider.autoDispose<GlobalKey<FormBuilderState>>((ref) {
   return GlobalKey<FormBuilderState>();
 });
 
@@ -55,23 +57,35 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
       final courseDescription = formValue['courseDescriptionField'];
       final courseImage = formValue['courseImageField'];
       final courseSubject = formValue['courseSubjectField'];
-      final courseModuleName = formValue['courseModuleNameField'];
+      const courseModuleName = 'Módulo 1';
       final courseModuleText = formValue['courseModuleTextField'];
+      // final courseModuleName = formValue['courseModuleNameField'];
+      // final courseModuleText = formValue['courseModuleTextField'];
+
+      final courseToAdd = Course(
+        courseId: '',
+        creatorId: '',
+        subject: courseSubject,
+        title: courseName,
+        subtitle: courseDescription,
+        createdAt: DateTime.now(),
+        projectId: '',
+        bannerUrl: courseImage,
+        updatedAt: DateTime.now(),
+      );
+
+      final courseModuleToAdd = CourseModule(
+        index: 0,
+        moduleId: '',
+        courseId: '',
+        name: courseModuleName,
+        text: courseModuleText,
+      );
 
       eitherResult = await _addCourseUC
           .call(
         params: AddCourseParam(
-          course: Course(
-            courseId: '',
-            creatorId: '',
-            subject: courseSubject,
-            title: courseName,
-            subtitle: courseDescription,
-            createdAt: DateTime.now(),
-            projectId: '',
-            bannerUrl: courseImage,
-            updatedAt: DateTime.now(),
-          ),
+          course: courseToAdd,
         ),
       )
           .then(
@@ -81,13 +95,7 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
             (courseAdded) async {
               final eitherAddModuleResult = await _addCourseModule(
                 courseAdded.courseId,
-                CourseModule(
-                  index: 0,
-                  moduleId: '',
-                  courseId: '',
-                  name: courseModuleName,
-                  text: courseModuleText,
-                ),
+                courseModuleToAdd,
               );
               return eitherAddModuleResult.fold(
                 (failure) => Left(failure),

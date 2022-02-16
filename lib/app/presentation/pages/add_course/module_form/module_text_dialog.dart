@@ -33,7 +33,7 @@ class ModuleTextDialog extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          alignment: Alignment.topRight,
+                          alignment: Alignment.centerRight,
                           onPressed: () => Routemaster.of(context).pop(),
                           icon: const Icon(Icons.close),
                         ),
@@ -46,7 +46,9 @@ class ModuleTextDialog extends StatelessWidget {
                       textAlignVertical: TextAlignVertical.top,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
                         ),
                       ),
                       onChanged: (value) => ref
@@ -66,7 +68,7 @@ class ModuleTextDialog extends StatelessWidget {
 
                       Navigator.of(context).pop();
                     },
-                    child: Text(S.of(context).add_module_text_confirm_button),
+                    child: Text(S.of(context).add_module_text_save_button),
                   ),
                 ],
               ),

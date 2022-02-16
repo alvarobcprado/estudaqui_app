@@ -62,7 +62,9 @@ class _AddCoursePageState extends State<AddCoursePage> {
                     child: Column(
                       children: [
                         const CourseForm(),
+                        const SizedBox(height: kMediumSpacer),
                         const ModuleForm(),
+                        const SizedBox(height: kMediumSpacer),
                         TextButton(
                           onPressed: () {
                             ref
