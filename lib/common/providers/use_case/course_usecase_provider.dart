@@ -1,3 +1,4 @@
+import 'package:faeng_courses/app/domain/use_case/courses/add_course_and_module_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_module_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/get_course_by_id_uc.dart';
@@ -47,5 +48,12 @@ final getCourseModuleByIdUCProvider = Provider<GetCourseModuleByIdUC>(
   (ref) {
     final coursesRepository = ref.watch(coursesRepositoryProvider);
     return GetCourseModuleByIdUC(coursesRepository: coursesRepository);
+  },
+);
+
+final addCourseAndModuleUCProvider = Provider<AddCourseAndModuleUC>(
+  (ref) {
+    final coursesRepository = ref.watch(coursesRepositoryProvider);
+    return AddCourseAndModuleUC(coursesDataRepository: coursesRepository);
   },
 );

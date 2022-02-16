@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/courses/add_course_and_module_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_module_uc.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failures.dart';
@@ -15,11 +16,9 @@ import 'package:faeng_courses/app/presentation/pages/add_course/add_course_model
 final addCourseNotifierProvider =
     StateNotifierProvider<AddCourseNotifier, AddCourseState>(
   (ref) {
-    final addCourseUC = ref.watch(addCourseUCProvider);
-    final addCourseModuleUC = ref.watch(addCourseModuleUCProvider);
+    final addCourseAndModuleUC = ref.watch(addCourseAndModuleUCProvider);
     return AddCourseNotifier(
-      addCourseUC: addCourseUC,
-      addCourseModuleUC: addCourseModuleUC,
+      addCourseAndModuleUC: addCourseAndModuleUC,
     );
   },
 );
@@ -31,18 +30,15 @@ final formBuilderKeyProvider =
 
 class AddCourseNotifier extends StateNotifier<AddCourseState> {
   AddCourseNotifier({
-    required AddCourseUC addCourseUC,
-    required AddCourseModuleUC addCourseModuleUC,
-  })  : _addCourseUC = addCourseUC,
-        _addCourseModuleUC = addCourseModuleUC,
+    required AddCourseAndModuleUC addCourseAndModuleUC,
+  })  : _addCourseAndModuleUC = addCourseAndModuleUC,
         super(
           const AddCourseState(
             status: AddCourseStatus.loading,
           ),
         );
 
-  final AddCourseUC _addCourseUC;
-  final AddCourseModuleUC _addCourseModuleUC;
+  final AddCourseAndModuleUC _addCourseAndModuleUC;
 
   Future<void> validateCurrentFormAndAddCourse(
     GlobalKey<FormBuilderState> formKey,
@@ -82,28 +78,11 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
         text: courseModuleText,
       );
 
-      eitherResult = await _addCourseUC
-          .call(
-        params: AddCourseParam(
-          course: courseToAdd,
+      eitherResult = await _addCourseAndModuleUC(
+        params: AddCourseAndModuleParam(
+          courseToAdd: courseToAdd,
+          moduleToAdd: courseModuleToAdd,
         ),
-      )
-          .then(
-        (eitherParcial) {
-          return eitherParcial.fold(
-            (failure) => Left(failure),
-            (courseAdded) async {
-              final eitherAddModuleResult = await _addCourseModule(
-                courseAdded.courseId,
-                courseModuleToAdd,
-              );
-              return eitherAddModuleResult.fold(
-                (failure) => Left(failure),
-                (success) => Right(success),
-              );
-            },
-          );
-        },
       );
 
       state = eitherResult.fold(
@@ -111,18 +90,5 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
         (r) => state.copyWith(status: AddCourseStatus.success),
       );
     }
-    state = state.copyWith(status: AddCourseStatus.error);
-  }
-
-  Future<Either<Failure, CourseModule>> _addCourseModule(
-    String courseId,
-    CourseModule courseModule,
-  ) async {
-    return await _addCourseModuleUC.call(
-      params: AddCourseModuleParam(
-        courseId: courseId,
-        courseModule: courseModule,
-      ),
-    );
   }
 }
