@@ -1,4 +1,3 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/course_form/course_form_notifier.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +56,6 @@ class CourseForm extends StatelessWidget {
             );
           },
         ),
-        const SizedBox(height: kXLargeSpacer),
       ],
     );
   }

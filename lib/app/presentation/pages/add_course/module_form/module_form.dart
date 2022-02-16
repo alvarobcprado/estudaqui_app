@@ -1,3 +1,4 @@
+import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_form_notifier.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -18,35 +19,41 @@ class ModuleForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(S.of(context).add_course_modules_title('')),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
-                child: const Divider(
-                  thickness: 5,
-                ),
-              ),
-              FormBuilderTextField(
-                validator: FormBuilderValidators.required(context),
-                name: 'courseModuleNameField',
-                decoration: InputDecoration(
-                  label: Text(S.of(context).add_course_module_name_field),
-                ),
-                textInputAction: TextInputAction.next,
-              ),
               // TODO: Enhance Module Text Input
-              Consumer(
-                builder: (context, ref, child) {
-                  return GestureDetector(
-                    onTap: () => Routemaster.of(context).pushAddModuleText(),
-                    child: FormBuilderTextField(
-                      validator: FormBuilderValidators.required(context),
-                      name: 'courseModuleTextField',
-                      decoration: InputDecoration(
-                        label: Text(S.of(context).add_course_module_text_field),
-                      ),
-                      enabled: false,
-                      readOnly: true,
-                    ),
+              FormBuilderField<String>(
+                name: 'courseModuleTextField',
+                validator: FormBuilderValidators.required(context),
+                builder: (field) {
+                  return Consumer(
+                    builder: (context, ref, child) {
+                      ref.listen<String?>(
+                        moduleTextProvider,
+                        (oldText, newText) {
+                          if (oldText != newText) {
+                            field.didChange(newText);
+                          }
+                        },
+                      );
+                      return InputDecorator(
+                        decoration: InputDecoration(
+                          errorText: field.errorText,
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.zero,
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextButton(
+                            onPressed: () =>
+                                Routemaster.of(context).pushAddModuleText(),
+                            child: Text(
+                              field.isValid
+                                  ? S.of(context).add_module_text_edit_button
+                                  : S.of(context).add_module_text_add_button,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
