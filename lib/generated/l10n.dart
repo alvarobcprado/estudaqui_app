@@ -140,11 +140,31 @@ class S {
     );
   }
 
-  /// `Sair`
-  String get drawer_options_signout {
+  /// `Tela inicial`
+  String get drawer_options_home {
     return Intl.message(
-      'Sair',
-      name: 'drawer_options_signout',
+      'Tela inicial',
+      name: 'drawer_options_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Página teste`
+  String get drawer_options_test {
+    return Intl.message(
+      'Página teste',
+      name: 'drawer_options_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar curso`
+  String get drawer_options_add_course {
+    return Intl.message(
+      'Adicionar curso',
+      name: 'drawer_options_add_course',
       desc: '',
       args: [],
     );
@@ -155,6 +175,16 @@ class S {
     return Intl.message(
       'Entrar',
       name: 'drawer_options_signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sair`
+  String get drawer_options_signout {
+    return Intl.message(
+      'Sair',
+      name: 'drawer_options_signout',
       desc: '',
       args: [],
     );
@@ -205,6 +235,136 @@ class S {
     return Intl.message(
       'Tentar novamente',
       name: 'error_default_try_again_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar Curso`
+  String get add_course_page_title {
+    return Intl.message(
+      'Adicionar Curso',
+      name: 'add_course_page_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nome do curso`
+  String get add_course_form_name_field {
+    return Intl.message(
+      'Nome do curso',
+      name: 'add_course_form_name_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descrição`
+  String get add_course_form_description_field {
+    return Intl.message(
+      'Descrição',
+      name: 'add_course_form_description_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imagem/Banner URL`
+  String get add_course_form_banner_field {
+    return Intl.message(
+      'Imagem/Banner URL',
+      name: 'add_course_form_banner_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matérias`
+  String get add_course_form_subject_field {
+    return Intl.message(
+      'Matérias',
+      name: 'add_course_form_subject_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Módulos: {quantity}`
+  String add_course_modules_title(Object quantity) {
+    return Intl.message(
+      'Módulos: $quantity',
+      name: 'add_course_modules_title',
+      desc: '',
+      args: [quantity],
+    );
+  }
+
+  /// `Nome do módulo`
+  String get add_course_module_name_field {
+    return Intl.message(
+      'Nome do módulo',
+      name: 'add_course_module_name_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Texto`
+  String get add_course_module_text_field {
+    return Intl.message(
+      'Texto',
+      name: 'add_course_module_text_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Conteúdo do módulo`
+  String get add_module_text_dialog_title {
+    return Intl.message(
+      'Conteúdo do módulo',
+      name: 'add_module_text_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionar módulo`
+  String get add_module_text_add_button {
+    return Intl.message(
+      'Adicionar módulo',
+      name: 'add_module_text_add_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Editar módulo`
+  String get add_module_text_edit_button {
+    return Intl.message(
+      'Editar módulo',
+      name: 'add_module_text_edit_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salvar módulo`
+  String get add_module_text_save_button {
+    return Intl.message(
+      'Salvar módulo',
+      name: 'add_module_text_save_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limpar`
+  String get add_module_text_clear_button {
+    return Intl.message(
+      'Limpar',
+      name: 'add_module_text_clear_button',
       desc: '',
       args: [],
     );

@@ -20,15 +20,48 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt_BR';
 
-  static String m0(name) => "Olá, ${name}";
+  static String m0(quantity) => "Módulos: ${quantity}";
+
+  static String m1(name) => "Olá, ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "drawer_header_authenticated_title": m0,
+        "add_course_form_banner_field":
+            MessageLookupByLibrary.simpleMessage("Imagem/Banner URL"),
+        "add_course_form_description_field":
+            MessageLookupByLibrary.simpleMessage("Descrição"),
+        "add_course_form_name_field":
+            MessageLookupByLibrary.simpleMessage("Nome do curso"),
+        "add_course_form_subject_field":
+            MessageLookupByLibrary.simpleMessage("Matérias"),
+        "add_course_module_name_field":
+            MessageLookupByLibrary.simpleMessage("Nome do módulo"),
+        "add_course_module_text_field":
+            MessageLookupByLibrary.simpleMessage("Texto"),
+        "add_course_modules_title": m0,
+        "add_course_page_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
+        "add_module_text_add_button":
+            MessageLookupByLibrary.simpleMessage("Adicionar módulo"),
+        "add_module_text_clear_button":
+            MessageLookupByLibrary.simpleMessage("Limpar"),
+        "add_module_text_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Conteúdo do módulo"),
+        "add_module_text_edit_button":
+            MessageLookupByLibrary.simpleMessage("Editar módulo"),
+        "add_module_text_save_button":
+            MessageLookupByLibrary.simpleMessage("Salvar módulo"),
+        "drawer_header_authenticated_title": m1,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "drawer_options_add_course":
+            MessageLookupByLibrary.simpleMessage("Adicionar curso"),
+        "drawer_options_home":
+            MessageLookupByLibrary.simpleMessage("Tela inicial"),
         "drawer_options_signin": MessageLookupByLibrary.simpleMessage("Entrar"),
         "drawer_options_signout": MessageLookupByLibrary.simpleMessage("Sair"),
+        "drawer_options_test":
+            MessageLookupByLibrary.simpleMessage("Página teste"),
         "error_default_message":
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":

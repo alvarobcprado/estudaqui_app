@@ -30,27 +30,44 @@ class MyDrawer extends StatelessWidget {
                   child: Text(
                     myDrawerState is LoggedUser
                         ? S.of(context).drawer_header_authenticated_title(
-                              myDrawerState.username ?? myDrawerState.email,
+                              myDrawerState.username?.isEmpty ?? true
+                                  ? myDrawerState.email
+                                  : myDrawerState.username!,
                             )
                         : S.of(context).drawer_header_unauthenticated_title,
                   ),
                 ),
                 ListTile(
                   selected: tileIndex == 0,
-                  onTap: () => Routemaster.of(context)
-                    ..pop()
-                    ..pushHome(),
+                  onTap: () {
+                    Routemaster.of(context)
+                      ..pop()
+                      ..pushHome();
+                  },
                   leading: const Icon(Icons.home),
-                  title: const Text('Home'),
+                  title: Text(S.of(context).drawer_options_home),
                 ),
                 ListTile(
                   selected: tileIndex == 1,
-                  onTap: () => Routemaster.of(context)
-                    ..pop()
-                    ..pushTest(),
+                  onTap: () {
+                    Routemaster.of(context)
+                      ..pop()
+                      ..pushTest();
+                  },
                   leading: const Icon(Icons.error),
-                  title: const Text('Not Found'),
+                  title: Text(S.of(context).drawer_options_test),
                 ),
+                if (myDrawerState is LoggedUser)
+                  ListTile(
+                    selected: tileIndex == 2,
+                    onTap: () {
+                      Routemaster.of(context)
+                        ..pop()
+                        ..pushAddCourse();
+                    },
+                    leading: const Icon(Icons.add_to_photos),
+                    title: Text(S.of(context).drawer_options_add_course),
+                  ),
                 myDrawerState is LoggedUser
                     ? ListTile(
                         onTap: () => ref
