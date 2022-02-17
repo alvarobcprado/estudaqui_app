@@ -22,11 +22,11 @@ class CourseRM {
   final String subject;
   final String title;
   final String subtitle;
-  @JsonKey(fromJson: dateTimeFromTimeStamp)
+  @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
   final DateTime createdAt;
   final String projectId;
   final String bannerUrl;
-  @JsonKey(fromJson: dateTimeFromTimeStamp)
+  @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
   final DateTime updatedAt;
 
   Map<String, dynamic> toJson() => _$CourseRMToJson(this);
@@ -34,7 +34,12 @@ class CourseRM {
   static const fromJson = _$CourseRMFromJson;
 }
 
-/// Function to temp fix JsonSerialization of Timestamp
-DateTime dateTimeFromTimeStamp(Timestamp timestamp) {
+/// Function to temp fix JsonDeserialization of Timestamp
+DateTime dateTimeFromTimestamp(Timestamp timestamp) {
   return timestamp.toDate();
+}
+
+/// Function to temp fix JsonSerialization of Timestamp
+Timestamp dateTimeToTimestamp(DateTime dateTime) {
+  return Timestamp.fromDate(dateTime);
 }
