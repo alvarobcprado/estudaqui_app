@@ -2,10 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
 import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
 import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
-import 'package:faeng_courses/core/error/course_failure.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+
+import 'package:faeng_courses/core/error/failure.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
+import 'package:faeng_courses/core/error/failure_type.dart';
 
 class CoursesImpRepository implements CoursesDataRepository {
   CoursesImpRepository({
@@ -23,8 +24,11 @@ class CoursesImpRepository implements CoursesDataRepository {
       final coursesList = coursesQuery.docs.map((e) => e.data()).toList();
       return Right(coursesList);
     } catch (e) {
-      // TODO: implement error handler
-      return Left(CourseListFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -39,8 +43,11 @@ class CoursesImpRepository implements CoursesDataRepository {
         throw Exception();
       }
     } catch (e) {
-      // TODO: implement error handler
-      return Left(CourseByIdFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -60,8 +67,11 @@ class CoursesImpRepository implements CoursesDataRepository {
       await courseDocument.set(courseToAdd);
       return Right(courseToAdd);
     } catch (e) {
-      // TODO: implement error handler
-      return Left(AddCourseFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -84,8 +94,11 @@ class CoursesImpRepository implements CoursesDataRepository {
         return const Right([]);
       }
     } catch (e) {
-      // TODO: implement error handler
-      return Left(CourseModuleListFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -98,8 +111,11 @@ class CoursesImpRepository implements CoursesDataRepository {
       final courseModuleDoc = await moduleReference.get();
       return Right(courseModuleDoc.data()!);
     } catch (e) {
-      // TODO: implement error handler
-      return Left(CourseModuleByIdFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -126,8 +142,11 @@ class CoursesImpRepository implements CoursesDataRepository {
       await moduleDoc.set(moduleToAdd);
       return Right(moduleToAdd);
     } catch (e) {
-      // TODO: implement error handler
-      return Left(AddCourseModuleFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
