@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/data_repository/subjects_data_repository.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 
 class GetSubjectByIdUC extends UseCase<GetSubjectByIdParam, Subject> {
   GetSubjectByIdUC({
