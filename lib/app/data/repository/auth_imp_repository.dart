@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
+import 'package:faeng_courses/core/error/failure_type.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
@@ -20,7 +21,14 @@ class AuthImpRepository implements AuthDataRepository {
     if (user != null) {
       return Right(user);
     }
-    return Left(CurrentUserFailure());
+    return Left(
+      Failure.fromType(
+        type: const CustomFailure(
+          'Usuário não disponível',
+          'Houve um problema ao tentar pegar as informações do usuário',
+        ),
+      ),
+    );
   }
 
   @override
@@ -35,8 +43,11 @@ class AuthImpRepository implements AuthDataRepository {
       }
     } catch (e) {
       return Left(
-        SignInUserFailure(
-          signinMethod: SignInMethod.anonymous,
+        Failure.fromType(
+          type: const CustomFailure(
+            'Usuário anônimo',
+            'Houve um problema ao entrar como usuário anônimo',
+          ),
         ),
       );
     }
@@ -53,9 +64,23 @@ class AuthImpRepository implements AuthDataRepository {
       } else {
         throw Exception();
       }
+    } on FirebaseAuthException {
+      return Left(
+        Failure.fromType(
+          type: const CustomFailure(
+            'Opção desativada',
+            'Login anônimo desativado no firebase',
+          ),
+        ),
+      );
     } catch (e) {
       return Left(
-        SignOutUserFailure(),
+        Failure.fromType(
+          type: const CustomFailure(
+            'Erro ao deslogar',
+            'Houve um problema ao deslogar da conta',
+          ),
+        ),
       );
     }
   }
@@ -70,15 +95,33 @@ class AuthImpRepository implements AuthDataRepository {
         email: email,
         password: password,
       );
-      if (userCredential.user != null && !userCredential.user!.isAnonymous) {
-        return Right(userCredential.user!);
+      return Right(userCredential.user!);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email' || e.code == 'wrong-password') {
+        return Left(
+          Failure.fromType(
+            type: const CustomFailure(
+              'Erro ao logar',
+              'E-mail ou senha inválidos',
+            ),
+          ),
+        );
+      } else if (e.code == 'user-disabled' || e.code == 'user-not-found') {
+        return Left(
+          Failure.fromType(
+            type: const CustomFailure(
+              'Erro ao logar',
+              'Usuário inválido ou não encontrado',
+            ),
+          ),
+        );
       } else {
         throw Exception();
       }
     } catch (e) {
       return Left(
-        SignInUserFailure(
-          signinMethod: SignInMethod.emailAndPassword,
+        Failure.fromType(
+          type: const NormalFailure(),
         ),
       );
     }
@@ -103,10 +146,13 @@ class AuthImpRepository implements AuthDataRepository {
         throw Exception();
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
+      if (e.code == 'email-already-in-use' || e.code == 'email-invalid') {
         return Left(
-          SignUpFailure(
-            signUpCode: SignUpCode.emailAlreadyUsed,
+          Failure.fromType(
+            type: const CustomFailure(
+              'Erro ao registrar',
+              'E-mail em uso ou inválido',
+            ),
           ),
         );
       } else {
@@ -114,8 +160,8 @@ class AuthImpRepository implements AuthDataRepository {
       }
     } catch (e) {
       return Left(
-        SignUpFailure(
-          signUpCode: SignUpCode.other,
+        Failure.fromType(
+          type: const NormalFailure(),
         ),
       );
     }
