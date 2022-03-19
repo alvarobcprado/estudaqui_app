@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Flutter test
+name: Flutter Analyze and Test
 
 on:
   push:
@@ -23,4 +23,5 @@ jobs:
         flutter-version: '2.8.0'
     - run: flutter clean
     - run: flutter pub get
-    - run: flutter test --coverage
+    - run: flutter analyze
+    - run: flutter test
