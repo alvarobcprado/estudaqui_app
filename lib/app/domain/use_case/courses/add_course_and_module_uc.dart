@@ -4,7 +4,7 @@ import 'package:faeng_courses/app/domain/data_repository/courses_data_repository
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 
 class AddCourseAndModuleUC
     extends UseCase<AddCourseAndModuleParam, CourseModule> {

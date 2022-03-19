@@ -4,7 +4,7 @@ import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.da
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 
 class SigninEmailPasswordUC extends UseCase<SigninEmailPasswordParams, User> {
   SigninEmailPasswordUC({required AuthDataRepository authDataRepository})
