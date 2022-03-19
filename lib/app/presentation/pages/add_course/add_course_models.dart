@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 
 enum AddCourseStatus { loading, error, success }
 

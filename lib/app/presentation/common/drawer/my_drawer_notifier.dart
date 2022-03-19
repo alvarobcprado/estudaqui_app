@@ -7,7 +7,7 @@ import 'package:faeng_courses/app/domain/use_case/authentication/get_current_use
 import 'package:faeng_courses/app/domain/use_case/authentication/signout_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/common/general_providers.dart';
-import 'package:faeng_courses/core/error/failures.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 
 class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
   MyDrawerNotifier({

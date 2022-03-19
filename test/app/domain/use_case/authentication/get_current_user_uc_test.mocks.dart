@@ -7,7 +7,7 @@ import 'dart:async' as _i5;
 import 'package:dartz/dartz.dart' as _i4;
 import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart'
     as _i6;
-import 'package:faeng_courses/core/error/failures.dart' as _i7;
+import 'package:faeng_courses/core/error/failure.dart' as _i7;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart'
     as _i2;

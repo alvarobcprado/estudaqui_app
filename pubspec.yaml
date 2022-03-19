@@ -52,6 +52,8 @@ dependencies:
   form_builder_validators: ^7.2.0
   json_annotation:
   fake_cloud_firestore: ^1.2.0
+  freezed: ^1.1.1
+  freezed_annotation: ^1.1.0
 
 dev_dependencies:
   flutter_test:

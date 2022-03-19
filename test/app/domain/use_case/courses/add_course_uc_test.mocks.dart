@@ -9,7 +9,7 @@ import 'package:faeng_courses/app/domain/data_repository/courses_data_repository
     as _i4;
 import 'package:faeng_courses/app/domain/entity/course.dart' as _i3;
 import 'package:faeng_courses/app/domain/entity/course_module.dart' as _i7;
-import 'package:faeng_courses/core/error/failures.dart' as _i6;
+import 'package:faeng_courses/core/error/failure.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
