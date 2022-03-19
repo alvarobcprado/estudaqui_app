@@ -3,8 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/data/remote/data_source/subjects_rds.dart';
 import 'package:faeng_courses/app/domain/data_repository/subjects_data_repository.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
-import 'package:faeng_courses/core/error/failures.dart';
-import 'package:faeng_courses/core/error/subject_failure.dart';
+import 'package:faeng_courses/core/error/failure.dart';
+import 'package:faeng_courses/core/error/failure_type.dart';
 
 class SubjectImpRepository extends SubjectDataRepository {
   SubjectImpRepository({
@@ -21,8 +21,11 @@ class SubjectImpRepository extends SubjectDataRepository {
       final subjectList = subjectsQuery.docs.map((e) => e.data()).toList();
       return Right(subjectList);
     } catch (e) {
-      // TODO: implement error handler
-      return Left(SubjectListFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
@@ -38,8 +41,11 @@ class SubjectImpRepository extends SubjectDataRepository {
         throw Exception();
       }
     } catch (e) {
-      // TODO: implement error handler
-      return Left(SubjectByIdFailure());
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
     }
   }
 
