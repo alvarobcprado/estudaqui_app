@@ -1,96 +1,142 @@
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_page.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_text_dialog.dart';
-import 'package:faeng_courses/app/presentation/pages/base/base_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
 import 'package:faeng_courses/app/presentation/pages/home/home_page.dart';
 import 'package:faeng_courses/app/presentation/pages/login/login_page.dart';
 import 'package:faeng_courses/app/presentation/pages/not_found/not_found_page.dart';
 import 'package:flutter/material.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
-const _basePath = '/';
-const _notFoundPath = '${_basePath}not-found';
-const _homePath = '${_basePath}home';
-const _loginPath = '${_basePath}login';
-const _addCoursePath = '${_basePath}add-course';
-const _addModuleTextPath = '$_addCoursePath/module';
-const _courseListPathWithoutParam = '${_basePath}courses';
-const _courseListPathWithParam = '${_basePath}courses/:subject';
-const _courseDetailPath = '$_courseListPathWithParam/detail';
+/// not-found
+const _notFoundPath = 'not-found';
 
-class MyRouteMap extends RouteMap {
+/// home
+const _homePath = 'home';
+
+/// login
+const _loginPath = 'login';
+
+/// add-course
+const _addCourseInfoPath = 'add-course';
+
+/// content
+const _addCourseContentPath = 'content';
+
+/// courses/:subject
+const _courseListPath = 'courses/:subject';
+
+/// :course-name
+const _courseDetailPath = ':course';
+
+class MyRouteMap extends GoRouter {
   MyRouteMap()
       : super(
-          onUnknownRoute: (_) => const Redirect(_notFoundPath),
-          routes: {
-            _basePath: (_) => const IndexedPage(
-                  child: BasePage(),
-                  paths: [
-                    _homePath,
-                    _notFoundPath,
-                  ],
-                ),
-            _notFoundPath: (_) => const MaterialPage(
-                  name: 'Page not Found',
-                  child: NotFoundPage(),
-                ),
-            _homePath: (_) => const MaterialPage(
-                  name: 'Home',
-                  child: HomePage(),
-                ),
-            _loginPath: (_) => const MaterialPage(
-                  name: 'Login',
-                  child: LoginPage(),
-                ),
-            _addCoursePath: (_) => const MaterialPage(
-                  name: 'Add course',
-                  child: AddCoursePage(),
-                ),
-            _addModuleTextPath: (_) => const MaterialPage(
-                  name: 'Add module text',
-                  fullscreenDialog: true,
-                  child: ModuleTextDialog(),
-                ),
-            _courseListPathWithParam: (routeData) => MaterialPage(
-                  name: 'Course List',
-                  child: CourseListPage(
-                    subject: routeData.pathParameters['subject'] ?? '',
+          debugLogDiagnostics: true,
+          errorPageBuilder: (context, state) => MaterialPage(
+            key: state.pageKey,
+            child: const NotFoundPage(),
+          ),
+          routes: [
+            GoRoute(
+              path: '/',
+              name: _homePath,
+              pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                child: const HomePage(),
+              ),
+              routes: [
+                GoRoute(
+                  path: 'login',
+                  name: _loginPath,
+                  pageBuilder: (context, state) => MaterialPage(
+                    key: state.pageKey,
+                    child: const LoginPage(),
                   ),
                 ),
-            _courseDetailPath: (routeData) {
-              final queryIdParam = routeData.queryParameters['id'];
-              final queryNameParam = routeData.queryParameters['course'];
-              return MaterialPage(
-                name: 'Course Detail',
-                child: CourseDetailPage(
-                  courseId: queryIdParam!,
-                  courseName: queryNameParam!,
+                GoRoute(
+                  path: 'add_course',
+                  name: _addCourseInfoPath,
+                  pageBuilder: (context, state) => MaterialPage(
+                    key: state.pageKey,
+                    child: const AddCoursePage(),
+                  ),
+                  routes: [
+                    GoRoute(
+                      path: 'content',
+                      name: _addCourseContentPath,
+                      pageBuilder: (context, state) => MaterialPage(
+                        key: state.pageKey,
+                        child: const ModuleTextDialog(),
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            },
-          },
+                GoRoute(
+                  path: 'courses/:subject',
+                  name: _courseListPath,
+                  pageBuilder: (context, state) {
+                    final subject = state.params['subject'];
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: CourseListPage(
+                        subject: subject ?? '',
+                      ),
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      path: ':course',
+                      name: _courseDetailPath,
+                      pageBuilder: (context, state) {
+                        final courseName = state.params['course'];
+                        final courseId = state.queryParams['id'];
+                        return MaterialPage(
+                          key: state.pageKey,
+                          child: CourseDetailPage(
+                            courseId: courseId!,
+                            courseName: courseName!,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         );
 }
 
-extension MyPageRoutes on Routemaster {
-  void pushLogin() => push(_loginPath);
-  void pushHome() => push(_homePath);
-  void pushTest() => push(_notFoundPath);
-  void pushAddCourse() => push(_addCoursePath);
-  void pushAddModuleText() => push(_addModuleTextPath);
-  void pushCoursesOf(String subject) => push(
-        '$_courseListPathWithoutParam/$subject',
-      );
-  void pushAllCourses() => push('$_courseListPathWithoutParam/all');
-  void pushCourseDetail(String courseName, String courseId) => push(
-        'detail',
-        queryParameters: {
-          'course': courseName.replaceAll(' ', '+'),
-          'id': courseId,
+extension MyPageRoutes on GoRouter {
+  void pushLogin() => pushNamed(_loginPath);
+  void pushHome() => pushNamed(_homePath);
+  void pushTest() => pushNamed(_notFoundPath);
+  void pushAddCourse() => pushNamed(_addCourseInfoPath);
+  void pushAddModuleText() => pushNamed(_addCourseContentPath);
+  void pushCoursesOf(String subject) => pushNamed(
+        _courseListPath,
+        params: {
+          'subject': subject,
         },
       );
+  void pushCourseDetail(
+    String courseSubject,
+    String courseName,
+    String courseId,
+  ) {
+    pushNamed(
+      _courseDetailPath,
+      params: {
+        'subject': courseSubject,
+        'course': courseName,
+      },
+      queryParams: {
+        'id': courseId,
+      },
+    );
+  }
 
-  void replaceWithHome() => replace(_homePath);
-  void replaceWithNotFound() => replace(_notFoundPath);
+  void replaceWithHome() => goNamed(_homePath);
+  void replaceWithNotFound() => goNamed(_notFoundPath);
 }
