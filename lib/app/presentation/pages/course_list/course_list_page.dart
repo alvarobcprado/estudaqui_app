@@ -6,7 +6,7 @@ import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class CourseListPage extends StatelessWidget {
   const CourseListPage({
@@ -49,7 +49,8 @@ class CourseListPage extends StatelessWidget {
                   final course = state.courses[index];
                   return ListTile(
                     // TODO: Implement the course navigation
-                    onTap: () => Routemaster.of(context).pushCourseDetail(
+                    onTap: () => GoRouter.of(context).pushCourseDetail(
+                      subject,
                       course.title,
                       course.courseId,
                     ),

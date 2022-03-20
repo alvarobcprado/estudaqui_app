@@ -6,7 +6,7 @@ import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class SubjectList extends StatelessWidget {
   const SubjectList({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class SubjectList extends StatelessWidget {
                     .where((subject) => subject.isActive)
                     .map(
                       (subject) => GestureDetector(
-                        onTap: () => Routemaster.of(context).pushCoursesOf(
+                        onTap: () => GoRouter.of(context).pushCoursesOf(
                           subject.subjectId,
                         ),
                         child: Material(

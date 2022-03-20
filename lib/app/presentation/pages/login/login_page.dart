@@ -6,7 +6,7 @@ import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             ref: ref,
             onReceived: (_, newState) {
               if (newState is Success && newState.isUserAuthenticated) {
-                Routemaster.of(context).replaceWithHome();
+                GoRouter.of(context).replaceWithHome();
               }
             },
             child: LoginContainer(
