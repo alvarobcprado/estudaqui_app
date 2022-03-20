@@ -10,14 +10,6 @@ final analyticsProvider = Provider<Analytics>(
   },
 );
 
-final analyticsObserverProvider = Provider<AnalyticsObserver>(
-  (ref) {
-    return AnalyticsObserver(
-      analytics: ref.watch(analyticsProvider),
-    );
-  },
-);
-
 final firebaseAuthProvider = Provider<FirebaseAuth>(
   (ref) {
     return FirebaseAuth.instance;

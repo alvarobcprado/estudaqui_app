@@ -4,7 +4,7 @@ import 'package:faeng_courses/app/presentation/pages/add_course/module_form/modu
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class ModuleTextDialog extends StatelessWidget {
   const ModuleTextDialog({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class ModuleTextDialog extends StatelessWidget {
                         ),
                         IconButton(
                           alignment: Alignment.centerRight,
-                          onPressed: () => Routemaster.of(context).pop(),
+                          onPressed: () => GoRouter.of(context).pop(),
                           icon: const Icon(Icons.close),
                         ),
                       ],
