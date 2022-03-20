@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class ModuleForm extends StatelessWidget {
   const ModuleForm({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class ModuleForm extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: TextButton(
                             onPressed: () =>
-                                Routemaster.of(context).pushAddModuleText(),
+                                GoRouter.of(context).pushAddModuleText(),
                             child: Text(
                               field.isValid
                                   ? S.of(context).add_module_text_edit_button
