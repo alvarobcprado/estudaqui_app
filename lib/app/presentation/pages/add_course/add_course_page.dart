@@ -10,7 +10,7 @@ import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class AddCoursePage extends StatefulWidget {
   const AddCoursePage({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _AddCoursePageState extends State<AddCoursePage> {
                   break;
                 case AddCourseStatus.success:
                   setState(() => isLoading = false);
-                  Routemaster.of(context).replaceWithHome();
+                  GoRouter.of(context).replaceWithHome();
                   break;
               }
             },

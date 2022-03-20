@@ -6,14 +6,13 @@ import 'package:faeng_courses/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:go_router/go_router.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final tileIndex = IndexedPage.of(context).index;
     return SafeArea(
       child: Drawer(
         child: Consumer(
@@ -38,32 +37,19 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  selected: tileIndex == 0,
                   onTap: () {
-                    Routemaster.of(context)
-                      ..pop()
-                      ..pushHome();
+                    Navigator.of(context).pop();
+                    GoRouter.of(context).pushHome();
                   },
                   leading: const Icon(Icons.home),
                   title: Text(S.of(context).drawer_options_home),
                 ),
-                ListTile(
-                  selected: tileIndex == 1,
-                  onTap: () {
-                    Routemaster.of(context)
-                      ..pop()
-                      ..pushTest();
-                  },
-                  leading: const Icon(Icons.error),
-                  title: Text(S.of(context).drawer_options_test),
-                ),
                 if (myDrawerState is LoggedUser)
                   ListTile(
-                    selected: tileIndex == 2,
                     onTap: () {
-                      Routemaster.of(context)
-                        ..pop()
-                        ..pushAddCourse();
+                      Navigator.of(context).pop();
+
+                      GoRouter.of(context).pushAddCourse();
                     },
                     leading: const Icon(Icons.add_to_photos),
                     title: Text(S.of(context).drawer_options_add_course),
@@ -77,9 +63,10 @@ class MyDrawer extends StatelessWidget {
                         title: Text(S.of(context).drawer_options_signout),
                       )
                     : ListTile(
-                        onTap: () => Routemaster.of(context)
-                          ..pop()
-                          ..pushLogin(),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          GoRouter.of(context).pushLogin();
+                        },
                         leading: const Icon(Icons.login),
                         title: Text(S.of(context).drawer_options_signin),
                       ),
