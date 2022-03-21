@@ -1,0 +1,77 @@
+providers:
+  - any: ['lib/common/providers/**/*', 'lib/common/providers/*','lib/common/general_providers.dart']
+  
+failures:
+  - any: ['lib/core/error/*']
+
+intl:
+  - any: ['*.arb']
+  
+cache:
+  - any: ['lib/app/data/cache/**/*']
+  
+mapper:
+  - any: ['lib/app/data/mapper/**/*']
+
+remote:
+  - any: ['lib/app/data/remote/**/*']
+
+repository:
+  - any: ['lib/app/data/repository/**/*']
+  
+data-repository:
+  - any: ['lib/app/domain/data_repository/**/*']
+
+entity:
+  - any: ['lib/app/domain/entity/**/*']
+  
+use-case:
+  - any: ['lib/app/domain/use_case/**/*']
+
+presentation-layer:
+  - any: ['lib/app/presentation/**/*']
+
+domain-layer:
+  - any: ['lib/app/domain/**/*']
+
+data-layer:
+  - any: ['lib/app/data/**/*']
+
+config:
+  - any: ['lib/main.dart']
+
+dependencies:
+  - all: ['pubspec.yaml','pubspec.lock']
+
+linting:
+  - any: ['analysis_options.yaml']
+
+analyzer:
+  - any: ['analysis_options.yaml']
+
+code-gen:
+  - any: ['*.mocks.dart', '*.freezed.dart', '*.g.dart']
+
+CI/CD:
+  - any: ['.github/**/*']
+
+assets:
+  - any: ['assets/**/*']
+
+documentation:
+  - any: ['README.md','doc/**/*']
+
+chores:
+  - any: ['.gitignore','README.md','.github/**/*']
+
+native/android:
+  - any: ['android/**/*']
+
+gradle:
+  - any: ['android/**/*']
+
+native/ios:
+  - any: ['ios/**/*']
+
+tests:
+  - any: [ 'test/**/*' ]
