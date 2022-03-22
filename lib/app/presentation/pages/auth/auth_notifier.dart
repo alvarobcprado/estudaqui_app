@@ -1,44 +1,58 @@
 import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/signin_anonmously_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/signin_email_password_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
+import 'package:faeng_courses/app/presentation/pages/auth/state/auth_state.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:faeng_courses/app/domain/use_case/authentication/signin_anonmously_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/authentication/signin_email_password_uc.dart';
+final authNotifierProvider =
+    StateNotifierProvider<AuthContainerNotifier, AuthState>(
+  (ref) {
+    final signinAnonmouslyUC = ref.watch(signinAnonmouslyUCProvider);
+    final signinEmailPasswordUC = ref.watch(signinEmailPasswordUCProvider);
+    final getCurrentUserUC = ref.watch(getCurrentUserUCProvider);
+    return AuthContainerNotifier(
+      signinAnonmouslyUC: signinAnonmouslyUC,
+      signinEmailPasswordUC: signinEmailPasswordUC,
+      getCurrentUserUC: getCurrentUserUC,
+    );
+  },
+);
 
-import 'login_container_models.dart';
-
-class LoginContainerNotifier extends StateNotifier<LoginState> {
-  LoginContainerNotifier({
+class AuthContainerNotifier extends StateNotifier<AuthState> {
+  AuthContainerNotifier({
     required SigninEmailPasswordUC signinEmailPasswordUC,
     required SigninAnonmouslyUC signinAnonmouslyUC,
     required GetCurrentUserUC getCurrentUserUC,
   })  : _signinEmailPasswordUC = signinEmailPasswordUC,
         _signinAnonmouslyUC = signinAnonmouslyUC,
         _getCurrentUserUC = getCurrentUserUC,
-        super(Loading()) {
-    verifyLoginState();
+        super(AuthState.unauthenticated()) {
+    verifyAuthState();
   }
 
   final SigninEmailPasswordUC _signinEmailPasswordUC;
   final SigninAnonmouslyUC _signinAnonmouslyUC;
   final GetCurrentUserUC _getCurrentUserUC;
 
-  Future<void> verifyLoginState() async {
-    state = Loading();
+  Future<void> verifyAuthState() async {
     final currentUserEither = await _getCurrentUserUC.call(params: NoParams());
     state = await currentUserEither.fold(
       (failure) async {
-        return Error(error: failure);
+        return AuthState.failedAuthentication(
+          errorTitle: failure.title,
+          errorBody: failure.message,
+        );
       },
       (user) async {
         if (user.isAnonymous) {
-          return Success(isUserAuthenticated: false);
+          return AuthState.authenticated(method: AuthMethod.anonmously);
         } else {
           await loginAnonmously();
-          return Success(isUserAuthenticated: false);
+          return AuthState.authenticated(method: AuthMethod.anonmously);
         }
       },
     );
@@ -48,7 +62,7 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
     required String email,
     required String password,
   }) async {
-    state = Loading();
+    state = AuthState.authenticating();
     final loginAttemptEither = await _signinEmailPasswordUC(
       params: SigninEmailPasswordParams(
         email: email,
@@ -57,19 +71,26 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
     );
 
     state = loginAttemptEither.fold(
-      (l) => Error(error: l),
-      (r) => Success(isUserAuthenticated: true),
+      (failure) => AuthState.failedAuthentication(
+        errorTitle: failure.title,
+        errorBody: failure.message,
+      ),
+      (success) => AuthState.authenticated(method: AuthMethod.emailPassword),
     );
   }
 
   Future<void> loginAnonmously() async {
-    state = Loading();
+    state = AuthState.authenticating();
+
     final loginAttemptEither = await _signinAnonmouslyUC(
       params: NoParams(),
     );
     state = loginAttemptEither.fold(
-      (l) => Error(error: l),
-      (r) => Success(isUserAuthenticated: false),
+      (failure) => AuthState.failedAuthentication(
+        errorTitle: failure.title,
+        errorBody: failure.message,
+      ),
+      (success) => AuthState.authenticated(method: AuthMethod.anonmously),
     );
   }
 
@@ -88,17 +109,3 @@ class LoginContainerNotifier extends StateNotifier<LoginState> {
     }
   }
 }
-
-final loginContainerNotifierProvider =
-    StateNotifierProvider<LoginContainerNotifier, LoginState>(
-  (ref) {
-    final signinAnonmouslyUC = ref.watch(signinAnonmouslyUCProvider);
-    final signinEmailPasswordUC = ref.watch(signinEmailPasswordUCProvider);
-    final getCurrentUserUC = ref.watch(getCurrentUserUCProvider);
-    return LoginContainerNotifier(
-      signinAnonmouslyUC: signinAnonmouslyUC,
-      signinEmailPasswordUC: signinEmailPasswordUC,
-      getCurrentUserUC: getCurrentUserUC,
-    );
-  },
-);
