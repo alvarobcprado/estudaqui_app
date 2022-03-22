@@ -17,14 +17,10 @@ class ActionHandler<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, _) {
-        ref.listen<T>(
-          actionProvider,
-          onReceived,
-        );
-        return child;
-      },
+    ref.listen<T>(
+      actionProvider,
+      onReceived,
     );
+    return child;
   }
 }
