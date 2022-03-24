@@ -1,22 +1,23 @@
 import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
-class LightColors implements MyColors {
-  @override
-  Color get loginPageBackground => Colors.blue.withOpacity(0.5);
-
-  @override
-  Color get loginContainerBackground => Colors.white;
-
+class LightColors extends MyColors {
   @override
   Color get myDrawerHeaderBackground => Colors.blue;
+
+  @override
+  Color get authFormBackground => primaryVariantColor.withOpacity(0.4);
+
+  @override
+  // TODO: implement authFormTextColor
+  Color get authFormTextColor => Colors.white;
 }
 
-class LightTextStyles implements MyTextStyles {}
+class LightTextStyles extends MyTextStyles {}
 
-class LightAssetPaths implements MyAssetPaths {}
+class LightAssetPaths extends MyAssetPaths {}
 
-class LightTheme implements MyTheme {
+class LightTheme extends MyTheme {
   @override
   // TODO(Alvaro): implement assets
   MyAssetPaths get assets => LightAssetPaths();
