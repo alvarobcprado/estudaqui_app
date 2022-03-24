@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
 import 'package:faeng_courses/core/error/failure.dart';
 import 'package:faeng_courses/core/error/failure_type.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
 
 class AuthImpRepository implements AuthDataRepository {
   AuthImpRepository({
@@ -129,19 +128,24 @@ class AuthImpRepository implements AuthDataRepository {
 
   @override
   Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String name,
     required String email,
     required String password,
   }) async {
     try {
-      if (_authProvider.currentUser != null &&
-          !_authProvider.currentUser!.isAnonymous) {
+      if (_authProvider.currentUser == null ||
+          _authProvider.currentUser!.isAnonymous) {
         final userCredential =
             await _authProvider.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
 
-        return Right(userCredential.user!);
+        final user = userCredential.user;
+        await user!.updateDisplayName(name);
+        await user.reload();
+
+        return Right(user);
       } else {
         throw Exception();
       }
