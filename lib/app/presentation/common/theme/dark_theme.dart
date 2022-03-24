@@ -1,25 +1,33 @@
 import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 
-class DarkColors implements MyColors {
+class DarkColors extends MyColors {
   @override
   // TODO: implement loginPageBackground
   Color get loginPageBackground => throw UnimplementedError();
 
   @override
-  // TODO: implement loginContainerBackground
-  Color get loginContainerBackground => throw UnimplementedError();
-
-  @override
   // TODO: implement myDrawerHeaderBackground
   Color get myDrawerHeaderBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement formFieldBackground
+  Color get formFieldBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement authFormBackground
+  Color get authFormBackground => throw UnimplementedError();
+
+  @override
+  // TODO: implement authFormTextColor
+  Color get authFormTextColor => throw UnimplementedError();
 }
 
-class DarkMyTextStyles implements MyTextStyles {}
+class DarkMyTextStyles extends MyTextStyles {}
 
-class DarkMyAssetPaths implements MyAssetPaths {}
+class DarkMyAssetPaths extends MyAssetPaths {}
 
-class DarkTheme implements MyTheme {
+class DarkTheme extends MyTheme {
   @override
   // TODO(Alvaro): implement assets
   MyAssetPaths get assets => DarkMyAssetPaths();
