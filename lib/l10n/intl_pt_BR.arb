@@ -33,6 +33,10 @@
     "add_module_text_add_button": "Adicionar módulo",
     "add_module_text_edit_button": "Editar módulo",
     "add_module_text_save_button": "Salvar módulo",
-    "add_module_text_clear_button": "Limpar"
+    "add_module_text_clear_button": "Limpar",
+    "default_error_dialog_title": "Algo deu errado",
+    "default_error_dialog_body": "Por favor, tente novamente mais tarde",
+    "default_error_dialog_button": "Fechar",
+    "default_loading_dialog_text": "Carregando..."
 
 }
