@@ -43,7 +43,7 @@ class SubjectList extends StatelessWidget {
                           elevation: 5,
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(
-                            kMediumBorder,
+                            kMediumNumber,
                           ),
                           child: SizedBox(
                             width: 120,
