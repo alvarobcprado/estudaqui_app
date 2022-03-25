@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                 Material(
                   elevation: 5,
                   color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(kMediumBorder),
+                  borderRadius: BorderRadius.circular(kMediumNumber),
                   child: SizedBox(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height / 3,
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: kLargeSpacer),
+                const SizedBox(height: kLargeNumber),
                 SizedBox(
                   width: double.infinity,
                   child: Column(
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: kSmallSpacer),
+                const SizedBox(height: kSmallNumber),
                 const SubjectList(),
               ],
             ),
