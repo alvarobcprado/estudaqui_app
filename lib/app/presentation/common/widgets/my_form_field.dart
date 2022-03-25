@@ -35,11 +35,12 @@ class MyFormField extends ConsumerWidget {
       name: fieldName,
       obscureText: shouldObfuscateField!,
       textInputAction: TextInputAction.next,
+      style: TextStyle(color: labelColor ?? _colors.authFormTextColor),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: kMediumNumber),
         labelStyle: TextStyle(
-          color: labelColor?.withOpacity(0.80) ??
-              _colors.authFormTextColor.withOpacity(0.80),
+          color: labelColor?.withOpacity(0.75) ??
+              _colors.authFormTextColor.withOpacity(0.75),
         ),
         border: const OutlineInputBorder(
           borderSide: BorderSide.none,
