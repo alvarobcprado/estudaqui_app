@@ -23,6 +23,10 @@ abstract class MyColors {
   /// Tangerine
   Color get secondaryColor => const Color.fromRGBO(251, 133, 0, 1);
 
+  Color get surfaceColor => Colors.white;
+
+  Color get errorColor => const Color(0xFFB00020);
+
   Color get white => Colors.white;
 
   Color get black => Colors.black;
