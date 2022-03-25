@@ -31,6 +31,7 @@ void main() {
     () async {
       when(
         mockRepository.signUpWithEmailAndPassword(
+          name: argThat(isNotNull, named: 'name'),
           email: argThat(isNotNull, named: 'email'),
           password: argThat(isNotNull, named: 'password'),
         ),
@@ -52,6 +53,7 @@ void main() {
       expect(result, Right(mockUser));
       verify(
         mockRepository.signUpWithEmailAndPassword(
+          name: _name,
           email: _email,
           password: _password,
         ),
