@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_form_forgot_password":
             MessageLookupByLibrary.simpleMessage("esqueceu sua senha?"),
         "auth_form_name_field_label":
-            MessageLookupByLibrary.simpleMessage("seu Nome"),
+            MessageLookupByLibrary.simpleMessage("seu nome"),
         "auth_form_password_field_label":
             MessageLookupByLibrary.simpleMessage("senha"),
         "auth_form_select_signin":

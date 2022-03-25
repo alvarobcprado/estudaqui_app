@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `seu Nome`
+  /// `seu nome`
   String get auth_form_name_field_label {
     return Intl.message(
-      'seu Nome',
+      'seu nome',
       name: 'auth_form_name_field_label',
       desc: '',
       args: [],
