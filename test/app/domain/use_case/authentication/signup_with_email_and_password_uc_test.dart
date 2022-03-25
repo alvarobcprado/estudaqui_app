@@ -13,6 +13,7 @@ void main() {
   late final MockAuthDataRepository mockRepository;
   MockUser? mockUser;
   late final SignupEmailPasswordUC useCase;
+  const _name = 'Nome';
   const _email = 'email@email.com';
   const _password = 'password';
 
@@ -30,6 +31,7 @@ void main() {
     () async {
       when(
         mockRepository.signUpWithEmailAndPassword(
+          name: argThat(isNotNull, named: 'name'),
           email: argThat(isNotNull, named: 'email'),
           password: argThat(isNotNull, named: 'password'),
         ),
@@ -43,6 +45,7 @@ void main() {
       expect(mockUser, isNull);
       final result = await useCase.call(
         params: const SignupEmailPasswordParams(
+          name: _name,
           email: _email,
           password: _password,
         ),
@@ -50,6 +53,7 @@ void main() {
       expect(result, Right(mockUser));
       verify(
         mockRepository.signUpWithEmailAndPassword(
+          name: _name,
           email: _email,
           password: _password,
         ),

@@ -32,7 +32,6 @@ class _AddCoursePageState extends State<AddCoursePage> {
         builder: (context, ref, child) {
           final _formKey = ref.watch(formBuilderKeyProvider);
           return ActionHandler<AddCourseState>(
-            ref: ref,
             actionProvider: addCourseNotifierProvider,
             onReceived: (_, newState) {
               switch (newState.status) {
@@ -62,9 +61,9 @@ class _AddCoursePageState extends State<AddCoursePage> {
                     child: Column(
                       children: [
                         const CourseForm(),
-                        const SizedBox(height: kMediumSpacer),
+                        const SizedBox(height: kMediumNumber),
                         const ModuleForm(),
-                        const SizedBox(height: kMediumSpacer),
+                        const SizedBox(height: kMediumNumber),
                         TextButton(
                           onPressed: () {
                             ref
