@@ -1,11 +1,14 @@
 {
     "project_title": "Flutter Boilerplate",
-    "login_container_title":"FaEng Cursos",
-    "login_container_email_field_label":"E-mail",
-    "login_container_email_field_hint":"Insira seu e-mail",
-    "login_container_password_field_label":"Senha",
-    "login_container_password_field_hint":"Digite sua senha",
-    "login_container_signin_button":"Entrar",
+    "auth_form_title":"FaEng Cursos",
+    "auth_form_name_field_label":"seu nome",
+    "auth_form_email_field_label":"seu@email.com",
+    "auth_form_password_field_label":"senha",
+    "auth_form_signin_button":"Entrar",
+    "auth_form_signup_button":"Cadastrar",
+    "auth_form_select_signin":"entrar",
+    "auth_form_select_signup":"cadastrar",
+    "auth_form_forgot_password":"esqueceu sua senha?",
     "drawer_header_unauthenticated_title": "FaEng Cursos",
     "drawer_header_authenticated_title": "Olá, {name}",
     "drawer_options_home": "Tela inicial",
@@ -30,6 +33,10 @@
     "add_module_text_add_button": "Adicionar módulo",
     "add_module_text_edit_button": "Editar módulo",
     "add_module_text_save_button": "Salvar módulo",
-    "add_module_text_clear_button": "Limpar"
+    "add_module_text_clear_button": "Limpar",
+    "default_error_dialog_title": "Algo deu errado",
+    "default_error_dialog_body": "Por favor, tente novamente mais tarde",
+    "default_error_dialog_button": "Fechar",
+    "default_loading_dialog_text": "Carregando..."
 
 }

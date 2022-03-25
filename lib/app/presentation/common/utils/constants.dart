@@ -16,38 +16,29 @@ const kXXLargePadding = 48.0;
 /// Padding 56.0
 const kXXXLargePadding = 56.0;
 
-/// Spacer 8.0
-const kSmallSpacer = 8.0;
+/// Number 8.0
+const kSmallNumber = 8.0;
 
-/// Spacer 16.0
-const kMediumSpacer = 16.0;
+/// Number 16.0
+const kMediumNumber = 16.0;
 
-/// Spacer 24.0
-const kLargeSpacer = 24.0;
+/// Number 24.0
+const kLargeNumber = 24.0;
 
-/// Spacer 32.0
-const kXLargeSpacer = 32.0;
+/// Number 32.0
+const kXLargeNumber = 32.0;
 
-/// Spacer 48.0
-const kXXLargeSpacer = 48.0;
+/// Number 48.0
+const kXXLargeNumber = 48.0;
 
-/// Spacer 56.0
-const kXXXLargeSpacer = 56.0;
+/// Number 56.0
+const kXXXLargeNumber = 56.0;
 
-/// Border 8.0
-const kSmallBorder = 8.0;
+/// Number 64.0
+const kXXXXLargeNumber = 64.0;
 
-/// Border 16.0
-const kMediumBorder = 16.0;
+/// Number 72.0
+const kXXXXXLargeNumber = 72.0;
 
-/// Border 24.0
-const kLargeBorder = 24.0;
-
-/// Border 32.0
-const kXLargeBorder = 32.0;
-
-/// Border 48.0
-const kXXLargeBorder = 48.0;
-
-/// Border 56.0
-const kXXXLargeBorder = 56.0;
+/// Number 80.0
+const kXXXXXXLargeNumber = 80.0;

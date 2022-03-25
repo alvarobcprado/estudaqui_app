@@ -17,6 +17,7 @@ abstract class AuthDataRepository {
   });
 
   Future<Either<Failure, User>> signUpWithEmailAndPassword({
+    required String name,
     required String email,
     required String password,
   });
