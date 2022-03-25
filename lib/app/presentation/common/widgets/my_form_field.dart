@@ -34,6 +34,7 @@ class MyFormField extends ConsumerWidget {
     return FormBuilderTextField(
       name: fieldName,
       obscureText: shouldObfuscateField!,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: kMediumNumber),
         labelStyle: TextStyle(
