@@ -51,6 +51,31 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar módulo"),
         "add_module_text_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar módulo"),
+        "auth_form_email_field_label":
+            MessageLookupByLibrary.simpleMessage("seu@email.com"),
+        "auth_form_forgot_password":
+            MessageLookupByLibrary.simpleMessage("esqueceu sua senha?"),
+        "auth_form_name_field_label":
+            MessageLookupByLibrary.simpleMessage("seu Nome"),
+        "auth_form_password_field_label":
+            MessageLookupByLibrary.simpleMessage("senha"),
+        "auth_form_select_signin":
+            MessageLookupByLibrary.simpleMessage("entrar"),
+        "auth_form_select_signup":
+            MessageLookupByLibrary.simpleMessage("cadastrar"),
+        "auth_form_signin_button":
+            MessageLookupByLibrary.simpleMessage("Entrar"),
+        "auth_form_signup_button":
+            MessageLookupByLibrary.simpleMessage("Cadastrar"),
+        "auth_form_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "default_error_dialog_body": MessageLookupByLibrary.simpleMessage(
+            "Por favor, tente novamente mais tarde"),
+        "default_error_dialog_button":
+            MessageLookupByLibrary.simpleMessage("Fechar"),
+        "default_error_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Algo deu errado"),
+        "default_loading_dialog_text":
+            MessageLookupByLibrary.simpleMessage("Carregando..."),
         "drawer_header_authenticated_title": m1,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
@@ -70,18 +95,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Uma grande mensagem"),
         "home_page_welcome_title":
             MessageLookupByLibrary.simpleMessage("Bem vindo tal tal tal"),
-        "login_container_email_field_hint":
-            MessageLookupByLibrary.simpleMessage("Insira seu e-mail"),
-        "login_container_email_field_label":
-            MessageLookupByLibrary.simpleMessage("E-mail"),
-        "login_container_password_field_hint":
-            MessageLookupByLibrary.simpleMessage("Digite sua senha"),
-        "login_container_password_field_label":
-            MessageLookupByLibrary.simpleMessage("Senha"),
-        "login_container_signin_button":
-            MessageLookupByLibrary.simpleMessage("Entrar"),
-        "login_container_title":
-            MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate"),
         "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias")

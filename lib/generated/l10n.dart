@@ -61,60 +61,90 @@ class S {
   }
 
   /// `FaEng Cursos`
-  String get login_container_title {
+  String get auth_form_title {
     return Intl.message(
       'FaEng Cursos',
-      name: 'login_container_title',
+      name: 'auth_form_title',
       desc: '',
       args: [],
     );
   }
 
-  /// `E-mail`
-  String get login_container_email_field_label {
+  /// `seu Nome`
+  String get auth_form_name_field_label {
     return Intl.message(
-      'E-mail',
-      name: 'login_container_email_field_label',
+      'seu Nome',
+      name: 'auth_form_name_field_label',
       desc: '',
       args: [],
     );
   }
 
-  /// `Insira seu e-mail`
-  String get login_container_email_field_hint {
+  /// `seu@email.com`
+  String get auth_form_email_field_label {
     return Intl.message(
-      'Insira seu e-mail',
-      name: 'login_container_email_field_hint',
+      'seu@email.com',
+      name: 'auth_form_email_field_label',
       desc: '',
       args: [],
     );
   }
 
-  /// `Senha`
-  String get login_container_password_field_label {
+  /// `senha`
+  String get auth_form_password_field_label {
     return Intl.message(
-      'Senha',
-      name: 'login_container_password_field_label',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Digite sua senha`
-  String get login_container_password_field_hint {
-    return Intl.message(
-      'Digite sua senha',
-      name: 'login_container_password_field_hint',
+      'senha',
+      name: 'auth_form_password_field_label',
       desc: '',
       args: [],
     );
   }
 
   /// `Entrar`
-  String get login_container_signin_button {
+  String get auth_form_signin_button {
     return Intl.message(
       'Entrar',
-      name: 'login_container_signin_button',
+      name: 'auth_form_signin_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cadastrar`
+  String get auth_form_signup_button {
+    return Intl.message(
+      'Cadastrar',
+      name: 'auth_form_signup_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `entrar`
+  String get auth_form_select_signin {
+    return Intl.message(
+      'entrar',
+      name: 'auth_form_select_signin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `cadastrar`
+  String get auth_form_select_signup {
+    return Intl.message(
+      'cadastrar',
+      name: 'auth_form_select_signup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `esqueceu sua senha?`
+  String get auth_form_forgot_password {
+    return Intl.message(
+      'esqueceu sua senha?',
+      name: 'auth_form_forgot_password',
       desc: '',
       args: [],
     );
@@ -365,6 +395,46 @@ class S {
     return Intl.message(
       'Limpar',
       name: 'add_module_text_clear_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Algo deu errado`
+  String get default_error_dialog_title {
+    return Intl.message(
+      'Algo deu errado',
+      name: 'default_error_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Por favor, tente novamente mais tarde`
+  String get default_error_dialog_body {
+    return Intl.message(
+      'Por favor, tente novamente mais tarde',
+      name: 'default_error_dialog_body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fechar`
+  String get default_error_dialog_button {
+    return Intl.message(
+      'Fechar',
+      name: 'default_error_dialog_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carregando...`
+  String get default_loading_dialog_text {
+    return Intl.message(
+      'Carregando...',
+      name: 'default_loading_dialog_text',
       desc: '',
       args: [],
     );
