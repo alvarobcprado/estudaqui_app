@@ -1,3 +1,4 @@
+import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/common/providers/navigation_providers.dart';
 import 'package:faeng_courses/firebase_options.dart';
 import 'package:faeng_courses/generated/l10n.dart';
@@ -25,20 +26,21 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          FormBuilderLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        title: 'Faeng Courses',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        routeInformationParser:
-            ref.watch(myRoutesProvider).routeInformationParser,
-        routerDelegate: ref.watch(myRoutesProvider).routerDelegate);
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        FormBuilderLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      title: 'Faeng Courses',
+      theme: ThemeData(
+        colorSchemeSeed: ref.watch(themeProvider).colors.primaryColor,
+      ),
+      routeInformationParser:
+          ref.watch(myRoutesProvider).routeInformationParser,
+      routerDelegate: ref.watch(myRoutesProvider).routerDelegate,
+    );
   }
 }
