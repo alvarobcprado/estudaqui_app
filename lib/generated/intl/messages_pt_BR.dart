@@ -91,10 +91,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":
             MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "home_greeting_user": MessageLookupByLibrary.simpleMessage("Olá "),
+        "home_latest_courses_section":
+            MessageLookupByLibrary.simpleMessage("Últimos cursos adicionados"),
+        "home_page_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "home_page_welcome_message":
             MessageLookupByLibrary.simpleMessage("Uma grande mensagem"),
         "home_page_welcome_title":
             MessageLookupByLibrary.simpleMessage("Bem vindo tal tal tal"),
+        "home_subjects_section":
+            MessageLookupByLibrary.simpleMessage("Matérias"),
+        "home_welcome_message": MessageLookupByLibrary.simpleMessage(
+            "Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado."),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate"),
         "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias")
