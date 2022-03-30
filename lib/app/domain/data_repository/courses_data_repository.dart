@@ -16,6 +16,8 @@ abstract class CoursesDataRepository {
 
   Future<Either<Failure, Course>> removeCourseById(String courseId);
 
+  Future<Either<Failure, List<Course>>> getLastestCourses(int number);
+
   Future<Either<Failure, List<CourseModule>>> fetchCourseModules(
     String courseId,
   );
