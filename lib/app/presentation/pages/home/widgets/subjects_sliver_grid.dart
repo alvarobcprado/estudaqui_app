@@ -15,10 +15,11 @@ class SubjectsSliverGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 24,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 88 + 24,
+        mainAxisExtent: 96,
         mainAxisSpacing: 24,
+        crossAxisSpacing: 24,
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) {
