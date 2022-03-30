@@ -439,6 +439,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Matérias`
+  String get home_subjects_section {
+    return Intl.message(
+      'Matérias',
+      name: 'home_subjects_section',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Últimos cursos adicionados`
+  String get home_latest_courses_section {
+    return Intl.message(
+      'Últimos cursos adicionados',
+      name: 'home_latest_courses_section',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FaEng Cursos`
+  String get home_page_title {
+    return Intl.message(
+      'FaEng Cursos',
+      name: 'home_page_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.`
+  String get home_welcome_message {
+    return Intl.message(
+      'Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.',
+      name: 'home_welcome_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Olá `
+  String get home_greeting_user {
+    return Intl.message(
+      'Olá ',
+      name: 'home_greeting_user',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
