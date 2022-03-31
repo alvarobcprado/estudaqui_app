@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/conditional_widget.dart';
 import 'package:faeng_courses/common/general_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,14 +31,15 @@ class SubjectsGridItem extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ConditionalWidget(
-              condition: imageUrl.isNotEmpty,
-              conditionalChild: Image.network(
-                imageUrl,
-                height: kXXLargeNumber,
-                width: kXXLargeNumber,
+            CachedNetworkImage(
+              imageUrl: imageUrl,
+              height: kXXLargeNumber,
+              width: kXXLargeNumber,
+              placeholder: (_, __) => CircularProgressIndicator(
+                color: colors.secondaryVariantColor,
+                strokeWidth: 2,
               ),
-              child: Icon(
+              errorWidget: (_, __, ___) => Icon(
                 Icons.book,
                 size: kXXLargeNumber,
                 color: colors.secondaryVariantColor,
