@@ -65,9 +65,10 @@ class HomePage extends ConsumerWidget {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: kLargeNumber),
                 sliver: subjects.maybeWhen(
-                  orElse: () => const SliverToBoxAdapter(
+                  orElse: () => SliverToBoxAdapter(
                     child: ErrorHandlerWidget(
-                      child: SizedBox(),
+                      child: const SizedBox(),
+                      onTryAgain: () => ref.refresh(getSubjectsProvider),
                     ),
                   ),
                   loading: () => const SliverToBoxAdapter(
