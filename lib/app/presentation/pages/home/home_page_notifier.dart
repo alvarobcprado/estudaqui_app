@@ -27,22 +27,25 @@ final getSubjectsProvider = FutureProvider<List<Subject>>(
   },
 );
 
-final getUserNameProvider = FutureProvider<String>(
-  (ref) async {
-    final useCase = ref.watch(getCurrentUserUCProvider);
+final getUserNameProvider = StreamProvider<String>(
+  (ref) async* {
+    final useCase = ref.watch(getUserChangesUCProvider);
     const anonmouslyUser = '';
     final eitherResult = await useCase(params: NoParams());
 
-    final userName = eitherResult.fold(
-      (failure) => '',
-      (user) {
-        if (user.isAnonymous) {
-          return anonmouslyUser;
+    yield* eitherResult.fold(
+      (l) async* {
+        yield anonmouslyUser;
+      },
+      (stream) async* {
+        await for (final user in stream) {
+          if (user?.isAnonymous ?? true) {
+            yield anonmouslyUser;
+          } else {
+            yield user?.displayName?.split(' ')[0] ?? anonmouslyUser;
+          }
         }
-        return user.displayName?.split(' ')[0] ?? anonmouslyUser;
       },
     );
-
-    return userName;
   },
 );
