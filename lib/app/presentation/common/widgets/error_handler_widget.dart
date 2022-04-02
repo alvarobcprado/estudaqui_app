@@ -6,22 +6,40 @@ class ErrorHandlerWidget extends StatelessWidget {
     Key? key,
     required this.child,
     this.onTryAgain,
+    this.primaryColor,
+    this.textStyle,
   }) : super(key: key);
 
   final Widget child;
   final VoidCallback? onTryAgain;
+  final Color? primaryColor;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         child,
         Visibility(
           visible: onTryAgain != null,
           child: TextButton.icon(
-            onPressed: onTryAgain!,
+            style: TextButton.styleFrom(
+              primary: primaryColor,
+            ),
+            onPressed: onTryAgain,
             icon: const Icon(Icons.refresh),
-            label: Text(S.of(context).error_default_try_again_message),
+            label: Text(
+              S.of(context).error_default_try_again_message,
+              style: textStyle,
+            ),
+          ),
+          replacement: TextButton.icon(
+            onPressed: null,
+            icon: const Icon(Icons.cancel_outlined),
+            label: Text(
+              S.of(context).error_default_message,
+            ),
           ),
         )
       ],

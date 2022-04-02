@@ -37,6 +37,11 @@
     "default_error_dialog_title": "Algo deu errado",
     "default_error_dialog_body": "Por favor, tente novamente mais tarde",
     "default_error_dialog_button": "Fechar",
-    "default_loading_dialog_text": "Carregando..."
+    "default_loading_dialog_text": "Carregando...",
+    "home_subjects_section":"Matérias",
+    "home_latest_courses_section":"Últimos cursos adicionados",
+    "home_page_title":"FaEng Cursos",
+    "home_welcome_message":"Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.",
+    "home_greeting_user":"Olá "
 
 }

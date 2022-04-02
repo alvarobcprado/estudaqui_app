@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
+import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
 import 'package:faeng_courses/app/data/remote/data_source/subjects_rds.dart';
 import 'package:faeng_courses/app/data/remote/model/subject/subject_rm.dart';
 import 'package:faeng_courses/app/data/repository/subjects_imp_repository.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
 
 import 'subjects_imp_repository_test.mocks.dart';
 
@@ -58,7 +58,7 @@ void main() {
         },
       );
       test(
-        'should get a course by courseId',
+        'should get a subjects by Id',
         () async {
           when(mockRDS.getSubjectsReference()).thenAnswer(
             (_) {
@@ -80,7 +80,7 @@ void main() {
         },
       );
       test(
-        'should get courses list',
+        'should get subjects list',
         () async {
           when(mockRDS.getSubjectsReference()).thenAnswer(
             (_) {
@@ -97,7 +97,7 @@ void main() {
             (success) {
               expect(success.length, 2);
               expect(success, isA<List<Subject>>());
-              expect(success.first.name, 'Português');
+              expect(success.first.name, 'Matemática');
             },
           );
         },
