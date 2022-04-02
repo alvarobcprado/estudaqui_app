@@ -2,10 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
 import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
 import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
-
-import 'package:faeng_courses/core/error/failure.dart';
-import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
+import 'package:faeng_courses/app/domain/entity/course_module.dart';
+import 'package:faeng_courses/core/error/failure.dart';
 import 'package:faeng_courses/core/error/failure_type.dart';
 
 class CoursesImpRepository implements CoursesDataRepository {
@@ -66,6 +65,28 @@ class CoursesImpRepository implements CoursesDataRepository {
             );
       await courseDocument.set(courseToAdd);
       return Right(courseToAdd);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Course>>> getLastestCourses(int number) async {
+    try {
+      final coursesCollection = _coursesRDS.getCoursesReference();
+
+      final query = coursesCollection
+          .orderBy('createdAt', descending: true)
+          .limit(number);
+      final coursesSnapshot = await query.get();
+
+      final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
+
+      return Right(courseList);
     } catch (e) {
       return Left(
         Failure.fromType(

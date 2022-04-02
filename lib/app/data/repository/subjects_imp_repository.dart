@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import 'package:faeng_courses/app/data/remote/data_source/subjects_rds.dart';
 import 'package:faeng_courses/app/domain/data_repository/subjects_data_repository.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
@@ -17,7 +16,7 @@ class SubjectImpRepository extends SubjectDataRepository {
   Future<Either<Failure, List<Subject>>> fetchSubjects() async {
     try {
       final subjectCollection = _subjectsRDS.getSubjectsReference();
-      final subjectsQuery = await subjectCollection.get();
+      final subjectsQuery = await subjectCollection.orderBy('name').get();
       final subjectList = subjectsQuery.docs.map((e) => e.data()).toList();
       return Right(subjectList);
     } catch (e) {
