@@ -42,6 +42,10 @@
     "home_latest_courses_section":"Últimos cursos adicionados",
     "home_page_title":"FaEng Cursos",
     "home_welcome_message":"Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.",
-    "home_greeting_user":"Olá "
+    "home_greeting_user":"Olá ",
+    "default_course_author": "Desconhecido",
+    "course_list_empty_state_message": "Ops, nenhum curso de {subject} encontrado",
+    "course_list_empty_state_button": "Buscar novamente",
+    "course_list_date_added": "Adicionado em {date}"
 
 }

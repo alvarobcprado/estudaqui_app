@@ -22,7 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(quantity) => "Módulos: ${quantity}";
 
-  static String m1(name) => "Olá, ${name}";
+  static String m1(date) => "Adicionado em ${date}";
+
+  static String m2(subject) => "Ops, nenhum curso de ${subject} encontrado";
+
+  static String m3(name) => "Olá, ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -68,6 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_form_signup_button":
             MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "auth_form_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "course_list_date_added": m1,
+        "course_list_empty_state_button":
+            MessageLookupByLibrary.simpleMessage("Buscar novamente"),
+        "course_list_empty_state_message": m2,
+        "default_course_author":
+            MessageLookupByLibrary.simpleMessage("Desconhecido"),
         "default_error_dialog_body": MessageLookupByLibrary.simpleMessage(
             "Por favor, tente novamente mais tarde"),
         "default_error_dialog_button":
@@ -76,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Algo deu errado"),
         "default_loading_dialog_text":
             MessageLookupByLibrary.simpleMessage("Carregando..."),
-        "drawer_header_authenticated_title": m1,
+        "drawer_header_authenticated_title": m3,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_add_course":
