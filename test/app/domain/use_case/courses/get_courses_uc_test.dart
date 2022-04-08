@@ -6,6 +6,7 @@ import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
 import 'get_courses_uc_test.mocks.dart';
 
 @GenerateMocks([Course, CoursesDataRepository])

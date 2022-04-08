@@ -182,6 +182,10 @@ class MockAuthDataRepository extends _i1.Mock
       (super.noSuchMethod(Invocation.getter(#authStateChanges),
           returnValue: Stream<_i3.User?>.empty()) as _i5.Stream<_i3.User?>);
   @override
+  _i5.Stream<_i3.User?> get userStateChanges =>
+      (super.noSuchMethod(Invocation.getter(#userStateChanges),
+          returnValue: Stream<_i3.User?>.empty()) as _i5.Stream<_i3.User?>);
+  @override
   _i5.Future<_i4.Either<_i7.Failure, _i3.User>> getCurrentUser() =>
       (super.noSuchMethod(Invocation.method(#getCurrentUser, []),
               returnValue: Future<_i4.Either<_i7.Failure, _i3.User>>.value(
