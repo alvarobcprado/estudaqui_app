@@ -84,6 +84,42 @@ abstract class MyTextStyles {
         color: _primaryColor,
         fontSize: kSmallNumber * 1.75,
       );
+
+  TextStyle get courseListAuthorRow => const TextStyle(
+        color: _primaryColor,
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+      );
+
+  TextStyle get courseListBanner => const TextStyle(
+        fontSize: 42,
+        fontWeight: FontWeight.w500,
+        color: _secondaryVariantColor,
+        shadows: [
+          Shadow(
+            color: _primaryColor,
+            offset: Offset(2, 2),
+            blurRadius: 8,
+          ),
+        ],
+      );
+  TextStyle get courseListTitle => const TextStyle(
+        fontSize: kMediumNumber,
+        color: _primaryColor,
+        fontWeight: FontWeight.w500,
+        height: 24 / 16,
+      );
+  TextStyle get courseListSubtitle => const TextStyle(
+        fontSize: 12,
+        color: _primaryColor,
+        height: 16 / 12,
+      );
+
+  TextStyle get courseListDateAdded => const TextStyle(
+        fontSize: 10,
+        color: _primaryColor,
+        height: 12 / 10,
+      );
 }
 
 abstract class MyAssetPaths {
@@ -91,6 +127,9 @@ abstract class MyAssetPaths {
 
   String get lastAddedCourseBG =>
       'assets/images/last_added_course_background.png';
+
+  String get defaultCourseListBanner =>
+      'assets/images/course_listing_course_background.png';
 }
 
 /// Prussian Blue
