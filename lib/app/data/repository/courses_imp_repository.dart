@@ -103,7 +103,9 @@ class CoursesImpRepository implements CoursesDataRepository {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
 
-      final query = coursesCollection.where('subject', isEqualTo: subjectId);
+      final query = coursesCollection
+          .where('subject', isEqualTo: subjectId)
+          .orderBy('title');
       final coursesSnapshot = await query.get();
 
       final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
