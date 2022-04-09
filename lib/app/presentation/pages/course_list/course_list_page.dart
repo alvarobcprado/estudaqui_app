@@ -1,66 +1,95 @@
-import 'package:faeng_courses/app/presentation/common/utils/mappers.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widget.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/course_list_models.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page_notifier.dart';
-import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/app/presentation/common/extesions/string_capitalize.dart';
+import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
+import 'package:faeng_courses/app/presentation/pages/course_list/course_list_notifier.dart';
+import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_list_tile.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class CourseListPage extends StatelessWidget {
   const CourseListPage({
-    required this.subject,
     Key? key,
+    required this.subjectId,
+    required this.subjectName,
   }) : super(key: key);
 
-  final String subject;
+  final String subjectId;
+  final String subjectName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // TODO: Find a best way to implement the subjectName
-        title: Text(subject.trySubjectName()),
-      ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          final state = ref.watch(courseListNotifierProvider(subject));
-
-          switch (state.status) {
-            case CourseListStatus.initial:
-              return Container();
-            case CourseListStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case CourseListStatus.error:
-              return ErrorHandlerWidget(
-                onTryAgain: () => ref.refresh(
-                  courseListNotifierProvider(subject),
-                ),
-                child: Text(state.failure?.toString() ??
-                    S.of(context).error_default_message),
-              );
-            case CourseListStatus.success:
-              return ListView.builder(
-                itemCount: state.courses.length,
-                itemBuilder: (context, index) {
-                  final course = state.courses[index];
-                  return ListTile(
-                    // TODO: Implement the course navigation
-                    onTap: () => GoRouter.of(context).pushCourseDetail(
-                      subject,
-                      course.title,
-                      course.courseId,
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              title: Text(
+                subjectName.capitalized(),
+              ),
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kLargeNumber,
+              ),
+              sliver: Consumer(
+                builder: (context, ref, child) {
+                  final coursesState = ref.watch(
+                    courseListNotifierProvider(subjectId),
+                  );
+                  return coursesState.maybeWhen(
+                    initialLoading: () => const SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     ),
-                    title: Text(course.title),
-                    subtitle: Text(course.subtitle),
+                    success: (courseList) {
+                      return SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final course = courseList[index];
+                            return CourseListTile(
+                              course: course,
+                            );
+                          },
+                          childCount: courseList.length,
+                        ),
+                      );
+                    },
+                    empty: () => SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: UnexpectedStateWidget(
+                        buttonMessage:
+                            S.of(context).course_list_empty_state_button,
+                        stateMessage:
+                            S.of(context).course_list_empty_state_message(
+                                  subjectName,
+                                ),
+                        onTryAgain: () => ref
+                            .read(
+                              courseListNotifierProvider(subjectId).notifier,
+                            )
+                            .getCourses(),
+                      ),
+                    ),
+                    orElse: () => SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: UnexpectedStateWidget(
+                        onTryAgain: () => ref
+                            .read(
+                              courseListNotifierProvider(subjectId).notifier,
+                            )
+                            .getCourses(),
+                      ),
+                    ),
                   );
                 },
-              );
-          }
-        },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

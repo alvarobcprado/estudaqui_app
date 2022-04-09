@@ -76,11 +76,13 @@ class MyRouteMap extends GoRouter {
                   path: 'courses/:subject',
                   name: _courseListPath,
                   pageBuilder: (context, state) {
-                    final subject = state.params['subject'];
+                    final subjectId = state.params['subject'];
+                    final subjectName = state.extra as String?;
                     return MaterialPage(
                       key: state.pageKey,
                       child: CourseListPage(
-                        subject: subject ?? '',
+                        subjectId: subjectId ?? '',
+                        subjectName: subjectName ?? '',
                       ),
                     );
                   },
@@ -114,11 +116,12 @@ extension MyPageRoutes on GoRouter {
   void pushTest() => pushNamed(_notFoundPath);
   void pushAddCourse() => pushNamed(_addCourseInfoPath);
   void pushAddModuleText() => pushNamed(_addCourseContentPath);
-  void pushCoursesOf(String subject) => pushNamed(
+  void pushCoursesOf(String subjectId, String subjectName) => pushNamed(
         _courseListPath,
         params: {
-          'subject': subject,
+          'subject': subjectId,
         },
+        extra: subjectName,
       );
   void pushCourseDetail(
     String courseSubject,
