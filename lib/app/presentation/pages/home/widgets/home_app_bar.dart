@@ -82,7 +82,7 @@ class HomeAppBar extends SliverPersistentHeaderDelegate {
               ),
               AppBar(
                 backgroundColor: Colors.transparent,
-                elevation: 0,
+                foregroundColor: colors.white,
               ),
             ],
           ),

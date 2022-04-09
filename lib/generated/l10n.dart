@@ -489,6 +489,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Desconhecido`
+  String get default_course_author {
+    return Intl.message(
+      'Desconhecido',
+      name: 'default_course_author',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ops, nenhum curso de {subject} encontrado`
+  String course_list_empty_state_message(Object subject) {
+    return Intl.message(
+      'Ops, nenhum curso de $subject encontrado',
+      name: 'course_list_empty_state_message',
+      desc: '',
+      args: [subject],
+    );
+  }
+
+  /// `Buscar novamente`
+  String get course_list_empty_state_button {
+    return Intl.message(
+      'Buscar novamente',
+      name: 'course_list_empty_state_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adicionado em {date}`
+  String course_list_date_added(Object date) {
+    return Intl.message(
+      'Adicionado em $date',
+      name: 'course_list_date_added',
+      desc: '',
+      args: [date],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

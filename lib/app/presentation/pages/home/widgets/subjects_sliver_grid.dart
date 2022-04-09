@@ -27,8 +27,10 @@ class SubjectsSliverGrid extends StatelessWidget {
           return SubjectsGridItem(
             name: subject.name,
             imageUrl: subject.bannerUrl,
-            onPressed: () =>
-                GoRouter.of(context).pushCoursesOf(subject.subjectId),
+            onPressed: () => GoRouter.of(context).pushCoursesOf(
+              subject.subjectId,
+              subject.name,
+            ),
           );
         },
         childCount: subjectList.length,
