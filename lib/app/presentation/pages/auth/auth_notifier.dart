@@ -4,7 +4,7 @@ import 'package:faeng_courses/app/domain/use_case/authentication/signin_email_pa
 import 'package:faeng_courses/app/domain/use_case/authentication/signup_email_password_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/state/auth_state.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authNotifierProvider =

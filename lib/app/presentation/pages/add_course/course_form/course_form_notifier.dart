@@ -1,9 +1,8 @@
-import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/common/providers/use_case/subject_usecase_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/app/domain/use_case/subject/get_subjects_uc.dart';
+import 'package:faeng_courses/app/domain/use_case/use_case.dart';
+import 'package:faeng_courses/core/common/providers/use_case/subject_usecase_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CourseFormNotifier extends StateNotifier<List<Subject>> {
   CourseFormNotifier({

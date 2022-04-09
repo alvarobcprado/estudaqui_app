@@ -3,7 +3,7 @@ import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_and_module_uc.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

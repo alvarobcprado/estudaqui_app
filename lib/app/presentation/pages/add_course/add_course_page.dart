@@ -5,7 +5,7 @@ import 'package:faeng_courses/app/presentation/pages/add_course/add_course_model
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/course_form/course_form.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_form.dart';
-import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/core/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

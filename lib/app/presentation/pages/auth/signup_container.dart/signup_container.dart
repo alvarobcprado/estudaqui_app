@@ -1,7 +1,7 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/common/widgets/my_button.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/widgets/signup_form_widget.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
