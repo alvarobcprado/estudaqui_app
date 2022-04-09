@@ -13,7 +13,10 @@ final getLastCoursesProvider = FutureProvider<List<Course>>(
       params: GetLatestCoursesParam(coursesNumber: 5),
     );
 
-    return eitherResult.fold((failure) => [], (courseList) => courseList);
+    return eitherResult.fold(
+      (failure) => throw Exception(),
+      (courseList) => courseList.isNotEmpty ? courseList : throw Exception(),
+    );
   },
 );
 
@@ -23,7 +26,9 @@ final getSubjectsProvider = FutureProvider<List<Subject>>(
     final eitherResult = await useCase(params: NoParams());
 
     return eitherResult.fold(
-        (failure) => throw Exception(), (subjectList) => subjectList);
+      (failure) => throw Exception(),
+      (subjectList) => subjectList.isNotEmpty ? subjectList : throw Exception(),
+    );
   },
 );
 
