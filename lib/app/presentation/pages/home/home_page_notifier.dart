@@ -6,7 +6,7 @@ import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/common/providers/use_case/subject_usecase_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final getLastCoursesProvider = FutureProvider<List<Course>>(
+final getLastCoursesProvider = FutureProvider.autoDispose<List<Course>>(
   (ref) async {
     final useCase = ref.watch(getLatestCoursesUCProvider);
     final eitherResult = await useCase(
