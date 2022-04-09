@@ -1,5 +1,5 @@
-import 'package:faeng_courses/common/general_providers.dart';
-import 'package:faeng_courses/common/providers/navigation_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:faeng_courses/core/common/providers/navigation_providers.dart';
 import 'package:faeng_courses/firebase_options.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';

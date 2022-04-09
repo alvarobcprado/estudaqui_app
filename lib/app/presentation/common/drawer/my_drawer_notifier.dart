@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_models.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/authentication/signout_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_models.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failure.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
   MyDrawerNotifier({
