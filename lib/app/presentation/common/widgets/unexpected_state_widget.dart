@@ -11,10 +11,18 @@ class UnexpectedStateWidget extends StatelessWidget {
     this.stateIcon,
     this.stateMessage,
     this.buttonMessage,
+    this.iconColor,
+    this.buttonColor,
+    this.textColor,
+    this.textButtonColor,
   }) : super(key: key);
 
   final VoidCallback? onTryAgain;
   final IconData? stateIcon;
+  final Color? iconColor;
+  final Color? buttonColor;
+  final Color? textColor;
+  final Color? textButtonColor;
   final String? stateMessage;
   final String? buttonMessage;
 
@@ -28,15 +36,19 @@ class UnexpectedStateWidget extends StatelessWidget {
         Icon(
           stateIcon ?? Icons.warning_amber,
           size: kXXLargeNumber,
+          color: iconColor,
         ),
         const SizedBox(height: kSmallNumber),
         Text(
           stateMessage ?? S.of(context).error_default_message,
+          style: TextStyle(color: textColor),
         ),
         const SizedBox(height: kSmallNumber),
         MyButton(
           onPressed: onTryAgain ?? () => GoRouter.of(context).refresh(),
           text: buttonMessage ?? S.of(context).error_default_try_again_message,
+          backgrounColor: buttonColor,
+          textColor: textButtonColor,
         ),
       ],
     );

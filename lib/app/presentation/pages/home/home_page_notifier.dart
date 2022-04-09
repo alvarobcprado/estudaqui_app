@@ -6,14 +6,17 @@ import 'package:faeng_courses/common/general_providers.dart';
 import 'package:faeng_courses/common/providers/use_case/subject_usecase_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final getLastCoursesProvider = FutureProvider<List<Course>>(
+final getLastCoursesProvider = FutureProvider.autoDispose<List<Course>>(
   (ref) async {
     final useCase = ref.watch(getLatestCoursesUCProvider);
     final eitherResult = await useCase(
       params: GetLatestCoursesParam(coursesNumber: 5),
     );
 
-    return eitherResult.fold((failure) => [], (courseList) => courseList);
+    return eitherResult.fold(
+      (failure) => throw Exception(),
+      (courseList) => courseList.isNotEmpty ? courseList : throw Exception(),
+    );
   },
 );
 
@@ -23,7 +26,9 @@ final getSubjectsProvider = FutureProvider<List<Subject>>(
     final eitherResult = await useCase(params: NoParams());
 
     return eitherResult.fold(
-        (failure) => throw Exception(), (subjectList) => subjectList);
+      (failure) => throw Exception(),
+      (subjectList) => subjectList.isNotEmpty ? subjectList : throw Exception(),
+    );
   },
 );
 
