@@ -63,56 +63,51 @@ class _LatestCoursesCarouselState extends ConsumerState<LatestCoursesCarousel> {
   @override
   Widget build(BuildContext context) {
     final colors = ref.watch(themeProvider).colors;
-    return Container(
-      color: colors.primaryColor,
-      padding: const EdgeInsets.symmetric(vertical: kSmallNumber),
-      height: 136,
-      child: Row(
-        children: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(100),
-              onTap: onTapBack,
-              child: Icon(
-                Icons.keyboard_arrow_left,
-                color: colors.secondaryVariantColor,
-                size: kXLargeNumber,
-              ),
+    return Row(
+      children: [
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(100),
+            onTap: onTapBack,
+            child: Icon(
+              Icons.keyboard_arrow_left,
+              color: colors.secondaryVariantColor,
+              size: kXLargeNumber,
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              controller: _carouselCtrl,
-              scrollDirection: Axis.horizontal,
-              itemCount: courseList.length,
-              itemBuilder: (context, index) {
-                final course = courseList[index];
-                return CoursesCarouselItem(
-                  courseName: course.title,
-                  onPressed: () => GoRouter.of(context).pushCourseDetail(
-                    course.subject,
-                    course.title,
-                    course.courseId,
-                  ),
-                );
-              },
+        ),
+        Expanded(
+          child: ListView.builder(
+            controller: _carouselCtrl,
+            scrollDirection: Axis.horizontal,
+            itemCount: courseList.length,
+            itemBuilder: (context, index) {
+              final course = courseList[index];
+              return CoursesCarouselItem(
+                courseName: course.title,
+                onPressed: () => GoRouter.of(context).pushCourseDetail(
+                  course.subject,
+                  course.title,
+                  course.courseId,
+                ),
+              );
+            },
+          ),
+        ),
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(100),
+            onTap: onTapNext,
+            child: Icon(
+              Icons.keyboard_arrow_right,
+              color: colors.secondaryVariantColor,
+              size: kXLargeNumber,
             ),
           ),
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(100),
-              onTap: onTapNext,
-              child: Icon(
-                Icons.keyboard_arrow_right,
-                color: colors.secondaryVariantColor,
-                size: kXLargeNumber,
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
