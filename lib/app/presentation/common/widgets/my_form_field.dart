@@ -12,7 +12,7 @@ class MyFormField extends ConsumerWidget {
     required this.labelText,
     required this.fieldName,
     required this.validator,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.backgroundColor,
     this.labelColor,
     this.hasBackground,
@@ -22,7 +22,7 @@ class MyFormField extends ConsumerWidget {
   final String labelText;
   final String fieldName;
   final MyFormValidator validator;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final Color? backgroundColor;
   final Color? labelColor;
   final bool? hasBackground;
@@ -33,14 +33,16 @@ class MyFormField extends ConsumerWidget {
     final _colors = ref.watch(themeProvider).colors;
     return FormBuilderTextField(
       name: fieldName,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: shouldObfuscateField!,
       textInputAction: TextInputAction.next,
       style: TextStyle(color: labelColor ?? _colors.authFormTextColor),
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: kMediumNumber),
+        contentPadding: const EdgeInsets.all(kMediumNumber),
         labelStyle: TextStyle(
           color: labelColor?.withOpacity(0.75) ??
               _colors.authFormTextColor.withOpacity(0.75),
+          fontWeight: FontWeight.w500,
         ),
         border: const OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -49,10 +51,12 @@ class MyFormField extends ConsumerWidget {
           ),
         ),
         labelText: labelText,
-        prefixIcon: Icon(
-          prefixIcon,
-          color: labelColor ?? _colors.authFormTextColor,
-        ),
+        prefixIcon: prefixIcon != null
+            ? Icon(
+                prefixIcon,
+                color: labelColor ?? _colors.authFormTextColor,
+              )
+            : null,
         fillColor: backgroundColor ?? _colors.authFormBackground,
         filled: hasBackground ?? true,
       ),
