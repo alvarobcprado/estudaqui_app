@@ -10,20 +10,23 @@ class MyButton extends ConsumerWidget {
     required this.text,
     this.backgrounColor,
     this.textColor,
-    this.hasFixedSize = true,
+    this.hasFixedHeight = true,
+    this.hasExpandedWidth = false,
   }) : super(key: key);
 
   final VoidCallback onPressed;
   final String text;
   final Color? backgrounColor;
   final Color? textColor;
-  final bool? hasFixedSize;
+  final bool? hasFixedHeight;
+  final bool? hasExpandedWidth;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(themeProvider).colors;
     return SizedBox(
-      height: hasFixedSize! ? kXXLargeNumber : null,
+      height: hasFixedHeight! ? kXXLargeNumber : null,
+      width: hasExpandedWidth! ? double.infinity : null,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: backgrounColor ?? colors.secondaryVariantColor,
