@@ -19,7 +19,7 @@ abstract class DialogHandler {
               children: [
                 const CircularProgressIndicator(),
                 const SizedBox(height: kSmallNumber),
-                Text(S.of(ctx).default_loading_dialog_text),
+                Text(loadingText ?? S.of(ctx).default_loading_dialog_text),
               ],
             ),
           ),
