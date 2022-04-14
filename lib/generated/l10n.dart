@@ -340,6 +340,16 @@ class S {
     );
   }
 
+  /// `Salvando curso...`
+  String get add_course_saving_dialog {
+    return Intl.message(
+      'Salvando curso...',
+      name: 'add_course_saving_dialog',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Conteúdo do curso`
   String get add_module_text_dialog_title {
     return Intl.message(
