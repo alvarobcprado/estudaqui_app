@@ -17,7 +17,7 @@ class SaveCourseButton extends StatelessWidget {
         child: MyButton(
           hasExpandedWidth: true,
           onPressed: onPressed,
-          text: S.of(context).save_course_button,
+          text: S.of(context).add_course_save_button,
         ),
       ),
     );
