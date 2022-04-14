@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adicionar curso"),
         "add_course_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar curso"),
+        "add_course_saving_dialog":
+            MessageLookupByLibrary.simpleMessage("Salvando curso..."),
         "add_module_text_add_button":
             MessageLookupByLibrary.simpleMessage("Adicionar módulo"),
         "add_module_text_clear_button":
