@@ -4,7 +4,7 @@ import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_author_row.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_card_image.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_info_column.dart';
-import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/core/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

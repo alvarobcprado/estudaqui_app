@@ -1,13 +1,12 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_form_notifier.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class ModuleTextDialog extends StatelessWidget {
-  const ModuleTextDialog({Key? key}) : super(key: key);
+class AddCourseContentDialog extends StatelessWidget {
+  const AddCourseContentDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class ModuleTextDialog extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
-                      initialValue: ref.watch(moduleTextProvider),
+                      initialValue: ref.watch(courseContentProvider),
                       textAlignVertical: TextAlignVertical.top,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -52,7 +51,7 @@ class ModuleTextDialog extends StatelessWidget {
                         ),
                       ),
                       onChanged: (value) => ref
-                          .read(moduleTextProvider.notifier)
+                          .read(courseContentProvider.notifier)
                           .update((state) => state = value),
                       maxLines: null,
                       expands: true,
@@ -64,7 +63,7 @@ class ModuleTextDialog extends StatelessWidget {
                           .read(formBuilderKeyProvider)
                           .currentState
                           ?.fields['courseModuleTextField']
-                          ?.didChange(ref.read(moduleTextProvider));
+                          ?.didChange(ref.read(courseContentProvider));
 
                       Navigator.of(context).pop();
                     },

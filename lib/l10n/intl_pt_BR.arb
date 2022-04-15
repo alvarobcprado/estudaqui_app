@@ -1,5 +1,6 @@
 {
     "project_title": "Flutter Boilerplate",
+
     "auth_form_title":"FaEng Cursos",
     "auth_form_name_field_label":"seu nome",
     "auth_form_email_field_label":"seu@email.com",
@@ -9,6 +10,7 @@
     "auth_form_select_signin":"entrar",
     "auth_form_select_signup":"cadastrar",
     "auth_form_forgot_password":"esqueceu sua senha?",
+
     "drawer_header_unauthenticated_title": "FaEng Cursos",
     "drawer_header_authenticated_title": "Olá, {name}",
     "drawer_options_home": "Tela inicial",
@@ -16,36 +18,47 @@
     "drawer_options_add_course": "Adicionar curso",
     "drawer_options_signin": "Entrar",
     "drawer_options_signout": "Sair",
+
     "subject_list_title": "Matérias",
-    "home_page_welcome_title": "Bem vindo tal tal tal",
-    "home_page_welcome_message": "Uma grande mensagem",
+
     "error_default_message": "Ops, algo deu errado",
     "error_default_try_again_message": "Tentar novamente",
-    "add_course_page_title": "Adicionar Curso",
-    "add_course_form_name_field": "Nome do curso",
-    "add_course_form_description_field": "Descrição",
-    "add_course_form_banner_field": "Imagem/Banner URL",
-    "add_course_form_subject_field": "Matérias",
-    "add_course_modules_title": "Módulos: {quantity}",
-    "add_course_module_name_field": "Nome do módulo",
-    "add_course_module_text_field": "Texto",
-    "add_module_text_dialog_title": "Conteúdo do módulo",
+
+    "add_course_page_title": "Adicionar curso",
+    "add_course_form_name_field": "nome do curso*",
+    "add_course_form_description_field": "descrição*",
+    "add_course_form_banner_field": "url do banner / imagem",
+    "add_course_form_subject_field": "matérias*",
+    "add_course_content_button": "Adicionar conteúdo",
+    "add_course_content_edit_button": "Editar conteúdo",
+    "add_course_content_error_button": "Corrigir conteúdo",
+    "add_course_save_button":"Salvar curso",
+    "add_course_saving_dialog":"Salvando curso...",
+
+    "add_module_text_dialog_title": "Conteúdo do curso",
     "add_module_text_add_button": "Adicionar módulo",
     "add_module_text_edit_button": "Editar módulo",
     "add_module_text_save_button": "Salvar módulo",
     "add_module_text_clear_button": "Limpar",
+
     "default_error_dialog_title": "Algo deu errado",
     "default_error_dialog_body": "Por favor, tente novamente mais tarde",
     "default_error_dialog_button": "Fechar",
     "default_loading_dialog_text": "Carregando...",
+
     "home_subjects_section":"Matérias",
     "home_latest_courses_section":"Últimos cursos adicionados",
     "home_page_title":"FaEng Cursos",
     "home_welcome_message":"Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.",
     "home_greeting_user":"Olá ",
+
     "default_course_author": "Desconhecido",
+
     "course_list_empty_state_message": "Ops, nenhum curso de {subject} encontrado",
     "course_list_empty_state_button": "Buscar novamente",
-    "course_list_date_added": "Adicionado em {date}"
+    "course_list_date_added": "Adicionado em {date}",
+    
+    "form_error_text_required_field": "Este campo não pode ser vazio",
+    "form_error_text_min_length_field":"Este campo precisar ter ao menos {lenght} caracteres"
 
 }

@@ -2,8 +2,8 @@ import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/get_latest_courses_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/common/general_providers.dart';
-import 'package:faeng_courses/common/providers/use_case/subject_usecase_provider.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:faeng_courses/core/common/providers/use_case/subject_usecase_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final getLastCoursesProvider = FutureProvider.autoDispose<List<Course>>(

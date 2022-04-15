@@ -7,8 +7,8 @@ import 'package:faeng_courses/app/presentation/pages/auth/login_container.dart/l
 import 'package:faeng_courses/app/presentation/pages/auth/signup_container.dart/signup_container.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/state/auth_state.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/widgets/form_select_widget.dart';
-import 'package:faeng_courses/common/general_providers.dart';
-import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:faeng_courses/core/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

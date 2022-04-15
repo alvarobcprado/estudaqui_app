@@ -230,26 +230,6 @@ class S {
     );
   }
 
-  /// `Bem vindo tal tal tal`
-  String get home_page_welcome_title {
-    return Intl.message(
-      'Bem vindo tal tal tal',
-      name: 'home_page_welcome_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Uma grande mensagem`
-  String get home_page_welcome_message {
-    return Intl.message(
-      'Uma grande mensagem',
-      name: 'home_page_welcome_message',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Ops, algo deu errado`
   String get error_default_message {
     return Intl.message(
@@ -270,90 +250,110 @@ class S {
     );
   }
 
-  /// `Adicionar Curso`
+  /// `Adicionar curso`
   String get add_course_page_title {
     return Intl.message(
-      'Adicionar Curso',
+      'Adicionar curso',
       name: 'add_course_page_title',
       desc: '',
       args: [],
     );
   }
 
-  /// `Nome do curso`
+  /// `nome do curso*`
   String get add_course_form_name_field {
     return Intl.message(
-      'Nome do curso',
+      'nome do curso*',
       name: 'add_course_form_name_field',
       desc: '',
       args: [],
     );
   }
 
-  /// `Descrição`
+  /// `descrição*`
   String get add_course_form_description_field {
     return Intl.message(
-      'Descrição',
+      'descrição*',
       name: 'add_course_form_description_field',
       desc: '',
       args: [],
     );
   }
 
-  /// `Imagem/Banner URL`
+  /// `url do banner / imagem`
   String get add_course_form_banner_field {
     return Intl.message(
-      'Imagem/Banner URL',
+      'url do banner / imagem',
       name: 'add_course_form_banner_field',
       desc: '',
       args: [],
     );
   }
 
-  /// `Matérias`
+  /// `matérias*`
   String get add_course_form_subject_field {
     return Intl.message(
-      'Matérias',
+      'matérias*',
       name: 'add_course_form_subject_field',
       desc: '',
       args: [],
     );
   }
 
-  /// `Módulos: {quantity}`
-  String add_course_modules_title(Object quantity) {
+  /// `Adicionar conteúdo`
+  String get add_course_content_button {
     return Intl.message(
-      'Módulos: $quantity',
-      name: 'add_course_modules_title',
-      desc: '',
-      args: [quantity],
-    );
-  }
-
-  /// `Nome do módulo`
-  String get add_course_module_name_field {
-    return Intl.message(
-      'Nome do módulo',
-      name: 'add_course_module_name_field',
+      'Adicionar conteúdo',
+      name: 'add_course_content_button',
       desc: '',
       args: [],
     );
   }
 
-  /// `Texto`
-  String get add_course_module_text_field {
+  /// `Editar conteúdo`
+  String get add_course_content_edit_button {
     return Intl.message(
-      'Texto',
-      name: 'add_course_module_text_field',
+      'Editar conteúdo',
+      name: 'add_course_content_edit_button',
       desc: '',
       args: [],
     );
   }
 
-  /// `Conteúdo do módulo`
+  /// `Corrigir conteúdo`
+  String get add_course_content_error_button {
+    return Intl.message(
+      'Corrigir conteúdo',
+      name: 'add_course_content_error_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salvar curso`
+  String get add_course_save_button {
+    return Intl.message(
+      'Salvar curso',
+      name: 'add_course_save_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salvando curso...`
+  String get add_course_saving_dialog {
+    return Intl.message(
+      'Salvando curso...',
+      name: 'add_course_saving_dialog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Conteúdo do curso`
   String get add_module_text_dialog_title {
     return Intl.message(
-      'Conteúdo do módulo',
+      'Conteúdo do curso',
       name: 'add_module_text_dialog_title',
       desc: '',
       args: [],
@@ -527,6 +527,26 @@ class S {
       name: 'course_list_date_added',
       desc: '',
       args: [date],
+    );
+  }
+
+  /// `Este campo não pode ser vazio`
+  String get form_error_text_required_field {
+    return Intl.message(
+      'Este campo não pode ser vazio',
+      name: 'form_error_text_required_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Este campo precisar ter ao menos {lenght} caracteres`
+  String form_error_text_min_length_field(Object lenght) {
+    return Intl.message(
+      'Este campo precisar ter ao menos $lenght caracteres',
+      name: 'form_error_text_min_length_field',
+      desc: '',
+      args: [lenght],
     );
   }
 }

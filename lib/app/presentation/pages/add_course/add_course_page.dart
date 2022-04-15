@@ -1,85 +1,105 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/loading_widget.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_models.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/dialogs.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/course_form/course_form.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_form.dart';
-import 'package:faeng_courses/common/my_route_map.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/state/add_course_state.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/widgets/course_content_field_button.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/widgets/course_info_fields.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/widgets/save_course_button.dart';
+import 'package:faeng_courses/core/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class AddCoursePage extends StatefulWidget {
+class AddCoursePage extends ConsumerStatefulWidget {
   const AddCoursePage({Key? key}) : super(key: key);
 
   @override
-  State<AddCoursePage> createState() => _AddCoursePageState();
+  ConsumerState<AddCoursePage> createState() => _AddCoursePageState();
 }
 
-class _AddCoursePageState extends State<AddCoursePage> {
+class _AddCoursePageState extends ConsumerState<AddCoursePage> {
   bool isLoading = false;
+  late final GlobalKey<FormBuilderState> _formKey;
+
+  @override
+  void initState() {
+    _formKey = GlobalKey<FormBuilderState>();
+    super.initState();
+  }
+
+  void onAddCourse() {
+    GoRouter.of(context).replaceWithHome();
+  }
+
+  void onAddCourseError(String? title, String? reason) async {
+    await DialogHandler.showAlertDialog(
+      context,
+      title: title,
+      body: reason,
+    );
+  }
+
+  void onAddingCourse() async {
+    await DialogHandler.showLoadingDialog(
+      context,
+      loadingText: S.of(context).add_course_saving_dialog,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).add_course_page_title),
-      ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          final _formKey = ref.watch(formBuilderKeyProvider);
-          return ActionHandler<AddCourseState>(
-            actionProvider: addCourseNotifierProvider,
-            onReceived: (_, newState) {
-              switch (newState.status) {
-                case AddCourseStatus.loading:
-                  setState(() => isLoading = true);
-                  break;
-                case AddCourseStatus.error:
-                  // TODO: Add error handler
-                  setState(() => isLoading = false);
-                  break;
-                case AddCourseStatus.success:
-                  setState(() => isLoading = false);
-                  GoRouter.of(context).replaceWithHome();
-                  break;
-              }
-            },
-            child: LoadingWidget(
-              isLoading: isLoading,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: kSmallPadding,
-                    horizontal: kMediumPadding,
-                  ),
-                  child: FormBuilder(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        const CourseForm(),
-                        const SizedBox(height: kMediumNumber),
-                        const ModuleForm(),
-                        const SizedBox(height: kMediumNumber),
-                        TextButton(
-                          onPressed: () {
-                            ref
-                                .read(addCourseNotifierProvider.notifier)
-                                .validateCurrentFormAndAddCourse(_formKey);
-                          },
-                          child: const Text('Criar curso'),
-                        ),
-                      ],
-                    ),
+      resizeToAvoidBottomInset: true,
+      body: ActionHandler<AddCourseState>(
+        actionProvider: addCourseNotifierProvider,
+        onReceived: (oldState, newState) {
+          oldState?.whenOrNull(
+            loading: () => Navigator.of(context).pop(),
+          );
+          newState.whenOrNull(
+            loading: onAddingCourse,
+            error: onAddCourseError,
+            success: onAddCourse,
+          );
+        },
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              title: Text(S.of(context).add_course_page_title),
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kLargeNumber,
+                  vertical: kMediumNumber,
+                ),
+                child: FormBuilder(
+                  autoFocusOnValidationFailure: true,
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      const CourseInfoFields(),
+                      const CourseContentFieldButton(),
+                      const SizedBox(
+                        height: kMediumNumber,
+                      ),
+                      SaveCourseButton(
+                        onPressed: () => ref
+                            .read(addCourseNotifierProvider.notifier)
+                            .validateCurrentFormAndAddCourse(_formKey),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

@@ -20,37 +20,43 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt_BR';
 
-  static String m0(quantity) => "Módulos: ${quantity}";
+  static String m0(date) => "Adicionado em ${date}";
 
-  static String m1(date) => "Adicionado em ${date}";
+  static String m1(subject) => "Ops, nenhum curso de ${subject} encontrado";
 
-  static String m2(subject) => "Ops, nenhum curso de ${subject} encontrado";
+  static String m2(name) => "Olá, ${name}";
 
-  static String m3(name) => "Olá, ${name}";
+  static String m3(lenght) =>
+      "Este campo precisar ter ao menos ${lenght} caracteres";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_course_content_button":
+            MessageLookupByLibrary.simpleMessage("Adicionar conteúdo"),
+        "add_course_content_edit_button":
+            MessageLookupByLibrary.simpleMessage("Editar conteúdo"),
+        "add_course_content_error_button":
+            MessageLookupByLibrary.simpleMessage("Corrigir conteúdo"),
         "add_course_form_banner_field":
-            MessageLookupByLibrary.simpleMessage("Imagem/Banner URL"),
+            MessageLookupByLibrary.simpleMessage("url do banner / imagem"),
         "add_course_form_description_field":
-            MessageLookupByLibrary.simpleMessage("Descrição"),
+            MessageLookupByLibrary.simpleMessage("descrição*"),
         "add_course_form_name_field":
-            MessageLookupByLibrary.simpleMessage("Nome do curso"),
+            MessageLookupByLibrary.simpleMessage("nome do curso*"),
         "add_course_form_subject_field":
-            MessageLookupByLibrary.simpleMessage("Matérias"),
-        "add_course_module_name_field":
-            MessageLookupByLibrary.simpleMessage("Nome do módulo"),
-        "add_course_module_text_field":
-            MessageLookupByLibrary.simpleMessage("Texto"),
-        "add_course_modules_title": m0,
+            MessageLookupByLibrary.simpleMessage("matérias*"),
         "add_course_page_title":
-            MessageLookupByLibrary.simpleMessage("Adicionar Curso"),
+            MessageLookupByLibrary.simpleMessage("Adicionar curso"),
+        "add_course_save_button":
+            MessageLookupByLibrary.simpleMessage("Salvar curso"),
+        "add_course_saving_dialog":
+            MessageLookupByLibrary.simpleMessage("Salvando curso..."),
         "add_module_text_add_button":
             MessageLookupByLibrary.simpleMessage("Adicionar módulo"),
         "add_module_text_clear_button":
             MessageLookupByLibrary.simpleMessage("Limpar"),
         "add_module_text_dialog_title":
-            MessageLookupByLibrary.simpleMessage("Conteúdo do módulo"),
+            MessageLookupByLibrary.simpleMessage("Conteúdo do curso"),
         "add_module_text_edit_button":
             MessageLookupByLibrary.simpleMessage("Editar módulo"),
         "add_module_text_save_button":
@@ -72,10 +78,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_form_signup_button":
             MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "auth_form_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
-        "course_list_date_added": m1,
+        "course_list_date_added": m0,
         "course_list_empty_state_button":
             MessageLookupByLibrary.simpleMessage("Buscar novamente"),
-        "course_list_empty_state_message": m2,
+        "course_list_empty_state_message": m1,
         "default_course_author":
             MessageLookupByLibrary.simpleMessage("Desconhecido"),
         "default_error_dialog_body": MessageLookupByLibrary.simpleMessage(
@@ -86,7 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Algo deu errado"),
         "default_loading_dialog_text":
             MessageLookupByLibrary.simpleMessage("Carregando..."),
-        "drawer_header_authenticated_title": m3,
+        "drawer_header_authenticated_title": m2,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_add_course":
@@ -101,14 +107,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":
             MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "form_error_text_min_length_field": m3,
+        "form_error_text_required_field": MessageLookupByLibrary.simpleMessage(
+            "Este campo não pode ser vazio"),
         "home_greeting_user": MessageLookupByLibrary.simpleMessage("Olá "),
         "home_latest_courses_section":
             MessageLookupByLibrary.simpleMessage("Últimos cursos adicionados"),
         "home_page_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
-        "home_page_welcome_message":
-            MessageLookupByLibrary.simpleMessage("Uma grande mensagem"),
-        "home_page_welcome_title":
-            MessageLookupByLibrary.simpleMessage("Bem vindo tal tal tal"),
         "home_subjects_section":
             MessageLookupByLibrary.simpleMessage("Matérias"),
         "home_welcome_message": MessageLookupByLibrary.simpleMessage(

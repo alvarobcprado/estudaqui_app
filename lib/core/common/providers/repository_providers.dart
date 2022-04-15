@@ -3,7 +3,7 @@ import 'package:faeng_courses/app/data/repository/courses_imp_repository.dart';
 import 'package:faeng_courses/app/data/repository/subjects_imp_repository.dart';
 import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
 import 'package:faeng_courses/app/domain/data_repository/subjects_data_repository.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

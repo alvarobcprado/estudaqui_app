@@ -1,5 +1,5 @@
+import 'package:faeng_courses/app/presentation/pages/add_course/add_course_content/add_course_content_page.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_page.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/module_form/module_text_dialog.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/auth_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
@@ -67,7 +67,7 @@ class MyRouteMap extends GoRouter {
                       name: _addCourseContentPath,
                       pageBuilder: (context, state) => MaterialPage(
                         key: state.pageKey,
-                        child: const ModuleTextDialog(),
+                        child: const AddCourseContentDialog(),
                       ),
                     ),
                   ],
@@ -115,7 +115,7 @@ extension MyPageRoutes on GoRouter {
   void pushHome() => pushNamed(_homePath);
   void pushTest() => pushNamed(_notFoundPath);
   void pushAddCourse() => pushNamed(_addCourseInfoPath);
-  void pushAddModuleText() => pushNamed(_addCourseContentPath);
+  void pushAddCourseContent() => pushNamed(_addCourseContentPath);
   void pushCoursesOf(String subjectId, String subjectName) => pushNamed(
         _courseListPath,
         params: {

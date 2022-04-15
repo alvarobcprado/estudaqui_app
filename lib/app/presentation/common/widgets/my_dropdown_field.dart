@@ -1,47 +1,51 @@
+import 'package:faeng_courses/app/domain/entity/subject.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:faeng_courses/core/common/providers/theme_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-typedef MyFormValidator = String? Function(String?)?;
+typedef MyDropdownValidator = String? Function(dynamic)?;
 
-class MyFormField extends ConsumerWidget {
-  const MyFormField({
+class MyDropdownField extends ConsumerWidget {
+  const MyDropdownField({
     Key? key,
     required this.labelText,
     required this.fieldName,
     required this.validator,
+    required this.items,
     this.prefixIcon,
     this.backgroundColor,
     this.labelColor,
     this.hasBackground,
     this.shouldObfuscateField = false,
+    required this.subjectList,
   }) : super(key: key);
 
   final String labelText;
   final String fieldName;
-  final MyFormValidator validator;
+  final MyDropdownValidator validator;
+  final List<DropdownMenuItem> items;
   final IconData? prefixIcon;
   final Color? backgroundColor;
   final Color? labelColor;
   final bool? hasBackground;
   final bool? shouldObfuscateField;
+  final List<Subject> subjectList;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _colors = ref.watch(themeProvider).colors;
-    return FormBuilderTextField(
-      name: fieldName,
+    final colors = ref.watch(themeProvider).colors;
+    return FormBuilderDropdown(
+      validator: validator,
+      autofocus: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      obscureText: shouldObfuscateField!,
-      textInputAction: TextInputAction.next,
-      style: TextStyle(color: labelColor ?? _colors.authFormTextColor),
+      name: fieldName,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(kMediumNumber),
+        contentPadding: const EdgeInsets.symmetric(horizontal: kMediumNumber),
         labelStyle: TextStyle(
           color: labelColor?.withOpacity(0.75) ??
-              _colors.authFormTextColor.withOpacity(0.75),
+              colors.authFormTextColor.withOpacity(0.75),
           fontWeight: FontWeight.w500,
         ),
         border: const OutlineInputBorder(
@@ -54,13 +58,14 @@ class MyFormField extends ConsumerWidget {
         prefixIcon: prefixIcon != null
             ? Icon(
                 prefixIcon,
-                color: labelColor ?? _colors.authFormTextColor,
+                color: labelColor ?? colors.authFormTextColor,
               )
             : null,
-        fillColor: backgroundColor ?? _colors.authFormBackground,
+        fillColor: backgroundColor ?? colors.authFormBackground,
         filled: hasBackground ?? true,
       ),
-      validator: validator,
+      allowClear: true,
+      items: items,
     );
   }
 }

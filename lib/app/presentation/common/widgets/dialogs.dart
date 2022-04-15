@@ -1,5 +1,5 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/common/general_providers.dart';
+import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +19,7 @@ abstract class DialogHandler {
               children: [
                 const CircularProgressIndicator(),
                 const SizedBox(height: kSmallNumber),
-                Text(S.of(ctx).default_loading_dialog_text),
+                Text(loadingText ?? S.of(ctx).default_loading_dialog_text),
               ],
             ),
           ),
