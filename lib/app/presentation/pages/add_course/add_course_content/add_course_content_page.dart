@@ -3,53 +3,58 @@ import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notif
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-class AddCourseContentDialog extends StatelessWidget {
+class AddCourseContentDialog extends ConsumerWidget {
   const AddCourseContentDialog({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Consumer(
-          builder: (context, ref, child) {
-            return Padding(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: IconButton(
+              onPressed: () {
+                ref
+                    .read(formBuilderKeyProvider)
+                    .currentState
+                    ?.fields['courseModuleTextField']
+                    ?.didChange(
+                      ref.read(courseContentProvider),
+                    );
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.close),
+            ),
+            floating: true,
+            title: Text(S.of(context).add_course_content_page_title),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.save),
+                onPressed: () {
+                  ref
+                      .read(formBuilderKeyProvider)
+                      .currentState
+                      ?.fields['courseModuleTextField']
+                      ?.didChange(
+                        ref.read(courseContentProvider),
+                      );
+
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
               padding: const EdgeInsets.all(kSmallPadding),
               child: Column(
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              S.of(context).add_module_text_dialog_title,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          alignment: Alignment.centerRight,
-                          onPressed: () => GoRouter.of(context).pop(),
-                          icon: const Icon(Icons.close),
-                        ),
-                      ],
-                    ),
-                  ),
                   Expanded(
                     child: TextFormField(
                       initialValue: ref.watch(courseContentProvider),
                       textAlignVertical: TextAlignVertical.top,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
-                      ),
                       onChanged: (value) => ref
                           .read(courseContentProvider.notifier)
                           .update((state) => state = value),
@@ -57,23 +62,11 @@ class AddCourseContentDialog extends StatelessWidget {
                       expands: true,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      ref
-                          .read(formBuilderKeyProvider)
-                          .currentState
-                          ?.fields['courseModuleTextField']
-                          ?.didChange(ref.read(courseContentProvider));
-
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(S.of(context).add_module_text_save_button),
-                  ),
                 ],
               ),
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
