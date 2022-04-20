@@ -350,6 +350,26 @@ class S {
     );
   }
 
+  /// `Adicionar conteúdo`
+  String get add_course_content_page_title {
+    return Intl.message(
+      'Adicionar conteúdo',
+      name: 'add_course_content_page_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insira o conteúdo do seu curso aqui.`
+  String get add_course_content_editor_hint {
+    return Intl.message(
+      'Insira o conteúdo do seu curso aqui.',
+      name: 'add_course_content_editor_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Conteúdo do curso`
   String get add_module_text_dialog_title {
     return Intl.message(

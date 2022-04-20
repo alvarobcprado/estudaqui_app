@@ -35,6 +35,9 @@
     "add_course_save_button":"Salvar curso",
     "add_course_saving_dialog":"Salvando curso...",
 
+    "add_course_content_page_title":"Adicionar conteúdo",
+    "add_course_content_editor_hint":"Insira o conteúdo do seu curso aqui.",
+
     "add_module_text_dialog_title": "Conteúdo do curso",
     "add_module_text_add_button": "Adicionar módulo",
     "add_module_text_edit_button": "Editar módulo",
