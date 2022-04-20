@@ -35,8 +35,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adicionar conteúdo"),
         "add_course_content_edit_button":
             MessageLookupByLibrary.simpleMessage("Editar conteúdo"),
+        "add_course_content_editor_hint": MessageLookupByLibrary.simpleMessage(
+            "Insira o conteúdo do seu curso aqui."),
         "add_course_content_error_button":
             MessageLookupByLibrary.simpleMessage("Corrigir conteúdo"),
+        "add_course_content_page_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar conteúdo"),
         "add_course_form_banner_field":
             MessageLookupByLibrary.simpleMessage("url do banner / imagem"),
         "add_course_form_description_field":
