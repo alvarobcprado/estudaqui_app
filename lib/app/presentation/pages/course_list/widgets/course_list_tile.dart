@@ -43,7 +43,7 @@ class CourseListTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CourseAuthorRow(authorName: course.creatorId),
+                  CourseAuthorRow(authorName: course.creatorName),
                   CourseInfoColumn(
                     courseName: course.title,
                     courseDescription: course.subtitle,
