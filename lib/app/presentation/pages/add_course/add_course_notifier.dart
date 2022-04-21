@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
 import 'package:faeng_courses/app/domain/entity/subject.dart';
+import 'package:faeng_courses/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/courses/add_course_and_module_uc.dart';
 import 'package:faeng_courses/app/domain/use_case/use_case.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/models/add_course_form_model.dart';
@@ -9,6 +10,7 @@ import 'package:faeng_courses/app/presentation/pages/add_course/state/add_course
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/common/providers/use_case/subject_usecase_provider.dart';
 import 'package:faeng_courses/core/error/failure.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,8 +19,10 @@ final addCourseNotifierProvider =
     StateNotifierProvider<AddCourseNotifier, AddCourseState>(
   (ref) {
     final addCourseAndModuleUC = ref.watch(addCourseAndModuleUCProvider);
+    final getCurrentUserUC = ref.watch(getCurrentUserUCProvider);
     return AddCourseNotifier(
       addCourseAndModuleUC: addCourseAndModuleUC,
+      getCurrentUserUC: getCurrentUserUC,
     );
   },
 );
@@ -58,14 +62,29 @@ final courseContentProvider = StateProvider.autoDispose<String?>(
 class AddCourseNotifier extends StateNotifier<AddCourseState> {
   AddCourseNotifier({
     required AddCourseAndModuleUC addCourseAndModuleUC,
+    required GetCurrentUserUC getCurrentUserUC,
   })  : _addCourseAndModuleUC = addCourseAndModuleUC,
+        _getCurrentUserUC = getCurrentUserUC,
         super(const AddCourseState.initial());
 
   final AddCourseAndModuleUC _addCourseAndModuleUC;
+  final GetCurrentUserUC _getCurrentUserUC;
 
   bool _validateCurrentForm(GlobalKey<FormBuilderState> formKey) {
     final formSaveResult = formKey.currentState?.saveAndValidate();
     return formSaveResult != null && formSaveResult;
+  }
+
+  Future<User?> _getUser() async {
+    final eitherCurrentUser = await _getCurrentUserUC(params: NoParams());
+
+    final currentUser = eitherCurrentUser.fold(
+      (l) => null,
+      (user) {
+        return user.isAnonymous ? null : user;
+      },
+    );
+    return currentUser;
   }
 
   Future<void> validateCurrentFormAndAddCourse(
@@ -78,10 +97,12 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
       final formValue = formKey.currentState!.value;
 
       final courseFormInfos = AddCourseFormModel.fromJson(formValue);
+      final user = await _getUser();
 
       final courseToAdd = Course(
         courseId: '',
-        creatorId: '',
+        creatorId: user?.uid ?? '',
+        creatorName: user?.displayName ?? '',
         subject: courseFormInfos.courseSubject,
         title: courseFormInfos.courseName,
         subtitle: courseFormInfos.courseDescription,
