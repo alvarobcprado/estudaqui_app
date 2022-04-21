@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
+import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
 import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
 import 'package:faeng_courses/app/data/remote/model/course/course_module_rm.dart';
 import 'package:faeng_courses/app/data/remote/model/course/course_rm.dart';
 import 'package:faeng_courses/app/data/repository/courses_imp_repository.dart';
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/domain/entity/course_module.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
 
 import 'courses_imp_repository_test.mocks.dart';
 
@@ -42,6 +42,7 @@ void main() {
           Course(
             courseId: courseIdTest,
             creatorId: '',
+            creatorName: '',
             subject: 'portuguese',
             title: 'Lorem Ipsum',
             subtitle: 'Lorem Ipsum subtitle',
@@ -55,6 +56,7 @@ void main() {
           Course(
             courseId: courseIdTest2,
             creatorId: '',
+            creatorName: '',
             subject: 'math',
             title: 'Math Ipsum',
             subtitle: 'Math Ipsum subtitle',
@@ -217,6 +219,7 @@ void main() {
           final fakeCourse = Course(
             courseId: fakeId,
             creatorId: '',
+            creatorName: '',
             subject: 'portuguese',
             title: 'Fake course',
             subtitle: 'Fake course subtitle',
