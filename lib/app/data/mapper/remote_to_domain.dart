@@ -10,6 +10,7 @@ extension CourseRMToDM on CourseRM {
     return Course(
       courseId: courseId,
       creatorId: creatorId,
+      creatorName: creatorName,
       subject: subject,
       title: title,
       subtitle: subtitle,
