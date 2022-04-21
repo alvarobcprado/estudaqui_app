@@ -10,6 +10,7 @@ extension CourseDMToRM on Course {
     return CourseRM(
       courseId: courseId,
       creatorId: creatorId,
+      creatorName: creatorName,
       subject: subject,
       title: title,
       subtitle: subtitle,
@@ -23,6 +24,7 @@ extension CourseDMToRM on Course {
   Course copyWith({
     String? courseId,
     String? creatorId,
+    String? creatorName,
     String? subject,
     String? title,
     String? subtitle,
@@ -34,6 +36,7 @@ extension CourseDMToRM on Course {
     return Course(
       courseId: courseId ?? this.courseId,
       creatorId: creatorId ?? this.creatorId,
+      creatorName: creatorName ?? this.creatorName,
       subject: subject ?? this.subject,
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,

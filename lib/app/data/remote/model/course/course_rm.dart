@@ -8,6 +8,7 @@ class CourseRM {
   CourseRM({
     required this.courseId,
     required this.creatorId,
+    required this.creatorName,
     required this.subject,
     required this.title,
     required this.subtitle,
@@ -19,6 +20,7 @@ class CourseRM {
 
   final String courseId;
   final String creatorId;
+  final String creatorName;
   final String subject;
   final String title;
   final String subtitle;

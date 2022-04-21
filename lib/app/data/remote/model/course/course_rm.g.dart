@@ -9,6 +9,7 @@ part of 'course_rm.dart';
 CourseRM _$CourseRMFromJson(Map<String, dynamic> json) => CourseRM(
       courseId: json['courseId'] as String,
       creatorId: json['creatorId'] as String,
+      creatorName: json['creatorName'] as String,
       subject: json['subject'] as String,
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
@@ -21,6 +22,7 @@ CourseRM _$CourseRMFromJson(Map<String, dynamic> json) => CourseRM(
 Map<String, dynamic> _$CourseRMToJson(CourseRM instance) => <String, dynamic>{
       'courseId': instance.courseId,
       'creatorId': instance.creatorId,
+      'creatorName': instance.creatorName,
       'subject': instance.subject,
       'title': instance.title,
       'subtitle': instance.subtitle,

@@ -42,6 +42,10 @@ class MockCourse extends _i1.Mock implements _i3.Course {
       (super.noSuchMethod(Invocation.getter(#creatorId), returnValue: '')
           as String);
   @override
+  String get creatorName =>
+      (super.noSuchMethod(Invocation.getter(#creatorName), returnValue: '')
+          as String);
+  @override
   String get subject =>
       (super.noSuchMethod(Invocation.getter(#subject), returnValue: '')
           as String);
