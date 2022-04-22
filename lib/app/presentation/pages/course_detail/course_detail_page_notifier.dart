@@ -4,6 +4,19 @@ import 'package:faeng_courses/app/presentation/pages/course_detail/state/course_
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final courseDetailNotifierProvider = StateNotifierProvider.family
+    .autoDispose<CourseDetailPageNotifier, CourseDetailState, String>(
+  (ref, courseId) {
+    final getCoursesModulesUC = ref.watch(getCourseModulesUCProvider);
+    final getCourseByIdUC = ref.watch(getCourseByIdUCProvider);
+    return CourseDetailPageNotifier(
+      courseId: courseId,
+      getCourseModulesUC: getCoursesModulesUC,
+      getCourseByIdUC: getCourseByIdUC,
+    );
+  },
+);
+
 class CourseDetailPageNotifier extends StateNotifier<CourseDetailState> {
   CourseDetailPageNotifier({
     required this.courseId,
@@ -59,16 +72,3 @@ class CourseDetailPageNotifier extends StateNotifier<CourseDetailState> {
     );
   }
 }
-
-final courseDetailNotifierProvider = StateNotifierProvider.family
-    .autoDispose<CourseDetailPageNotifier, CourseDetailState, String>(
-  (ref, courseId) {
-    final getCoursesModulesUC = ref.watch(getCourseModulesUCProvider);
-    final getCourseByIdUC = ref.watch(getCourseByIdUCProvider);
-    return CourseDetailPageNotifier(
-      courseId: courseId,
-      getCourseModulesUC: getCoursesModulesUC,
-      getCourseByIdUC: getCourseByIdUC,
-    );
-  },
-);

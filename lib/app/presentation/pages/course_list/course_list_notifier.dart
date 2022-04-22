@@ -8,8 +8,8 @@ import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/error/failure.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final courseListNotifierProvider =
-    StateNotifierProvider.family<CourseListNotifier, CourseListState, String>(
+final courseListNotifierProvider = StateNotifierProvider.family
+    .autoDispose<CourseListNotifier, CourseListState, String>(
   (ref, subjectQuery) {
     final _getCoursesUC = ref.watch(getCoursesUCProvider);
     final _getCoursesBySubjectUC = ref.watch(getCoursesBySubjectProvider);
