@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/extesions/string_capitalize.dart';
+import 'package:faeng_courses/app/presentation/common/extensions/string_capitalize.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_notifier.dart';
