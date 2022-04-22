@@ -1,7 +1,8 @@
-import 'package:faeng_courses/app/presentation/common/widgets/error_handler_widget.dart';
+import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_models.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:faeng_courses/app/presentation/pages/course_detail/widgets/course_content_view.dart';
+import 'package:faeng_courses/app/presentation/pages/course_detail/widgets/course_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,33 +19,57 @@ class CourseDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          courseName.replaceAll('+', ' '),
-        ),
-      ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          final state = ref.watch(courseDetailNotifierProvider(courseId));
-          switch (state.status) {
-            case CourseDetailStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            case CourseDetailStatus.error:
-              return ErrorHandlerWidget(
-                onTryAgain: () => ref.refresh(
-                  courseDetailNotifierProvider(courseId),
-                ),
-                child: Text(state.failure?.toString() ??
-                    S.of(context).error_default_message),
-              );
-            case CourseDetailStatus.success:
-              return Center(
-                child: Text(state.moduleList.first.text),
-              );
-          }
-        },
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            floating: true,
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kMediumNumber,
+                vertical: kSmallNumber,
+              ),
+              child: Consumer(
+                builder: (context, ref, child) {
+                  final state = ref.watch(
+                    courseDetailNotifierProvider(courseId),
+                  );
+
+                  return state.maybeWhen(
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    success: (course, courseContent) {
+                      final content = courseContent.text;
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: kSmallNumber,
+                            ),
+                            child: CoursePresentation(
+                              course: course,
+                            ),
+                          ),
+                          CourseContentView(
+                            content: content,
+                          ),
+                        ],
+                      );
+                    },
+                    orElse: () => UnexpectedStateWidget(
+                      onTryAgain: () => ref.refresh(
+                        courseDetailNotifierProvider(courseId),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

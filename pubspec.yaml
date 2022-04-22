@@ -29,9 +29,6 @@ environment:
 dependencies:
   cached_network_image: ^3.2.0
   cloud_firestore: ^3.1.5
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^4.0.4
@@ -44,6 +41,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_form_builder: ^7.0.0
+  flutter_html: ^2.2.1
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^1.0.3
@@ -54,11 +52,12 @@ dependencies:
   hive: ^2.0.5
   html_editor_enhanced: ^2.4.0+1
   intl: ^0.17.0
-  json_annotation:
+  json_annotation: 
   mockito: ^5.0.17
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
-  build_runner:
+  build_runner: 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
