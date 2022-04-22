@@ -109,6 +109,14 @@ abstract class MyTextStyles {
         fontWeight: FontWeight.w500,
         height: 24 / 16,
       );
+
+  TextStyle get courseListBigTitle => const TextStyle(
+        fontSize: kLargeNumber,
+        color: _primaryColor,
+        fontWeight: FontWeight.w500,
+        height: 36 / 24,
+      );
+
   TextStyle get courseListSubtitle => const TextStyle(
         fontSize: 12,
         color: _primaryColor,
