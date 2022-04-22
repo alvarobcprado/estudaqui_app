@@ -59,12 +59,9 @@ class CourseDetailPage extends StatelessWidget {
                         ],
                       );
                     },
-                    orElse: () => SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: UnexpectedStateWidget(
-                        onTryAgain: () => ref.refresh(
-                          courseDetailNotifierProvider(courseId),
-                        ),
+                    orElse: () => UnexpectedStateWidget(
+                      onTryAgain: () => ref.refresh(
+                        courseDetailNotifierProvider(courseId),
                       ),
                     ),
                   );
