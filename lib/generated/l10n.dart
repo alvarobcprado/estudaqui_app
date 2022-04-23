@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Sobre o app`
+  String get drawer_options_app_info {
+    return Intl.message(
+      'Sobre o app',
+      name: 'drawer_options_app_info',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Matérias`
   String get subject_list_title {
     return Intl.message(
