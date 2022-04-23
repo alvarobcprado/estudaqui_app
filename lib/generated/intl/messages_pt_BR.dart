@@ -101,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_add_course":
             MessageLookupByLibrary.simpleMessage("Adicionar curso"),
+        "drawer_options_app_info":
+            MessageLookupByLibrary.simpleMessage("Sobre o app"),
         "drawer_options_home":
             MessageLookupByLibrary.simpleMessage("Tela inicial"),
         "drawer_options_signin": MessageLookupByLibrary.simpleMessage("Entrar"),

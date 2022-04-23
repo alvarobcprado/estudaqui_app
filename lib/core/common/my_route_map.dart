@@ -1,5 +1,6 @@
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_content/add_course_content_page.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_page.dart';
+import 'package:faeng_courses/app/presentation/pages/app_info/app_info_page.dart';
 import 'package:faeng_courses/app/presentation/pages/auth/auth_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
@@ -29,6 +30,9 @@ const _courseListPath = 'courses/:subject';
 /// :course-name
 const _courseDetailPath = ':course';
 
+/// app-info
+const _appInfoPath = 'app-info';
+
 class MyRouteMap extends GoRouter {
   MyRouteMap()
       : super(
@@ -55,7 +59,7 @@ class MyRouteMap extends GoRouter {
                   ),
                 ),
                 GoRoute(
-                  path: 'add_course',
+                  path: 'add-course',
                   name: _addCourseInfoPath,
                   pageBuilder: (context, state) => MaterialPage(
                     key: state.pageKey,
@@ -104,6 +108,15 @@ class MyRouteMap extends GoRouter {
                     ),
                   ],
                 ),
+                GoRoute(
+                  path: 'app-info',
+                  name: _appInfoPath,
+                  pageBuilder: (context, state) {
+                    return const MaterialPage(
+                      child: AppInfoPage(),
+                    );
+                  },
+                ),
               ],
             ),
           ],
@@ -111,6 +124,7 @@ class MyRouteMap extends GoRouter {
 }
 
 extension MyPageRoutes on GoRouter {
+  void pushAppInfo() => pushNamed(_appInfoPath);
   void pushLogin() => pushNamed(_loginPath);
   void pushHome() => pushNamed(_homePath);
   void pushTest() => pushNamed(_notFoundPath);

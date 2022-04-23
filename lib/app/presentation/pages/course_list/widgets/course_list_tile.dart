@@ -1,5 +1,5 @@
 import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/presentation/common/extesions/date_time_format.dart';
+import 'package:faeng_courses/app/presentation/common/extensions/date_time_format.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_author_row.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_card_image.dart';
