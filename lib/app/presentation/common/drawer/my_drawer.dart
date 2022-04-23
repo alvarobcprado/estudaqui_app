@@ -81,7 +81,7 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               MyDrawerTile(
-                isSelected: GoRouter.of(context).location == '/app_info',
+                isSelected: GoRouter.of(context).location == '/app-info',
                 onTap: () {
                   Navigator.of(context).pop();
                   GoRouter.of(context).pushAppInfo();

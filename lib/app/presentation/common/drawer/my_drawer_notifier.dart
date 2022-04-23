@@ -21,6 +21,31 @@ final myDrawerNotifierProvider =
   },
 );
 
+final userAuthChangesProvider = StreamProvider<User?>(
+  (ref) async* {
+    final useCase = ref.watch(getUserChangesUCProvider);
+
+    final eitherResult = await useCase(params: NoParams());
+
+    yield* eitherResult.fold(
+      (l) async* {},
+      (stream) async* {
+        await for (final user in stream) {
+          if (!(user?.isAnonymous ?? true)) {
+            yield user;
+          }
+        }
+      },
+    );
+  },
+);
+
+final isUserAuthProvider = Provider.family<bool, User>(
+  (ref, user) {
+    return (!user.isAnonymous && user.email != null);
+  },
+);
+
 class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
   MyDrawerNotifier({
     required SignOutUC signoutUC,
@@ -30,7 +55,7 @@ class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
         _signOutUC = signoutUC,
         _ref = ref,
         super(MyDrawerState.unauthenticated()) {
-    _ref.watch(userAuthChangeProvider).whenData(
+    _ref.watch(userAuthChangesProvider).whenData(
       (_) {
         _updateDrawerUserState();
       },
