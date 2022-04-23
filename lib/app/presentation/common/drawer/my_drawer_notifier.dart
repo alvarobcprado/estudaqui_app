@@ -28,12 +28,12 @@ final userAuthChangesProvider = StreamProvider<User?>(
     final eitherResult = await useCase(params: NoParams());
 
     yield* eitherResult.fold(
-      (l) async* {},
+      (l) async* {
+        yield null;
+      },
       (stream) async* {
         await for (final user in stream) {
-          if (!(user?.isAnonymous ?? true)) {
-            yield user;
-          }
+          yield user;
         }
       },
     );
@@ -56,10 +56,8 @@ class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
         _ref = ref,
         super(MyDrawerState.unauthenticated()) {
     _ref.watch(userAuthChangesProvider).whenData(
-      (_) {
-        _updateDrawerUserState();
-      },
-    );
+          (value) => _updateDrawerUserState(),
+        );
   }
 
   final Ref _ref;
