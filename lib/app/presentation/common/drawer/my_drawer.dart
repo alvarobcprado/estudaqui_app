@@ -1,5 +1,7 @@
-import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_models.dart';
 import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_notifier.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/widgets/authenticated_header.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/widgets/my_drawer_tile.dart';
+import 'package:faeng_courses/app/presentation/common/drawer/widgets/unauthenticated_header.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/common/my_route_map.dart';
@@ -13,67 +15,83 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Drawer(
-        child: Consumer(
-          builder: (context, ref, _) {
-            final myColors = ref.watch(themeProvider).colors;
-            final myDrawerState = ref.watch(myDrawerNotifierProvider);
-            return ListView(
-              children: [
-                Container(
-                  height: 100,
-                  padding: const EdgeInsets.all(kLargePadding),
-                  alignment: Alignment.center,
-                  color: myColors.myDrawerHeaderBackground,
-                  child: Text(
-                    myDrawerState is LoggedUser
-                        ? S.of(context).drawer_header_authenticated_title(
-                              myDrawerState.username?.isEmpty ?? true
-                                  ? myDrawerState.email
-                                  : myDrawerState.username!,
-                            )
-                        : S.of(context).drawer_header_unauthenticated_title,
+    return Drawer(
+      child: Consumer(
+        builder: (context, ref, _) {
+          final colors = ref.watch(themeProvider).colors;
+          final myDrawerState = ref.watch(myDrawerNotifierProvider);
+          return ListView(
+            padding: const EdgeInsets.symmetric(horizontal: kMediumNumber),
+            children: [
+              Column(
+                children: [
+                  myDrawerState.when(
+                    unauthenticated: () => const UnauthenticatedHeader(),
+                    logged: (email, username) => AuthenticatedHeader(
+                      userName: username!,
+                    ),
                   ),
-                ),
-                ListTile(
+                  Divider(
+                    height: 0,
+                    color: colors.primaryColor.withOpacity(0.5),
+                    thickness: 1,
+                  )
+                ],
+              ),
+              const SizedBox(height: kMediumNumber),
+              MyDrawerTile(
+                isSelected: GoRouter.of(context).location == '/',
+                onTap: () {
+                  Navigator.of(context).pop();
+                  GoRouter.of(context).pushHome();
+                },
+                title: S.of(context).drawer_options_home,
+                icon: const Icon(Icons.home),
+              ),
+              myDrawerState.when(
+                unauthenticated: () => MyDrawerTile(
+                  isSelected: false,
                   onTap: () {
                     Navigator.of(context).pop();
-                    GoRouter.of(context).pushHome();
+                    GoRouter.of(context).pushLogin();
                   },
-                  leading: const Icon(Icons.home),
-                  title: Text(S.of(context).drawer_options_home),
+                  title: S.of(context).drawer_options_signin,
+                  icon: const Icon(Icons.login),
                 ),
-                if (myDrawerState is LoggedUser)
-                  ListTile(
-                    onTap: () {
-                      Navigator.of(context).pop();
-
-                      GoRouter.of(context).pushAddCourse();
-                    },
-                    leading: const Icon(Icons.add_to_photos),
-                    title: Text(S.of(context).drawer_options_add_course),
-                  ),
-                myDrawerState is LoggedUser
-                    ? ListTile(
-                        onTap: () => ref
-                            .read(myDrawerNotifierProvider.notifier)
-                            .signoutCurrentUser(),
-                        leading: const Icon(Icons.logout),
-                        title: Text(S.of(context).drawer_options_signout),
-                      )
-                    : ListTile(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          GoRouter.of(context).pushLogin();
-                        },
-                        leading: const Icon(Icons.login),
-                        title: Text(S.of(context).drawer_options_signin),
-                      ),
-              ],
-            );
-          },
-        ),
+                logged: (email, username) => Column(
+                  children: [
+                    MyDrawerTile(
+                      isSelected: false,
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        GoRouter.of(context).pushAddCourse();
+                      },
+                      title: S.of(context).drawer_options_add_course,
+                      icon: const Icon(Icons.add_to_photos),
+                    ),
+                    MyDrawerTile(
+                      isSelected: false,
+                      onTap: () => ref
+                          .read(myDrawerNotifierProvider.notifier)
+                          .signoutCurrentUser(),
+                      title: S.of(context).drawer_options_signout,
+                      icon: const Icon(Icons.logout),
+                    ),
+                  ],
+                ),
+              ),
+              MyDrawerTile(
+                isSelected: GoRouter.of(context).location == '/app_info',
+                onTap: () {
+                  Navigator.of(context).pop();
+                  GoRouter.of(context).pushAppInfo();
+                },
+                title: S.of(context).drawer_options_app_info,
+                icon: const Icon(Icons.info),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
