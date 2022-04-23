@@ -49,6 +49,11 @@ class MyApp extends ConsumerWidget {
             systemStatusBarContrastEnforced: true,
           ),
         ),
+        progressIndicatorTheme: ProgressIndicatorTheme.of(context).copyWith(
+          circularTrackColor: colors.secondaryVariantColor,
+          color: colors.primaryColor,
+        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: colors.primaryColor),
         primaryColor: colors.primaryColor,
         scaffoldBackgroundColor: colors.white,
       ),
