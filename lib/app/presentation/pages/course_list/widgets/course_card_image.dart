@@ -36,21 +36,21 @@ class CourseCardImage extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(kSmallNumber),
-            child: CachedNetworkImage(
-              imageUrl: courseBannerUrl,
-              memCacheWidth: 80,
-              memCacheHeight: 120,
-              fit: BoxFit.cover,
-              errorWidget: (_, __, ___) => const SizedBox(),
+          child: Center(
+            child: Text(
+              subjectName.characters.first.toUpperCase(),
+              style: textStyles.courseListBanner,
             ),
           ),
         ),
-        Center(
-          child: Text(
-            subjectName.characters.first.toUpperCase(),
-            style: textStyles.courseListBanner,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(kSmallNumber),
+          child: CachedNetworkImage(
+            imageUrl: courseBannerUrl,
+            memCacheWidth: 80,
+            memCacheHeight: 120,
+            fit: BoxFit.cover,
+            errorWidget: (_, __, ___) => const SizedBox(),
           ),
         ),
       ],
