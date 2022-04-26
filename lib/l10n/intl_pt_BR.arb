@@ -63,6 +63,12 @@
     "course_list_date_added": "Adicionado em {date}",
     
     "form_error_text_required_field": "Este campo não pode ser vazio",
-    "form_error_text_min_length_field":"Este campo precisar ter ao menos {lenght} caracteres"
+    "form_error_text_min_length_field":"Este campo precisar ter ao menos {length} caracteres",
+
+    "app_info_text": "App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti",
+    "app_info_name": "FaEng Cursos",
+    "app_info_version": "Versão {version}",
+    "app_info_copyrigth": "© {year} Álvaro Prado"
+  
 
 }

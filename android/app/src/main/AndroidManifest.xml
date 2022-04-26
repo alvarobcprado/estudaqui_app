@@ -2,7 +2,7 @@
     package="com.example.faeng_courses">
    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
-        android:label="faeng_courses"
+        android:label="FaEng Cursos"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
