@@ -31,6 +31,7 @@ dependencies:
   cloud_firestore: ^3.1.5
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  device_info_plus: ^3.2.3
   dio: ^4.0.4
   equatable: ^2.0.3
   fake_cloud_firestore: ^1.2.0
@@ -54,6 +55,7 @@ dependencies:
   intl: ^0.17.0
   json_annotation: null
   mockito: ^5.0.17
+  package_info_plus: ^1.4.2
   url_launcher: ^6.1.0
   youtube_player_flutter: ^8.0.0
 
