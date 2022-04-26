@@ -570,13 +570,53 @@ class S {
     );
   }
 
-  /// `Este campo precisar ter ao menos {lenght} caracteres`
-  String form_error_text_min_length_field(Object lenght) {
+  /// `Este campo precisar ter ao menos {length} caracteres`
+  String form_error_text_min_length_field(Object length) {
     return Intl.message(
-      'Este campo precisar ter ao menos $lenght caracteres',
+      'Este campo precisar ter ao menos $length caracteres',
       name: 'form_error_text_min_length_field',
       desc: '',
-      args: [lenght],
+      args: [length],
+    );
+  }
+
+  /// `App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti`
+  String get app_info_text {
+    return Intl.message(
+      'App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti',
+      name: 'app_info_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FaEng Cursos`
+  String get app_info_name {
+    return Intl.message(
+      'FaEng Cursos',
+      name: 'app_info_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Versão {version}`
+  String app_info_version(Object version) {
+    return Intl.message(
+      'Versão $version',
+      name: 'app_info_version',
+      desc: '',
+      args: [version],
+    );
+  }
+
+  /// `© {year} Álvaro Prado`
+  String app_info_copyrigth(Object year) {
+    return Intl.message(
+      '© $year Álvaro Prado',
+      name: 'app_info_copyrigth',
+      desc: '',
+      args: [year],
     );
   }
 }

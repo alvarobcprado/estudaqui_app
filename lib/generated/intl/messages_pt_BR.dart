@@ -20,14 +20,18 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pt_BR';
 
-  static String m0(date) => "Adicionado em ${date}";
+  static String m0(year) => "© ${year} Álvaro Prado";
 
-  static String m1(subject) => "Ops, nenhum curso de ${subject} encontrado";
+  static String m1(version) => "Versão ${version}";
 
-  static String m2(name) => "Olá, ${name}";
+  static String m2(date) => "Adicionado em ${date}";
 
-  static String m3(lenght) =>
-      "Este campo precisar ter ao menos ${lenght} caracteres";
+  static String m3(subject) => "Ops, nenhum curso de ${subject} encontrado";
+
+  static String m4(name) => "Olá, ${name}";
+
+  static String m5(length) =>
+      "Este campo precisar ter ao menos ${length} caracteres";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -65,6 +69,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar módulo"),
         "add_module_text_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar módulo"),
+        "app_info_copyrigth": m0,
+        "app_info_name": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "app_info_text": MessageLookupByLibrary.simpleMessage(
+            "App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti"),
+        "app_info_version": m1,
         "auth_form_email_field_label":
             MessageLookupByLibrary.simpleMessage("seu@email.com"),
         "auth_form_forgot_password":
@@ -82,10 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_form_signup_button":
             MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "auth_form_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
-        "course_list_date_added": m0,
+        "course_list_date_added": m2,
         "course_list_empty_state_button":
             MessageLookupByLibrary.simpleMessage("Buscar novamente"),
-        "course_list_empty_state_message": m1,
+        "course_list_empty_state_message": m3,
         "default_course_author":
             MessageLookupByLibrary.simpleMessage("Desconhecido"),
         "default_error_dialog_body": MessageLookupByLibrary.simpleMessage(
@@ -96,7 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Algo deu errado"),
         "default_loading_dialog_text":
             MessageLookupByLibrary.simpleMessage("Carregando..."),
-        "drawer_header_authenticated_title": m2,
+        "drawer_header_authenticated_title": m4,
         "drawer_header_unauthenticated_title":
             MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
         "drawer_options_add_course":
@@ -113,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":
             MessageLookupByLibrary.simpleMessage("Tentar novamente"),
-        "form_error_text_min_length_field": m3,
+        "form_error_text_min_length_field": m5,
         "form_error_text_required_field": MessageLookupByLibrary.simpleMessage(
             "Este campo não pode ser vazio"),
         "home_greeting_user": MessageLookupByLibrary.simpleMessage("Olá "),
