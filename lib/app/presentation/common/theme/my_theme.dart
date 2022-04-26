@@ -128,6 +128,12 @@ abstract class MyTextStyles {
         color: _primaryColor,
         height: 12 / 10,
       );
+
+  TextStyle get appInfos => const TextStyle(
+        color: _primaryColor,
+        fontSize: kMediumNumber,
+        height: kLargeNumber / kMediumNumber,
+      );
 }
 
 abstract class MyAssetPaths {
