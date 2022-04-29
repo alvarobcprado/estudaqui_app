@@ -78,7 +78,7 @@ class _LatestCoursesCarouselState extends ConsumerState<LatestCoursesCarousel> {
           ),
         ),
         Expanded(
-          child: ListView.builder(
+          child: ListView.separated(
             controller: _carouselCtrl,
             scrollDirection: Axis.horizontal,
             itemCount: courseList.length,
@@ -86,12 +86,16 @@ class _LatestCoursesCarouselState extends ConsumerState<LatestCoursesCarousel> {
               final course = courseList[index];
               return CoursesCarouselItem(
                 courseName: course.title,
+                courseBanner: course.bannerUrl,
                 onPressed: () => GoRouter.of(context).pushCourseDetail(
                   course.subject,
                   course.title,
                   course.courseId,
                 ),
               );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(width: kMediumNumber);
             },
           ),
         ),
