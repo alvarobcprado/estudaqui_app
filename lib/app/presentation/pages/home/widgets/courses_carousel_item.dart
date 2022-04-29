@@ -61,8 +61,13 @@ class CoursesCarouselItem extends ConsumerWidget {
               gradient: const LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                stops: [0, 0.80],
-                colors: [Colors.transparent, Colors.white],
+                colors: [
+                  Colors.transparent,
+                  Colors.white10,
+                  Colors.white54,
+                  Colors.white,
+                  Colors.white,
+                ],
               ),
             ),
           ),
