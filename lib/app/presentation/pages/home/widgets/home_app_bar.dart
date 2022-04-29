@@ -42,7 +42,7 @@ class HomeAppBar extends SliverPersistentHeaderDelegate {
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: kXXLargeNumber,
-                    top: kXXXXLargeNumber,
+                    top: kXXXLargeNumber,
                   ),
                   child: SingleChildScrollView(
                     child: Column(

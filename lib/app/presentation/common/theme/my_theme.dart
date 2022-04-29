@@ -139,8 +139,7 @@ abstract class MyTextStyles {
 abstract class MyAssetPaths {
   String get logoOrange => 'assets/images/Logo Orange.png';
 
-  String get lastAddedCourseBG =>
-      'assets/images/last_added_course_background.png';
+  String get lastAddedCourseBG => 'assets/images/last_added_course_bg.png';
 
   String get defaultCourseListBanner =>
       'assets/images/course_listing_course_background.png';

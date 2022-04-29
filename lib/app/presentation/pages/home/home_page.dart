@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
                   sectionTitle: S.of(context).home_subjects_section,
                 ),
                 const HomeSubjectsSection(),
+                const SliverSizedBoxAdapter(height: kMediumNumber),
               ],
             ),
           ),

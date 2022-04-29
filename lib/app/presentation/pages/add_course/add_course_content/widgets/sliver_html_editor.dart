@@ -1,4 +1,5 @@
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/pages/add_course/add_course_content/widgets/add_video_dialog.dart';
 import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/generated/l10n.dart';
@@ -12,6 +13,15 @@ class SliverHtmlEditor extends ConsumerWidget {
   }) : super(key: key);
 
   final _controller = HtmlEditorController();
+
+  void showVideoDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AddVideoDialog(controller: _controller);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,6 +40,13 @@ class SliverHtmlEditor extends ConsumerWidget {
                   initialText: ref.read(courseContentProvider) ?? '',
                 ),
                 htmlToolbarOptions: HtmlToolbarOptions(
+                  onButtonPressed: (buttonType, _, __) {
+                    if (buttonType == ButtonType.video) {
+                      showVideoDialog(context);
+                      return false;
+                    }
+                    return true;
+                  },
                   buttonColor: Colors.white,
                   buttonFillColor: Colors.white,
                   buttonSelectedColor: colors.primaryColor,
