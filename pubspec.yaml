@@ -45,6 +45,7 @@ dependencies:
   flutter_html: ^2.2.1
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.1.6
   flutter_riverpod: ^1.0.3
   form_builder_validators: ^7.2.0
   freezed: ^1.1.1
