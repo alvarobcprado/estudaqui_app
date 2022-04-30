@@ -32,6 +32,7 @@ class MyFormField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final _colors = ref.watch(themeProvider).colors;
     return FormBuilderTextField(
+      cursorColor: labelColor ?? _colors.authFormTextColor,
       name: fieldName,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: shouldObfuscateField!,
