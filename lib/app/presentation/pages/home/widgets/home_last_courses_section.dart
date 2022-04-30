@@ -26,10 +26,8 @@ class HomeLastCoursesSection extends ConsumerWidget {
             textColor: colors.white,
             onTryAgain: () => ref.refresh(getLastCoursesProvider),
           ),
-          loading: () => Center(
-            child: CircularProgressIndicator(
-              color: colors.secondaryVariantColor,
-            ),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
           ),
           data: (courseList) => LatestCoursesCarousel(
             courseList: courseList,

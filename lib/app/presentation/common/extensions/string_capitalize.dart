@@ -1,6 +1,6 @@
 extension StringCapitalize on String {
   String capitalized() {
-    final wordList = split(' ');
+    final wordList = trim().split(' ');
     final capitalizedList = [];
     for (final word in wordList) {
       final capitalizedWord = '${word[0].toUpperCase()}${word.substring(1)}';
