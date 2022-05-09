@@ -22,6 +22,12 @@ class AuthImpRepository implements AuthDataRepository {
     final user = _authProvider.currentUser;
     if (user != null) {
       return Right(user);
+    } else {
+      await signInAnonmously();
+      final newUser = _authProvider.currentUser;
+      if (newUser != null) {
+        return Right(newUser);
+      }
     }
     return Left(
       Failure.fromType(
