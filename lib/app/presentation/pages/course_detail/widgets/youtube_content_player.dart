@@ -24,6 +24,7 @@ class _YoutubeContentPlayerState extends State<YoutubeContentPlayer> {
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         enableCaption: false,
+        useHybridComposition: false,
       ),
     );
   }
