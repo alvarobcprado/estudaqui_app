@@ -15,41 +15,68 @@ class AuthenticatedHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(themeProvider).colors;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kSmallNumber),
-      child: SizedBox(
-        height: kSmallNumber * 20,
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              backgroundColor: colors.primaryColor,
-              radius: kSmallNumber * 5,
-              child: Text(
-                userName.forShort(),
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: colors.secondaryVariantColor,
-                ),
-              ),
-            ),
-            const SizedBox(height: kSmallNumber),
-            Text(
-              userName.capitalized(),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: kLargeNumber,
-                fontWeight: FontWeight.bold,
-                color: colors.primaryColor,
-              ),
-            ),
-          ],
+    return UserAccountsDrawerHeader(
+      decoration: const BoxDecoration(),
+      currentAccountPicture: CircleAvatar(
+        backgroundColor: colors.primaryColor,
+        radius: kSmallNumber * 5,
+        child: Text(
+          userName.forShort(),
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.w500,
+            color: colors.secondaryVariantColor,
+          ),
         ),
       ),
+      accountName: Text(
+        userName.capitalized(),
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          fontSize: kLargeNumber,
+          fontWeight: FontWeight.bold,
+          color: colors.primaryColor,
+        ),
+      ),
+      accountEmail: null,
     );
+
+    // return Padding(
+    //   padding: const EdgeInsets.symmetric(horizontal: kSmallNumber),
+    //   child: SizedBox(
+    //     height: kSmallNumber * 20,
+    //     width: double.infinity,
+    //     child: Column(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         CircleAvatar(
+    //           backgroundColor: colors.primaryColor,
+    //           radius: kSmallNumber * 5,
+    //           child: Text(
+    //             userName.forShort(),
+    //             style: TextStyle(
+    //               fontSize: 28,
+    //               fontWeight: FontWeight.w500,
+    //               color: colors.secondaryVariantColor,
+    //             ),
+    //           ),
+    //         ),
+    //         const SizedBox(height: kSmallNumber),
+    //         Text(
+    //           userName.capitalized(),
+    //           maxLines: 2,
+    //           overflow: TextOverflow.ellipsis,
+    //           style: TextStyle(
+    //             fontSize: kLargeNumber,
+    //             fontWeight: FontWeight.bold,
+    //             color: colors.primaryColor,
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
