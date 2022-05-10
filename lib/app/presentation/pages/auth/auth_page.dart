@@ -71,15 +71,14 @@ class _AuthPageState extends State<AuthPage> {
                 orElse: () {},
               );
             },
-            child: SingleChildScrollView(
-              child: CustomGradient(
-                child: SafeArea(
+            child: CustomGradient(
+              child: SafeArea(
+                child: SingleChildScrollView(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: kLargeNumber),
+                    padding: const EdgeInsets.all(kLargeNumber),
                     child: Column(
                       children: [
-                        const SizedBox(height: kXXXLargeNumber),
+                        const SizedBox(height: kXXLargeNumber),
                         Image.asset(assets.logoOrange),
                         const SizedBox(height: kXXLargeNumber),
                         FormSelectWidget(
