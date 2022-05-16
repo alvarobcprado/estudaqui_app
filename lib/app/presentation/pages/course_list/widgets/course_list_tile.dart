@@ -1,6 +1,7 @@
 import 'package:faeng_courses/app/domain/entity/course.dart';
 import 'package:faeng_courses/app/presentation/common/extensions/date_time_format.dart';
 import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:faeng_courses/app/presentation/common/utils/responsive.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_author_row.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_card_image.dart';
 import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_info_column.dart';
@@ -18,41 +19,43 @@ class CourseListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: kMediumNumber),
-      height: 120,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(kSmallNumber),
-        onTap: () {
-          GoRouter.of(context).pushCourseDetail(
-            course.subject,
-            course.title,
-            course.courseId,
-          );
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CourseCardImage(
-              subjectName: course.subject,
-              courseBannerUrl: course.bannerUrl,
-            ),
-            const SizedBox(width: kMediumNumber),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CourseAuthorRow(authorName: course.creatorName),
-                  CourseInfoColumn(
-                    courseName: course.title,
-                    courseDescription: course.subtitle,
-                    courseDate: course.createdAt.toLocalFormatString(),
-                  ),
-                ],
+    return AspectRatio(
+      aspectRatio: Responsive.isPortrait(context) ? 310 / 120 : 620 / 120,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: kMediumNumber),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(kSmallNumber),
+          onTap: () {
+            GoRouter.of(context).pushCourseDetail(
+              course.subject,
+              course.title,
+              course.courseId,
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CourseCardImage(
+                subjectName: course.subject,
+                courseBannerUrl: course.bannerUrl,
               ),
-            ),
-          ],
+              const SizedBox(width: kMediumNumber),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CourseAuthorRow(authorName: course.creatorName),
+                    CourseInfoColumn(
+                      courseName: course.title,
+                      courseDescription: course.subtitle,
+                      courseDate: course.createdAt.toLocalFormatString(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -12,15 +12,16 @@ class UnauthenticatedHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(themeProvider).colors;
-    return Container(
-      height: kSmallNumber * 20,
-      alignment: Alignment.center,
-      child: Text(
-        S.of(context).drawer_header_unauthenticated_title,
-        style: TextStyle(
-          fontSize: kLargeNumber,
-          fontWeight: FontWeight.bold,
-          color: colors.primaryColor,
+    return DrawerHeader(
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          S.of(context).drawer_header_unauthenticated_title,
+          style: TextStyle(
+            fontSize: kLargeNumber,
+            fontWeight: FontWeight.bold,
+            color: colors.primaryColor,
+          ),
         ),
       ),
     );

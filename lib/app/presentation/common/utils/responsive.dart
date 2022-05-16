@@ -30,6 +30,11 @@ class Responsive extends StatelessWidget {
     return (_size.width > 1024);
   }
 
+  static bool isPortrait(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    return orientation == Orientation.portrait;
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

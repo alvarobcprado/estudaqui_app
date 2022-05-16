@@ -31,11 +31,6 @@ class MyDrawer extends StatelessWidget {
                       userName: username!,
                     ),
                   ),
-                  Divider(
-                    height: 0,
-                    color: colors.primaryColor.withOpacity(0.5),
-                    thickness: 1,
-                  )
                 ],
               ),
               const SizedBox(height: kMediumNumber),

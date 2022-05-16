@@ -28,61 +28,64 @@ class CoursesCarouselItem extends ConsumerWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(kSmallNumber),
-            child: CachedNetworkImage(
-              imageUrl: courseBanner,
-              imageBuilder: (context, imageProvider) {
-                return Image(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
-                );
-              },
-              width: 80,
-              height: 120,
-              memCacheWidth: 80,
-              memCacheHeight: 120,
-              errorWidget: (_, __, ___) {
-                return Image.asset(
-                  assets.lastAddedCourseBG,
-                  fit: BoxFit.cover,
-                );
-              },
-              placeholder: (_, __) {
-                return Image.asset(
-                  assets.lastAddedCourseBG,
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ),
-          Container(
-            width: kSmallNumber * 10,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kSmallNumber),
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.white10,
-                  Colors.white54,
-                  Colors.white,
-                  Colors.white,
-                ],
+            child: AspectRatio(
+              aspectRatio: 80 / 120,
+              child: CachedNetworkImage(
+                imageUrl: courseBanner,
+                imageBuilder: (context, imageProvider) {
+                  return Image(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  );
+                },
+                errorWidget: (_, __, ___) {
+                  return Image.asset(
+                    assets.lastAddedCourseBG,
+                    fit: BoxFit.cover,
+                  );
+                },
+                placeholder: (_, __) {
+                  return Image.asset(
+                    assets.lastAddedCourseBG,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
           ),
-          SizedBox(
-            width: kSmallNumber * 10,
-            child: Padding(
-              padding: const EdgeInsets.all(kSmallNumber),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  courseName,
-                  maxLines: 3,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                  style: textStyles.homeCarouselCourseTitle,
+          AspectRatio(
+            aspectRatio: 80 / 120,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(kSmallNumber),
+                gradient: const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.white10,
+                    Colors.white54,
+                    Colors.white,
+                    Colors.white,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          AspectRatio(
+            aspectRatio: 80 / 120,
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(kSmallNumber),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    courseName,
+                    maxLines: 3,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    style: textStyles.homeCarouselCourseTitle,
+                  ),
                 ),
               ),
             ),

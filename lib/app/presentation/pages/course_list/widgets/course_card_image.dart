@@ -23,34 +23,36 @@ class CourseCardImage extends ConsumerWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: 120,
-          width: kSmallNumber * 10,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(kSmallNumber),
-            color: colors.primaryColor,
-            image: DecorationImage(
-              image: AssetImage(
-                assets.defaultCourseListBanner,
+        AspectRatio(
+          aspectRatio: 80 / 120,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(kSmallNumber),
+              color: colors.primaryColor,
+              image: DecorationImage(
+                image: AssetImage(
+                  assets.defaultCourseListBanner,
+                ),
+                fit: BoxFit.cover,
               ),
-              fit: BoxFit.cover,
             ),
-          ),
-          child: Center(
-            child: Text(
-              subjectName.characters.first.toUpperCase(),
-              style: textStyles.courseListBanner,
+            child: Center(
+              child: Text(
+                subjectName.characters.first.toUpperCase(),
+                style: textStyles.courseListBanner,
+              ),
             ),
           ),
         ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(kSmallNumber),
-          child: CachedNetworkImage(
-            imageUrl: courseBannerUrl,
-            memCacheWidth: 80,
-            memCacheHeight: 120,
-            fit: BoxFit.cover,
-            errorWidget: (_, __, ___) => const SizedBox(),
+        AspectRatio(
+          aspectRatio: 80 / 120,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(kSmallNumber),
+            child: CachedNetworkImage(
+              imageUrl: courseBannerUrl,
+              fit: BoxFit.cover,
+              errorWidget: (_, __, ___) => const SizedBox(),
+            ),
           ),
         ),
       ],
