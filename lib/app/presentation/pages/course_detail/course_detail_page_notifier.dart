@@ -4,8 +4,8 @@ import 'package:faeng_courses/app/presentation/pages/course_detail/state/course_
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final courseDetailNotifierProvider = StateNotifierProvider.family
-    .autoDispose<CourseDetailPageNotifier, CourseDetailState, String>(
+final courseDetailNotifierProvider = StateNotifierProvider.family<
+    CourseDetailPageNotifier, CourseDetailState, String>(
   (ref, courseId) {
     final getCoursesModulesUC = ref.watch(getCourseModulesUCProvider);
     final getCourseByIdUC = ref.watch(getCourseByIdUCProvider);
