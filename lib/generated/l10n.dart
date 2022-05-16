@@ -619,6 +619,36 @@ class S {
       args: [year],
     );
   }
+
+  /// `Login realizado com sucesso`
+  String get toast_success_login {
+    return Intl.message(
+      'Login realizado com sucesso',
+      name: 'toast_success_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout realizado com sucesso`
+  String get toast_success_logout {
+    return Intl.message(
+      'Logout realizado com sucesso',
+      name: 'toast_success_logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Curso adicionado com sucesso`
+  String get toast_success_add_course {
+    return Intl.message(
+      'Curso adicionado com sucesso',
+      name: 'toast_success_add_course',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

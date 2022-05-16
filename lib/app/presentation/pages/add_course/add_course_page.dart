@@ -11,6 +11,7 @@ import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 class AddCoursePage extends ConsumerStatefulWidget {
@@ -31,6 +32,7 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
   }
 
   void onAddCourse() {
+    Fluttertoast.showToast(msg: S.of(context).toast_success_add_course);
     GoRouter.of(context).replaceWithHome();
   }
 

@@ -68,7 +68,11 @@
     "app_info_text": "App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti",
     "app_info_name": "FaEng Cursos",
     "app_info_version": "Versão {version}",
-    "app_info_copyrigth": "© {year} Álvaro Prado"
+    "app_info_copyrigth": "© {year} Álvaro Prado",
+
+    "toast_success_login": "Login realizado com sucesso",
+    "toast_success_logout": "Logout realizado com sucesso",
+    "toast_success_add_course": "Curso adicionado com sucesso"
   
 
 }

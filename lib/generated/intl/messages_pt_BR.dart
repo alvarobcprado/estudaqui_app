@@ -135,6 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado."),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate"),
-        "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias")
+        "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias"),
+        "toast_success_add_course": MessageLookupByLibrary.simpleMessage(
+            "Curso adicionado com sucesso"),
+        "toast_success_login":
+            MessageLookupByLibrary.simpleMessage("Login realizado com sucesso"),
+        "toast_success_logout":
+            MessageLookupByLibrary.simpleMessage("Logout realizado com sucesso")
       };
 }
