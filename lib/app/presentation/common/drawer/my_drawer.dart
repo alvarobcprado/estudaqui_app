@@ -8,6 +8,7 @@ import 'package:faeng_courses/core/common/my_route_map.dart';
 import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -71,9 +72,16 @@ class MyDrawer extends StatelessWidget {
                     ),
                     MyDrawerTile(
                       isSelected: false,
-                      onTap: () => ref
-                          .read(myDrawerNotifierProvider.notifier)
-                          .signoutCurrentUser(),
+                      onTap: () {
+                        ref
+                            .read(myDrawerNotifierProvider.notifier)
+                            .signoutCurrentUser()
+                            .then(
+                              (_) => Fluttertoast.showToast(
+                                msg: S.of(context).toast_success_logout,
+                              ),
+                            );
+                      },
                       title: S.of(context).drawer_options_signout,
                       icon: const Icon(Icons.logout),
                     ),

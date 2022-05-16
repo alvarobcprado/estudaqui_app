@@ -9,8 +9,10 @@ import 'package:faeng_courses/app/presentation/pages/auth/state/auth_state.dart'
 import 'package:faeng_courses/app/presentation/pages/auth/widgets/form_select_widget.dart';
 import 'package:faeng_courses/core/common/general_providers.dart';
 import 'package:faeng_courses/core/common/my_route_map.dart';
+import 'package:faeng_courses/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 enum AuthMode { signIn, signUp }
@@ -27,6 +29,7 @@ class _AuthPageState extends State<AuthPage> {
 
   void onAuthenticated(AuthMethod method) {
     if (method == AuthMethod.emailPassword) {
+      Fluttertoast.showToast(msg: S.of(context).toast_success_login);
       GoRouter.of(context).replaceWithHome();
     }
   }
