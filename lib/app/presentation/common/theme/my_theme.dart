@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 abstract class MyTheme {

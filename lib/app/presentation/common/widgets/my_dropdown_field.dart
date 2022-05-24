@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/domain/entity/subject.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/core/common/providers/theme_providers.dart';
+import 'package:estudaqui/app/domain/entity/subject.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/core/common/providers/theme_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

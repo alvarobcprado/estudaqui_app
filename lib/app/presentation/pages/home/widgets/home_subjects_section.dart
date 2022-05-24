@@ -1,7 +1,7 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
-import 'package:faeng_courses/app/presentation/pages/home/home_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/subjects_sliver_grid.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/unexpected_state_widget.dart';
+import 'package:estudaqui/app/presentation/pages/home/home_page_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/subjects_sliver_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

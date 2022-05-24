@@ -1,5 +1,5 @@
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_content/widgets/sliver_html_editor.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/widgets/sliver_html_editor.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class AddCourseContentDialog extends StatelessWidget {

@@ -1,4 +1,4 @@
-package com.example.faeng_courses
+package com.abp.estudaqui
 
 import io.flutter.embedding.android.FlutterActivity
 

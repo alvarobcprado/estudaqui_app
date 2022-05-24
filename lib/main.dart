@@ -1,7 +1,7 @@
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/common/providers/navigation_providers.dart';
-import 'package:faeng_courses/firebase_options.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/providers/navigation_providers.dart';
+import 'package:estudaqui/firebase_options.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,7 +1,7 @@
-import 'package:faeng_courses/app/domain/use_case/courses/get_course_by_id_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/get_course_modules_uc.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/state/course_detail_state.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_course_by_id_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_course_modules_uc.dart';
+import 'package:estudaqui/app/presentation/pages/course_detail/state/course_detail_state.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final courseDetailNotifierProvider = StateNotifierProvider.family<

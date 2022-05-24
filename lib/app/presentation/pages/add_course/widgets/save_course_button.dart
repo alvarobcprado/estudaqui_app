@@ -1,5 +1,5 @@
-import 'package:faeng_courses/app/presentation/common/widgets/my_button.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_button.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SaveCourseButton extends StatelessWidget {

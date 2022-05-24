@@ -1,4 +1,4 @@
-import 'package:faeng_courses/core/common/providers/module_providers.dart';
+import 'package:estudaqui/core/common/providers/module_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final appVersionProvider = Provider<String>(

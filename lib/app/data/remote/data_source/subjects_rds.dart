@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
-import 'package:faeng_courses/app/data/remote/model/subject/subject_rm.dart';
-import 'package:faeng_courses/app/domain/entity/subject.dart';
+import 'package:estudaqui/app/data/mapper/domain_to_remote.dart';
+import 'package:estudaqui/app/data/mapper/remote_to_domain.dart';
+import 'package:estudaqui/app/data/remote/model/subject/subject_rm.dart';
+import 'package:estudaqui/app/domain/entity/subject.dart';
 
 class SubjectsRDS {
   SubjectsRDS({

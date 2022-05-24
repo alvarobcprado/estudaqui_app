@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
+import 'package:estudaqui/app/presentation/common/theme/my_theme.dart';
 
 class DarkColors extends MyColors {
   @override

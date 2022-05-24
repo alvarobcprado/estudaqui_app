@@ -1,9 +1,9 @@
-import 'package:faeng_courses/app/presentation/common/widgets/my_button.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/utils/form_field_constants.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/common/my_route_map.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_button.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/utils/form_field_constants.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

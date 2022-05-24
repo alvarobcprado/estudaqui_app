@@ -1,9 +1,9 @@
-import 'package:faeng_courses/app/presentation/common/extensions/string_capitalize.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/course_list_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_list_tile.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/extensions/string_capitalize.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/unexpected_state_widget.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/course_list_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_list_tile.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

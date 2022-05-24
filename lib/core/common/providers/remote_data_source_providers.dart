@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
-import 'package:faeng_courses/app/data/remote/data_source/subjects_rds.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:estudaqui/app/data/remote/data_source/courses_rds.dart';
+import 'package:estudaqui/app/data/remote/data_source/subjects_rds.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final coursesRDSProvider = Provider<CoursesRDS>(

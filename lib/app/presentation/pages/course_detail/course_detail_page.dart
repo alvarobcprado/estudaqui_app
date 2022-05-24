@@ -1,8 +1,8 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/unexpected_state_widget.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/widgets/course_content_view.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/widgets/course_presentation.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/unexpected_state_widget.dart';
+import 'package:estudaqui/app/presentation/pages/course_detail/course_detail_page_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/course_detail/widgets/course_content_view.dart';
+import 'package:estudaqui/app/presentation/pages/course_detail/widgets/course_presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

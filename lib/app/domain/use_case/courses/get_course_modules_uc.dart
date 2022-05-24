@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-
-import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
-import 'package:faeng_courses/app/domain/entity/course_module.dart';
-import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/core/error/failure.dart';
+import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/course_module.dart';
+import 'package:estudaqui/app/domain/use_case/use_case.dart';
+import 'package:estudaqui/core/error/failure.dart';
 
 class GetCourseModulesUC
     extends UseCase<GetCourseModulesParam, List<CourseModule>> {

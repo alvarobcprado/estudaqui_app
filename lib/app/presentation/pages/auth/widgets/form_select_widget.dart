@@ -1,7 +1,7 @@
-import 'package:faeng_courses/app/presentation/common/theme/my_theme.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/auth_page.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/theme/my_theme.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/pages/auth/auth_page.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class FormSelectWidget extends StatefulWidget {

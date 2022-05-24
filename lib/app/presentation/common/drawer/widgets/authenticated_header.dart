@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/presentation/common/extensions/string_capitalize.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:estudaqui/app/presentation/common/extensions/string_capitalize.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

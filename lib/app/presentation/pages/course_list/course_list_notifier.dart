@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/get_courses_by_subject_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/get_courses_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/state/course_list_state.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/error/failure.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_courses_by_subject_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_courses_uc.dart';
+import 'package:estudaqui/app/domain/use_case/use_case.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/state/course_list_state.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/error/failure.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final courseListNotifierProvider = StateNotifierProvider.family

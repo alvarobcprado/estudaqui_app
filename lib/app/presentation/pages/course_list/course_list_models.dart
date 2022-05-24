@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/core/error/failure.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/core/error/failure.dart';
 
 enum CourseListStatus { initial, loading, success, error }
 

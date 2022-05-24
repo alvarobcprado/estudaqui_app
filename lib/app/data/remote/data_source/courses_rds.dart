@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
-import 'package:faeng_courses/app/data/remote/model/course/course_module_rm.dart';
-import 'package:faeng_courses/app/data/remote/model/course/course_rm.dart';
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/entity/course_module.dart';
+import 'package:estudaqui/app/data/mapper/domain_to_remote.dart';
+import 'package:estudaqui/app/data/mapper/remote_to_domain.dart';
+import 'package:estudaqui/app/data/remote/model/course/course_module_rm.dart';
+import 'package:estudaqui/app/data/remote/model/course/course_rm.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/entity/course_module.dart';
 
 class CoursesRDS {
   const CoursesRDS({required FirebaseFirestore db}) : _db = db;

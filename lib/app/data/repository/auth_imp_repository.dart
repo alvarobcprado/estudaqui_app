@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/domain/data_repository/auth_data_repository.dart';
-import 'package:faeng_courses/core/error/failure.dart';
-import 'package:faeng_courses/core/error/failure_type.dart';
+import 'package:estudaqui/app/domain/data_repository/auth_data_repository.dart';
+import 'package:estudaqui/core/error/failure.dart';
+import 'package:estudaqui/core/error/failure_type.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthImpRepository implements AuthDataRepository {

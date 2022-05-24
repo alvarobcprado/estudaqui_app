@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/domain/data_repository/subjects_data_repository.dart';
-import 'package:faeng_courses/app/domain/entity/subject.dart';
-import 'package:faeng_courses/app/domain/use_case/subject/get_subject_by_id_uc.dart';
-
+import 'package:estudaqui/app/domain/data_repository/subjects_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/subject.dart';
+import 'package:estudaqui/app/domain/use_case/subject/get_subject_by_id_uc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
 import 'get_subjects_uc_test.mocks.dart';
 
 @GenerateMocks([SubjectDataRepository])
