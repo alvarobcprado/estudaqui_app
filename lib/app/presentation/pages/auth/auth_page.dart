@@ -82,7 +82,10 @@ class _AuthPageState extends State<AuthPage> {
                     child: Column(
                       children: [
                         const SizedBox(height: kXXLargeNumber),
-                        Image.asset(assets.logoOrange),
+                        Image.asset(
+                          assets.logoOrange,
+                          height: 115,
+                        ),
                         const SizedBox(height: kXXLargeNumber),
                         FormSelectWidget(
                           colors: colors,
