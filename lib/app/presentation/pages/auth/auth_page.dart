@@ -1,15 +1,15 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/action_handler.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/custom_gradient.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/dialogs.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/auth_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/login_container.dart/login_container.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/signup_container.dart/signup_container.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/state/auth_state.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/widgets/form_select_widget.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/common/my_route_map.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/action_handler.dart';
+import 'package:estudaqui/app/presentation/common/widgets/custom_gradient.dart';
+import 'package:estudaqui/app/presentation/common/widgets/dialogs.dart';
+import 'package:estudaqui/app/presentation/pages/auth/auth_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/auth/login_container.dart/login_container.dart';
+import 'package:estudaqui/app/presentation/pages/auth/signup_container.dart/signup_container.dart';
+import 'package:estudaqui/app/presentation/pages/auth/state/auth_state.dart';
+import 'package:estudaqui/app/presentation/pages/auth/widgets/form_select_widget.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -82,7 +82,10 @@ class _AuthPageState extends State<AuthPage> {
                     child: Column(
                       children: [
                         const SizedBox(height: kXXLargeNumber),
-                        Image.asset(assets.logoOrange),
+                        Image.asset(
+                          assets.logoOrange,
+                          height: 115,
+                        ),
                         const SizedBox(height: kXXLargeNumber),
                         FormSelectWidget(
                           colors: colors,

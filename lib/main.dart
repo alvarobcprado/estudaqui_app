@@ -1,7 +1,7 @@
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/common/providers/navigation_providers.dart';
-import 'package:faeng_courses/firebase_options.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/providers/navigation_providers.dart';
+import 'package:estudaqui/firebase_options.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,7 +37,7 @@ class MyApp extends ConsumerWidget {
         FormBuilderLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      title: 'Faeng Courses',
+      title: 'Estudaqui',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           elevation: 0,
@@ -56,6 +56,7 @@ class MyApp extends ConsumerWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: colors.primaryColor),
         primaryColor: colors.primaryColor,
         scaffoldBackgroundColor: colors.white,
+        dividerTheme: const DividerThemeData(color: Colors.transparent),
       ),
       routeInformationParser:
           ref.watch(myRoutesProvider).routeInformationParser,

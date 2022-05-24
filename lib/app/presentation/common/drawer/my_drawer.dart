@@ -1,11 +1,11 @@
-import 'package:faeng_courses/app/presentation/common/drawer/my_drawer_notifier.dart';
-import 'package:faeng_courses/app/presentation/common/drawer/widgets/authenticated_header.dart';
-import 'package:faeng_courses/app/presentation/common/drawer/widgets/my_drawer_tile.dart';
-import 'package:faeng_courses/app/presentation/common/drawer/widgets/unauthenticated_header.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/core/common/my_route_map.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/drawer/my_drawer_notifier.dart';
+import 'package:estudaqui/app/presentation/common/drawer/widgets/authenticated_header.dart';
+import 'package:estudaqui/app/presentation/common/drawer/widgets/my_drawer_tile.dart';
+import 'package:estudaqui/app/presentation/common/drawer/widgets/unauthenticated_header.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -31,6 +31,11 @@ class MyDrawer extends StatelessWidget {
                     logged: (email, username) => AuthenticatedHeader(
                       userName: username!,
                     ),
+                  ),
+                  Divider(
+                    height: 1,
+                    thickness: 1.25,
+                    color: colors.primaryColor,
                   ),
                 ],
               ),

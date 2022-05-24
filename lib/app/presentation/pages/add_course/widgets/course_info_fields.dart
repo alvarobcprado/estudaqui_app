@@ -1,10 +1,10 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/my_dropdown_field.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/my_form_field.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/utils/form_field_constants.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_dropdown_field.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_form_field.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/utils/form_field_constants.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';

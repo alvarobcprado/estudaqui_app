@@ -1,4 +1,4 @@
-import 'package:faeng_courses/core/common/my_route_map.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 

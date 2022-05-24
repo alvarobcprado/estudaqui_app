@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/use_case/courses/get_courses_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/use_case.dart';
+import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_courses_uc.dart';
+import 'package:estudaqui/app/domain/use_case/use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/domain/entity/subject.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/subjects_grid_item.dart';
-import 'package:faeng_courses/core/common/my_route_map.dart';
+import 'package:estudaqui/app/domain/entity/subject.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/subjects_grid_item.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

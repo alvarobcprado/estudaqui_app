@@ -1,12 +1,12 @@
-import 'package:faeng_courses/app/presentation/common/drawer/my_drawer.dart';
-import 'package:faeng_courses/app/presentation/common/slivers/sliver_named_section.dart';
-import 'package:faeng_courses/app/presentation/common/slivers/sliver_sized_box_adapter.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/pages/home/home_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/home_header_section.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/home_last_courses_section.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/home_subjects_section.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/drawer/my_drawer.dart';
+import 'package:estudaqui/app/presentation/common/slivers/sliver_named_section.dart';
+import 'package:estudaqui/app/presentation/common/slivers/sliver_sized_box_adapter.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/pages/home/home_page_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/home_header_section.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/home_last_courses_section.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/home_subjects_section.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,4 +1,4 @@
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,6 +1,6 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/my_form_field.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_form_field.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';

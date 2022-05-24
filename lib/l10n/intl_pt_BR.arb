@@ -1,7 +1,7 @@
 {
     "project_title": "Flutter Boilerplate",
 
-    "auth_form_title":"FaEng Cursos",
+    "auth_form_title":"Estudaqui",
     "auth_form_name_field_label":"seu nome",
     "auth_form_email_field_label":"seu@email.com",
     "auth_form_password_field_label":"senha",
@@ -11,7 +11,7 @@
     "auth_form_select_signup":"cadastrar",
     "auth_form_forgot_password":"esqueceu sua senha?",
 
-    "drawer_header_unauthenticated_title": "FaEng Cursos",
+    "drawer_header_unauthenticated_title": "Estudaqui",
     "drawer_header_authenticated_title": "Olá, {name}",
     "drawer_options_home": "Tela inicial",
     "drawer_options_test": "Página teste",
@@ -53,7 +53,7 @@
     "home_subjects_section":"Matérias",
     "home_latest_courses_section":"Últimos cursos adicionados",
     "home_page_title":"FaEng Cursos",
-    "home_welcome_message":"Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.",
+    "home_welcome_message":"Bem-vindo(a) ao Estudaqui,\nseu lugar de aprendizado.",
     "home_greeting_user":"Olá ",
 
     "default_course_author": "Desconhecido",
@@ -65,8 +65,8 @@
     "form_error_text_required_field": "Este campo não pode ser vazio",
     "form_error_text_min_length_field":"Este campo precisar ter ao menos {length} caracteres",
 
-    "app_info_text": "App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti",
-    "app_info_name": "FaEng Cursos",
+    "app_info_text": "Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti",
+    "app_info_name": "Estudaqui",
     "app_info_version": "Versão {version}",
     "app_info_copyrigth": "© {year} Álvaro Prado",
 

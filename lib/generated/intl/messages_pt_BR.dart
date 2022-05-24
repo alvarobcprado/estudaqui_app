@@ -70,9 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_module_text_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar módulo"),
         "app_info_copyrigth": m0,
-        "app_info_name": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "app_info_name": MessageLookupByLibrary.simpleMessage("Estudaqui"),
         "app_info_text": MessageLookupByLibrary.simpleMessage(
-            "App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti"),
+            "Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti"),
         "app_info_version": m1,
         "auth_form_email_field_label":
             MessageLookupByLibrary.simpleMessage("seu@email.com"),
@@ -90,7 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Entrar"),
         "auth_form_signup_button":
             MessageLookupByLibrary.simpleMessage("Cadastrar"),
-        "auth_form_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "auth_form_title": MessageLookupByLibrary.simpleMessage("Estudaqui"),
         "course_list_date_added": m2,
         "course_list_empty_state_button":
             MessageLookupByLibrary.simpleMessage("Buscar novamente"),
@@ -107,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Carregando..."),
         "drawer_header_authenticated_title": m4,
         "drawer_header_unauthenticated_title":
-            MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+            MessageLookupByLibrary.simpleMessage("Estudaqui"),
         "drawer_options_add_course":
             MessageLookupByLibrary.simpleMessage("Adicionar curso"),
         "drawer_options_app_info":
@@ -132,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_subjects_section":
             MessageLookupByLibrary.simpleMessage("Matérias"),
         "home_welcome_message": MessageLookupByLibrary.simpleMessage(
-            "Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado."),
+            "Bem-vindo(a) ao Estudaqui,\nseu lugar de aprendizado."),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate"),
         "subject_list_title": MessageLookupByLibrary.simpleMessage("Matérias"),

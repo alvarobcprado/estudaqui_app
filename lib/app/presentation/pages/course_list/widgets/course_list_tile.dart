@@ -1,11 +1,11 @@
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/presentation/common/extensions/date_time_format.dart';
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/utils/responsive.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_author_row.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_card_image.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/widgets/course_info_column.dart';
-import 'package:faeng_courses/core/common/my_route_map.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/presentation/common/extensions/date_time_format.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/utils/responsive.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_author_row.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_card_image.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_info_column.dart';
+import 'package:estudaqui/core/common/my_route_map.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

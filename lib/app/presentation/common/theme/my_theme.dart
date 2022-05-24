@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 abstract class MyTheme {
@@ -140,6 +140,10 @@ abstract class MyAssetPaths {
   String get logoOrange => 'assets/images/logo_orange.png';
 
   String get logoBlue => 'assets/images/logo_blue.png';
+
+  String get logoNamedBlue => 'assets/images/logo_blue_named.png';
+
+  String get logoNamedOrange => 'assets/images/logo_orange_named.png';
 
   String get lastAddedCourseBG => 'assets/images/last_added_course_bg.png';
 

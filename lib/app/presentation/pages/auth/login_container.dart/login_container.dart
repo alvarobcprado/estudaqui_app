@@ -1,8 +1,8 @@
-import 'package:faeng_courses/app/presentation/common/utils/constants.dart';
-import 'package:faeng_courses/app/presentation/common/widgets/my_button.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/widgets/forgot_password_button.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/widgets/signin_form_widget.dart';
-import 'package:faeng_courses/generated/l10n.dart';
+import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/my_button.dart';
+import 'package:estudaqui/app/presentation/pages/auth/widgets/forgot_password_button.dart';
+import 'package:estudaqui/app/presentation/pages/auth/widgets/signin_form_widget.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 

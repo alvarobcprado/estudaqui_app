@@ -1,5 +1,5 @@
-import 'package:faeng_courses/app/presentation/pages/home/home_page_notifier.dart';
-import 'package:faeng_courses/app/presentation/pages/home/widgets/home_app_bar.dart';
+import 'package:estudaqui/app/presentation/pages/home/home_page_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/home/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

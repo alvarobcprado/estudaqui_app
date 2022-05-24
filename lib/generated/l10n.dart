@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `FaEng Cursos`
+  /// `Estudaqui`
   String get auth_form_title {
     return Intl.message(
-      'FaEng Cursos',
+      'Estudaqui',
       name: 'auth_form_title',
       desc: '',
       args: [],
@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `FaEng Cursos`
+  /// `Estudaqui`
   String get drawer_header_unauthenticated_title {
     return Intl.message(
-      'FaEng Cursos',
+      'Estudaqui',
       name: 'drawer_header_unauthenticated_title',
       desc: '',
       args: [],
@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.`
+  /// `Bem-vindo(a) ao Estudaqui,\nseu lugar de aprendizado.`
   String get home_welcome_message {
     return Intl.message(
-      'Bem-vindo(a) ao FaEngCursos,\nseu lugar de aprendizado.',
+      'Bem-vindo(a) ao Estudaqui,\nseu lugar de aprendizado.',
       name: 'home_welcome_message',
       desc: '',
       args: [],
@@ -580,20 +580,20 @@ class S {
     );
   }
 
-  /// `App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti`
+  /// `Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti`
   String get app_info_text {
     return Intl.message(
-      'App desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de TCC2, sob orientação da Prof.ª Drª. Gracyeli Guarienti',
+      'Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti',
       name: 'app_info_text',
       desc: '',
       args: [],
     );
   }
 
-  /// `FaEng Cursos`
+  /// `Estudaqui`
   String get app_info_name {
     return Intl.message(
-      'FaEng Cursos',
+      'Estudaqui',
       name: 'app_info_name',
       desc: '',
       args: [],

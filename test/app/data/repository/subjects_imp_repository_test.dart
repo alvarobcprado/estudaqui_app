@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/mapper/remote_to_domain.dart';
-import 'package:faeng_courses/app/data/remote/data_source/subjects_rds.dart';
-import 'package:faeng_courses/app/data/remote/model/subject/subject_rm.dart';
-import 'package:faeng_courses/app/data/repository/subjects_imp_repository.dart';
-import 'package:faeng_courses/app/domain/entity/subject.dart';
+import 'package:estudaqui/app/data/mapper/domain_to_remote.dart';
+import 'package:estudaqui/app/data/mapper/remote_to_domain.dart';
+import 'package:estudaqui/app/data/remote/data_source/subjects_rds.dart';
+import 'package:estudaqui/app/data/remote/model/subject/subject_rm.dart';
+import 'package:estudaqui/app/data/repository/subjects_imp_repository.dart';
+import 'package:estudaqui/app/domain/entity/subject.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

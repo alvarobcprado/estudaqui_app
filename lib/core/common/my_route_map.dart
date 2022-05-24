@@ -1,11 +1,11 @@
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_content/add_course_content_page.dart';
-import 'package:faeng_courses/app/presentation/pages/add_course/add_course_page.dart';
-import 'package:faeng_courses/app/presentation/pages/app_info/app_info_page.dart';
-import 'package:faeng_courses/app/presentation/pages/auth/auth_page.dart';
-import 'package:faeng_courses/app/presentation/pages/course_detail/course_detail_page.dart';
-import 'package:faeng_courses/app/presentation/pages/course_list/course_list_page.dart';
-import 'package:faeng_courses/app/presentation/pages/home/home_page.dart';
-import 'package:faeng_courses/app/presentation/pages/not_found/not_found_page.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/add_course_content_page.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_page.dart';
+import 'package:estudaqui/app/presentation/pages/app_info/app_info_page.dart';
+import 'package:estudaqui/app/presentation/pages/auth/auth_page.dart';
+import 'package:estudaqui/app/presentation/pages/course_detail/course_detail_page.dart';
+import 'package:estudaqui/app/presentation/pages/course_list/course_list_page.dart';
+import 'package:estudaqui/app/presentation/pages/home/home_page.dart';
+import 'package:estudaqui/app/presentation/pages/not_found/not_found_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

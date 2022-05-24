@@ -1,7 +1,7 @@
-import 'package:faeng_courses/app/domain/use_case/authentication/signout_uc.dart';
-import 'package:faeng_courses/app/domain/use_case/use_case.dart';
-import 'package:faeng_courses/app/presentation/common/drawer/state/my_drawer_state.dart';
-import 'package:faeng_courses/core/common/general_providers.dart';
+import 'package:estudaqui/app/domain/use_case/authentication/signout_uc.dart';
+import 'package:estudaqui/app/domain/use_case/use_case.dart';
+import 'package:estudaqui/app/presentation/common/drawer/state/my_drawer_state.dart';
+import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

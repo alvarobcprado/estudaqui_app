@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:faeng_courses/app/data/mapper/domain_to_remote.dart';
-import 'package:faeng_courses/app/data/remote/data_source/courses_rds.dart';
-import 'package:faeng_courses/app/domain/data_repository/courses_data_repository.dart';
-import 'package:faeng_courses/app/domain/entity/course.dart';
-import 'package:faeng_courses/app/domain/entity/course_module.dart';
-import 'package:faeng_courses/core/error/failure.dart';
-import 'package:faeng_courses/core/error/failure_type.dart';
+import 'package:estudaqui/app/data/mapper/domain_to_remote.dart';
+import 'package:estudaqui/app/data/remote/data_source/courses_rds.dart';
+import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/entity/course_module.dart';
+import 'package:estudaqui/core/error/failure.dart';
+import 'package:estudaqui/core/error/failure_type.dart';
 
 class CoursesImpRepository implements CoursesDataRepository {
   CoursesImpRepository({

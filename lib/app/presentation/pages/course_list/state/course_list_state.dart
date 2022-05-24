@@ -1,4 +1,4 @@
-import 'package:faeng_courses/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'course_list_state.freezed.dart';
