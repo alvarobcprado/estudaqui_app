@@ -34,6 +34,12 @@
             "type": "dart",
             "flutterMode": "profile"
         },
+        {
+            "name": "faeng_courses (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
     ],
         "compounds":[
             {
