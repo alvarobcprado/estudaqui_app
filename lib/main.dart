@@ -56,6 +56,7 @@ class MyApp extends ConsumerWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: colors.primaryColor),
         primaryColor: colors.primaryColor,
         scaffoldBackgroundColor: colors.white,
+        dividerTheme: const DividerThemeData(color: Colors.transparent),
       ),
       routeInformationParser:
           ref.watch(myRoutesProvider).routeInformationParser,
