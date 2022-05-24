@@ -141,6 +141,10 @@ abstract class MyAssetPaths {
 
   String get logoBlue => 'assets/images/logo_blue.png';
 
+  String get logoNamedBlue => 'assets/images/logo_blue_named.png';
+
+  String get logoNamedOrange => 'assets/images/logo_orange_named.png';
+
   String get lastAddedCourseBG => 'assets/images/last_added_course_bg.png';
 
   String get defaultCourseListBanner =>
