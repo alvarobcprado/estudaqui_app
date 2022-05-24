@@ -37,7 +37,7 @@ class MyApp extends ConsumerWidget {
         FormBuilderLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      title: 'Faeng Courses',
+      title: 'Estudaqui',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           elevation: 0,
