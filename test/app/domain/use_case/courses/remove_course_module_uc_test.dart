@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
 import 'package:estudaqui/app/domain/entity/course_module.dart';
-import 'package:estudaqui/app/domain/use_case/courses/add_course_module_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/remove_course_module_uc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'add_course_module_uc_test.mocks.dart';
+import 'remove_course_module_uc_test.mocks.dart';
 
 @GenerateMocks([CourseModule, CoursesDataRepository])
 void main() {
   late MockCoursesDataRepository mockRepository;
   late MockCourseModule mockCourseModule;
-  late AddCourseModuleUC useCase;
+  late RemoveCourseModuleUC useCase;
   const String courseIdTest = 'courseIdTest';
   const String courseIdTest2 = 'courseIdTest2';
   final Map<String, List<CourseModule>> courseModules = {
@@ -23,27 +23,27 @@ void main() {
   setUp(() {
     mockRepository = MockCoursesDataRepository();
     mockCourseModule = MockCourseModule();
-    useCase = AddCourseModuleUC(coursesRepository: mockRepository);
+    useCase = RemoveCourseModuleUC(repository: mockRepository);
+    courseModules[courseIdTest]!.add(mockCourseModule);
+    courseModules[courseIdTest2]!.add(mockCourseModule);
   });
 
   test(
-    "should add a course module to the list of course modules",
+    "should remove a course module from the list of course modules",
     () async {
       when(
-        mockRepository.addCourseModule(any, any),
+        mockRepository.removeCourseModuleById(any, any),
       ).thenAnswer(
         (invocation) async {
-          courseModules[courseIdTest]!.add(
-            invocation.positionalArguments.last as CourseModule,
-          );
-          return Right(mockCourseModule);
+          courseModules[courseIdTest]!.removeLast();
+          return const Right(true);
         },
       );
 
       final eitherResult = await useCase.call(
-        params: AddCourseModuleParam(
+        params: RemoveCourseModuleParam(
           courseId: '',
-          courseModule: mockCourseModule,
+          courseModuleId: '',
         ),
       );
 
@@ -51,13 +51,12 @@ void main() {
         (failure) => throw Exception(
             'UseCase test error, returned ${failure.toString()}'),
         (success) {
-          expect(success, isA<CourseModule>());
-          expect(courseModules[courseIdTest]?.length, 1);
-          expect(courseModules[courseIdTest], contains(success));
-          expect(courseModules[courseIdTest2], isEmpty);
+          expect(success, true);
+          expect(courseModules[courseIdTest], isEmpty);
+          expect(courseModules[courseIdTest2], isNotEmpty);
         },
       );
-      verify(mockRepository.addCourseModule(any, any));
+      verify(mockRepository.removeCourseModuleById(any, any));
 
       verifyNoMoreInteractions(mockRepository);
     },
