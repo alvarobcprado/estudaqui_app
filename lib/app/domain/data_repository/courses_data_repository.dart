@@ -16,7 +16,7 @@ abstract class CoursesDataRepository {
 
   Future<Either<Failure, Course>> updateCourse(Course newCourseData);
 
-  Future<Either<Failure, Course>> removeCourseById(String courseId);
+  Future<Either<Failure, bool>> removeCourseById(String courseId);
 
   Future<Either<Failure, List<Course>>> getLastestCourses(int number);
 
@@ -39,7 +39,7 @@ abstract class CoursesDataRepository {
     CourseModule newCourseModule,
   );
 
-  Future<Either<Failure, CourseModule>> removeCourseModuleById(
+  Future<Either<Failure, bool>> removeCourseModuleById(
     String courseId,
     String moduleId,
   );

@@ -196,32 +196,82 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
-  Future<Either<Failure, Course>> removeCourseById(String courseId) {
-    // TODO: implement removeCourseById
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> removeCourseById(String courseId) async {
+    try {
+      final courseReference = _coursesRDS.getCoursesReference();
+      await courseReference.doc(courseId).delete();
+      return const Right(true);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, CourseModule>> removeCourseModuleById(
+  Future<Either<Failure, bool>> removeCourseModuleById(
     String courseId,
     String moduleId,
-  ) {
-    // TODO: implement removeCourseModuleById
-    throw UnimplementedError();
+  ) async {
+    try {
+      final courseModuleReference =
+          _coursesRDS.getCourseModulesReference(courseId);
+      await courseModuleReference.doc(moduleId).delete();
+      return const Right(true);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, Course>> updateCourse(Course newCourseData) {
-    // TODO: implement updateCourse
-    throw UnimplementedError();
+  Future<Either<Failure, Course>> updateCourse(Course newCourseData) async {
+    try {
+      final courseReference = _coursesRDS.getCoursesReference();
+      final courseDoc = courseReference.doc(newCourseData.courseId);
+      await courseDoc.update(newCourseData.toRM().toJson());
+      final newCourseDoc = await courseDoc.get();
+
+      return Right(newCourseDoc.data()!);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
   Future<Either<Failure, CourseModule>> updateCourseModule(
     String courseId,
     CourseModule newCourseModule,
-  ) {
-    // TODO: implement updateCourseModule
-    throw UnimplementedError();
+  ) async {
+    try {
+      final courseModuleReference = _coursesRDS.getCourseModulesReference(
+        courseId,
+      );
+      final courseModuleDoc = courseModuleReference.doc(
+        newCourseModule.courseId,
+      );
+
+      await courseModuleDoc.update(
+        newCourseModule.toRM().toJson(),
+      );
+      final newCourseModuleDoc = await courseModuleDoc.get();
+
+      return Right(newCourseModuleDoc.data()!);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 }

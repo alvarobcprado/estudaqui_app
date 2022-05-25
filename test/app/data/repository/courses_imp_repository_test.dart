@@ -273,4 +273,153 @@ void main() {
       );
     },
   );
+
+  group(
+    'Course repository delete test',
+    () {
+      setUpAll(
+        () {
+          mockRDS = MockCoursesRDS();
+          repository = CoursesImpRepository(coursesRDS: mockRDS);
+        },
+      );
+      test(
+        'should delete course properly',
+        () async {
+          when(
+            mockRDS.getCoursesReference(),
+          ).thenAnswer((realInvocation) => coursesReference);
+
+          await _mockFakeCourse();
+
+          final eitherResult = await repository.removeCourseById(courseIdTest);
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test fail, returned ${failure.toString()}'),
+            (success) async {
+              expect(success, true);
+              final courseListSnapshot = await coursesReference.get();
+
+              expect(courseListSnapshot.docs.length, 1);
+            },
+          );
+        },
+      );
+
+      test(
+        'should delete course module properly',
+        () async {
+          when(
+            mockRDS.getCourseModulesReference(any),
+          ).thenAnswer((realInvocation) => courseModulesReference);
+
+          await _mockFakeCourseModules();
+
+          final eitherResult = await repository.removeCourseModuleById(
+            courseIdTest,
+            courseModuleIdTest,
+          );
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test fail, returned ${failure.toString()}'),
+            (success) async {
+              expect(success, true);
+              final courseModuleListSnapshot =
+                  await courseModulesReference.get();
+
+              expect(courseModuleListSnapshot.docs.length, 0);
+            },
+          );
+        },
+      );
+    },
+  );
+  group(
+    'Course repository update test',
+    () {
+      setUpAll(
+        () {
+          mockRDS = MockCoursesRDS();
+          repository = CoursesImpRepository(coursesRDS: mockRDS);
+        },
+      );
+
+      test(
+        'should update course properly',
+        () async {
+          when(
+            mockRDS.getCoursesReference(),
+          ).thenAnswer((realInvocation) => coursesReference);
+
+          await _mockFakeCourse();
+
+          final fakeCourse = Course(
+            courseId: courseIdTest,
+            creatorId: '',
+            creatorName: '',
+            subject: 'portuguese',
+            title: 'updated course',
+            subtitle: 'Fake course subtitle',
+            createdAt: DateTime.now(),
+            projectId: '',
+            bannerUrl: '',
+            updatedAt: DateTime.now(),
+          );
+
+          final oldCourse = await coursesReference.doc(courseIdTest).get();
+
+          expect(oldCourse.data()?.title, 'Lorem Ipsum');
+
+          final eitherResult = await repository.updateCourse(fakeCourse);
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test fail, returned ${failure.toString()}'),
+            (success) async {
+              expect(success.title, 'updated course');
+            },
+          );
+        },
+      );
+
+      test(
+        'should update course module properly',
+        () async {
+          when(
+            mockRDS.getCourseModulesReference(any),
+          ).thenAnswer((realInvocation) => courseModulesReference);
+
+          await _mockFakeCourseModules();
+
+          const fakeCourseModule = CourseModule(
+            index: 5,
+            moduleId: courseModuleIdTest,
+            courseId: courseIdTest,
+            name: 'updated module',
+            text: 'TestAddCourseModule Text',
+          );
+
+          final oldCourseModule =
+              await courseModulesReference.doc(courseModuleIdTest).get();
+
+          expect(oldCourseModule.data()?.name, 'Introduction');
+
+          final eitherResult = await repository.updateCourseModule(
+            courseIdTest,
+            fakeCourseModule,
+          );
+
+          eitherResult.fold(
+            (failure) => throw Exception(
+                'Repository test fail, returned ${failure.toString()}'),
+            (success) async {
+              expect(success.name, 'updated module');
+            },
+          );
+        },
+      );
+    },
+  );
 }
