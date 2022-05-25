@@ -9,6 +9,8 @@ import 'package:estudaqui/app/domain/use_case/courses/get_courses_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_latest_courses_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/remove_course_module_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/remove_course_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/update_course_module_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/update_course_uc.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -86,5 +88,19 @@ final removeCourseModuleUCProvider = Provider<RemoveCourseModuleUC>(
   (ref) {
     final repository = ref.watch(coursesRepositoryProvider);
     return RemoveCourseModuleUC(repository: repository);
+  },
+);
+
+final updateCourseUCProvider = Provider<UpdateCourseUC>(
+  (ref) {
+    final repository = ref.watch(coursesRepositoryProvider);
+    return UpdateCourseUC(repository: repository);
+  },
+);
+
+final updateCourseModuleUCProvider = Provider<UpdateCourseModuleUC>(
+  (ref) {
+    final repository = ref.watch(coursesRepositoryProvider);
+    return UpdateCourseModuleUC(repository: repository);
   },
 );
