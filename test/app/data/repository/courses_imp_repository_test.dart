@@ -22,22 +22,25 @@ void main() {
   const String courseIdTest = 'R0vni8I1gaPhZtQOYG3x';
   const String courseIdTest2 = 'E2ohqRPtW8wCINmZy4Aq';
   const String courseModuleIdTest = 'GUkwPae0OHgGv4cuTau8';
-  final coursesReference =
+  final CollectionReference<Course> coursesReference =
       fakeFirestore.collection('courses').withConverter<Course>(
             fromFirestore: (snapshot, options) =>
                 CourseRM.fromJson(snapshot.data()!).toDM(),
             toFirestore: (value, options) => value.toRM().toJson(),
           );
-  final courseModulesReference = coursesReference
-      .doc(courseIdTest)
-      .collection('modules')
-      .withConverter<CourseModule>(
-        fromFirestore: (snapshot, options) =>
-            CourseModuleRM.fromJson(snapshot.data()!).toDM(),
-        toFirestore: (value, options) => value.toRM().toJson(),
-      );
+  final CollectionReference<CourseModule> courseModulesReference =
+      coursesReference
+          .doc(courseIdTest)
+          .collection('modules')
+          .withConverter<CourseModule>(
+            fromFirestore: (snapshot, options) =>
+                CourseModuleRM.fromJson(snapshot.data()!).toDM(),
+            toFirestore: (value, options) => value.toRM().toJson(),
+          );
 
   Future<void> _mockFakeCourse() async {
+    final courseList = await coursesReference.get();
+
     await coursesReference.doc(courseIdTest).set(
           Course(
             courseId: courseIdTest,
@@ -83,7 +86,7 @@ void main() {
   group(
     'Course repository fetcher',
     () {
-      setUpAll(
+      setUp(
         () async {
           mockRDS = MockCoursesRDS();
           repository = CoursesImpRepository(coursesRDS: mockRDS);
@@ -301,7 +304,12 @@ void main() {
               expect(success, true);
               final courseListSnapshot = await coursesReference.get();
 
-              expect(courseListSnapshot.docs.length, 1);
+              expect(
+                courseListSnapshot.docs.any(
+                  (element) => element.id == courseIdTest,
+                ),
+                false,
+              );
             },
           );
         },
@@ -329,7 +337,12 @@ void main() {
               final courseModuleListSnapshot =
                   await courseModulesReference.get();
 
-              expect(courseModuleListSnapshot.docs.length, 0);
+              expect(
+                courseModuleListSnapshot.docs.any(
+                  (element) => element.id == courseModuleIdTest,
+                ),
+                false,
+              );
             },
           );
         },
