@@ -4,6 +4,7 @@ import 'package:estudaqui/app/domain/use_case/courses/add_course_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_course_by_id_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_course_module_by_id_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_course_modules_uc.dart';
+import 'package:estudaqui/app/domain/use_case/courses/get_courses_by_author_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_courses_by_subject_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_courses_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/get_latest_courses_uc.dart';
@@ -74,6 +75,13 @@ final getCoursesBySubjectProvider = Provider<GetCoursesBySubjectUC>(
   (ref) {
     final coursesRepository = ref.watch(coursesRepositoryProvider);
     return GetCoursesBySubjectUC(coursesDataRepository: coursesRepository);
+  },
+);
+
+final getCoursesByAuthorProvider = Provider<GetCoursesByAuthorUC>(
+  (ref) {
+    final coursesRepository = ref.watch(coursesRepositoryProvider);
+    return GetCoursesByAuthorUC(coursesDataRepository: coursesRepository);
   },
 );
 

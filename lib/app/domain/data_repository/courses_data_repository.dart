@@ -10,6 +10,8 @@ abstract class CoursesDataRepository {
 
   Future<Either<Failure, List<Course>>> fetchCoursesBySubject(String subjectId);
 
+  Future<Either<Failure, List<Course>>> fetchCoursesByAuthor(String authorId);
+
   Future<Either<Failure, Course>> getCourseById(String courseId);
 
   Future<Either<Failure, Course>> addCourse(Course course);

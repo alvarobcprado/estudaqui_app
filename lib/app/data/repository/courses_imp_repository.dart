@@ -121,6 +121,28 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
+  Future<Either<Failure, List<Course>>> fetchCoursesByAuthor(
+    String authorId,
+  ) async {
+    try {
+      final coursesCollection = _coursesRDS.getCoursesReference();
+
+      final query = coursesCollection.where('creatorId', isEqualTo: authorId);
+      final coursesSnapshot = await query.get();
+
+      final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
+
+      return Right(courseList);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<Failure, List<CourseModule>>> fetchCourseModules(
     String courseId,
   ) async {
