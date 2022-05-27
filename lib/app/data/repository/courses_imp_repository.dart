@@ -221,7 +221,20 @@ class CoursesImpRepository implements CoursesDataRepository {
   Future<Either<Failure, bool>> removeCourseById(String courseId) async {
     try {
       final courseReference = _coursesRDS.getCoursesReference();
-      await courseReference.doc(courseId).delete();
+      final courseModuleReference = _coursesRDS.getCourseModulesReference(
+        courseId,
+      );
+      final courseModuleSnaps = await courseModuleReference.get();
+      final batch = courseReference.firestore.batch();
+
+      for (var i = 0; i < courseModuleSnaps.size; i++) {
+        batch.delete(courseModuleSnaps.docs[i].reference);
+      }
+
+      batch.delete(courseReference.doc(courseId));
+
+      await batch.commit();
+
       return const Right(true);
     } catch (e) {
       return Left(
