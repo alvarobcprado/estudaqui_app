@@ -65,6 +65,15 @@ class MyDrawer extends StatelessWidget {
                       isSelected: false,
                       onTap: () {
                         Navigator.of(context).pop();
+                        GoRouter.of(context).pushUserCourses();
+                      },
+                      title: 'Meus cursos',
+                      icon: const Icon(Icons.person),
+                    ),
+                    MyDrawerTile(
+                      isSelected: false,
+                      onTap: () {
+                        Navigator.of(context).pop();
                         GoRouter.of(context).pushAddCourse();
                       },
                       title: S.of(context).drawer_options_add_course,

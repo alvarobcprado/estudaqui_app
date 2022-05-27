@@ -6,6 +6,7 @@ import 'package:estudaqui/app/presentation/pages/course_detail/course_detail_pag
 import 'package:estudaqui/app/presentation/pages/course_list/course_list_page.dart';
 import 'package:estudaqui/app/presentation/pages/home/home_page.dart';
 import 'package:estudaqui/app/presentation/pages/not_found/not_found_page.dart';
+import 'package:estudaqui/app/presentation/pages/user_courses/user_courses_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,6 +24,9 @@ const _addCourseInfoPath = 'add-course';
 
 /// content
 const _addCourseContentPath = 'content';
+
+/// my-courses
+const _myCoursesPath = 'my-courses';
 
 /// courses/:subject
 const _courseListPath = 'courses/:subject';
@@ -77,6 +81,14 @@ class MyRouteMap extends GoRouter {
                   ],
                 ),
                 GoRoute(
+                  path: 'my-courses',
+                  name: _myCoursesPath,
+                  pageBuilder: (context, state) => MaterialPage(
+                    key: state.pageKey,
+                    child: const UserCourseListPage(),
+                  ),
+                ),
+                GoRoute(
                   path: 'courses/:subject',
                   name: _courseListPath,
                   pageBuilder: (context, state) {
@@ -85,8 +97,8 @@ class MyRouteMap extends GoRouter {
                     return MaterialPage(
                       key: state.pageKey,
                       child: CourseListPage(
-                        subjectId: subjectId ?? '',
-                        subjectName: subjectName ?? '',
+                        listId: subjectId ?? '',
+                        listName: subjectName ?? '',
                       ),
                     );
                   },
@@ -153,6 +165,16 @@ extension MyPageRoutes on GoRouter {
       },
     );
   }
+
+  void pushUserCourses() => pushNamed(_myCoursesPath);
+
+  void pushAllCourses() => pushNamed(
+        _courseListPath,
+        params: {
+          'subject': 'all',
+        },
+        extra: 'Cursos',
+      );
 
   void replaceWithHome() => goNamed(_homePath);
   void replaceWithNotFound() => goNamed(_notFoundPath);
