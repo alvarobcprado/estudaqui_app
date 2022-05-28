@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Editar curso`
+  String get edit_course_page_title {
+    return Intl.message(
+      'Editar curso',
+      name: 'edit_course_page_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Adicionar curso`
   String get add_course_page_title {
     return Intl.message(
@@ -520,6 +530,16 @@ class S {
     );
   }
 
+  /// `TODAS`
+  String get home_grid_all_courses {
+    return Intl.message(
+      'TODAS',
+      name: 'home_grid_all_courses',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Desconhecido`
   String get default_course_author {
     return Intl.message(
@@ -570,13 +590,33 @@ class S {
     );
   }
 
-  /// `Este campo precisar ter ao menos {length} caracteres`
+  /// `Este campo precisa de um e-mail válido`
+  String get form_error_valid_email_field {
+    return Intl.message(
+      'Este campo precisa de um e-mail válido',
+      name: 'form_error_valid_email_field',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Este campo precisa ter ao menos {length} caracteres`
   String form_error_text_min_length_field(Object length) {
     return Intl.message(
-      'Este campo precisar ter ao menos $length caracteres',
+      'Este campo precisa ter ao menos $length caracteres',
       name: 'form_error_text_min_length_field',
       desc: '',
       args: [length],
+    );
+  }
+
+  /// `Sobre o App`
+  String get app_info_page_title {
+    return Intl.message(
+      'Sobre o App',
+      name: 'app_info_page_title',
+      desc: '',
+      args: [],
     );
   }
 
@@ -617,6 +657,56 @@ class S {
       name: 'app_info_copyrigth',
       desc: '',
       args: [year],
+    );
+  }
+
+  /// `Adicionar vídeo`
+  String get add_video_dialog_title {
+    return Intl.message(
+      'Adicionar vídeo',
+      name: 'add_video_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `URL`
+  String get add_video_dialog_url {
+    return Intl.message(
+      'URL',
+      name: 'add_video_dialog_url',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelar`
+  String get add_video_dialog_cancel {
+    return Intl.message(
+      'Cancelar',
+      name: 'add_video_dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Por favor adicione uma URL válida`
+  String get add_video_dialog_empty {
+    return Intl.message(
+      'Por favor adicione uma URL válida',
+      name: 'add_video_dialog_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get add_video_dialog_ok {
+    return Intl.message(
+      'OK',
+      name: 'add_video_dialog_ok',
+      desc: '',
+      args: [],
     );
   }
 

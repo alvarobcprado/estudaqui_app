@@ -1,3 +1,4 @@
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
@@ -28,7 +29,7 @@ class _AddVideoDialogState extends State<AddVideoDialog> {
   Widget build(BuildContext context) {
     return PointerInterceptor(
       child: AlertDialog(
-        title: const Text('Insert Video'),
+        title: Text(S.of(context).add_video_dialog_title),
         scrollable: true,
         content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -53,13 +54,13 @@ class _AddVideoDialogState extends State<AddVideoDialog> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text('Cancel'),
+            child: Text(S.of(context).add_video_dialog_cancel),
           ),
           TextButton(
             onPressed: () async {
               if (url.text.isEmpty) {
                 setState(() {
-                  validateFailed = 'Please either choose a video URL!';
+                  validateFailed = S.of(context).add_video_dialog_empty;
                 });
               } else {
                 var proceed = await widget
