@@ -5,7 +5,9 @@ import 'package:estudaqui/app/domain/entity/subject.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:estudaqui/app/domain/use_case/courses/add_course_and_module_uc.dart';
 import 'package:estudaqui/app/domain/use_case/use_case.dart';
-import 'package:estudaqui/app/presentation/pages/add_course/models/add_course_form_model.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/models/course_form_model.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/models/course_module_form_model.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/models/edit_course_form_model.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/state/add_course_state.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:estudaqui/core/common/providers/use_case/subject_usecase_provider.dart';
@@ -24,13 +26,6 @@ final addCourseNotifierProvider =
       addCourseAndModuleUC: addCourseAndModuleUC,
       getCurrentUserUC: getCurrentUserUC,
     );
-  },
-);
-
-final formBuilderKeyProvider =
-    Provider.autoDispose<GlobalKey<FormBuilderState>>(
-  (ref) {
-    return GlobalKey<FormBuilderState>();
   },
 );
 
@@ -87,37 +82,46 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
     return currentUser;
   }
 
-  Future<void> validateCurrentFormAndAddCourse(
+  Future<void> validateCurrentFormAndSaveCourse(
     GlobalKey<FormBuilderState> formKey,
+    EditCourseFormModel? editCourseFormModel,
   ) async {
     state = const AddCourseState.loading();
-    late Either<Failure, CourseModule> eitherResult;
+    late Either<Failure, void> eitherResult;
 
     if (_validateCurrentForm(formKey)) {
       final formValue = formKey.currentState!.value;
 
-      final courseFormInfos = AddCourseFormModel.fromJson(formValue);
+      final courseFormModel = CourseFormModel.fromJson(formValue);
+      final courseModuleFormModel = CourseModuleFormModel.fromJson(formValue);
       final user = await _getUser();
 
       final courseToAdd = Course(
-        courseId: '',
+        courseId: editCourseFormModel?.courseToAdd.courseId ??
+            courseFormModel.courseId,
         creatorId: user?.uid ?? '',
         creatorName: user?.displayName ?? '',
-        subject: courseFormInfos.courseSubject,
-        title: courseFormInfos.courseName,
-        subtitle: courseFormInfos.courseDescription,
-        createdAt: DateTime.now(),
-        projectId: '',
-        bannerUrl: courseFormInfos.courseImage,
-        updatedAt: DateTime.now(),
+        subject: courseFormModel.courseSubject,
+        title: courseFormModel.courseName,
+        subtitle: courseFormModel.courseDescription,
+        projectId: courseFormModel.projectId,
+        bannerUrl: courseFormModel.courseImage,
+        createdAt: editCourseFormModel?.courseToAdd.createdAt ??
+            courseFormModel.createdAt ??
+            DateTime.now(),
+        updatedAt: editCourseFormModel?.courseToAdd.createdAt ??
+            courseFormModel.updatedAt ??
+            DateTime.now(),
       );
 
       final courseModuleToAdd = CourseModule(
-        index: 0,
-        moduleId: '',
-        courseId: '',
-        name: 'Módulo 1',
-        text: courseFormInfos.courseContent,
+        index: courseModuleFormModel.index,
+        moduleId: editCourseFormModel?.courseModuleToAdd.moduleId ??
+            courseModuleFormModel.moduleId,
+        courseId: editCourseFormModel?.courseModuleToAdd.courseId ??
+            courseModuleFormModel.courseId,
+        name: courseModuleFormModel.moduleName,
+        text: courseModuleFormModel.courseContent,
       );
 
       eitherResult = await _addCourseAndModuleUC(
@@ -131,10 +135,11 @@ class AddCourseNotifier extends StateNotifier<AddCourseState> {
         (l) => AddCourseState.error(errorTitle: l.title, errorBody: l.message),
         (r) => const AddCourseState.success(),
       );
+    } else {
+      state = const AddCourseState.error(
+        errorTitle: 'Problema ao adicionar curso',
+        errorBody: 'Por favor, verifique os campos do formulário x.x',
+      );
     }
-    state = const AddCourseState.error(
-      errorTitle: 'Problema ao adicionar curso',
-      errorBody: 'Por favor, verifique os campos do formulário x.x',
-    );
   }
 }
