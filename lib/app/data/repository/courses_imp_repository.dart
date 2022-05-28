@@ -75,16 +75,24 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
-  Future<Either<Failure, List<Course>>> getLastestCourses(int number) async {
+  Future<Either<Failure, Stream<List<Course>>>> getLastestCourses(
+    int number,
+  ) async {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
 
       final query = coursesCollection
           .orderBy('createdAt', descending: true)
           .limit(number);
-      final coursesSnapshot = await query.get();
+      final coursesSnapshot = query.snapshots();
 
-      final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
+      final courseList = coursesSnapshot.map(
+        (e) => e.docs
+            .map(
+              (e) => e.data(),
+            )
+            .toList(),
+      );
 
       return Right(courseList);
     } catch (e) {
