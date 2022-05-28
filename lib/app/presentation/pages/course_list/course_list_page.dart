@@ -10,12 +10,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CourseListPage extends StatelessWidget {
   const CourseListPage({
     Key? key,
-    required this.subjectId,
-    required this.subjectName,
+    required this.listId,
+    required this.listName,
   }) : super(key: key);
 
-  final String subjectId;
-  final String subjectName;
+  final String listId;
+  final String listName;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CourseListPage extends StatelessWidget {
             SliverAppBar(
               pinned: true,
               title: Text(
-                subjectName.capitalized(),
+                listName.capitalized(),
               ),
             ),
             SliverPadding(
@@ -36,7 +36,7 @@ class CourseListPage extends StatelessWidget {
               sliver: Consumer(
                 builder: (context, ref, child) {
                   final coursesState = ref.watch(
-                    courseListNotifierProvider(subjectId),
+                    courseListNotifierProvider(listId),
                   );
                   return coursesState.maybeWhen(
                     initialLoading: () => const SliverFillRemaining(
@@ -65,11 +65,11 @@ class CourseListPage extends StatelessWidget {
                             S.of(context).course_list_empty_state_button,
                         stateMessage:
                             S.of(context).course_list_empty_state_message(
-                                  subjectName,
+                                  listName,
                                 ),
                         onTryAgain: () => ref
                             .read(
-                              courseListNotifierProvider(subjectId).notifier,
+                              courseListNotifierProvider(listId).notifier,
                             )
                             .getCourses(),
                       ),
@@ -79,7 +79,7 @@ class CourseListPage extends StatelessWidget {
                       child: UnexpectedStateWidget(
                         onTryAgain: () => ref
                             .read(
-                              courseListNotifierProvider(subjectId).notifier,
+                              courseListNotifierProvider(listId).notifier,
                             )
                             .getCourses(),
                       ),
