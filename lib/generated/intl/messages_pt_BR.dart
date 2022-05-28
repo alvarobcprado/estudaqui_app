@@ -69,14 +69,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar módulo"),
         "add_module_text_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar módulo"),
+        "add_picture_dialog_both_filled": MessageLookupByLibrary.simpleMessage(
+            "Por favor adicione uma URL válida ou selecione uma imagem, não ambos"),
+        "add_picture_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "add_picture_dialog_empty": MessageLookupByLibrary.simpleMessage(
+            "Por favor adicione uma URL válida ou selecione uma imagem"),
+        "add_picture_dialog_pick_file":
+            MessageLookupByLibrary.simpleMessage("Escolha a imagem"),
+        "add_picture_dialog_select_from_files":
+            MessageLookupByLibrary.simpleMessage("Selecionar da galeria"),
+        "add_picture_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar imagem"),
         "add_video_dialog_cancel":
             MessageLookupByLibrary.simpleMessage("Cancelar"),
         "add_video_dialog_empty": MessageLookupByLibrary.simpleMessage(
             "Por favor adicione uma URL válida"),
-        "add_video_dialog_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "add_video_dialog_title":
             MessageLookupByLibrary.simpleMessage("Adicionar vídeo"),
-        "add_video_dialog_url": MessageLookupByLibrary.simpleMessage("URL"),
         "app_info_copyrigth": m0,
         "app_info_name": MessageLookupByLibrary.simpleMessage("Estudaqui"),
         "app_info_page_title":

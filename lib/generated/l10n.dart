@@ -670,16 +670,6 @@ class S {
     );
   }
 
-  /// `URL`
-  String get add_video_dialog_url {
-    return Intl.message(
-      'URL',
-      name: 'add_video_dialog_url',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Cancelar`
   String get add_video_dialog_cancel {
     return Intl.message(
@@ -700,11 +690,61 @@ class S {
     );
   }
 
-  /// `OK`
-  String get add_video_dialog_ok {
+  /// `Adicionar imagem`
+  String get add_picture_dialog_title {
     return Intl.message(
-      'OK',
-      name: 'add_video_dialog_ok',
+      'Adicionar imagem',
+      name: 'add_picture_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selecionar da galeria`
+  String get add_picture_dialog_select_from_files {
+    return Intl.message(
+      'Selecionar da galeria',
+      name: 'add_picture_dialog_select_from_files',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Escolha a imagem`
+  String get add_picture_dialog_pick_file {
+    return Intl.message(
+      'Escolha a imagem',
+      name: 'add_picture_dialog_pick_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelar`
+  String get add_picture_dialog_cancel {
+    return Intl.message(
+      'Cancelar',
+      name: 'add_picture_dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Por favor adicione uma URL válida ou selecione uma imagem`
+  String get add_picture_dialog_empty {
+    return Intl.message(
+      'Por favor adicione uma URL válida ou selecione uma imagem',
+      name: 'add_picture_dialog_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Por favor adicione uma URL válida ou selecione uma imagem, não ambos`
+  String get add_picture_dialog_both_filled {
+    return Intl.message(
+      'Por favor adicione uma URL válida ou selecione uma imagem, não ambos',
+      name: 'add_picture_dialog_both_filled',
       desc: '',
       args: [],
     );
