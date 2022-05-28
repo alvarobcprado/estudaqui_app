@@ -293,6 +293,10 @@ void main() {
             mockRDS.getCoursesReference(),
           ).thenAnswer((realInvocation) => coursesReference);
 
+          when(
+            mockRDS.getCourseModulesReference(any),
+          ).thenAnswer((realInvocation) => courseModulesReference);
+
           await _mockFakeCourse();
 
           final eitherResult = await repository.removeCourseById(courseIdTest);
