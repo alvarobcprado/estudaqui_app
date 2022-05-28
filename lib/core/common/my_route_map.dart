@@ -1,5 +1,6 @@
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/add_course_content_page.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_page.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/models/edit_course_form_model.dart';
 import 'package:estudaqui/app/presentation/pages/app_info/app_info_page.dart';
 import 'package:estudaqui/app/presentation/pages/auth/auth_page.dart';
 import 'package:estudaqui/app/presentation/pages/course_detail/course_detail_page.dart';
@@ -67,7 +68,9 @@ class MyRouteMap extends GoRouter {
                   name: _addCourseInfoPath,
                   pageBuilder: (context, state) => MaterialPage(
                     key: state.pageKey,
-                    child: const AddCoursePage(),
+                    child: AddCoursePage(
+                      courseToEdit: state.extra as EditCourseFormModel?,
+                    ),
                   ),
                   routes: [
                     GoRoute(
@@ -167,6 +170,11 @@ extension MyPageRoutes on GoRouter {
   }
 
   void pushUserCourses() => pushNamed(_myCoursesPath);
+
+  void pushEditCourse(EditCourseFormModel? editCourseFormModel) => pushNamed(
+        _addCourseInfoPath,
+        extra: editCourseFormModel,
+      );
 
   void pushAllCourses() => pushNamed(
         _courseListPath,
