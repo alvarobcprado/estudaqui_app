@@ -37,10 +37,6 @@
 # Web related
 lib/generated_plugin_registrant.dart
 
-# Generated files
-*.freezed.dart
-*.mocks.dart
-*.g.dart
 
 # Symbolication related
 app.*.symbols
