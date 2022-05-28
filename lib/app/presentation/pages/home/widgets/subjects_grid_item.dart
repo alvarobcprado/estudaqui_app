@@ -10,10 +10,12 @@ class SubjectsGridItem extends ConsumerWidget {
     required this.name,
     required this.imageUrl,
     required this.onPressed,
+    this.cutName = true,
   }) : super(key: key);
 
   final String name;
   final String imageUrl;
+  final bool cutName;
   final VoidCallback onPressed;
 
   @override
@@ -46,7 +48,7 @@ class SubjectsGridItem extends ConsumerWidget {
               ),
             ),
             Text(
-              name.substring(0, 3).toUpperCase(),
+              cutName ? name.substring(0, 3).toUpperCase() : name.toUpperCase(),
               style: TextStyle(
                 fontSize: kMediumNumber,
                 fontWeight: FontWeight.w600,
