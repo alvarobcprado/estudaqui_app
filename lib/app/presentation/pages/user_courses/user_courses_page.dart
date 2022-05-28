@@ -1,3 +1,4 @@
+import 'package:estudaqui/app/domain/entity/course.dart';
 import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:estudaqui/app/presentation/common/widgets/unexpected_state_widget.dart';
 import 'package:estudaqui/app/presentation/pages/user_courses/user_courses_notifier.dart';
@@ -13,6 +14,32 @@ class UserCourseListPage extends StatelessWidget {
   const UserCourseListPage({
     Key? key,
   }) : super(key: key);
+
+  void _onDeleteTapped(WidgetRef ref, Course course) async {
+    final didDeleteCourse = await ref
+        .read(userCoursesNotifierProvider.notifier)
+        .deleteCourse(course);
+
+    if (didDeleteCourse) {
+      Fluttertoast.showToast(
+        msg: 'Curso removido com sucesso',
+      );
+    }
+  }
+
+  void _onEditTapped(
+    BuildContext context,
+    WidgetRef ref,
+    Course course,
+  ) async {
+    GoRouter.of(context).pushEditCourse(
+      await ref
+          .read(
+            userCoursesNotifierProvider.notifier,
+          )
+          .getEditCourseForm(course),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +82,12 @@ class UserCourseListPage extends StatelessWidget {
                             final course = courseList[index];
                             return UserCourseListTile(
                               course: course,
-                              onDeleteTap: () async {
-                                final didDeleteCourse = await ref
-                                    .read(userCoursesNotifierProvider.notifier)
-                                    .deleteCourse(course);
-                                if (didDeleteCourse) {
-                                  Fluttertoast.showToast(
-                                    msg: 'Curso removido com sucesso',
-                                  );
-                                }
-                              },
-                              onEditTap: () {
-                                ref.read(userCoursesNotifierProvider);
-
-                                // _onCourseEdit,
-                              },
+                              onDeleteTap: () => _onDeleteTapped(ref, course),
+                              onEditTap: () => _onEditTapped(
+                                context,
+                                ref,
+                                course,
+                              ),
                             );
                           },
                           childCount: courseList.length,
