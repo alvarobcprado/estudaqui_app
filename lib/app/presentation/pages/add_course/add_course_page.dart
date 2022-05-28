@@ -2,6 +2,7 @@ import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:estudaqui/app/presentation/common/widgets/action_handler.dart';
 import 'package:estudaqui/app/presentation/common/widgets/dialogs.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_notifier.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/models/edit_course_form_model.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/state/add_course_state.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/widgets/course_content_field_button.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/widgets/course_info_fields.dart';
@@ -15,7 +16,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 class AddCoursePage extends ConsumerStatefulWidget {
-  const AddCoursePage({Key? key}) : super(key: key);
+  const AddCoursePage({Key? key, this.courseToEdit}) : super(key: key);
+
+  final EditCourseFormModel? courseToEdit;
 
   @override
   ConsumerState<AddCoursePage> createState() => _AddCoursePageState();
@@ -25,10 +28,24 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
   bool isLoading = false;
   late final GlobalKey<FormBuilderState> _formKey;
 
+  EditCourseFormModel? get courseToEdit => widget.courseToEdit;
+
   @override
   void initState() {
-    _formKey = GlobalKey<FormBuilderState>();
     super.initState();
+    _formKey = GlobalKey<FormBuilderState>();
+
+    // TODO: Refact later
+    if (courseToEdit != null) {
+      WidgetsBinding.instance?.addPostFrameCallback(
+        (timeStamp) {
+          ref.read(courseContentProvider.state).update(
+                (state) =>
+                    state = courseToEdit?.courseModuleToAdd.courseContent,
+              );
+        },
+      );
+    }
   }
 
   void onAddCourse() {
@@ -51,6 +68,16 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
     );
   }
 
+  // TODO: Refact later
+  Map<String, dynamic> getInitialFormValue() {
+    final formMap = <String, dynamic>{};
+    if (widget.courseToEdit != null) {
+      formMap.addAll(widget.courseToEdit?.courseToAdd.toJson() ?? {});
+      formMap.addAll(widget.courseToEdit?.courseModuleToAdd.toJson() ?? {});
+    }
+    return formMap;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +98,11 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
           slivers: [
             SliverAppBar(
               pinned: true,
-              title: Text(S.of(context).add_course_page_title),
+              title: Text(
+                courseToEdit == null
+                    ? S.of(context).add_course_page_title
+                    : S.of(context).edit_course_page_title,
+              ),
             ),
             SliverFillRemaining(
               hasScrollBody: false,
@@ -82,6 +113,7 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
                 ),
                 child: FormBuilder(
                   autoFocusOnValidationFailure: true,
+                  initialValue: getInitialFormValue(),
                   key: _formKey,
                   child: Column(
                     children: [
@@ -93,7 +125,10 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
                       SaveCourseButton(
                         onPressed: () => ref
                             .read(addCourseNotifierProvider.notifier)
-                            .validateCurrentFormAndAddCourse(_formKey),
+                            .validateCurrentFormAndSaveCourse(
+                              _formKey,
+                              widget.courseToEdit,
+                            ),
                       ),
                     ],
                   ),
