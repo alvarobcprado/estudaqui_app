@@ -36,6 +36,11 @@ abstract class CoursesDataRepository {
     CourseModule courseModule,
   );
 
+  Future<Either<Failure, void>> addCourseAndModule(
+    Course course,
+    CourseModule courseModule,
+  );
+
   Future<Either<Failure, CourseModule>> updateCourseModule(
     String courseId,
     CourseModule newCourseModule,

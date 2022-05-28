@@ -218,6 +218,57 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
+  // TODO: Refact later
+  Future<Either<Failure, void>> addCourseAndModule(
+    Course course,
+    CourseModule courseModule,
+  ) async {
+    try {
+      final courseRef = _coursesRDS.getCoursesReference();
+      final batch = courseRef.firestore.batch();
+
+      final hasCourseId = course.courseId.isNotEmpty;
+      final courseDoc = courseRef.doc(
+        hasCourseId ? course.courseId : null,
+      );
+      final courseToAdd = hasCourseId
+          ? course
+          : course.copyWith(
+              courseId: courseDoc.id,
+            );
+
+      final courseModuleRef = _coursesRDS.getCourseModulesReference(
+        courseDoc.id,
+      );
+
+      final hasCourseModuleId = courseModule.moduleId.isNotEmpty;
+
+      final moduleDoc = courseModuleRef.doc(
+        hasCourseModuleId ? courseModule.moduleId : null,
+      );
+
+      final moduleToAdd = hasCourseModuleId
+          ? courseModule
+          : courseModule.copyWith(
+              moduleId: moduleDoc.id,
+              courseId: courseDoc.id,
+            );
+
+      batch.set<Course>(courseDoc, courseToAdd);
+      batch.set<CourseModule>(moduleDoc, moduleToAdd);
+      await batch.commit();
+
+      return const Right(null);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<Failure, bool>> removeCourseById(String courseId) async {
     try {
       final courseReference = _coursesRDS.getCoursesReference();
