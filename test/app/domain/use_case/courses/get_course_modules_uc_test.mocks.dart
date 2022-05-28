@@ -79,6 +79,13 @@ class MockCoursesDataRepository extends _i1.Mock
               _FakeEither_0<_i6.Failure, List<_i7.Course>>())) as _i5
           .Future<_i2.Either<_i6.Failure, List<_i7.Course>>>);
   @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i7.Course>>> fetchCoursesByAuthor(
+          String? authorId) =>
+      (super.noSuchMethod(Invocation.method(#fetchCoursesByAuthor, [authorId]),
+          returnValue: Future<_i2.Either<_i6.Failure, List<_i7.Course>>>.value(
+              _FakeEither_0<_i6.Failure, List<_i7.Course>>())) as _i5
+          .Future<_i2.Either<_i6.Failure, List<_i7.Course>>>);
+  @override
   _i5.Future<_i2.Either<_i6.Failure, _i7.Course>> getCourseById(
           String? courseId) =>
       (super.noSuchMethod(Invocation.method(#getCourseById, [courseId]),
@@ -137,6 +144,14 @@ class MockCoursesDataRepository extends _i1.Mock
           returnValue: Future<_i2.Either<_i6.Failure, _i3.CourseModule>>.value(
               _FakeEither_0<_i6.Failure, _i3.CourseModule>())) as _i5
           .Future<_i2.Either<_i6.Failure, _i3.CourseModule>>);
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, void>> addCourseAndModule(
+          _i7.Course? course, _i3.CourseModule? courseModule) =>
+      (super.noSuchMethod(
+              Invocation.method(#addCourseAndModule, [course, courseModule]),
+              returnValue: Future<_i2.Either<_i6.Failure, void>>.value(
+                  _FakeEither_0<_i6.Failure, void>()))
+          as _i5.Future<_i2.Either<_i6.Failure, void>>);
   @override
   _i5.Future<_i2.Either<_i6.Failure, _i3.CourseModule>> updateCourseModule(
           String? courseId, _i3.CourseModule? newCourseModule) =>
