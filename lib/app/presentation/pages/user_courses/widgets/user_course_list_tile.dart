@@ -8,6 +8,7 @@ import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_card
 import 'package:estudaqui/app/presentation/pages/course_list/widgets/course_info_column.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:estudaqui/core/common/my_route_map.dart';
+import 'package:estudaqui/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -27,15 +28,15 @@ class UserCourseListTile extends StatelessWidget {
   void _onDeleteTap(BuildContext context) async {
     await DialogHandler.showAlertDialog<bool>(
       context,
-      title: 'Confirmar deleção',
-      body: 'Quer mesmo deletar o curso ${course.title}?',
+      title: S.of(context).user_courses_dialog_title,
+      body: S.of(context).user_courses_dialog_content(course.title),
       actions: [
         TextButton.icon(
           onPressed: () {
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.clear),
-          label: const Text('Não'),
+          label: Text(S.of(context).user_courses_dialog_cancel),
         ),
         TextButton.icon(
           onPressed: () {
@@ -43,7 +44,7 @@ class UserCourseListTile extends StatelessWidget {
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.check),
-          label: const Text('Sim'),
+          label: Text(S.of(context).user_courses_dialog_confirm),
         ),
       ],
     );

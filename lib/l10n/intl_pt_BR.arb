@@ -86,6 +86,11 @@
     "add_picture_dialog_cancel": "Cancelar",
     "add_picture_dialog_empty": "Por favor adicione uma URL válida ou selecione uma imagem",
     "add_picture_dialog_both_filled": "Por favor adicione uma URL válida ou selecione uma imagem, não ambos",
+
+    "user_courses_dialog_title": "Confirmar deleção",
+    "user_courses_dialog_content": "Quer mesmo deletar o curso {name}?",
+    "user_courses_dialog_confirm": "Sim",
+    "user_courses_dialog_cancel": "Não",
     
 
 

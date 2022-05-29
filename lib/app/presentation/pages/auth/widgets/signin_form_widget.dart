@@ -43,7 +43,10 @@ class SignInFormWidget extends StatelessWidget {
             fieldName: 'passwordField',
             validator: FormBuilderValidators.compose(
               [
-                FormBuilderValidators.required(context),
+                FormBuilderValidators.required(
+                  context,
+                  errorText: S.of(context).form_error_text_required_field,
+                ),
               ],
             ),
           ),

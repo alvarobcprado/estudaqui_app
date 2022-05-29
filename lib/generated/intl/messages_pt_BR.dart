@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m5(length) =>
       "Este campo precisa ter ao menos ${length} caracteres";
 
+  static String m6(name) => "Quer mesmo deletar o curso ${name}?";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add_course_content_button":
@@ -165,7 +167,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Curso adicionado com sucesso"),
         "toast_success_login":
             MessageLookupByLibrary.simpleMessage("Login realizado com sucesso"),
-        "toast_success_logout":
-            MessageLookupByLibrary.simpleMessage("Logout realizado com sucesso")
+        "toast_success_logout": MessageLookupByLibrary.simpleMessage(
+            "Logout realizado com sucesso"),
+        "user_courses_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Não"),
+        "user_courses_dialog_confirm":
+            MessageLookupByLibrary.simpleMessage("Sim"),
+        "user_courses_dialog_content": m6,
+        "user_courses_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Confirmar deleção")
       };
 }
