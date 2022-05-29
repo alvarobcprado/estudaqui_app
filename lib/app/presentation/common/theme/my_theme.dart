@@ -107,7 +107,7 @@ abstract class MyTextStyles {
         fontSize: kMediumNumber,
         color: _primaryColor,
         fontWeight: FontWeight.w500,
-        height: 24 / 16,
+        height: 20 / 16,
       );
 
   TextStyle get courseListBigTitle => const TextStyle(

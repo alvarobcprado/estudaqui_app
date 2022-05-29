@@ -52,7 +52,7 @@ class UserCourseListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: Responsive.isPortrait(context) ? 310 / 120 : 620 / 120,
+      aspectRatio: Responsive.isPortrait(context) ? 310 / 150 : 610 / 140,
       child: Container(
         margin: const EdgeInsets.only(bottom: kMediumNumber),
         child: InkWell(
@@ -74,25 +74,31 @@ class UserCourseListTile extends StatelessWidget {
               ),
               const SizedBox(width: kMediumNumber),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CourseAuthorRow(authorName: course.creatorName),
-                    CourseInfoColumn(
-                      courseName: course.title,
-                      courseDescription: course.subtitle,
-                      courseDate: course.createdAt.toLocalFormatString(),
-                    ),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CourseAuthorRow(authorName: course.creatorName),
+                      CourseInfoColumn(
+                        courseName: course.title,
+                        courseDescription: course.subtitle,
+                        courseDate: course.createdAt.toLocalFormatString(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Consumer(builder: (context, ref, _) {
                 final colors = ref.watch(themeProvider).colors;
                 return Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
                       onPressed: onEditTap,
+                      padding: const EdgeInsets.all(kSmallNumber / 2),
+                      splashRadius: kLargeNumber,
+                      constraints: const BoxConstraints(),
                       icon: Icon(
                         Icons.edit,
                         color: colors.secondaryVariantColor,
@@ -100,6 +106,9 @@ class UserCourseListTile extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () => _onDeleteTap(context),
+                      padding: const EdgeInsets.all(kSmallNumber / 2),
+                      splashRadius: kLargeNumber,
+                      constraints: const BoxConstraints(),
                       icon: Icon(
                         Icons.delete,
                         color: colors.errorColor,

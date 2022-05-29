@@ -37,7 +37,7 @@ class CourseInfoColumn extends ConsumerWidget {
           softWrap: true,
           style: textStyles.courseListSubtitle,
         ),
-        const SizedBox(height: kSmallNumber),
+        const SizedBox(height: kSmallNumber / 2),
         Text(
           S.of(context).course_list_date_added(courseDate),
           style: textStyles.courseListDateAdded,
