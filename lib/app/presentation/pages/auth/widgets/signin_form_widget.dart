@@ -25,8 +25,14 @@ class SignInFormWidget extends StatelessWidget {
             fieldName: 'emailField',
             validator: FormBuilderValidators.compose(
               [
-                FormBuilderValidators.required(context),
-                FormBuilderValidators.email(context),
+                FormBuilderValidators.required(
+                  context,
+                  errorText: S.of(context).form_error_text_required_field,
+                ),
+                FormBuilderValidators.email(
+                  context,
+                  errorText: S.of(context).form_error_valid_email_field,
+                ),
               ],
             ),
           ),
@@ -38,7 +44,6 @@ class SignInFormWidget extends StatelessWidget {
             validator: FormBuilderValidators.compose(
               [
                 FormBuilderValidators.required(context),
-                FormBuilderValidators.minLength(context, 6),
               ],
             ),
           ),

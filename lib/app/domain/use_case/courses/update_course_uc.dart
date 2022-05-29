@@ -1,0 +1,27 @@
+import 'package:dartz/dartz.dart';
+import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/course.dart';
+import 'package:estudaqui/app/domain/use_case/use_case.dart';
+import 'package:estudaqui/core/error/failure.dart';
+
+class UpdateCourseUC extends UseCase<UpdateCourseParam, Course> {
+  UpdateCourseUC({
+    required CoursesDataRepository repository,
+  }) : _repository = repository;
+
+  final CoursesDataRepository _repository;
+
+  @override
+  Future<Either<Failure, Course>> call({
+    required UpdateCourseParam params,
+  }) {
+    return _repository.updateCourse(params.course);
+  }
+}
+
+class UpdateCourseParam {
+  final Course course;
+  UpdateCourseParam({
+    required this.course,
+  });
+}

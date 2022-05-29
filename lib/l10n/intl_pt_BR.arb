@@ -25,6 +25,8 @@
     "error_default_message": "Ops, algo deu errado",
     "error_default_try_again_message": "Tentar novamente",
 
+    "edit_course_page_title": "Editar curso",
+
     "add_course_page_title": "Adicionar curso",
     "add_course_form_name_field": "nome do curso*",
     "add_course_form_description_field": "descrição*",
@@ -55,6 +57,7 @@
     "home_page_title":"FaEng Cursos",
     "home_welcome_message":"Bem-vindo(a) ao Estudaqui,\nseu lugar de aprendizado.",
     "home_greeting_user":"Olá ",
+    "home_grid_all_courses": "TODAS",
 
     "default_course_author": "Desconhecido",
 
@@ -63,12 +66,28 @@
     "course_list_date_added": "Adicionado em {date}",
     
     "form_error_text_required_field": "Este campo não pode ser vazio",
-    "form_error_text_min_length_field":"Este campo precisar ter ao menos {length} caracteres",
+    "form_error_valid_email_field": "Este campo precisa de um e-mail válido",
+    "form_error_text_min_length_field":"Este campo precisa ter ao menos {length} caracteres",
 
+    "app_info_page_title": "Sobre o App",
     "app_info_text": "Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti",
     "app_info_name": "Estudaqui",
     "app_info_version": "Versão {version}",
     "app_info_copyrigth": "© {year} Álvaro Prado",
+
+    "add_video_dialog_title": "Adicionar vídeo",
+    "add_video_dialog_cancel": "Cancelar",
+    "add_video_dialog_empty": "Por favor adicione uma URL válida",
+
+
+    "add_picture_dialog_title": "Adicionar imagem",
+    "add_picture_dialog_select_from_files": "Selecionar da galeria",
+    "add_picture_dialog_pick_file": "Escolha a imagem",
+    "add_picture_dialog_cancel": "Cancelar",
+    "add_picture_dialog_empty": "Por favor adicione uma URL válida ou selecione uma imagem",
+    "add_picture_dialog_both_filled": "Por favor adicione uma URL válida ou selecione uma imagem, não ambos",
+    
+
 
     "toast_success_login": "Login realizado com sucesso",
     "toast_success_logout": "Logout realizado com sucesso",

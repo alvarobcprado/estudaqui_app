@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m4(name) => "Olá, ${name}";
 
   static String m5(length) =>
-      "Este campo precisar ter ao menos ${length} caracteres";
+      "Este campo precisa ter ao menos ${length} caracteres";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -69,8 +69,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar módulo"),
         "add_module_text_save_button":
             MessageLookupByLibrary.simpleMessage("Salvar módulo"),
+        "add_picture_dialog_both_filled": MessageLookupByLibrary.simpleMessage(
+            "Por favor adicione uma URL válida ou selecione uma imagem, não ambos"),
+        "add_picture_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "add_picture_dialog_empty": MessageLookupByLibrary.simpleMessage(
+            "Por favor adicione uma URL válida ou selecione uma imagem"),
+        "add_picture_dialog_pick_file":
+            MessageLookupByLibrary.simpleMessage("Escolha a imagem"),
+        "add_picture_dialog_select_from_files":
+            MessageLookupByLibrary.simpleMessage("Selecionar da galeria"),
+        "add_picture_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar imagem"),
+        "add_video_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "add_video_dialog_empty": MessageLookupByLibrary.simpleMessage(
+            "Por favor adicione uma URL válida"),
+        "add_video_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Adicionar vídeo"),
         "app_info_copyrigth": m0,
         "app_info_name": MessageLookupByLibrary.simpleMessage("Estudaqui"),
+        "app_info_page_title":
+            MessageLookupByLibrary.simpleMessage("Sobre o App"),
         "app_info_text": MessageLookupByLibrary.simpleMessage(
             "Aplicativo desenvolvido como parte dos requisitos necessários para a aprovação na disciplina de Trabalho de conclusão de curso, sob orientação da Prof.ª Drª. Gracyeli Guarienti"),
         "app_info_version": m1,
@@ -118,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "drawer_options_signout": MessageLookupByLibrary.simpleMessage("Sair"),
         "drawer_options_test":
             MessageLookupByLibrary.simpleMessage("Página teste"),
+        "edit_course_page_title":
+            MessageLookupByLibrary.simpleMessage("Editar curso"),
         "error_default_message":
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":
@@ -125,7 +147,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "form_error_text_min_length_field": m5,
         "form_error_text_required_field": MessageLookupByLibrary.simpleMessage(
             "Este campo não pode ser vazio"),
+        "form_error_valid_email_field": MessageLookupByLibrary.simpleMessage(
+            "Este campo precisa de um e-mail válido"),
         "home_greeting_user": MessageLookupByLibrary.simpleMessage("Olá "),
+        "home_grid_all_courses": MessageLookupByLibrary.simpleMessage("TODAS"),
         "home_latest_courses_section":
             MessageLookupByLibrary.simpleMessage("Últimos cursos adicionados"),
         "home_page_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),

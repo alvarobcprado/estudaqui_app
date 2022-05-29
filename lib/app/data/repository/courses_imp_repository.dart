@@ -75,16 +75,24 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
-  Future<Either<Failure, List<Course>>> getLastestCourses(int number) async {
+  Future<Either<Failure, Stream<List<Course>>>> getLastestCourses(
+    int number,
+  ) async {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
 
       final query = coursesCollection
           .orderBy('createdAt', descending: true)
           .limit(number);
-      final coursesSnapshot = await query.get();
+      final coursesSnapshot = query.snapshots();
 
-      final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
+      final courseList = coursesSnapshot.map(
+        (e) => e.docs
+            .map(
+              (e) => e.data(),
+            )
+            .toList(),
+      );
 
       return Right(courseList);
     } catch (e) {
@@ -106,6 +114,28 @@ class CoursesImpRepository implements CoursesDataRepository {
       final query = coursesCollection
           .where('subject', isEqualTo: subjectId)
           .orderBy('title');
+      final coursesSnapshot = await query.get();
+
+      final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
+
+      return Right(courseList);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Course>>> fetchCoursesByAuthor(
+    String authorId,
+  ) async {
+    try {
+      final coursesCollection = _coursesRDS.getCoursesReference();
+
+      final query = coursesCollection.where('creatorId', isEqualTo: authorId);
       final coursesSnapshot = await query.get();
 
       final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();
@@ -196,32 +226,146 @@ class CoursesImpRepository implements CoursesDataRepository {
   }
 
   @override
-  Future<Either<Failure, Course>> removeCourseById(String courseId) {
-    // TODO: implement removeCourseById
-    throw UnimplementedError();
+  // TODO: Refact later
+  Future<Either<Failure, void>> addCourseAndModule(
+    Course course,
+    CourseModule courseModule,
+  ) async {
+    try {
+      final courseRef = _coursesRDS.getCoursesReference();
+      final batch = courseRef.firestore.batch();
+
+      final hasCourseId = course.courseId.isNotEmpty;
+      final courseDoc = courseRef.doc(
+        hasCourseId ? course.courseId : null,
+      );
+      final courseToAdd = hasCourseId
+          ? course
+          : course.copyWith(
+              courseId: courseDoc.id,
+            );
+
+      final courseModuleRef = _coursesRDS.getCourseModulesReference(
+        courseDoc.id,
+      );
+
+      final hasCourseModuleId = courseModule.moduleId.isNotEmpty;
+
+      final moduleDoc = courseModuleRef.doc(
+        hasCourseModuleId ? courseModule.moduleId : null,
+      );
+
+      final moduleToAdd = hasCourseModuleId
+          ? courseModule
+          : courseModule.copyWith(
+              moduleId: moduleDoc.id,
+              courseId: courseDoc.id,
+            );
+
+      batch.set<Course>(courseDoc, courseToAdd);
+      batch.set<CourseModule>(moduleDoc, moduleToAdd);
+      await batch.commit();
+
+      return const Right(null);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, CourseModule>> removeCourseModuleById(
+  Future<Either<Failure, bool>> removeCourseById(String courseId) async {
+    try {
+      final courseReference = _coursesRDS.getCoursesReference();
+      final courseModuleReference = _coursesRDS.getCourseModulesReference(
+        courseId,
+      );
+      final courseModuleSnaps = await courseModuleReference.get();
+      final batch = courseReference.firestore.batch();
+
+      for (var i = 0; i < courseModuleSnaps.size; i++) {
+        batch.delete(courseModuleSnaps.docs[i].reference);
+      }
+
+      batch.delete(courseReference.doc(courseId));
+
+      await batch.commit();
+
+      return const Right(true);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> removeCourseModuleById(
     String courseId,
     String moduleId,
-  ) {
-    // TODO: implement removeCourseModuleById
-    throw UnimplementedError();
+  ) async {
+    try {
+      final courseModuleReference =
+          _coursesRDS.getCourseModulesReference(courseId);
+      await courseModuleReference.doc(moduleId).delete();
+      return const Right(true);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, Course>> updateCourse(Course newCourseData) {
-    // TODO: implement updateCourse
-    throw UnimplementedError();
+  Future<Either<Failure, Course>> updateCourse(Course newCourseData) async {
+    try {
+      final courseReference = _coursesRDS.getCoursesReference();
+      final courseDoc = courseReference.doc(newCourseData.courseId);
+      await courseDoc.update(newCourseData.toRM().toJson());
+      final newCourseDoc = await courseDoc.get();
+
+      return Right(newCourseDoc.data()!);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 
   @override
   Future<Either<Failure, CourseModule>> updateCourseModule(
     String courseId,
     CourseModule newCourseModule,
-  ) {
-    // TODO: implement updateCourseModule
-    throw UnimplementedError();
+  ) async {
+    try {
+      final courseModuleReference = _coursesRDS.getCourseModulesReference(
+        courseId,
+      );
+      final courseModuleDoc = courseModuleReference.doc(
+        newCourseModule.courseId,
+      );
+
+      await courseModuleDoc.update(
+        newCourseModule.toRM().toJson(),
+      );
+      final newCourseModuleDoc = await courseModuleDoc.get();
+
+      return Right(newCourseModuleDoc.data()!);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const NormalFailure(),
+        ),
+      );
+    }
   }
 }

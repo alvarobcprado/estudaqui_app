@@ -27,7 +27,7 @@ void main() {
   });
 
   test(
-    "should add a course to the list of courses",
+    "should add a course module to the list of course modules",
     () async {
       when(
         mockRepository.addCourseModule(any, any),

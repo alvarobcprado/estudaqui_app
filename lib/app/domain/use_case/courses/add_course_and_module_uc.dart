@@ -5,8 +5,7 @@ import 'package:estudaqui/app/domain/entity/course_module.dart';
 import 'package:estudaqui/app/domain/use_case/use_case.dart';
 import 'package:estudaqui/core/error/failure.dart';
 
-class AddCourseAndModuleUC
-    extends UseCase<AddCourseAndModuleParam, CourseModule> {
+class AddCourseAndModuleUC extends UseCase<AddCourseAndModuleParam, void> {
   AddCourseAndModuleUC({
     required CoursesDataRepository coursesDataRepository,
   }) : _repository = coursesDataRepository;
@@ -14,28 +13,13 @@ class AddCourseAndModuleUC
   final CoursesDataRepository _repository;
 
   @override
-  Future<Either<Failure, CourseModule>> call({
+  Future<Either<Failure, void>> call({
     required AddCourseAndModuleParam params,
   }) async {
-    late Either<Failure, CourseModule> response;
-    final eitherAddCourse = await _repository.addCourse(params.courseToAdd);
-
-    response = await eitherAddCourse.fold(
-      (courseFailure) => Left(courseFailure),
-      (course) async {
-        final eitherAddModule = await _repository.addCourseModule(
-          course.courseId,
-          params.moduleToAdd,
-        );
-
-        return eitherAddModule.fold(
-          (moduleFailure) => Left(moduleFailure),
-          (module) => Right(module),
-        );
-      },
+    return _repository.addCourseAndModule(
+      params.courseToAdd,
+      params.moduleToAdd,
     );
-
-    return response;
   }
 }
 

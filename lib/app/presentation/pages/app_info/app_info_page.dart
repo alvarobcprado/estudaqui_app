@@ -14,7 +14,7 @@ class AppInfoPage extends ConsumerWidget {
     final textStyles = ref.watch(themeProvider).textStyles;
     return Scaffold(
       drawer: const SafeArea(child: MyDrawer()),
-      appBar: AppBar(title: const Text('Sobre o app')),
+      appBar: AppBar(title: Text(S.of(context).app_info_page_title)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(

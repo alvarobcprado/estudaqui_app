@@ -6,16 +6,18 @@ import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:estudaqui/core/common/providers/use_case/subject_usecase_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final getLastCoursesProvider = FutureProvider.autoDispose<List<Course>>(
-  (ref) async {
+final getLastCoursesProvider = StreamProvider.autoDispose<List<Course>>(
+  (ref) async* {
     final useCase = ref.watch(getLatestCoursesUCProvider);
     final eitherResult = await useCase(
       params: GetLatestCoursesParam(coursesNumber: 5),
     );
 
-    return eitherResult.fold(
+    yield* eitherResult.fold(
       (failure) => throw Exception(),
-      (courseList) => courseList.isNotEmpty ? courseList : throw Exception(),
+      (courseList) async* {
+        yield* await courseList.isEmpty ? throw Exception() : courseList;
+      },
     );
   },
 );

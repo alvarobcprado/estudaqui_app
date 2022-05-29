@@ -25,7 +25,10 @@ class SignUpFormWidget extends StatelessWidget {
             fieldName: 'nameField',
             validator: FormBuilderValidators.compose(
               [
-                FormBuilderValidators.required(context),
+                FormBuilderValidators.required(
+                  context,
+                  errorText: S.of(context).form_error_text_required_field,
+                ),
               ],
             ),
           ),
@@ -36,8 +39,14 @@ class SignUpFormWidget extends StatelessWidget {
             fieldName: 'emailField',
             validator: FormBuilderValidators.compose(
               [
-                FormBuilderValidators.required(context),
-                FormBuilderValidators.email(context),
+                FormBuilderValidators.required(
+                  context,
+                  errorText: S.of(context).form_error_text_required_field,
+                ),
+                FormBuilderValidators.email(
+                  context,
+                  errorText: S.of(context).form_error_valid_email_field,
+                ),
               ],
             ),
           ),
@@ -48,8 +57,15 @@ class SignUpFormWidget extends StatelessWidget {
             fieldName: 'passwordField',
             validator: FormBuilderValidators.compose(
               [
-                FormBuilderValidators.required(context),
-                FormBuilderValidators.minLength(context, 6),
+                FormBuilderValidators.required(
+                  context,
+                  errorText: S.of(context).form_error_text_required_field,
+                ),
+                FormBuilderValidators.minLength(
+                  context,
+                  6,
+                  errorText: S.of(context).form_error_text_min_length_field(6),
+                ),
               ],
             ),
           ),

@@ -26,15 +26,9 @@ void main() {
   test(
     "should add a course and then add a module",
     () async {
-      when(mockRepository.addCourse(any)).thenAnswer((_) async {
-        return Right(mockCourse);
+      when(mockRepository.addCourseAndModule(any, any)).thenAnswer((_) async {
+        return const Right(null);
       });
-
-      when(mockRepository.addCourseModule(any, any)).thenAnswer((_) async {
-        return Right(mockModule);
-      });
-
-      when(mockCourse.courseId).thenReturn('mockCourseId');
 
       final eitherResult = await useCase.call(
         params: AddCourseAndModuleParam(
@@ -46,12 +40,9 @@ void main() {
       eitherResult.fold(
         (failure) => throw Exception(
             'UseCase test error, returned ${failure.toString()}'),
-        (success) {
-          expect(success, isA<CourseModule>());
-        },
+        (success) {},
       );
-      verify(mockRepository.addCourse(any));
-      verify(mockRepository.addCourseModule(any, any));
+      verify(mockRepository.addCourseAndModule(any, any)).called(1);
 
       verifyNoMoreInteractions(mockRepository);
     },

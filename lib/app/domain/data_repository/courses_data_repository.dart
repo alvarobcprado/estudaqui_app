@@ -10,15 +10,17 @@ abstract class CoursesDataRepository {
 
   Future<Either<Failure, List<Course>>> fetchCoursesBySubject(String subjectId);
 
+  Future<Either<Failure, List<Course>>> fetchCoursesByAuthor(String authorId);
+
   Future<Either<Failure, Course>> getCourseById(String courseId);
 
   Future<Either<Failure, Course>> addCourse(Course course);
 
   Future<Either<Failure, Course>> updateCourse(Course newCourseData);
 
-  Future<Either<Failure, Course>> removeCourseById(String courseId);
+  Future<Either<Failure, bool>> removeCourseById(String courseId);
 
-  Future<Either<Failure, List<Course>>> getLastestCourses(int number);
+  Future<Either<Failure, Stream<List<Course>>>> getLastestCourses(int number);
 
   Future<Either<Failure, List<CourseModule>>> fetchCourseModules(
     String courseId,
@@ -34,12 +36,17 @@ abstract class CoursesDataRepository {
     CourseModule courseModule,
   );
 
+  Future<Either<Failure, void>> addCourseAndModule(
+    Course course,
+    CourseModule courseModule,
+  );
+
   Future<Either<Failure, CourseModule>> updateCourseModule(
     String courseId,
     CourseModule newCourseModule,
   );
 
-  Future<Either<Failure, CourseModule>> removeCourseModuleById(
+  Future<Either<Failure, bool>> removeCourseModuleById(
     String courseId,
     String moduleId,
   );

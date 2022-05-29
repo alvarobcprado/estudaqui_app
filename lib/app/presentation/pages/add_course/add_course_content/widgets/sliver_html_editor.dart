@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/widgets/add_picture_dialog.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/widgets/add_video_dialog.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_notifier.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
@@ -21,6 +22,15 @@ class SliverHtmlEditor extends ConsumerWidget {
       context: context,
       builder: (context) {
         return AddVideoDialog(controller: _controller);
+      },
+    );
+  }
+
+  void showPictureDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AddPictureDialog(controller: _controller);
       },
     );
   }
@@ -55,6 +65,10 @@ class SliverHtmlEditor extends ConsumerWidget {
                   onButtonPressed: (buttonType, _, __) {
                     if (buttonType == ButtonType.video) {
                       showVideoDialog(context);
+                      return false;
+                    }
+                    if (buttonType == ButtonType.picture) {
+                      showPictureDialog(context);
                       return false;
                     }
                     return true;
