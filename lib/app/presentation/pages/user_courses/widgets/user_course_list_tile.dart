@@ -75,19 +75,19 @@ class UserCourseListTile extends StatelessWidget {
               ),
               const SizedBox(width: kMediumNumber),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CourseAuthorRow(authorName: course.creatorName),
-                      CourseInfoColumn(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CourseAuthorRow(authorName: course.creatorName),
+                    SingleChildScrollView(
+                      child: CourseInfoColumn(
                         courseName: course.title,
                         courseDescription: course.subtitle,
                         courseDate: course.createdAt.toLocalFormatString(),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Consumer(builder: (context, ref, _) {
