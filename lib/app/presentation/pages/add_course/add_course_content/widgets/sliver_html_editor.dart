@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/widgets/add_picture_dialog.dart';
 import 'package:estudaqui/app/presentation/pages/add_course/add_course_content/widgets/add_video_dialog.dart';
@@ -52,16 +50,6 @@ class SliverHtmlEditor extends ConsumerWidget {
                   initialText: ref.read(courseContentProvider) ?? '',
                 ),
                 htmlToolbarOptions: HtmlToolbarOptions(
-                  mediaUploadInterceptor: (p0, p1) {
-                    if (p1 == InsertFileType.image) {
-                      String base64Data = base64.encode(p0.bytes!);
-                      String base64Image =
-                          """<img src="data:image/${p0.extension};base64,$base64Data" data-filename="${p0.name}" width="100%"/>""";
-                      _controller.insertHtml(base64Image);
-                      return false;
-                    }
-                    return true;
-                  },
                   onButtonPressed: (buttonType, _, __) {
                     if (buttonType == ButtonType.video) {
                       showVideoDialog(context);
