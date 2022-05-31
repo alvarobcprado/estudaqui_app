@@ -53,6 +53,9 @@ class MyApp extends ConsumerWidget {
           circularTrackColor: colors.secondaryVariantColor,
           color: colors.primaryColor,
         ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: colors.primaryColor,
+        ),
         primaryColor: colors.primaryColor,
         scaffoldBackgroundColor: colors.white,
         dividerTheme: const DividerThemeData(color: Colors.transparent),
