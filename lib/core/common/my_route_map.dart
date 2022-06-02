@@ -139,10 +139,9 @@ class MyRouteMap extends GoRouter {
 }
 
 extension MyPageRoutes on GoRouter {
-  void pushAppInfo() => pushNamed(_appInfoPath);
-  void pushLogin() => pushNamed(_loginPath);
-  void pushHome() => pushNamed(_homePath);
-  void pushTest() => pushNamed(_notFoundPath);
+  void pushAppInfo() => goNamed(_appInfoPath);
+  void pushLogin() => goNamed(_loginPath);
+  void pushHome() => goNamed(_homePath);
   void pushAddCourse() => pushNamed(_addCourseInfoPath);
   void pushAddCourseContent() => pushNamed(_addCourseContentPath);
   void pushCoursesOf(String subjectId, String subjectName) => pushNamed(

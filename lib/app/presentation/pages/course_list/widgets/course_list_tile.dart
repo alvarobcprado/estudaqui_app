@@ -20,7 +20,7 @@ class CourseListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: Responsive.isPortrait(context) ? 310 / 120 : 620 / 120,
+      aspectRatio: Responsive.isPortrait(context) ? 310 / 150 : 610 / 140,
       child: Container(
         margin: const EdgeInsets.only(bottom: kMediumNumber),
         child: InkWell(

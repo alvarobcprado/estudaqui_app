@@ -19,7 +19,7 @@ class CoursesImpRepository implements CoursesDataRepository {
   Future<Either<Failure, List<Course>>> fetchCourses() async {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
-      final coursesQuery = await coursesCollection.get();
+      final coursesQuery = await coursesCollection.orderBy('title').get();
       final coursesList = coursesQuery.docs.map((e) => e.data()).toList();
       return Right(coursesList);
     } catch (e) {
@@ -135,7 +135,9 @@ class CoursesImpRepository implements CoursesDataRepository {
     try {
       final coursesCollection = _coursesRDS.getCoursesReference();
 
-      final query = coursesCollection.where('creatorId', isEqualTo: authorId);
+      final query = coursesCollection
+          .where('creatorId', isEqualTo: authorId)
+          .orderBy('title');
       final coursesSnapshot = await query.get();
 
       final courseList = coursesSnapshot.docs.map((e) => e.data()).toList();

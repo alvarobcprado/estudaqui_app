@@ -750,6 +750,46 @@ class S {
     );
   }
 
+  /// `Confirmar deleção`
+  String get user_courses_dialog_title {
+    return Intl.message(
+      'Confirmar deleção',
+      name: 'user_courses_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quer mesmo deletar o curso {name}?`
+  String user_courses_dialog_content(Object name) {
+    return Intl.message(
+      'Quer mesmo deletar o curso $name?',
+      name: 'user_courses_dialog_content',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Sim`
+  String get user_courses_dialog_confirm {
+    return Intl.message(
+      'Sim',
+      name: 'user_courses_dialog_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Não`
+  String get user_courses_dialog_cancel {
+    return Intl.message(
+      'Não',
+      name: 'user_courses_dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Login realizado com sucesso`
   String get toast_success_login {
     return Intl.message(
