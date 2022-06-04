@@ -4,7 +4,19 @@ import 'package:estudaqui/app/domain/use_case/courses/get_latest_courses_uc.dart
 import 'package:estudaqui/app/domain/use_case/use_case.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:estudaqui/core/common/providers/use_case/subject_usecase_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final userInitializerProvider = FutureProvider<User?>(
+  (ref) async {
+    final useCase = ref.watch(getCurrentUserUCProvider);
+    final eitherResult = await useCase(params: NoParams());
+    return eitherResult.fold(
+      (l) => null,
+      (user) => user,
+    );
+  },
+);
 
 final getLastCoursesProvider = StreamProvider.autoDispose<List<Course>>(
   (ref) async* {

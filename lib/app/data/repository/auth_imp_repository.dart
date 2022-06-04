@@ -15,7 +15,10 @@ class AuthImpRepository implements AuthDataRepository {
   Stream<User?> get authStateChanges => _authProvider.authStateChanges();
 
   @override
-  Stream<User?> get userStateChanges => _authProvider.userChanges();
+  Stream<User?> get userStateChanges async* {
+    await getCurrentUser();
+    yield* _authProvider.userChanges();
+  }
 
   @override
   Future<Either<Failure, User>> getCurrentUser() async {
@@ -64,7 +67,6 @@ class AuthImpRepository implements AuthDataRepository {
   @override
   Future<Either<Failure, void>> signOut() async {
     try {
-      await _authProvider.signOut();
       final userCredential = await _authProvider.signInAnonymously();
 
       if (userCredential.user != null && userCredential.user!.isAnonymous) {

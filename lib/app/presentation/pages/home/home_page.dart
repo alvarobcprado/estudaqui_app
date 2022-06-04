@@ -2,6 +2,7 @@ import 'package:estudaqui/app/presentation/common/drawer/my_drawer.dart';
 import 'package:estudaqui/app/presentation/common/slivers/sliver_named_section.dart';
 import 'package:estudaqui/app/presentation/common/slivers/sliver_sized_box_adapter.dart';
 import 'package:estudaqui/app/presentation/common/utils/constants.dart';
+import 'package:estudaqui/app/presentation/common/widgets/unexpected_state_widget.dart';
 import 'package:estudaqui/app/presentation/pages/home/home_page_notifier.dart';
 import 'package:estudaqui/app/presentation/pages/home/widgets/home_header_section.dart';
 import 'package:estudaqui/app/presentation/pages/home/widgets/home_last_courses_section.dart';
@@ -23,11 +24,21 @@ class HomePage extends StatelessWidget {
           drawer: const MyDrawer(),
           body: Consumer(
             builder: (context, ref, child) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  ref.refresh(getLastCoursesProvider);
-                },
-                child: child!,
+              final userInit = ref.watch(userInitializerProvider);
+
+              return userInit.when(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (_, __) => Center(
+                  child: UnexpectedStateWidget(
+                    onTryAgain: () => ref.refresh(userInitializerProvider),
+                  ),
+                ),
+                data: (_) => RefreshIndicator(
+                  onRefresh: () async {
+                    ref.refresh(getLastCoursesProvider);
+                  },
+                  child: child!,
+                ),
               );
             },
             child: CustomScrollView(
