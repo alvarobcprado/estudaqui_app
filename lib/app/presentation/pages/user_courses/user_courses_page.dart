@@ -51,78 +51,81 @@ class UserCourseListPage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const SliverAppBar(
-              pinned: true,
-              title: Text(
-                'Meus cursos',
+        child: Scrollbar(
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              const SliverAppBar(
+                pinned: true,
+                title: Text(
+                  'Meus cursos',
+                ),
               ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kLargeNumber,
-              ),
-              sliver: Consumer(
-                builder: (context, ref, child) {
-                  final userCoursesState = ref.watch(
-                    userCoursesNotifierProvider,
-                  );
-                  return userCoursesState.maybeWhen(
-                    initialLoading: () => const SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                    success: (courseList) {
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final course = courseList[index];
-                            return UserCourseListTile(
-                              course: course,
-                              onDeleteTap: () => _onDeleteTapped(ref, course),
-                              onEditTap: () => _onEditTapped(
-                                context,
-                                ref,
-                                course,
-                              ),
-                            );
-                          },
-                          childCount: courseList.length,
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kLargeNumber,
+                ),
+                sliver: Consumer(
+                  builder: (context, ref, child) {
+                    final userCoursesState = ref.watch(
+                      userCoursesNotifierProvider,
+                    );
+                    return userCoursesState.maybeWhen(
+                      initialLoading: () => const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Center(
+                          child: CircularProgressIndicator(),
                         ),
-                      );
-                    },
-                    empty: () => SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: UnexpectedStateWidget(
-                        buttonMessage:
-                            S.of(context).course_list_empty_state_button,
-                        stateMessage:
-                            S.of(context).course_list_empty_state_message(''),
-                        onTryAgain: () => ref
-                            .read(
-                              userCoursesNotifierProvider.notifier,
-                            )
-                            .getUserCourses(),
                       ),
-                    ),
-                    orElse: () => SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: UnexpectedStateWidget(
-                        onTryAgain: () => ref
-                            .read(
-                              userCoursesNotifierProvider.notifier,
-                            )
-                            .getUserCourses(),
+                      success: (courseList) {
+                        return SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final course = courseList[index];
+                              return UserCourseListTile(
+                                course: course,
+                                onDeleteTap: () => _onDeleteTapped(ref, course),
+                                onEditTap: () => _onEditTapped(
+                                  context,
+                                  ref,
+                                  course,
+                                ),
+                              );
+                            },
+                            childCount: courseList.length,
+                          ),
+                        );
+                      },
+                      empty: () => SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: UnexpectedStateWidget(
+                          buttonMessage:
+                              S.of(context).course_list_empty_state_button,
+                          stateMessage:
+                              S.of(context).course_list_empty_state_message(''),
+                          onTryAgain: () => ref
+                              .read(
+                                userCoursesNotifierProvider.notifier,
+                              )
+                              .getUserCourses(),
+                        ),
                       ),
-                    ),
-                  );
-                },
+                      orElse: () => SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: UnexpectedStateWidget(
+                          onTryAgain: () => ref
+                              .read(
+                                userCoursesNotifierProvider.notifier,
+                              )
+                              .getUserCourses(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

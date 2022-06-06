@@ -16,6 +16,7 @@ class AppInfoPage extends ConsumerWidget {
       drawer: const SafeArea(child: MyDrawer()),
       appBar: AppBar(title: Text(S.of(context).app_info_page_title)),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: kLargeNumber,

@@ -79,6 +79,7 @@ class _LatestCoursesCarouselState extends ConsumerState<LatestCoursesCarousel> {
         ),
         Expanded(
           child: ListView.separated(
+            physics: const BouncingScrollPhysics(),
             controller: _carouselCtrl,
             scrollDirection: Axis.horizontal,
             itemCount: courseList.length,

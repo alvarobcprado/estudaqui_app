@@ -123,6 +123,7 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
             );
           },
           child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
                 pinned: true,
