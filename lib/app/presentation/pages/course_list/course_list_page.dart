@@ -21,74 +21,77 @@ class CourseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              title: Text(
-                listName.capitalized(),
+        child: Scrollbar(
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                pinned: true,
+                title: Text(
+                  listName.capitalized(),
+                ),
               ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kLargeNumber,
-              ),
-              sliver: Consumer(
-                builder: (context, ref, child) {
-                  final coursesState = ref.watch(
-                    courseListNotifierProvider(listId),
-                  );
-                  return coursesState.maybeWhen(
-                    initialLoading: () => const SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                    success: (courseList) {
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final course = courseList[index];
-                            return CourseListTile(
-                              course: course,
-                            );
-                          },
-                          childCount: courseList.length,
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kLargeNumber,
+                ),
+                sliver: Consumer(
+                  builder: (context, ref, child) {
+                    final coursesState = ref.watch(
+                      courseListNotifierProvider(listId),
+                    );
+                    return coursesState.maybeWhen(
+                      initialLoading: () => const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Center(
+                          child: CircularProgressIndicator(),
                         ),
-                      );
-                    },
-                    empty: () => SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: UnexpectedStateWidget(
-                        buttonMessage:
-                            S.of(context).course_list_empty_state_button,
-                        stateMessage:
-                            S.of(context).course_list_empty_state_message(
-                                  listName,
-                                ),
-                        onTryAgain: () => ref
-                            .read(
-                              courseListNotifierProvider(listId).notifier,
-                            )
-                            .getCourses(),
                       ),
-                    ),
-                    orElse: () => SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: UnexpectedStateWidget(
-                        onTryAgain: () => ref
-                            .read(
-                              courseListNotifierProvider(listId).notifier,
-                            )
-                            .getCourses(),
+                      success: (courseList) {
+                        return SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final course = courseList[index];
+                              return CourseListTile(
+                                course: course,
+                              );
+                            },
+                            childCount: courseList.length,
+                          ),
+                        );
+                      },
+                      empty: () => SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: UnexpectedStateWidget(
+                          buttonMessage:
+                              S.of(context).course_list_empty_state_button,
+                          stateMessage:
+                              S.of(context).course_list_empty_state_message(
+                                    listName,
+                                  ),
+                          onTryAgain: () => ref
+                              .read(
+                                courseListNotifierProvider(listId).notifier,
+                              )
+                              .getCourses(),
+                        ),
                       ),
-                    ),
-                  );
-                },
+                      orElse: () => SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: UnexpectedStateWidget(
+                          onTryAgain: () => ref
+                              .read(
+                                courseListNotifierProvider(listId).notifier,
+                              )
+                              .getCourses(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -21,28 +21,30 @@ class CourseInfoColumn extends ConsumerWidget {
     final theme = ref.watch(themeProvider);
     final textStyles = theme.textStyles;
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             courseName,
-            maxLines: 2,
+            maxLines: 5,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
             style: textStyles.courseListTitle,
           ),
           Text(
             courseDescription,
-            maxLines: 2,
+            maxLines: 10,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
             style: textStyles.courseListSubtitle,
           ),
-          const SizedBox(height: kSmallNumber / 2),
+          const SizedBox(height: kSmallNumber),
           Text(
             S.of(context).course_list_date_added(courseDate),
             style: textStyles.courseListDateAdded,
           ),
+          const SizedBox(height: kSmallNumber / 2),
         ],
       ),
     );

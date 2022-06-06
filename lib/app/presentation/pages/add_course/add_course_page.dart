@@ -78,64 +78,94 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
     return formMap;
   }
 
+  Future<bool> onWillPop(BuildContext context) async {
+    final result = await DialogHandler.showAlertDialog<bool>(
+      context,
+      title: S.of(context).cancel_course_creation_dialog_title,
+      body: S.of(context).cancel_course_creation_dialog_body,
+      actions: [
+        TextButton.icon(
+          onPressed: () {
+            Navigator.of(context).pop(false);
+          },
+          icon: const Icon(Icons.clear),
+          label: Text(S.of(context).cancel_course_creation_dialog_cancel),
+        ),
+        TextButton.icon(
+          onPressed: () {
+            Navigator.of(context).pop(true);
+          },
+          icon: const Icon(Icons.check),
+          label: Text(S.of(context).cancel_course_creation_dialog_confirm),
+        ),
+      ],
+    );
+
+    return result ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: ActionHandler<AddCourseState>(
-        actionProvider: addCourseNotifierProvider,
-        onReceived: (oldState, newState) {
-          oldState?.whenOrNull(
-            loading: () => Navigator.of(context).pop(),
-          );
-          newState.whenOrNull(
-            loading: onAddingCourse,
-            error: onAddCourseError,
-            success: onAddCourse,
-          );
-        },
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              title: Text(
-                courseToEdit == null
-                    ? S.of(context).add_course_page_title
-                    : S.of(context).edit_course_page_title,
-              ),
-            ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kLargeNumber,
-                  vertical: kMediumNumber,
+    return WillPopScope(
+      onWillPop: () async => onWillPop(context),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: ActionHandler<AddCourseState>(
+          actionProvider: addCourseNotifierProvider,
+          onReceived: (oldState, newState) {
+            oldState?.whenOrNull(
+              loading: () => Navigator.of(context).pop(),
+            );
+            newState.whenOrNull(
+              loading: onAddingCourse,
+              error: onAddCourseError,
+              success: onAddCourse,
+            );
+          },
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                pinned: true,
+                title: Text(
+                  courseToEdit == null
+                      ? S.of(context).add_course_page_title
+                      : S.of(context).edit_course_page_title,
                 ),
-                child: FormBuilder(
-                  autoFocusOnValidationFailure: true,
-                  initialValue: getInitialFormValue(),
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      const CourseInfoFields(),
-                      const CourseContentFieldButton(),
-                      const SizedBox(
-                        height: kMediumNumber,
-                      ),
-                      SaveCourseButton(
-                        onPressed: () => ref
-                            .read(addCourseNotifierProvider.notifier)
-                            .validateCurrentFormAndSaveCourse(
-                              _formKey,
-                              widget.courseToEdit,
-                            ),
-                      ),
-                    ],
+              ),
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kLargeNumber,
+                    vertical: kMediumNumber,
+                  ),
+                  child: FormBuilder(
+                    autoFocusOnValidationFailure: true,
+                    initialValue: getInitialFormValue(),
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        const CourseInfoFields(),
+                        const CourseContentFieldButton(),
+                        const SizedBox(
+                          height: kMediumNumber,
+                        ),
+                        SaveCourseButton(
+                          onPressed: () => ref
+                              .read(addCourseNotifierProvider.notifier)
+                              .validateCurrentFormAndSaveCourse(
+                                _formKey,
+                                widget.courseToEdit,
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

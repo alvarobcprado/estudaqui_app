@@ -28,7 +28,7 @@ abstract class DialogHandler {
     );
   }
 
-  static showAlertDialog<T>(
+  static Future<T?> showAlertDialog<T>(
     BuildContext context, {
     String? title,
     String? body,

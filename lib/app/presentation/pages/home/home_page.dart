@@ -42,6 +42,7 @@ class HomePage extends StatelessWidget {
               );
             },
             child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
               slivers: [
                 const HomeHeaderSection(),
                 const SliverSizedBoxAdapter(height: kMediumNumber),

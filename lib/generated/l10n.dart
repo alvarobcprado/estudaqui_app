@@ -370,6 +370,46 @@ class S {
     );
   }
 
+  /// `Cancelar criação de curso`
+  String get cancel_course_creation_dialog_title {
+    return Intl.message(
+      'Cancelar criação de curso',
+      name: 'cancel_course_creation_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Você quer mesmo cancelar a criação do curso?`
+  String get cancel_course_creation_dialog_body {
+    return Intl.message(
+      'Você quer mesmo cancelar a criação do curso?',
+      name: 'cancel_course_creation_dialog_body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Não`
+  String get cancel_course_creation_dialog_cancel {
+    return Intl.message(
+      'Não',
+      name: 'cancel_course_creation_dialog_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sim`
+  String get cancel_course_creation_dialog_confirm {
+    return Intl.message(
+      'Sim',
+      name: 'cancel_course_creation_dialog_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Adicionar conteúdo`
   String get add_course_content_page_title {
     return Intl.message(

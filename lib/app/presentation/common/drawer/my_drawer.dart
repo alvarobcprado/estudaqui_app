@@ -23,6 +23,7 @@ class MyDrawer extends StatelessWidget {
           final myDrawerState = ref.watch(myDrawerNotifierProvider);
           return ListView(
             padding: const EdgeInsets.symmetric(horizontal: kMediumNumber),
+            physics: const BouncingScrollPhysics(),
             children: [
               Column(
                 children: [

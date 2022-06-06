@@ -77,6 +77,7 @@ class _AuthPageState extends State<AuthPage> {
             child: CustomGradient(
               child: SafeArea(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   child: Padding(
                     padding: const EdgeInsets.all(kLargeNumber),
                     child: Column(

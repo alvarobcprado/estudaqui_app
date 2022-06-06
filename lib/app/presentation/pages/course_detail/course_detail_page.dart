@@ -19,57 +19,61 @@ class CourseDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          const SliverAppBar(
-            floating: true,
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: kMediumNumber,
-                vertical: kSmallNumber,
-              ),
-              child: Consumer(
-                builder: (context, ref, child) {
-                  final state = ref.watch(
-                    courseDetailNotifierProvider(courseId),
-                  );
+      body: Scrollbar(
+        interactive: true,
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            const SliverAppBar(
+              floating: true,
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kMediumNumber,
+                  vertical: kSmallNumber,
+                ),
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    final state = ref.watch(
+                      courseDetailNotifierProvider(courseId),
+                    );
 
-                  return state.maybeWhen(
-                    loading: () => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    success: (course, courseContent) {
-                      final content = courseContent.text;
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: kSmallNumber,
-                            ),
-                            child: CoursePresentation(
-                              course: course,
-                            ),
-                          ),
-                          CourseContentView(
-                            content: content,
-                          ),
-                        ],
-                      );
-                    },
-                    orElse: () => UnexpectedStateWidget(
-                      onTryAgain: () => ref.refresh(
-                        courseDetailNotifierProvider(courseId),
+                    return state.maybeWhen(
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
                       ),
-                    ),
-                  );
-                },
+                      success: (course, courseContent) {
+                        final content = courseContent.text;
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: kSmallNumber,
+                              ),
+                              child: CoursePresentation(
+                                course: course,
+                              ),
+                            ),
+                            CourseContentView(
+                              content: content,
+                            ),
+                          ],
+                        );
+                      },
+                      orElse: () => UnexpectedStateWidget(
+                        onTryAgain: () => ref.refresh(
+                          courseDetailNotifierProvider(courseId),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
