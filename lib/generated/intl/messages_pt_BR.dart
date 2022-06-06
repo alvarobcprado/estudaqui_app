@@ -113,6 +113,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "auth_form_signup_button":
             MessageLookupByLibrary.simpleMessage("Cadastrar"),
         "auth_form_title": MessageLookupByLibrary.simpleMessage("Estudaqui"),
+        "cancel_course_creation_dialog_body":
+            MessageLookupByLibrary.simpleMessage(
+                "Você quer mesmo cancelar a criação do curso?"),
+        "cancel_course_creation_dialog_cancel":
+            MessageLookupByLibrary.simpleMessage("Não"),
+        "cancel_course_creation_dialog_confirm":
+            MessageLookupByLibrary.simpleMessage("Sim"),
+        "cancel_course_creation_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Cancelar criação de curso"),
         "course_list_date_added": m2,
         "course_list_empty_state_button":
             MessageLookupByLibrary.simpleMessage("Buscar novamente"),
