@@ -46,10 +46,12 @@ class CourseListTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CourseAuthorRow(authorName: course.creatorName),
-                    CourseInfoColumn(
-                      courseName: course.title,
-                      courseDescription: course.subtitle,
-                      courseDate: course.createdAt.toLocalFormatString(),
+                    Expanded(
+                      child: CourseInfoColumn(
+                        courseName: course.title,
+                        courseDescription: course.subtitle,
+                        courseDate: course.createdAt.toLocalFormatString(),
+                      ),
                     ),
                   ],
                 ),

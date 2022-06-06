@@ -80,7 +80,7 @@ class UserCourseListTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CourseAuthorRow(authorName: course.creatorName),
-                    SingleChildScrollView(
+                    Expanded(
                       child: CourseInfoColumn(
                         courseName: course.title,
                         courseDescription: course.subtitle,
