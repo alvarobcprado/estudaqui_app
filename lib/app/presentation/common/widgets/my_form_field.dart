@@ -17,12 +17,14 @@ class MyFormField extends ConsumerWidget {
     this.labelColor,
     this.hasBackground,
     this.shouldObfuscateField = false,
+    this.controller,
   }) : super(key: key);
 
   final String labelText;
   final String fieldName;
   final MyFormValidator validator;
   final IconData? prefixIcon;
+  final TextEditingController? controller;
   final Color? backgroundColor;
   final Color? labelColor;
   final bool? hasBackground;
@@ -34,6 +36,7 @@ class MyFormField extends ConsumerWidget {
     return FormBuilderTextField(
       cursorColor: labelColor ?? _colors.authFormTextColor,
       name: fieldName,
+      controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: shouldObfuscateField!,
       textInputAction: TextInputAction.next,
