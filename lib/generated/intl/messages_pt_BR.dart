@@ -155,6 +155,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ops, algo deu errado"),
         "error_default_try_again_message":
             MessageLookupByLibrary.simpleMessage("Tentar novamente"),
+        "forgot_password_modal_email_field_label":
+            MessageLookupByLibrary.simpleMessage("E-mail"),
+        "forgot_password_modal_error_toast":
+            MessageLookupByLibrary.simpleMessage(
+                "Ocorreu um erro ao enviar o e-mail. Por favor tente novamente"),
+        "forgot_password_modal_send_button":
+            MessageLookupByLibrary.simpleMessage("Enviar"),
+        "forgot_password_modal_success_toast": MessageLookupByLibrary.simpleMessage(
+            "E-mail de recuperação enviado com sucesso. Por favor verifique seu e-mail"),
+        "forgot_password_modal_title":
+            MessageLookupByLibrary.simpleMessage("Recuperação de senha"),
         "form_error_text_min_length_field": m5,
         "form_error_text_required_field": MessageLookupByLibrary.simpleMessage(
             "Este campo não pode ser vazio"),

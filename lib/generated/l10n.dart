@@ -859,6 +859,56 @@ class S {
       args: [],
     );
   }
+
+  /// `E-mail de recuperação enviado com sucesso. Por favor verifique seu e-mail`
+  String get forgot_password_modal_success_toast {
+    return Intl.message(
+      'E-mail de recuperação enviado com sucesso. Por favor verifique seu e-mail',
+      name: 'forgot_password_modal_success_toast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ocorreu um erro ao enviar o e-mail. Por favor tente novamente`
+  String get forgot_password_modal_error_toast {
+    return Intl.message(
+      'Ocorreu um erro ao enviar o e-mail. Por favor tente novamente',
+      name: 'forgot_password_modal_error_toast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recuperação de senha`
+  String get forgot_password_modal_title {
+    return Intl.message(
+      'Recuperação de senha',
+      name: 'forgot_password_modal_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get forgot_password_modal_email_field_label {
+    return Intl.message(
+      'E-mail',
+      name: 'forgot_password_modal_email_field_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enviar`
+  String get forgot_password_modal_send_button {
+    return Intl.message(
+      'Enviar',
+      name: 'forgot_password_modal_send_button',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
