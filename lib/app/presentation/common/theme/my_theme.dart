@@ -134,6 +134,12 @@ abstract class MyTextStyles {
         fontSize: kMediumNumber,
         height: kLargeNumber / kMediumNumber,
       );
+
+  TextStyle get forgotPasswordModalTitle => const TextStyle(
+        color: _primaryColor,
+        fontSize: 20,
+        height: 40 / 20,
+      );
 }
 
 abstract class MyAssetPaths {
