@@ -4,7 +4,7 @@ import 'package:estudaqui/app/presentation/pages/course_detail/state/course_deta
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final courseDetailNotifierProvider = StateNotifierProvider.family<
+final courseDetailNotifierProvider = StateNotifierProvider.family.autoDispose<
     CourseDetailPageNotifier, CourseDetailState, String>(
   (ref, courseId) {
     final getCoursesModulesUC = ref.watch(getCourseModulesUCProvider);

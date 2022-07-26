@@ -54,6 +54,7 @@ class SignUpFormWidget extends StatelessWidget {
           MyFormField(
             prefixIcon: Icons.lock_outlined,
             labelText: S.of(context).auth_form_password_field_label,
+            shouldObfuscateField: true,
             fieldName: 'passwordField',
             validator: FormBuilderValidators.compose(
               [

@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 typedef MyFormValidator = String? Function(String?)?;
 
-class MyFormField extends ConsumerWidget {
+class MyFormField extends StatefulWidget {
   const MyFormField({
     Key? key,
     required this.labelText,
@@ -31,40 +31,69 @@ class MyFormField extends ConsumerWidget {
   final bool? shouldObfuscateField;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final _colors = ref.watch(themeProvider).colors;
-    return FormBuilderTextField(
-      cursorColor: labelColor ?? _colors.authFormTextColor,
-      name: fieldName,
-      controller: controller,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      obscureText: shouldObfuscateField!,
-      textInputAction: TextInputAction.next,
-      style: TextStyle(color: labelColor ?? _colors.authFormTextColor),
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(kMediumNumber),
-        labelStyle: TextStyle(
-          color: labelColor?.withOpacity(0.75) ??
-              _colors.authFormTextColor.withOpacity(0.75),
-          fontWeight: FontWeight.w500,
-        ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.all(
-            Radius.circular(kSmallNumber),
+  State<MyFormField> createState() => _MyFormFieldState();
+}
+
+class _MyFormFieldState extends State<MyFormField> {
+  late bool _isHiddenField;
+
+  @override
+  void initState() {
+    super.initState();
+    _isHiddenField = widget.shouldObfuscateField!;
+  }
+
+  void _changeFieldVisibility() {
+    setState(() {
+      _isHiddenField = !_isHiddenField;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(builder: (context, ref, _) {
+      final _colors = ref.watch(themeProvider).colors;
+      return FormBuilderTextField(
+        cursorColor: widget.labelColor ?? _colors.authFormTextColor,
+        name: widget.fieldName,
+        controller: widget.controller,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        obscureText: _isHiddenField,
+        textInputAction: TextInputAction.next,
+        style: TextStyle(color: widget.labelColor ?? _colors.authFormTextColor),
+        decoration: InputDecoration(
+          suffixIcon: !widget.shouldObfuscateField!
+              ? null
+              : GestureDetector(
+                  onTap: _changeFieldVisibility,
+                  child: Icon(
+                    _isHiddenField ? Icons.visibility : Icons.visibility_off,
+                  ),
+                ),
+          contentPadding: const EdgeInsets.all(kMediumNumber),
+          labelStyle: TextStyle(
+            color: widget.labelColor?.withOpacity(0.75) ??
+                _colors.authFormTextColor.withOpacity(0.75),
+            fontWeight: FontWeight.w500,
           ),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(
+              Radius.circular(kSmallNumber),
+            ),
+          ),
+          labelText: widget.labelText,
+          prefixIcon: widget.prefixIcon != null
+              ? Icon(
+                  widget.prefixIcon,
+                  color: widget.labelColor ?? _colors.authFormTextColor,
+                )
+              : null,
+          fillColor: widget.backgroundColor ?? _colors.authFormBackground,
+          filled: widget.hasBackground ?? true,
         ),
-        labelText: labelText,
-        prefixIcon: prefixIcon != null
-            ? Icon(
-                prefixIcon,
-                color: labelColor ?? _colors.authFormTextColor,
-              )
-            : null,
-        fillColor: backgroundColor ?? _colors.authFormBackground,
-        filled: hasBackground ?? true,
-      ),
-      validator: validator,
-    );
+        validator: widget.validator,
+      );
+    });
   }
 }
