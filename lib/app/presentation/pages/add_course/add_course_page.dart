@@ -37,7 +37,7 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
 
     // TODO: Refact later
     if (courseToEdit != null) {
-      WidgetsBinding.instance?.addPostFrameCallback(
+      WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) {
           ref.read(courseContentProvider.state).update(
                 (state) =>
@@ -81,8 +81,12 @@ class _AddCoursePageState extends ConsumerState<AddCoursePage> {
   Future<bool> onWillPop(BuildContext context) async {
     final result = await DialogHandler.showAlertDialog<bool>(
       context,
-      title: S.of(context).cancel_course_creation_dialog_title,
-      body: S.of(context).cancel_course_creation_dialog_body,
+      title: courseToEdit == null
+          ? S.of(context).cancel_course_creation_dialog_title
+          : S.of(context).cancel_course_edition_dialog_title,
+      body: courseToEdit == null
+          ? S.of(context).cancel_course_creation_dialog_body
+          : S.of(context).cancel_course_edition_dialog_body,
       actions: [
         TextButton.icon(
           onPressed: () {

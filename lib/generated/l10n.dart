@@ -410,6 +410,26 @@ class S {
     );
   }
 
+  /// `Cancelar edição de curso`
+  String get cancel_course_edition_dialog_title {
+    return Intl.message(
+      'Cancelar edição de curso',
+      name: 'cancel_course_edition_dialog_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Você quer mesmo cancelar a edição de curso?`
+  String get cancel_course_edition_dialog_body {
+    return Intl.message(
+      'Você quer mesmo cancelar a edição de curso?',
+      name: 'cancel_course_edition_dialog_body',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Adicionar conteúdo`
   String get add_course_content_page_title {
     return Intl.message(
@@ -540,10 +560,10 @@ class S {
     );
   }
 
-  /// `FaEng Cursos`
+  /// `Estudaqui`
   String get home_page_title {
     return Intl.message(
-      'FaEng Cursos',
+      'Estudaqui',
       name: 'home_page_title',
       desc: '',
       args: [],

@@ -122,6 +122,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sim"),
         "cancel_course_creation_dialog_title":
             MessageLookupByLibrary.simpleMessage("Cancelar criação de curso"),
+        "cancel_course_edition_dialog_body":
+            MessageLookupByLibrary.simpleMessage(
+                "Você quer mesmo cancelar a edição de curso?"),
+        "cancel_course_edition_dialog_title":
+            MessageLookupByLibrary.simpleMessage("Cancelar edição de curso"),
         "course_list_date_added": m2,
         "course_list_empty_state_button":
             MessageLookupByLibrary.simpleMessage("Buscar novamente"),
@@ -175,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_grid_all_courses": MessageLookupByLibrary.simpleMessage("TODAS"),
         "home_latest_courses_section":
             MessageLookupByLibrary.simpleMessage("Últimos cursos adicionados"),
-        "home_page_title": MessageLookupByLibrary.simpleMessage("FaEng Cursos"),
+        "home_page_title": MessageLookupByLibrary.simpleMessage("Estudaqui"),
         "home_subjects_section":
             MessageLookupByLibrary.simpleMessage("Matérias"),
         "home_welcome_message": MessageLookupByLibrary.simpleMessage(

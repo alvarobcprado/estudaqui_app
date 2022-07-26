@@ -22,17 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "forgot_password_modal_email_field_label":
-            MessageLookupByLibrary.simpleMessage("E-mail"),
-        "forgot_password_modal_error_toast":
-            MessageLookupByLibrary.simpleMessage(
-                "Ocorreu um erro ao enviar o e-mail. Por favor tente novamente"),
-        "forgot_password_modal_send_button":
-            MessageLookupByLibrary.simpleMessage("Enviar"),
-        "forgot_password_modal_success_toast": MessageLookupByLibrary.simpleMessage(
-            "E-mail de recuperação enviado com sucesso. Por favor verifique seu e-mail"),
-        "forgot_password_modal_title":
-            MessageLookupByLibrary.simpleMessage("Recuperação de senha"),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate")
       };
