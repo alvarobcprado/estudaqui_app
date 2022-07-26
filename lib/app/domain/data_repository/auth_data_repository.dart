@@ -13,6 +13,8 @@ abstract class AuthDataRepository {
 
   Future<Either<Failure, void>> signOut();
 
+  Future<Either<Failure, void>> sendPasswordResetEmail(String email);
+
   Future<Either<Failure, User>> signInWithEmailAndPassword({
     required String email,
     required String password,

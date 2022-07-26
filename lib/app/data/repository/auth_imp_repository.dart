@@ -96,6 +96,23 @@ class AuthImpRepository implements AuthDataRepository {
   }
 
   @override
+  Future<Either<Failure, void>> sendPasswordResetEmail(String email) async {
+    try {
+      await _authProvider.sendPasswordResetEmail(email: email);
+      return const Right(null);
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const CustomFailure(
+            'Erro ao enviar email',
+            'Houve um problema ao enviar o email de recuperação de senha',
+          ),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<Failure, User>> signInWithEmailAndPassword({
     required String email,
     required String password,
