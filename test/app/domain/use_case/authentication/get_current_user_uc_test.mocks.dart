@@ -205,6 +205,13 @@ class MockAuthDataRepository extends _i1.Mock
                   _FakeEither_5<_i7.Failure, void>()))
           as _i5.Future<_i4.Either<_i7.Failure, void>>);
   @override
+  _i5.Future<_i4.Either<_i7.Failure, void>> sendPasswordResetEmail(
+          String? email) =>
+      (super.noSuchMethod(Invocation.method(#sendPasswordResetEmail, [email]),
+              returnValue: Future<_i4.Either<_i7.Failure, void>>.value(
+                  _FakeEither_5<_i7.Failure, void>()))
+          as _i5.Future<_i4.Either<_i7.Failure, void>>);
+  @override
   _i5.Future<_i4.Either<_i7.Failure, _i3.User>> signInWithEmailAndPassword(
           {String? email, String? password}) =>
       (super.noSuchMethod(

@@ -1,4 +1,5 @@
 import 'package:estudaqui/app/domain/use_case/authentication/get_current_user_uc.dart';
+import 'package:estudaqui/app/domain/use_case/authentication/send_password_reset_email_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_anonmously_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_email_password_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signup_email_password_uc.dart';
@@ -14,12 +15,15 @@ final authNotifierProvider =
     final signinEmailPasswordUC = ref.watch(signinEmailPasswordUCProvider);
     final getCurrentUserUC = ref.watch(getCurrentUserUCProvider);
     final signupEmailPasswordUC = ref.watch(signupEmailPasswordUCProvider);
+    final sendPasswordResetEmailUC =
+        ref.watch(sendPasswordResetEmailUCProvider);
 
     return LoginContainerNotifier(
       signinAnonmouslyUC: signinAnonmouslyUC,
       signinEmailPasswordUC: signinEmailPasswordUC,
       signupEmailPasswordUC: signupEmailPasswordUC,
       getCurrentUserUC: getCurrentUserUC,
+      sendPasswordResetEmailUC: sendPasswordResetEmailUC,
     );
   },
 );
@@ -30,10 +34,12 @@ class LoginContainerNotifier extends StateNotifier<AuthState> {
     required SigninAnonmouslyUC signinAnonmouslyUC,
     required GetCurrentUserUC getCurrentUserUC,
     required SignupEmailPasswordUC signupEmailPasswordUC,
+    required SendPasswordResetEmailUC sendPasswordResetEmailUC,
   })  : _signinEmailPasswordUC = signinEmailPasswordUC,
         _signinAnonmouslyUC = signinAnonmouslyUC,
         _getCurrentUserUC = getCurrentUserUC,
         _signupEmailPasswordUC = signupEmailPasswordUC,
+        _sendPasswordResetEmailUC = sendPasswordResetEmailUC,
         super(AuthState.unauthenticated()) {
     verifyAuthState();
   }
@@ -42,6 +48,17 @@ class LoginContainerNotifier extends StateNotifier<AuthState> {
   final SigninAnonmouslyUC _signinAnonmouslyUC;
   final SignupEmailPasswordUC _signupEmailPasswordUC;
   final GetCurrentUserUC _getCurrentUserUC;
+  final SendPasswordResetEmailUC _sendPasswordResetEmailUC;
+
+  Future<bool> sendPasswordResetEmail(String email) async {
+    final result = await _sendPasswordResetEmailUC(
+      params: SendPasswordResetEmailUCParams(email: email),
+    );
+    return result.fold(
+      (l) => false,
+      (r) => true,
+    );
+  }
 
   Future<void> verifyAuthState() async {
     final currentUserEither = await _getCurrentUserUC.call(params: NoParams());

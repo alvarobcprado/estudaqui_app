@@ -1,8 +1,8 @@
 import 'package:estudaqui/app/presentation/common/utils/constants.dart';
 import 'package:estudaqui/app/presentation/common/widgets/my_form_field.dart';
+import 'package:estudaqui/app/presentation/pages/auth/auth_notifier.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
 import 'package:estudaqui/generated/l10n.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -55,15 +55,18 @@ class _ForgotPasswordModalState extends ConsumerState<ForgotPasswordModal> {
   }
 
   void _onTapSendEmail() async {
-    try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(
-        email: _emailController.text,
-      );
+    final authNotifier = ref.read(authNotifierProvider.notifier);
+
+    final hasSendEmail = await authNotifier.sendPasswordResetEmail(
+      _emailController.text,
+    );
+
+    if (hasSendEmail) {
       Fluttertoast.showToast(
         msg: S.of(context).forgot_password_modal_success_toast,
       );
       Navigator.of(context).pop();
-    } catch (e) {
+    } else {
       Fluttertoast.showToast(
         toastLength: Toast.LENGTH_LONG,
         msg: S.of(context).forgot_password_modal_error_toast,
@@ -71,7 +74,6 @@ class _ForgotPasswordModalState extends ConsumerState<ForgotPasswordModal> {
     }
   }
 
-  // TODO: Refact this with correct clean arch structure
   @override
   Widget build(BuildContext context) {
     final theme = ref.watch(themeProvider);
