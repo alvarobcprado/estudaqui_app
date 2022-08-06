@@ -32,6 +32,10 @@ class _$FailureTypeTearOff {
   NoConnectionFailure noConnection() {
     return const NoConnectionFailure();
   }
+
+  AuthCancelFailure authCancel() {
+    return const AuthCancelFailure();
+  }
 }
 
 /// @nodoc
@@ -44,6 +48,7 @@ mixin _$FailureType {
     required TResult Function() normal,
     required TResult Function(String title, String message) custom,
     required TResult Function() noConnection,
+    required TResult Function() authCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,7 @@ mixin _$FailureType {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$FailureType {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +73,7 @@ mixin _$FailureType {
     required TResult Function(NormalFailure value) normal,
     required TResult Function(CustomFailure value) custom,
     required TResult Function(NoConnectionFailure value) noConnection,
+    required TResult Function(AuthCancelFailure value) authCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +81,7 @@ mixin _$FailureType {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +89,7 @@ mixin _$FailureType {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +154,7 @@ class _$NormalFailure extends NormalFailure {
     required TResult Function() normal,
     required TResult Function(String title, String message) custom,
     required TResult Function() noConnection,
+    required TResult Function() authCancel,
   }) {
     return normal();
   }
@@ -154,6 +165,7 @@ class _$NormalFailure extends NormalFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
   }) {
     return normal?.call();
   }
@@ -164,6 +176,7 @@ class _$NormalFailure extends NormalFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -178,6 +191,7 @@ class _$NormalFailure extends NormalFailure {
     required TResult Function(NormalFailure value) normal,
     required TResult Function(CustomFailure value) custom,
     required TResult Function(NoConnectionFailure value) noConnection,
+    required TResult Function(AuthCancelFailure value) authCancel,
   }) {
     return normal(this);
   }
@@ -188,6 +202,7 @@ class _$NormalFailure extends NormalFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
   }) {
     return normal?.call(this);
   }
@@ -198,6 +213,7 @@ class _$NormalFailure extends NormalFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
     required TResult orElse(),
   }) {
     if (normal != null) {
@@ -289,6 +305,7 @@ class _$CustomFailure extends CustomFailure {
     required TResult Function() normal,
     required TResult Function(String title, String message) custom,
     required TResult Function() noConnection,
+    required TResult Function() authCancel,
   }) {
     return custom(title, message);
   }
@@ -299,6 +316,7 @@ class _$CustomFailure extends CustomFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
   }) {
     return custom?.call(title, message);
   }
@@ -309,6 +327,7 @@ class _$CustomFailure extends CustomFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
     required TResult orElse(),
   }) {
     if (custom != null) {
@@ -323,6 +342,7 @@ class _$CustomFailure extends CustomFailure {
     required TResult Function(NormalFailure value) normal,
     required TResult Function(CustomFailure value) custom,
     required TResult Function(NoConnectionFailure value) noConnection,
+    required TResult Function(AuthCancelFailure value) authCancel,
   }) {
     return custom(this);
   }
@@ -333,6 +353,7 @@ class _$CustomFailure extends CustomFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
   }) {
     return custom?.call(this);
   }
@@ -343,6 +364,7 @@ class _$CustomFailure extends CustomFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
     required TResult orElse(),
   }) {
     if (custom != null) {
@@ -407,6 +429,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     required TResult Function() normal,
     required TResult Function(String title, String message) custom,
     required TResult Function() noConnection,
+    required TResult Function() authCancel,
   }) {
     return noConnection();
   }
@@ -417,6 +440,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
   }) {
     return noConnection?.call();
   }
@@ -427,6 +451,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     TResult Function()? normal,
     TResult Function(String title, String message)? custom,
     TResult Function()? noConnection,
+    TResult Function()? authCancel,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -441,6 +466,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     required TResult Function(NormalFailure value) normal,
     required TResult Function(CustomFailure value) custom,
     required TResult Function(NoConnectionFailure value) noConnection,
+    required TResult Function(AuthCancelFailure value) authCancel,
   }) {
     return noConnection(this);
   }
@@ -451,6 +477,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
   }) {
     return noConnection?.call(this);
   }
@@ -461,6 +488,7 @@ class _$NoConnectionFailure extends NoConnectionFailure {
     TResult Function(NormalFailure value)? normal,
     TResult Function(CustomFailure value)? custom,
     TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -473,4 +501,122 @@ class _$NoConnectionFailure extends NoConnectionFailure {
 abstract class NoConnectionFailure extends FailureType {
   const factory NoConnectionFailure() = _$NoConnectionFailure;
   const NoConnectionFailure._() : super._();
+}
+
+/// @nodoc
+abstract class $AuthCancelFailureCopyWith<$Res> {
+  factory $AuthCancelFailureCopyWith(
+          AuthCancelFailure value, $Res Function(AuthCancelFailure) then) =
+      _$AuthCancelFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AuthCancelFailureCopyWithImpl<$Res>
+    extends _$FailureTypeCopyWithImpl<$Res>
+    implements $AuthCancelFailureCopyWith<$Res> {
+  _$AuthCancelFailureCopyWithImpl(
+      AuthCancelFailure _value, $Res Function(AuthCancelFailure) _then)
+      : super(_value, (v) => _then(v as AuthCancelFailure));
+
+  @override
+  AuthCancelFailure get _value => super._value as AuthCancelFailure;
+}
+
+/// @nodoc
+
+class _$AuthCancelFailure extends AuthCancelFailure {
+  const _$AuthCancelFailure() : super._();
+
+  @override
+  String toString() {
+    return 'FailureType.authCancel()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AuthCancelFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() normal,
+    required TResult Function(String title, String message) custom,
+    required TResult Function() noConnection,
+    required TResult Function() authCancel,
+  }) {
+    return authCancel();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? normal,
+    TResult Function(String title, String message)? custom,
+    TResult Function()? noConnection,
+    TResult Function()? authCancel,
+  }) {
+    return authCancel?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? normal,
+    TResult Function(String title, String message)? custom,
+    TResult Function()? noConnection,
+    TResult Function()? authCancel,
+    required TResult orElse(),
+  }) {
+    if (authCancel != null) {
+      return authCancel();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NormalFailure value) normal,
+    required TResult Function(CustomFailure value) custom,
+    required TResult Function(NoConnectionFailure value) noConnection,
+    required TResult Function(AuthCancelFailure value) authCancel,
+  }) {
+    return authCancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(NormalFailure value)? normal,
+    TResult Function(CustomFailure value)? custom,
+    TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
+  }) {
+    return authCancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NormalFailure value)? normal,
+    TResult Function(CustomFailure value)? custom,
+    TResult Function(NoConnectionFailure value)? noConnection,
+    TResult Function(AuthCancelFailure value)? authCancel,
+    required TResult orElse(),
+  }) {
+    if (authCancel != null) {
+      return authCancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthCancelFailure extends FailureType {
+  const factory AuthCancelFailure() = _$AuthCancelFailure;
+  const AuthCancelFailure._() : super._();
 }
