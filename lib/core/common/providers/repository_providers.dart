@@ -4,8 +4,10 @@ import 'package:estudaqui/app/data/repository/subjects_imp_repository.dart';
 import 'package:estudaqui/app/domain/data_repository/courses_data_repository.dart';
 import 'package:estudaqui/app/domain/data_repository/subjects_data_repository.dart';
 import 'package:estudaqui/core/common/general_providers.dart';
+import 'package:estudaqui/core/common/providers/module_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 final authRepositoryProvider = Provider<AuthImpRepository>(
   (ref) {
@@ -13,8 +15,13 @@ final authRepositoryProvider = Provider<AuthImpRepository>(
       firebaseAuthProvider,
     );
 
+    final googleSignInProvider = ref.watch<GoogleSignIn>(
+      googleSigninProvider,
+    );
+
     return AuthImpRepository(
       authProvider: authProvider,
+      googleAuthProvider: googleSignInProvider,
     );
   },
 );
