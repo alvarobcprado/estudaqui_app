@@ -7,6 +7,8 @@ import 'dart:async' as _i5;
 import 'package:dartz/dartz.dart' as _i4;
 import 'package:estudaqui/app/domain/data_repository/auth_data_repository.dart'
     as _i6;
+import 'package:estudaqui/app/domain/entity/auth/social_auth_providers.dart'
+    as _i8;
 import 'package:estudaqui/core/error/failure.dart' as _i7;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart'
@@ -208,6 +210,15 @@ class MockAuthDataRepository extends _i1.Mock
   _i5.Future<_i4.Either<_i7.Failure, void>> sendPasswordResetEmail(
           String? email) =>
       (super.noSuchMethod(Invocation.method(#sendPasswordResetEmail, [email]),
+              returnValue: Future<_i4.Either<_i7.Failure, void>>.value(
+                  _FakeEither_5<_i7.Failure, void>()))
+          as _i5.Future<_i4.Either<_i7.Failure, void>>);
+  @override
+  _i5.Future<_i4.Either<_i7.Failure, void>> signInWithSocialProvider(
+          {_i8.SocialAuthProviders? provider}) =>
+      (super.noSuchMethod(
+              Invocation.method(
+                  #signInWithSocialProvider, [], {#provider: provider}),
               returnValue: Future<_i4.Either<_i7.Failure, void>>.value(
                   _FakeEither_5<_i7.Failure, void>()))
           as _i5.Future<_i4.Either<_i7.Failure, void>>);
