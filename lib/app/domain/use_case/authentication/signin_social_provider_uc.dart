@@ -6,8 +6,9 @@ import 'package:estudaqui/app/domain/use_case/use_case.dart';
 import 'package:estudaqui/core/error/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignSocialProviderUC extends UseCase<SignSocialProviderUCParams, User> {
-  SignSocialProviderUC({
+class SigninSocialProviderUC
+    extends UseCase<SigninSocialProviderUCParams, User> {
+  SigninSocialProviderUC({
     required AuthDataRepository authRepository,
   }) : _authRepository = authRepository;
 
@@ -15,7 +16,7 @@ class SignSocialProviderUC extends UseCase<SignSocialProviderUCParams, User> {
 
   @override
   Future<Either<Failure, User>> call({
-    required SignSocialProviderUCParams params,
+    required SigninSocialProviderUCParams params,
   }) async {
     return _authRepository.signInWithSocialProvider(
       provider: params.provider,
@@ -23,8 +24,8 @@ class SignSocialProviderUC extends UseCase<SignSocialProviderUCParams, User> {
   }
 }
 
-class SignSocialProviderUCParams extends Equatable {
-  const SignSocialProviderUCParams({
+class SigninSocialProviderUCParams extends Equatable {
+  const SigninSocialProviderUCParams({
     required this.provider,
   });
   final SocialAuthProviders provider;

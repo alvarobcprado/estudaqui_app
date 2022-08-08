@@ -213,11 +213,13 @@ class AuthImpRepository implements AuthDataRepository {
     switch (provider) {
       case SocialAuthProviders.google:
         final signinResult = await _signInWithGoogle();
-        return await _authenticateUserWithProvider(
+        final authResult = await _authenticateUserWithProvider(
           signinResult,
           providerId: 'google.com',
           signinMethod: 'google.com',
         );
+
+        return authResult;
 
       default:
         return Left(
@@ -237,7 +239,6 @@ class AuthImpRepository implements AuthDataRepository {
       (l) => Left(l),
       (r) async {
         try {
-          await _authProvider.signOut();
           final userResult = await _authProvider.signInWithCredential(
             OAuthCredential(
               providerId: providerId,
