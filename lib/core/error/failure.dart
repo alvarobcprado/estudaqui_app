@@ -20,6 +20,12 @@ class Failure extends Equatable {
             'Poxa, parece que deu algum problema x.x. Tente novamente daqui a pouco!',
         type: type,
       ),
+      authCancel: () => Failure(
+        title: 'Autenticação cancelada',
+        message:
+            'Poxa, parece que você cancelou a autenticação. Tente novamente daqui a pouco!',
+        type: type,
+      ),
       noConnection: () => Failure(
         title: 'Sem internet',
         message: 'Poxa, parece que você está com problemas em sua conexão x.x',
