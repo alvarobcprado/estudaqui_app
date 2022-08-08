@@ -155,6 +155,8 @@ abstract class MyAssetPaths {
 
   String get defaultCourseListBanner =>
       'assets/images/course_listing_course_background.png';
+
+  String get googleIcon => 'assets/images/google_logo.png';
 }
 
 /// Prussian Blue
