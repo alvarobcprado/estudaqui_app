@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "auth_form_sigin_social_divider":
+            MessageLookupByLibrary.simpleMessage(" ou entrar com "),
         "project_title":
             MessageLookupByLibrary.simpleMessage("Flutter Boilerplate")
       };

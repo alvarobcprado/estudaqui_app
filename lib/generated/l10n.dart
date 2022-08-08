@@ -929,6 +929,16 @@ class S {
       args: [],
     );
   }
+
+  /// ` ou entrar com `
+  String get auth_form_sigin_social_divider {
+    return Intl.message(
+      ' ou entrar com ',
+      name: 'auth_form_sigin_social_divider',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
