@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_state.freezed.dart';
 
-enum AuthMethod { emailPassword, anonmously }
+enum AuthMethod { emailPassword, anonmously, socialProvider }
 
 @freezed
 class AuthState with _$AuthState {

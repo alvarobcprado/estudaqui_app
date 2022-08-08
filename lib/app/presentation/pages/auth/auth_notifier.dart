@@ -1,5 +1,7 @@
+import 'package:estudaqui/app/domain/entity/auth/social_auth_providers.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/send_password_reset_email_uc.dart';
+import 'package:estudaqui/app/domain/use_case/authentication/signin_social_provider_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_anonmously_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_email_password_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signup_email_password_uc.dart';
@@ -17,6 +19,7 @@ final authNotifierProvider =
     final signupEmailPasswordUC = ref.watch(signupEmailPasswordUCProvider);
     final sendPasswordResetEmailUC =
         ref.watch(sendPasswordResetEmailUCProvider);
+    final signinSocialProviderUC = ref.watch(signinSocialProviderUCProvider);
 
     return LoginContainerNotifier(
       signinAnonmouslyUC: signinAnonmouslyUC,
@@ -24,6 +27,7 @@ final authNotifierProvider =
       signupEmailPasswordUC: signupEmailPasswordUC,
       getCurrentUserUC: getCurrentUserUC,
       sendPasswordResetEmailUC: sendPasswordResetEmailUC,
+      signinSocialProviderUC: signinSocialProviderUC,
     );
   },
 );
@@ -35,11 +39,13 @@ class LoginContainerNotifier extends StateNotifier<AuthState> {
     required GetCurrentUserUC getCurrentUserUC,
     required SignupEmailPasswordUC signupEmailPasswordUC,
     required SendPasswordResetEmailUC sendPasswordResetEmailUC,
+    required SigninSocialProviderUC signinSocialProviderUC,
   })  : _signinEmailPasswordUC = signinEmailPasswordUC,
         _signinAnonmouslyUC = signinAnonmouslyUC,
         _getCurrentUserUC = getCurrentUserUC,
         _signupEmailPasswordUC = signupEmailPasswordUC,
         _sendPasswordResetEmailUC = sendPasswordResetEmailUC,
+        _signinSocialProviderUC = signinSocialProviderUC,
         super(AuthState.unauthenticated()) {
     verifyAuthState();
   }
@@ -49,6 +55,7 @@ class LoginContainerNotifier extends StateNotifier<AuthState> {
   final SignupEmailPasswordUC _signupEmailPasswordUC;
   final GetCurrentUserUC _getCurrentUserUC;
   final SendPasswordResetEmailUC _sendPasswordResetEmailUC;
+  final SigninSocialProviderUC _signinSocialProviderUC;
 
   Future<bool> sendPasswordResetEmail(String email) async {
     final result = await _sendPasswordResetEmailUC(
@@ -124,6 +131,23 @@ class LoginContainerNotifier extends StateNotifier<AuthState> {
         errorBody: failure.message,
       ),
       (success) => AuthState.authenticated(method: AuthMethod.emailPassword),
+    );
+  }
+
+  Future<void> loginSocialProvider(
+      {required SocialAuthProviders provider}) async {
+    state = AuthState.authenticating();
+    final loginAttemptEither = await _signinSocialProviderUC(
+      params: SigninSocialProviderUCParams(
+        provider: provider,
+      ),
+    );
+    state = loginAttemptEither.fold(
+      (failure) => AuthState.failedAuthentication(
+        errorTitle: failure.title,
+        errorBody: failure.message,
+      ),
+      (success) => AuthState.authenticated(method: AuthMethod.socialProvider),
     );
   }
 
