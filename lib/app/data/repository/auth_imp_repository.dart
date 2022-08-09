@@ -1,15 +1,22 @@
 import 'package:dartz/dartz.dart';
+import 'package:estudaqui/app/data/mapper/remote_to_domain.dart';
 import 'package:estudaqui/app/domain/data_repository/auth_data_repository.dart';
+import 'package:estudaqui/app/domain/entity/auth/social_auth_data.dart';
+import 'package:estudaqui/app/domain/entity/auth/social_auth_providers.dart';
 import 'package:estudaqui/core/error/failure.dart';
 import 'package:estudaqui/core/error/failure_type.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthImpRepository implements AuthDataRepository {
   AuthImpRepository({
     required FirebaseAuth authProvider,
-  }) : _authProvider = authProvider;
+    required GoogleSignIn googleAuthProvider,
+  })  : _authProvider = authProvider,
+        _googleAuthProvider = googleAuthProvider;
 
   final FirebaseAuth _authProvider;
+  final GoogleSignIn _googleAuthProvider;
 
   @override
   Stream<User?> get authStateChanges => _authProvider.authStateChanges();
@@ -194,6 +201,99 @@ class AuthImpRepository implements AuthDataRepository {
       return Left(
         Failure.fromType(
           type: const NormalFailure(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, User>> signInWithSocialProvider({
+    required SocialAuthProviders provider,
+  }) async {
+    switch (provider) {
+      case SocialAuthProviders.google:
+        final signinResult = await _signInWithGoogle();
+        final authResult = await _authenticateUserWithProvider(
+          signinResult,
+          providerId: 'google.com',
+          signinMethod: 'google.com',
+        );
+
+        return authResult;
+
+      default:
+        return Left(
+          Failure.fromType(
+            type: const FailureType.normal(),
+          ),
+        );
+    }
+  }
+
+  Future<Either<Failure, User>> _authenticateUserWithProvider(
+    Either<Failure, SocialAuthData> signinResult, {
+    required String providerId,
+    required String signinMethod,
+  }) async {
+    return signinResult.fold(
+      (l) => Left(l),
+      (r) async {
+        try {
+          final userResult = await _authProvider.signInWithCredential(
+            OAuthCredential(
+              providerId: providerId,
+              signInMethod: signinMethod,
+              accessToken: r.accessToken,
+              idToken: r.tokenId,
+            ),
+          );
+          if (userResult.user != null) {
+            return Right(userResult.user!);
+          } else {
+            throw Exception();
+          }
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'account-exists-with-different-credential') {
+            return Left(
+              Failure.fromType(
+                type: const CustomFailure(
+                  'Erro ao logar',
+                  'Já existe uma conta associada a este e-mail',
+                ),
+              ),
+            );
+          } else {
+            throw Exception();
+          }
+        } catch (e) {
+          return Left(
+            Failure.fromType(
+              type: const NormalFailure(),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Future<Either<Failure, SocialAuthData>> _signInWithGoogle() async {
+    try {
+      await _googleAuthProvider.signOut();
+      final signInResult = await _googleAuthProvider.signIn();
+      if (signInResult != null) {
+        final authResult = await signInResult.toDM();
+        return Right(authResult);
+      } else {
+        return Left(
+          Failure.fromType(
+            type: const FailureType.authCancel(),
+          ),
+        );
+      }
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const FailureType.normal(),
         ),
       );
     }

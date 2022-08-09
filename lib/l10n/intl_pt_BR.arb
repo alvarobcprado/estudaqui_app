@@ -36,7 +36,7 @@
   "cancel_course_creation_dialog_cancel": "Não",
   "cancel_course_creation_dialog_confirm": "Sim",
   "cancel_course_edition_dialog_title": "Cancelar edição de curso",
-  "cancel_course_edition_dialog_body":"Você quer mesmo cancelar a edição de curso?",
+  "cancel_course_edition_dialog_body": "Você quer mesmo cancelar a edição de curso?",
   "add_course_content_page_title": "Adicionar conteúdo",
   "add_course_content_editor_hint": "Insira o conteúdo do seu curso aqui.",
   "add_module_text_dialog_title": "Conteúdo do curso",
@@ -86,5 +86,6 @@
   "forgot_password_modal_error_toast": "Ocorreu um erro ao enviar o e-mail. Por favor tente novamente",
   "forgot_password_modal_title": "Recuperação de senha",
   "forgot_password_modal_email_field_label": "E-mail",
-  "forgot_password_modal_send_button": "Enviar"
+  "forgot_password_modal_send_button": "Enviar",
+  "auth_form_sigin_social_divider": " ou entrar com "
 }

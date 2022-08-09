@@ -12,4 +12,5 @@ class FailureType with _$FailureType {
     String message,
   ) = CustomFailure;
   const factory FailureType.noConnection() = NoConnectionFailure;
+  const factory FailureType.authCancel() = AuthCancelFailure;
 }

@@ -108,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("entrar"),
         "auth_form_select_signup":
             MessageLookupByLibrary.simpleMessage("cadastrar"),
+        "auth_form_sigin_social_divider":
+            MessageLookupByLibrary.simpleMessage(" ou entrar com "),
         "auth_form_signin_button":
             MessageLookupByLibrary.simpleMessage("Entrar"),
         "auth_form_signup_button":

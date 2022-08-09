@@ -69,6 +69,6 @@ class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
     if (user == null) {
       return false;
     }
-    return (!user.isAnonymous && user.email != null);
+    return (!user.isAnonymous && user.email != null && user.email!.isNotEmpty);
   }
 }

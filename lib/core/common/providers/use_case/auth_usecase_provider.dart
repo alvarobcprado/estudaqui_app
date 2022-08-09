@@ -1,6 +1,7 @@
 import 'package:estudaqui/app/domain/use_case/authentication/get_current_user_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/get_user_state_changes_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/send_password_reset_email_uc.dart';
+import 'package:estudaqui/app/domain/use_case/authentication/signin_social_provider_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_anonmously_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signin_email_password_uc.dart';
 import 'package:estudaqui/app/domain/use_case/authentication/signout_uc.dart';
@@ -55,5 +56,12 @@ final sendPasswordResetEmailUCProvider = Provider<SendPasswordResetEmailUC>(
   (ref) {
     final authRepository = ref.watch(authRepositoryProvider);
     return SendPasswordResetEmailUC(authDataRepository: authRepository);
+  },
+);
+
+final signinSocialProviderUCProvider = Provider<SigninSocialProviderUC>(
+  (ref) {
+    final authRepository = ref.watch(authRepositoryProvider);
+    return SigninSocialProviderUC(authRepository: authRepository);
   },
 );

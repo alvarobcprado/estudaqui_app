@@ -7,10 +7,12 @@ import 'dart:async' as _i5;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:estudaqui/app/domain/data_repository/auth_data_repository.dart'
     as _i4;
+import 'package:estudaqui/app/domain/entity/auth/social_auth_providers.dart'
+    as _i7;
 import 'package:estudaqui/core/error/failure.dart' as _i6;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart'
-    as _i7;
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -78,6 +80,15 @@ class MockAuthDataRepository extends _i1.Mock
               returnValue: Future<_i2.Either<_i6.Failure, void>>.value(
                   _FakeEither_0<_i6.Failure, void>()))
           as _i5.Future<_i2.Either<_i6.Failure, void>>);
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, _i3.User>> signInWithSocialProvider(
+          {_i7.SocialAuthProviders? provider}) =>
+      (super.noSuchMethod(
+              Invocation.method(
+                  #signInWithSocialProvider, [], {#provider: provider}),
+              returnValue: Future<_i2.Either<_i6.Failure, _i3.User>>.value(
+                  _FakeEither_0<_i6.Failure, _i3.User>()))
+          as _i5.Future<_i2.Either<_i6.Failure, _i3.User>>);
   @override
   _i5.Future<_i2.Either<_i6.Failure, _i3.User>> signInWithEmailAndPassword(
           {String? email, String? password}) =>
@@ -149,7 +160,7 @@ class MockUser extends _i1.Mock implements _i3.User {
                   Future<_i3.UserCredential>.value(_FakeUserCredential_3()))
           as _i5.Future<_i3.UserCredential>);
   @override
-  _i5.Future<_i3.UserCredential> linkWithPopup(_i7.AuthProvider? provider) =>
+  _i5.Future<_i3.UserCredential> linkWithPopup(_i8.AuthProvider? provider) =>
       (super.noSuchMethod(Invocation.method(#linkWithPopup, [provider]),
               returnValue:
                   Future<_i3.UserCredential>.value(_FakeUserCredential_3()))

@@ -1,9 +1,11 @@
 import 'package:estudaqui/app/data/remote/model/course/course_module_rm.dart';
 import 'package:estudaqui/app/data/remote/model/course/course_rm.dart';
 import 'package:estudaqui/app/data/remote/model/subject/subject_rm.dart';
+import 'package:estudaqui/app/domain/entity/auth/social_auth_data.dart';
 import 'package:estudaqui/app/domain/entity/course.dart';
 import 'package:estudaqui/app/domain/entity/course_module.dart';
 import 'package:estudaqui/app/domain/entity/subject.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 extension CourseRMToDM on CourseRM {
   Course toDM() {
@@ -55,5 +57,19 @@ extension SubjectRMToDM on SubjectRM {
 extension SubjectRMListToDMList on List<SubjectRM> {
   List<Subject> toDMList() {
     return map((subjectRM) => subjectRM.toDM()).toList();
+  }
+}
+
+extension GoogleSignInAccountToDM on GoogleSignInAccount {
+  Future<SocialAuthData> toDM() async {
+    return SocialAuthData(
+      email: email,
+      displayName: displayName,
+      userId: id,
+      tokenId: (await authentication).idToken,
+      photoUrl: photoUrl,
+      accessToken: (await authentication).accessToken,
+      serverAuthCode: serverAuthCode,
+    );
   }
 }

@@ -28,7 +28,8 @@ class _AuthPageState extends State<AuthPage> {
   AuthMode authMode = AuthMode.signIn;
 
   void onAuthenticated(AuthMethod method) {
-    if (method == AuthMethod.emailPassword) {
+    if (method == AuthMethod.emailPassword ||
+        method == AuthMethod.socialProvider) {
       Fluttertoast.showToast(msg: S.of(context).toast_success_login);
       GoRouter.of(context).replaceWithHome();
     }
@@ -98,6 +99,8 @@ class _AuthPageState extends State<AuthPage> {
                           child: authMode == AuthMode.signIn
                               ? LoginContainer(
                                   onValidated: authNotifier.loginEmailPassword,
+                                  onSocialButtonPressed:
+                                      authNotifier.loginSocialProvider,
                                 )
                               : SignUpContainer(
                                   onValidated: authNotifier.registerUser,
