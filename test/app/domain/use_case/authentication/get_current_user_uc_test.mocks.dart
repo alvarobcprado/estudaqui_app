@@ -214,14 +214,14 @@ class MockAuthDataRepository extends _i1.Mock
                   _FakeEither_5<_i7.Failure, void>()))
           as _i5.Future<_i4.Either<_i7.Failure, void>>);
   @override
-  _i5.Future<_i4.Either<_i7.Failure, void>> signInWithSocialProvider(
+  _i5.Future<_i4.Either<_i7.Failure, _i3.User>> signInWithSocialProvider(
           {_i8.SocialAuthProviders? provider}) =>
       (super.noSuchMethod(
               Invocation.method(
                   #signInWithSocialProvider, [], {#provider: provider}),
-              returnValue: Future<_i4.Either<_i7.Failure, void>>.value(
-                  _FakeEither_5<_i7.Failure, void>()))
-          as _i5.Future<_i4.Either<_i7.Failure, void>>);
+              returnValue: Future<_i4.Either<_i7.Failure, _i3.User>>.value(
+                  _FakeEither_5<_i7.Failure, _i3.User>()))
+          as _i5.Future<_i4.Either<_i7.Failure, _i3.User>>);
   @override
   _i5.Future<_i4.Either<_i7.Failure, _i3.User>> signInWithEmailAndPassword(
           {String? email, String? password}) =>
