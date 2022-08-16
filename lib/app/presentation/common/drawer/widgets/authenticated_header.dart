@@ -8,9 +8,11 @@ class AuthenticatedHeader extends ConsumerWidget {
   const AuthenticatedHeader({
     Key? key,
     required this.userName,
+    this.userPhotoUrl,
   }) : super(key: key);
 
   final String userName;
+  final String? userPhotoUrl;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,6 +22,8 @@ class AuthenticatedHeader extends ConsumerWidget {
       currentAccountPicture: CircleAvatar(
         backgroundColor: colors.primaryColor,
         radius: kSmallNumber * 5,
+        foregroundImage:
+            userPhotoUrl != null ? NetworkImage(userPhotoUrl!) : null,
         child: Text(
           userName.forShort(),
           style: TextStyle(

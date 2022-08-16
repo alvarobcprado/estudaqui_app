@@ -1,1 +1,1 @@
-enum SocialAuthProviders { google }
+enum SocialAuthProviders { google, twitter }

@@ -7,7 +7,8 @@ class MyDrawerState with _$MyDrawerState {
   factory MyDrawerState.unauthenticated() = _Unauthenticated;
 
   factory MyDrawerState.logged({
-    required String email,
+    String? email,
     String? username,
+    String? userPhotoUrl,
   }) = _Logged;
 }

@@ -45,5 +45,19 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<true/>
+		<key>CFBundleURLTypes</key>
+		<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+			<!-- Registered Callback URLs in TwitterApp -->
+			<string>estudaqui://</string>
+			</array>
+		</dict>
+		</array>
 	</dict>
 </plist>

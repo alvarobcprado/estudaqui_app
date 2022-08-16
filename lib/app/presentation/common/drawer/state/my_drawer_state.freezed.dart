@@ -22,10 +22,11 @@ class _$MyDrawerStateTearOff {
     return _Unauthenticated();
   }
 
-  _Logged logged({required String email, String? username}) {
+  _Logged logged({String? email, String? username, String? userPhotoUrl}) {
     return _Logged(
       email: email,
       username: username,
+      userPhotoUrl: userPhotoUrl,
     );
   }
 }
@@ -38,19 +39,23 @@ mixin _$MyDrawerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
-    required TResult Function(String email, String? username) logged,
+    required TResult Function(
+            String? email, String? username, String? userPhotoUrl)
+        logged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +139,9 @@ class _$_Unauthenticated implements _Unauthenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
-    required TResult Function(String email, String? username) logged,
+    required TResult Function(
+            String? email, String? username, String? userPhotoUrl)
+        logged,
   }) {
     return unauthenticated();
   }
@@ -143,7 +150,8 @@ class _$_Unauthenticated implements _Unauthenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
   }) {
     return unauthenticated?.call();
   }
@@ -152,7 +160,8 @@ class _$_Unauthenticated implements _Unauthenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -201,7 +210,7 @@ abstract class _Unauthenticated implements MyDrawerState {
 abstract class _$LoggedCopyWith<$Res> {
   factory _$LoggedCopyWith(_Logged value, $Res Function(_Logged) then) =
       __$LoggedCopyWithImpl<$Res>;
-  $Res call({String email, String? username});
+  $Res call({String? email, String? username, String? userPhotoUrl});
 }
 
 /// @nodoc
@@ -217,15 +226,20 @@ class __$LoggedCopyWithImpl<$Res> extends _$MyDrawerStateCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? username = freezed,
+    Object? userPhotoUrl = freezed,
   }) {
     return _then(_Logged(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userPhotoUrl: userPhotoUrl == freezed
+          ? _value.userPhotoUrl
+          : userPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -234,16 +248,18 @@ class __$LoggedCopyWithImpl<$Res> extends _$MyDrawerStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Logged implements _Logged {
-  _$_Logged({required this.email, this.username});
+  _$_Logged({this.email, this.username, this.userPhotoUrl});
 
   @override
-  final String email;
+  final String? email;
   @override
   final String? username;
+  @override
+  final String? userPhotoUrl;
 
   @override
   String toString() {
-    return 'MyDrawerState.logged(email: $email, username: $username)';
+    return 'MyDrawerState.logged(email: $email, username: $username, userPhotoUrl: $userPhotoUrl)';
   }
 
   @override
@@ -252,14 +268,17 @@ class _$_Logged implements _Logged {
         (other.runtimeType == runtimeType &&
             other is _Logged &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.username, username));
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality()
+                .equals(other.userPhotoUrl, userPhotoUrl));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(username));
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(userPhotoUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -270,29 +289,33 @@ class _$_Logged implements _Logged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
-    required TResult Function(String email, String? username) logged,
+    required TResult Function(
+            String? email, String? username, String? userPhotoUrl)
+        logged,
   }) {
-    return logged(email, username);
+    return logged(email, username, userPhotoUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
   }) {
-    return logged?.call(email, username);
+    return logged?.call(email, username, userPhotoUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
-    TResult Function(String email, String? username)? logged,
+    TResult Function(String? email, String? username, String? userPhotoUrl)?
+        logged,
     required TResult orElse(),
   }) {
     if (logged != null) {
-      return logged(email, username);
+      return logged(email, username, userPhotoUrl);
     }
     return orElse();
   }
@@ -330,10 +353,12 @@ class _$_Logged implements _Logged {
 }
 
 abstract class _Logged implements MyDrawerState {
-  factory _Logged({required String email, String? username}) = _$_Logged;
+  factory _Logged({String? email, String? username, String? userPhotoUrl}) =
+      _$_Logged;
 
-  String get email;
+  String? get email;
   String? get username;
+  String? get userPhotoUrl;
   @JsonKey(ignore: true)
   _$LoggedCopyWith<_Logged> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,5 +1,8 @@
 extension StringCapitalize on String {
   String capitalized() {
+    if (isEmpty) {
+      return '';
+    }
     final wordList = trim().split(' ');
     final capitalizedList = [];
     for (final word in wordList) {

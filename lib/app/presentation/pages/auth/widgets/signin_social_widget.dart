@@ -49,6 +49,13 @@ class SigninSocialWidget extends StatelessWidget {
                 onPressed: () => onSocialButtonPressed(
                   provider: SocialAuthProviders.google,
                 ),
+              ),
+              const SizedBox(width: kSmallNumber),
+              SocialLoginButton(
+                socialProvider: SocialAuthProviders.twitter,
+                onPressed: () => onSocialButtonPressed(
+                  provider: SocialAuthProviders.twitter,
+                ),
               )
             ],
           ),
