@@ -29,8 +29,9 @@ class MyDrawer extends StatelessWidget {
                 children: [
                   myDrawerState.when(
                     unauthenticated: () => const UnauthenticatedHeader(),
-                    logged: (email, username) => AuthenticatedHeader(
-                      userName: username!,
+                    logged: (email, username, userPhoto) => AuthenticatedHeader(
+                      userName: username ?? '',
+                      userPhotoUrl: userPhoto,
                     ),
                   ),
                   Divider(
@@ -60,7 +61,7 @@ class MyDrawer extends StatelessWidget {
                   title: S.of(context).drawer_options_signin,
                   icon: const Icon(Icons.login),
                 ),
-                logged: (email, username) => Column(
+                logged: (_, __, ___) => Column(
                   children: [
                     MyDrawerTile(
                       isSelected: false,

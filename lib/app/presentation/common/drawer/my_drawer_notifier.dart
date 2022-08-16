@@ -59,8 +59,9 @@ class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
     final isUserAuth = _isUserAuth(user);
     state = isUserAuth
         ? MyDrawerState.logged(
-            email: user!.email!,
-            username: user.displayName,
+            email: user?.email,
+            username: user?.displayName,
+            userPhotoUrl: user?.photoURL,
           )
         : MyDrawerState.unauthenticated();
   }
@@ -69,6 +70,7 @@ class MyDrawerNotifier extends StateNotifier<MyDrawerState> {
     if (user == null) {
       return false;
     }
-    return (!user.isAnonymous && user.email != null && user.email!.isNotEmpty);
+    return !user.isAnonymous &&
+        (user.email != null || user.displayName != null);
   }
 }
