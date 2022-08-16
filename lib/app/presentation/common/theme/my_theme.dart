@@ -157,6 +157,8 @@ abstract class MyAssetPaths {
       'assets/images/course_listing_course_background.png';
 
   String get googleIcon => 'assets/images/google_logo.png';
+
+  String get twitterIcon => 'assets/images/twitter_logo.png';
 }
 
 /// Prussian Blue

@@ -20,6 +20,8 @@ class SocialLoginButton extends StatelessWidget {
     switch (socialProvider) {
       case SocialAuthProviders.google:
         return AssetImage(assets.googleIcon);
+      case SocialAuthProviders.twitter:
+        return AssetImage(assets.twitterIcon);
     }
   }
 
