@@ -7,16 +7,20 @@ import 'package:estudaqui/core/error/failure.dart';
 import 'package:estudaqui/core/error/failure_type.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 class AuthImpRepository implements AuthDataRepository {
   AuthImpRepository({
     required FirebaseAuth authProvider,
     required GoogleSignIn googleAuthProvider,
+    required TwitterLogin twitterAuthProvider,
   })  : _authProvider = authProvider,
-        _googleAuthProvider = googleAuthProvider;
+        _googleAuthProvider = googleAuthProvider,
+        _twitterAuthProvider = twitterAuthProvider;
 
   final FirebaseAuth _authProvider;
   final GoogleSignIn _googleAuthProvider;
+  final TwitterLogin _twitterAuthProvider;
 
   @override
   Stream<User?> get authStateChanges => _authProvider.authStateChanges();
@@ -218,7 +222,15 @@ class AuthImpRepository implements AuthDataRepository {
           providerId: 'google.com',
           signinMethod: 'google.com',
         );
+        return authResult;
 
+      case SocialAuthProviders.twitter:
+        final signinResult = await _signInWithTwitter();
+        final authResult = await _authenticateUserWithProvider(
+          signinResult,
+          providerId: 'twitter.com',
+          signinMethod: 'twitter.com',
+        );
         return authResult;
 
       default:
@@ -245,6 +257,7 @@ class AuthImpRepository implements AuthDataRepository {
               signInMethod: signinMethod,
               accessToken: r.accessToken,
               idToken: r.tokenId,
+              secret: r.secretToken,
             ),
           );
           if (userResult.user != null) {
@@ -263,7 +276,7 @@ class AuthImpRepository implements AuthDataRepository {
               ),
             );
           } else {
-            throw Exception();
+            rethrow;
           }
         } catch (e) {
           return Left(
@@ -289,6 +302,32 @@ class AuthImpRepository implements AuthDataRepository {
             type: const FailureType.authCancel(),
           ),
         );
+      }
+    } catch (e) {
+      return Left(
+        Failure.fromType(
+          type: const FailureType.normal(),
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, SocialAuthData>> _signInWithTwitter() async {
+    try {
+      final signInResult = await _twitterAuthProvider.login();
+
+      if (signInResult.status == TwitterLoginStatus.loggedIn) {
+        return Right(
+          signInResult.toDM(),
+        );
+      } else if (signInResult.status == TwitterLoginStatus.cancelledByUser) {
+        return Left(
+          Failure.fromType(
+            type: const FailureType.authCancel(),
+          ),
+        );
+      } else {
+        throw Exception();
       }
     } catch (e) {
       return Left(

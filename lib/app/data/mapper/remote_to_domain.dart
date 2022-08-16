@@ -6,6 +6,7 @@ import 'package:estudaqui/app/domain/entity/course.dart';
 import 'package:estudaqui/app/domain/entity/course_module.dart';
 import 'package:estudaqui/app/domain/entity/subject.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:twitter_login/entity/auth_result.dart';
 
 extension CourseRMToDM on CourseRM {
   Course toDM() {
@@ -70,6 +71,21 @@ extension GoogleSignInAccountToDM on GoogleSignInAccount {
       photoUrl: photoUrl,
       accessToken: (await authentication).accessToken,
       serverAuthCode: serverAuthCode,
+    );
+  }
+}
+
+extension TwitterAuthResultToDM on AuthResult {
+  SocialAuthData toDM() {
+    return SocialAuthData(
+      email: user?.email ?? '',
+      displayName: user?.screenName,
+      userId: user?.id.toString(),
+      tokenId: null,
+      photoUrl: user?.thumbnailImage,
+      accessToken: authToken,
+      secretToken: authTokenSecret,
+      serverAuthCode: null,
     );
   }
 }
