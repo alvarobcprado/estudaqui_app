@@ -21,14 +21,4 @@ Aplicativo Flutter para auxiliar ao acesso e a disponibilização de conteúdos 
 
 ##
 
-<img height="480px" src="assets/readme/images/splash.jpg">
-<img height="480px" src="assets/readme/images/logged_home.jpg">
-<img height="480px" src="assets/readme/images/course_list.jpg">
-<img height="480px" src="assets/readme/images/course.jpg">
-<img height="480px" src="assets/readme/images/logged_menu_drawer.jpg">
-<img height="480px" src="assets/readme/images/author_courses.jpg">
-<img height="480px" src="assets/readme/images/add_course_info.jpg">
-<img height="480px" src="assets/readme/images/add_course_content.jpg">
-<img height="480px" src="assets/readme/images/about_app.jpg">
-<img height="480px" src="assets/readme/images/login.jpg">
-<img height="480px" src="assets/readme/images/create_account.jpg">
+<img height="480px" src="assets/readme/images/splash.jpg"> <img height="480px" src="assets/readme/images/logged_home.jpg"> <img height="480px" src="assets/readme/images/course_list.jpg"> <img height="480px" src="assets/readme/images/course.jpg"> <img height="480px" src="assets/readme/images/logged_menu_drawer.jpg"> <img height="480px" src="assets/readme/images/author_courses.jpg"> <img height="480px" src="assets/readme/images/add_course_info.jpg"> <img height="480px" src="assets/readme/images/add_course_content.jpg"> <img height="480px" src="assets/readme/images/about_app.jpg"> <img height="480px" src="assets/readme/images/login.jpg"> <img height="480px" src="assets/readme/images/create_account.jpg">
